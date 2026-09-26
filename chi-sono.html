@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chi sono | Fuori Mappa</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #f4eadb;
+      color: #222;
+      font-family: Arial, sans-serif;
+    }
+
+
+    /* MENU */
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 7%;
+      background: #fffaf2;
+      border-bottom: 1px solid #d8c8b5;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: #222;
+    }
+
+    .home-link {
+      color: #222;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+
+    /* INTRO */
+
+    .hero {
+      padding: 90px 8% 60px;
+      text-align: center;
+    }
+
+    .small {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(55px, 9vw, 95px);
+      line-height: .95;
+      margin: 18px 0;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: auto;
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+
+    /* LA MIA STORIA */
+
+    .story {
+      padding: 40px 8% 100px;
+    }
+
+    .paper {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+      background: #fffaf2;
+      padding: 65px;
+      box-shadow: 8px 10px 0 rgba(0,0,0,.08);
+      transform: rotate(-0.4deg);
+    }
+
+    .tape {
+      position: absolute;
+      width: 110px;
+      height: 28px;
+      background: #d9c79f;
+      opacity: .8;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(3deg);
+    }
+
+    .paper h2 {
+      font-family: Georgia, serif;
+      font-size: 42px;
+      margin: 15px 0 25px;
+    }
+
+    .paper p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+
+    /* PERCORSO */
+
+    .travel-path {
+      margin: 45px 0;
+      padding: 30px;
+      border-top: 1px solid #d8c8b5;
+      border-bottom: 1px solid #d8c8b5;
+    }
+
+    .travel-path-title {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    .travel-path-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 25px;
+      margin: 18px 0;
+      align-items: start;
+    }
+
+    .travel-path-item strong {
+      font-family: Georgia, serif;
+      font-size: 18px;
+    }
+
+    .travel-path-item span {
+      line-height: 1.6;
+    }
+
+
+    /* FRASE */
+
+    .note {
+      max-width: 700px;
+      margin: 60px auto 0;
+      padding: 35px;
+      background: #dfe5d6;
+      transform: rotate(1deg);
+      font-family: Georgia, serif;
+      font-size: 23px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+
+    /* COME VIAGGIO */
+
+    .values {
+      padding: 90px 8%;
+      background: #fffaf2;
+    }
+
+    .values-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .values-title h2 {
+      font-family: Georgia, serif;
+      font-size: 45px;
+      margin: 10px 0;
+    }
+
+    .value-grid {
+      max-width: 950px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .value {
+      background: #f4eadb;
+      padding: 35px 25px;
+      min-height: 220px;
+      border: 1px solid #dfd1bf;
+    }
+
+    .value:nth-child(1) {
+      transform: rotate(-1deg);
+    }
+
+    .value:nth-child(2) {
+      transform: rotate(1deg);
+    }
+
+    .value:nth-child(3) {
+      transform: rotate(-.5deg);
+    }
+
+    .value span {
+      font-size: 28px;
+    }
+
+    .value h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin: 15px 0 10px;
+    }
+
+    .value p {
+      line-height: 1.6;
+      margin: 0;
+    }
+
+
+    /* FINALE */
+
+    .next {
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .next h2 {
+      font-family: Georgia, serif;
+      font-size: 45px;
+      margin: 10px 0 20px;
+    }
+
+    .next p {
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 22px;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 35px;
+      text-align: center;
+      background: #222;
+      color: white;
+    }
+
+
+    /* TELEFONO */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 5%;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .home-link {
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 70px 7% 45px;
+      }
+
+      .intro {
+        font-size: 17px;
+      }
+
+      .story {
+        padding: 30px 7% 70px;
+      }
+
+      .paper {
+        padding: 45px 25px;
+        transform: none;
+      }
+
+      .paper h2 {
+        font-size: 34px;
+      }
+
+      .travel-path {
+        padding: 25px 0;
+      }
+
+      .travel-path-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value {
+        transform: none !important;
+      }
+
+      .values {
+        padding: 70px 7%;
+      }
+
+      .values-title h2,
+      .next h2 {
+        font-size: 36px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- MENU -->
+
+  <nav>
+    <a href="index.html" class="logo">FUORI MAPPA ✦</a>
+    <a href="index.html" class="home-link">← Torna alla home</a>
+  </nav>
+
+
+  <!-- INTRO -->
+
+  <header class="hero">
+
+    <span class="small">DIETRO FUORI MAPPA</span>
+
+    <h1>Ciao, sono Anna.</h1>
+
+    <p class="intro">
+      Amo partire, ma probabilmente amo quasi altrettanto tutto quello
+      che succede prima: cercare, confrontare, costruire itinerari e
+      trovare quel posto che rischiava di rimanere fuori dalla mappa.
+    </p>
+
+  </header>
+
+
+  <!-- STORIA -->
+
+  <section class="story">
+
+    <div class="paper">
+
+      <span class="tape"></span>
+
+      <span class="small">COME È INIZIATO TUTTO</span>
+
+      <h2>Da una passione a Fuori Mappa</h2>
+
+      <p>
+        Fuori Mappa nasce dalla mia passione per i viaggi e soprattutto
+        per la loro organizzazione. Negli anni ho iniziato a costruire
+        autonomamente i miei itinerari, confrontando voli, alloggi,
+        trasporti, esperienze e costi per riuscire a conoscere davvero
+        ogni destinazione senza trasformare il viaggio in una corsa.
+      </p>
+
+      <p>
+        Mi piace vedere i luoghi che tutti conoscono, ma ancora di più
+        scoprire quello che c'è intorno: un quartiere meno turistico,
+        una strada presa quasi per caso, la cucina locale, un paesaggio
+        che non avevo programmato di trovare.
+      </p>
+
+      <p>
+        A un certo punto mi sono resa conto che la parte che precede
+        ogni partenza — cercare, pianificare e mettere insieme tutti
+        i pezzi — era diventata una delle cose che preferivo.
+        Da lì è nato Fuori Mappa: uno spazio in cui raccogliere
+        esperienze reali, itinerari e idee che possano essere utili
+        anche a chi sta preparando il prossimo viaggio.
+      </p>
+
+
+      <!-- FORMAZIONE -->
+
+      <div class="travel-path">
+
+        <span class="travel-path-title">
+          UN PO' DI ME, ANCHE FUORI DALLA MAPPA
+        </span>
+
+        <div class="travel-path-item">
+          <strong>🎓 Scienze del Turismo</strong>
+
+          <span>
+            La mia laurea e il punto in cui la passione per i viaggi
+            ha incontrato lo studio del turismo.
+          </span>
+        </div>
+
+        <div class="travel-path-item">
+          <strong>🌱 Turismo Sostenibile</strong>
+
+          <span>
+            Oggi continuo questo percorso con un Master in Turismo
+            Sostenibile, per imparare a progettare viaggi sempre più
+            consapevoli.
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- FRASE -->
+
+      <div class="note">
+        “Vedere i posti importanti, sì. Ma lasciare sempre un po'
+        di spazio per quello che non avevamo previsto.”
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IL MIO MODO DI VIAGGIARE -->
+
+  <section class="values">
+
+    <div class="values-title">
+
+      <span class="small">
+        IL MIO MODO DI VIAGGIARE
+      </span>
+
+      <h2>Cosa trovi qui</h2>
+
+    </div>
+
+
+    <div class="value-grid">
+
+
+      <div class="value">
+
+        <span>⌖</span>
+
+        <h3>Fuori dalle solite rotte</h3>
+
+        <p>
+          I luoghi famosi meritano di essere visti, ma una destinazione
+          non finisce mai nelle sue attrazioni principali.
+        </p>
+
+      </div>
+
+
+      <div class="value">
+
+        <span>€</span>
+
+        <h3>Viaggi accessibili</h3>
+
+        <p>
+          Partire non deve necessariamente significare spendere una
+          fortuna. Costi e alternative fanno parte dell'itinerario.
+        </p>
+
+      </div>
+
+
+      <div class="value">
+
+        <span>✦</span>
+
+        <h3>Senza corse</h3>
+
+        <p>
+          Organizzare bene non significa riempire ogni minuto.
+          Preferisco itinerari che lasciano il tempo di vivere un posto.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- FINALE -->
+
+  <section class="next">
+
+    <span class="small">E ADESSO?</span>
+
+    <h2>Dove andiamo?</h2>
+
+    <p>
+      Inizia dalle destinazioni che sono già finite Fuori Mappa.
+    </p>
+
+    <a href="index.html" class="button">
+      Esplora i viaggi →
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    FUORI MAPPA · viaggi, idee e qualche deviazione ✦
+  </footer>
+
+
+</body>
+</html>
