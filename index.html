@@ -357,6 +357,30 @@
     object-fit: cover;
     display: block;
 }
+    .extra-card {
+    display: none;
+}
+
+.destination-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.destination-arrows button {
+    background: transparent;
+    border: none;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    color: #222;
+    cursor: pointer;
+    padding: 5px 12px;
+}
+
+.destination-arrows button:hover {
+    transform: translateX(2px);
+}
 @media (max-width: 700px) {
   .about {
     padding: 70px 7%;
@@ -424,7 +448,22 @@
       <div class="card">
         <h3>Varsavia</h3>
       </div>
+      <div class="card extra-card">
+    <h3>Sofia</h3>
+</div>
+
+<div class="card extra-card">
+    <h3>Svizzera</h3>
+</div>
+
+<div class="card extra-card">
+    <h3>Norvegia</h3>
+</div>
     </div>
+    <div class="destination-arrows">
+    <button id="prevDest" aria-label="Destinazioni precedenti">←</button>
+    <button id="nextDest" aria-label="Destinazioni successive">→</button>
+</div>
   </section>
 <section class="about">
   <div class="about-paper">
@@ -469,6 +508,25 @@
   <footer>
     FUORI MAPPA · viaggi, idee e qualche deviazione ✦
   </footer>
+<script>
+const normalCards = document.querySelectorAll('.card:not(.extra-card)');
+const extraCards = document.querySelectorAll('.extra-card');
 
+const nextDest = document.getElementById('nextDest');
+const prevDest = document.getElementById('prevDest');
+
+function showNormal() {
+    normalCards.forEach(card => card.style.display = '');
+    extraCards.forEach(card => card.style.display = 'none');
+}
+
+function showExtra() {
+    normalCards.forEach(card => card.style.display = 'none');
+    extraCards.forEach(card => card.style.display = 'flex');
+}
+
+nextDest.addEventListener('click', showExtra);
+prevDest.addEventListener('click', showNormal);
+</script>
 </body>
 </html>
