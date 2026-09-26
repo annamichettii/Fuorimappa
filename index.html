@@ -174,6 +174,203 @@
         padding: 45px 25px;
       }
     }
+
+  /* SEZIONE DESTINAZIONI */
+
+.explore {
+    padding: 90px 8%;
+    background: #f4eadb;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title .small {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.section-title h2 {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    margin: 10px 0;
+}
+
+.section-title p {
+    font-size: 17px;
+}
+
+.travel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.travel-note {
+    position: relative;
+    background: #fffdf8;
+    padding: 18px 18px 30px;
+    box-shadow: 5px 8px 18px rgba(0,0,0,0.12);
+}
+
+.note-one {
+    transform: rotate(-2deg);
+}
+
+.note-two {
+    transform: rotate(1.5deg);
+}
+
+.note-three {
+    transform: rotate(-1deg);
+}
+
+.photo-placeholder {
+    height: 210px;
+    background: #d9d0c3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.travel-note h3 {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    margin: 5px 0 10px;
+}
+
+.travel-note p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.pin {
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 27px;
+    z-index: 2;
+}
+
+.tape-small {
+    position: absolute;
+    width: 75px;
+    height: 22px;
+    background: #e9d9a7;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    opacity: .85;
+}
+
+@media (max-width: 700px) {
+    .travel-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 38px;
+    }
+
+    .travel-note {
+        transform: none;
+    }
+}
+    .about {
+  padding: 110px 10%;
+  background: #f4eadb;
+}
+
+.about-paper {
+  position: relative;
+  max-width: 950px;
+  margin: 0 auto;
+  background: #fffdf8;
+  padding: 65px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 60px;
+  align-items: center;
+  box-shadow: 8px 10px 0 rgba(0,0,0,.08);
+  transform: rotate(-0.5deg);
+}
+
+.about-tape {
+  position: absolute;
+  width: 100px;
+  height: 28px;
+  background: #e9d9a7;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  opacity: .85;
+}
+
+.about-text .small {
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.about-text h2 {
+  font-family: Georgia, serif;
+  font-size: 48px;
+  margin: 12px 0 25px;
+}
+
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.about-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #222;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+  padding-bottom: 4px;
+}
+
+.about-photo {
+  height: 330px;
+  background: #e6dfd3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, serif;
+  transform: rotate(2deg);
+  box-shadow: 5px 6px 0 rgba(0,0,0,.08);
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 70px 7%;
+  }
+
+  .about-paper {
+    grid-template-columns: 1fr;
+    padding: 45px 25px;
+    gap: 35px;
+  }
+
+  .about-text h2 {
+    font-size: 38px;
+  }
+
+  .about-photo {
+    height: 280px;
+  }
+}
   </style>
 </head>
 
@@ -224,7 +421,35 @@
       </div>
     </div>
   </section>
+<section class="about">
+  <div class="about-paper">
+    <span class="about-tape"></span>
 
+    <div class="about-text">
+      <span class="small">DIETRO FUORI MAPPA</span>
+      <h2>Ciao, sono Anna ✈︎</h2>
+
+      <p>
+        Viaggio, fotografo e prendo appunti praticamente su tutto.
+        Fuori Mappa nasce per raccogliere itinerari reali, esperienze
+        e posti che vale la pena scoprire.
+      </p>
+
+      <p>
+        Qui trovi viaggi accessibili, idee meno scontate e itinerari
+        costruiti partendo da esperienze vere, senza corse e senza
+        l'idea che per partire serva spendere una fortuna.
+      </p>
+
+      <a href="#" class="about-link">Scopri chi sono →</a>
+    </div>
+
+    <div class="about-photo">
+      <span>UNA MIA FOTO</span>
+    </div>
+  </div>
+</section>
+  
   <section class="manifesto">
     <div class="small">Fuori dalla solita rotta</div>
 
