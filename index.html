@@ -122,7 +122,36 @@
       border: 8px solid white;
       box-shadow: 4px 5px 12px rgba(0,0,0,.12);
     }
+.macedonia-card {
+  padding: 10px 10px 22px;
+  min-height: auto;
+  background: #ffffff;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.macedonia-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: center 62%;
+  margin-bottom: 18px;
+}
+
+.macedonia-card h3 {
+  margin: 0 10px 6px;
+}
+
+.card-trip {
+  margin: 0 10px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
     .card:nth-child(1) {
       transform: rotate(-2deg);
     }
@@ -437,8 +466,10 @@
     <h2>Ultime destinazioni</h2>
 
     <div class="cards">
-      <a href="macedonia.html" class="card">
+      <a href="macedonia.html" class="card macedonia-card">
+  <img src="macedonia-hero.PNG" alt="Macedonia del Nord">
   <h3>Macedonia<br>del Nord</h3>
+  <span class="card-trip">5 giorni · road trip</span>
 </a>
 
       <div class="card">
