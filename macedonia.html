@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Macedonia del Nord | Fuori Mappa</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f3eee6;
+      color: #252321;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+
+    /* --------------------
+       NAV
+    -------------------- */
+
+    nav {
+      height: 68px;
+      padding: 0 6%;
+      background: rgba(255, 255, 255, 0.96);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      border-bottom: 1px solid #e5dfd6;
+    }
+
+    .logo {
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+
+    /* --------------------
+       HERO
+    -------------------- */
+
+    .hero {
+      min-height: 76vh;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.05),
+          rgba(0, 0, 0, 0.32)
+        ),
+        url("macedonia-hero.PNG") center 57% / cover no-repeat;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 7%;
+
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 8vw, 100px);
+      line-height: 0.92;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 580px;
+      font-size: 17px;
+    }
+
+
+    /* --------------------
+       INTRO
+    -------------------- */
+
+    .intro {
+      max-width: 950px;
+      margin: auto;
+
+      padding: 95px 7% 70px;
+
+      text-align: center;
+    }
+
+    .small {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .intro h2 {
+      font-size: clamp(35px, 5vw, 54px);
+      line-height: 1.12;
+
+      margin-bottom: 28px;
+    }
+
+    .intro p {
+      max-width: 720px;
+      margin: auto;
+
+      font-size: 16px;
+    }
+
+
+    /* --------------------
+       DATI VIAGGIO
+    -------------------- */
+
+    .trip-info {
+      max-width: 900px;
+      margin: 0 auto 110px;
+
+      background: #ffffff;
+
+      padding: 34px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .trip-info div {
+      text-align: center;
+    }
+
+    .trip-info span {
+      display: block;
+
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      margin-bottom: 6px;
+    }
+
+    .trip-info strong {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+
+    /* --------------------
+       GIORNI
+    -------------------- */
+
+    .day {
+      max-width: 980px;
+      margin: 0 auto 120px;
+
+      padding: 0 7%;
+    }
+
+    .day-number {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+    .day h2 {
+      font-size: clamp(37px, 5vw, 55px);
+      line-height: 1.05;
+
+      margin-bottom: 28px;
+    }
+
+    .day-text {
+      max-width: 700px;
+
+      font-size: 16px;
+
+      margin-bottom: 38px;
+    }
+
+    .day-text p + p {
+      margin-top: 18px;
+    }
+
+
+    /* --------------------
+       FOTO
+
+       IMPORTANTISSIMO:
+       larghezza e altezza limitate.
+       Niente immagini giganti.
+    -------------------- */
+
+    .photo {
+      width: 100%;
+      max-width: 720px;
+
+      margin: 42px auto;
+
+      padding: 10px 10px 27px;
+
+      background: #ffffff;
+
+      box-shadow: 7px 9px 0 rgba(0, 0, 0, 0.07);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 440px;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-caption {
+      padding: 13px 5px 0;
+
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+
+    /* FOTO VERTICALI PIÙ PICCOLE */
+
+    .photo.vertical {
+      max-width: 470px;
+    }
+
+    .photo.vertical img {
+      height: 540px;
+    }
+
+
+    /* DUE FOTO AFFIANCATE */
+
+    .photo-pair {
+      max-width: 800px;
+
+      margin: 45px auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+
+      align-items: start;
+    }
+
+    .photo-pair .photo {
+      width: 100%;
+      margin: 0;
+    }
+
+    .photo-pair .photo img {
+      height: 430px;
+    }
+
+    .photo-pair .photo:first-child {
+      transform: rotate(-1deg);
+    }
+
+    .photo-pair .photo:last-child {
+      transform: rotate(1deg);
+    }
+
+
+    /* --------------------
+       BOX APPUNTI
+    -------------------- */
+
+    .note {
+      max-width: 700px;
+
+      margin: 48px 0;
+
+      padding: 32px 35px;
+
+      background: #e7dfcf;
+
+      position: relative;
+    }
+
+    .note::before {
+      content: "";
+
+      position: absolute;
+      width: 80px;
+      height: 22px;
+
+      top: -11px;
+      left: calc(50% - 40px);
+
+      background: #e7d88e;
+
+      transform: rotate(-2deg);
+
+      opacity: 0.8;
+    }
+
+    .note-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+    }
+
+
+    /* --------------------
+       DIVISORE
+    -------------------- */
+
+    .route-divider {
+      width: 100px;
+      height: 1px;
+
+      background: #aaa195;
+
+      margin: 0 auto 120px;
+    }
+
+
+    /* --------------------
+       INFO PRATICHE
+    -------------------- */
+
+    .practical {
+      background: #242321;
+      color: #f8f5ef;
+
+      padding: 100px 7%;
+    }
+
+    .practical-inner {
+      max-width: 950px;
+      margin: auto;
+    }
+
+    .practical h2 {
+      font-size: clamp(38px, 5vw, 60px);
+
+      margin-bottom: 45px;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 20px 45px;
+    }
+
+    .tip {
+      padding: 25px 0;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .tip h3 {
+      font-size: 21px;
+
+      margin-bottom: 9px;
+    }
+
+    .tip p {
+      font-size: 14px;
+      color: #e5e0d8;
+    }
+
+
+    /* --------------------
+       CTA
+    -------------------- */
+
+    .cta {
+      max-width: 850px;
+
+      margin: auto;
+
+      padding: 115px 7%;
+
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 6vw, 65px);
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+    }
+
+    .cta p {
+      max-width: 620px;
+
+      margin: 0 auto 32px;
+
+      font-size: 16px;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 13px 24px;
+
+      border: 1px solid #252321;
+
+      text-decoration: none;
+
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #252321;
+      color: #ffffff;
+    }
+
+
+    /* --------------------
+       FOOTER
+    -------------------- */
+
+    footer {
+      background: #1f1f1e;
+      color: #ffffff;
+
+      padding: 28px;
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+
+    /* --------------------
+       MOBILE
+    -------------------- */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 68vh;
+
+        padding: 10% 6%;
+      }
+
+      .trip-info {
+        grid-template-columns: 1fr 1fr;
+
+        margin-left: 6%;
+        margin-right: 6%;
+
+        padding: 28px 18px;
+      }
+
+      .day {
+        padding: 0 7%;
+
+        margin-bottom: 90px;
+      }
+
+      .photo {
+        max-width: 100%;
+      }
+
+      .photo img {
+        height: 330px;
+      }
+
+      .photo.vertical {
+        max-width: 88%;
+      }
+
+      .photo.vertical img {
+        height: 430px;
+      }
+
+      .photo-pair {
+        grid-template-columns: 1fr;
+
+        max-width: 88%;
+      }
+
+      .photo-pair .photo img {
+        height: 420px;
+      }
+
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .note {
+        padding: 30px 24px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- ====================
+     NAV
+==================== -->
+
+<nav>
+
+  <a class="logo" href="index.html">
+    FUORI MAPPA ✦
+  </a>
+
+  <div class="nav-links">
+
+    <a href="index.html#destinazioni">
+      Destinazioni
+    </a>
+
+    <a href="index.html#itinerari">
+      Itinerari
+    </a>
+
+    <a href="chi-sono.html">
+      Chi sono
+    </a>
+
+  </div>
+
+</nav>
+
+
+<!-- ====================
+     COPERTINA
+==================== -->
+
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="eyebrow">
+      Fuori Mappa · Europa
+    </div>
+
+    <h1>
+      Macedonia<br>
+      del Nord
+    </h1>
+
+    <p>
+      Cinque giorni tra Skopje, canyon, laghi e strade
+      che vale la pena percorrere senza troppa fretta.
+    </p>
+
+  </div>
+
+</header>
+
+
+<!-- ====================
+     INTRO
+==================== -->
+
+<section class="intro">
+
+  <div class="small">
+    Il viaggio, davvero
+  </div>
+
+  <h2>
+    Un itinerario nato sulla strada,<br>
+    non sulla carta.
+  </h2>
+
+  <p>
+    Questo è il percorso che abbiamo seguito davvero:
+    le tappe che rifarei, quelle che abbiamo cambiato
+    durante il viaggio e le piccole cose che avrei voluto
+    sapere prima di partire.
+
+    Non vuole essere una lista infinita di cose da vedere,
+    ma un punto di partenza per capire come può essere
+    un viaggio in Macedonia del Nord.
+  </p>
+
+</section>
+
+
+<!-- ====================
+     DATI
+==================== -->
+
+<section class="trip-info">
+
+  <div>
+    <span>Durata</span>
+    <strong>5 giorni</strong>
+  </div>
+
+  <div>
+    <span>Spostamenti</span>
+    <strong>Auto</strong>
+  </div>
+
+  <div>
+    <span>Basi</span>
+    <strong>Skopje + Ohrid</strong>
+  </div>
+
+  <div>
+    <span>Periodo</span>
+    <strong>Estate</strong>
+  </div>
+
+</section>
+
+
+<!-- ====================
+     GIORNO 1
+==================== -->
+
+<section class="day">
+
+  <div class="day-number">
+    Giorno 01
+  </div>
+
+  <h2>
+    Skopje & Lago Kozjak
+  </h2>
+
+
+  <div class="day-text">
+
+    <p>
+      Il viaggio comincia da Skopje.
+      Il primo giorno lo abbiamo dedicato alla città,
+      lasciandoci soprattutto il tempo di girare
+      nell'Old Bazaar senza un programma troppo rigido.
+    </p>
+
+    <p>
+      Proprio qui abbiamo trovato per caso
+      <strong>Bratstvo</strong>, dove ci siamo fermati
+      a mangiare.
+    </p>
+
+  </div>
+
+
+  <div class="photo vertical">
+
+    <img
+      src="skopje-old-bazaar.PNG"
+      alt="Old Bazaar di Skopje"
+    >
+
+    <div class="photo-caption">
+      Tra le vie dell'Old Bazaar.
+    </div>
+
+  </div>
+
+
+  <div class="day-text">
+
+    <p>
+      Nel pomeriggio abbiamo lasciato Skopje
+      per raggiungere il Lago Kozjak.
+    </p>
+
+    <p>
+      Siamo arrivati verso sera e il tramonto
+      ha trasformato una semplice deviazione
+      in uno dei momenti più belli del viaggio.
+    </p>
+
+    <p>
+      Per cena ci siamo poi fermati al
+      <strong>Riverside Garden Restaurant</strong>,
+      lungo il fiume.
+    </p>
+
+  </div>
+
+
+  <div class="photo vertical">
+
+    <img
+      src="kozjak-tramonto.PNG"
+      alt="Tramonto sul Lago Kozjak"
+    >
+
+    <div class="photo-caption">
+      Kozjak all'ora del tramonto.
+    </div>
+
+  </div>
+
+
+  <div class="note">
+
+    <div class="note-title">
+      Fuori Mappa ✦
+    </div>
+
+    Kozjak non richiede necessariamente una giornata intera.
+    Inserirlo dopo Skopje ci ha permesso di vedere un paesaggio
+    completamente diverso senza stravolgere il viaggio.
+
+  </div>
+
+</section>
+
+
+<div class="route-divider"></div>
+
+
+<!-- ====================
+     GIORNO 2
+==================== -->
+
+<section class="day">
+
+  <div class="day-number">
+    Giorno 02
+  </div>
+
+  <h2>
+    Matka Canyon & Mavrovo
+  </h2>
+
+
+  <div class="day-text">
+
+    <p>
+      Se dovessi scegliere una tappa da non eliminare
+      dall'itinerario, sarebbe Matka Canyon.
+    </p>
+
+    <p>
+      Ci siamo arrivati in mattinata e abbiamo dedicato
+      la prima parte della giornata al canyon,
+      prima di proseguire verso la zona di Mavrovo.
+    </p>
+
+  </div>
+
+
+  <div class="photo">
+
+    <img
+      src="matka-canyon.PNG"
+      alt="Matka Canyon"
+    >
+
+    <div class="photo-caption">
+      Matka Canyon: una delle tappe immancabili.
+    </div>
+
+  </div>
+
+
+  <div class="day-text">
+
+    <p>
+      Dopo Matka abbiamo pranzato al
+      <strong>Dardani Restaurant</strong>
+      e siamo ripartiti verso Mavrovo.
+    </p>
+
+    <p>
+      Qui siamo andati a vedere la famosa chiesa
+      sul lago, conosciuta per apparire parzialmente
+      sommersa quando il livello dell'acqua è più alto.
+    </p>
+
+    <p>
+      Nel programma iniziale avevamo inserito anche
+      il monastero di Bigorski, ma alla fine
+      <strong>non lo abbiamo visitato</strong>.
+    </p>
+
+  </div>
+
+
+  <div class="photo vertical">
+
+    <img
+      src="mavrovo-chiesa.PNG"
+      alt="Chiesa sul Lago di Mavrovo"
+    >
+
+    <div class="photo-caption">
+      La chiesa sul Lago di Mavrovo.
+    </div>
+
+  </div>
+
+
+  <div class="note">
+
+    <div class="note-title">
+      Da sapere
+    </div>
+
+    Sulla carta le distanze possono sembrare facili
+    da incastrare. Io eviterei però di riempire questa
+    giornata di troppe tappe: una parte del bello è
+    proprio avere il tempo di fermarsi lungo la strada.
+
+  </div>
+
+</section>
+
+
+<div class="route-divider"></div>
+
+
+<!-- ====================
+     GIORNO 3
+==================== -->
+
+<section class="day">
+
+  <div class="day-number">
+    Giorno 03
+  </div>
+
+  <h2>
+    Ohrid
+  </h2>
+
+
+  <div class="day-text">
+
+    <p>
+      Ohrid merita una giornata vissuta con calma:
+      centro storico, vicoli che scendono verso il lago,
+      chiese e qualche ora semplicemente sull'acqua.
+    </p>
+
+    <p>
+      È uno di quei posti in cui avere meno tappe
+      programmate può rendere la giornata molto più bella.
+    </p>
+
+  </div>
+
+
+  <div class="photo vertical">
+
+    <img
+      src="ohrid.PNG"
+      alt="Vicoli di Ohrid con vista sul lago"
+    >
+
+    <div class="photo-caption">
+      Scendendo verso il Lago di Ohrid.
+    </div>
+
+  </div>
+
+
+  <div class="note">
+
+    <div class="note-title">
+      Una cosa che avrei voluto sapere prima
+    </div>
+
+    Se vuoi andare nella zona sul lungolago
+    con le piattaforme in legno e i materassi bianchi
+    dall'atmosfera quasi da Grecia, vai
+    <strong>davvero presto</strong>.
+
+    <br><br>
+
+    Noi siamo arrivati più tardi ed era praticamente
+    tutto occupato, anche nel pomeriggio.
+
+    Alla fine abbiamo trovato un taxi boat che ci ha
+    accompagnati in una spiaggia più distante,
+    grande e con i classici lidi.
+
+    <br><br>
+
+    Lì il funzionamento è piuttosto informale:
+    arrivi, scegli un posto libero e prima o poi
+    dovrebbe passare qualcuno per il pagamento.
+
+    Nel nostro caso non è mai venuto nessuno,
+    quindi non posso dare un'indicazione affidabile
+    sul prezzo.
+
+  </div>
+
+
+  <div class="day-text">
+
+    <p>
+      Per gli spostamenti che ci servivano abbiamo
+      prenotato tutto direttamente tramite
+      <strong>l'app Uber</strong>.
+    </p>
+
+  </div>
+
+</section>
+
+
+<div class="route-divider"></div>
+
+
+<!-- ====================
+     GIORNO 4
+==================== -->
+
+<section class="day">
+
+  <div class="day-number">
+    Giorno 04
+  </div>
+
+  <h2>
+    San Naum & le sorgenti
+  </h2>
+
+
+  <div class="day-text">
+
+    <p>
+      Il giorno successivo siamo partiti in direzione
+      di San Naum.
+    </p>
+
+    <p>
+      Qui il viaggio cambia ancora atmosfera:
+      monastero, lago e soprattutto le sorgenti,
+      con un'acqua talmente limpida da sembrare irreale.
+    </p>
+
+  </div>
+
+
+  <div class="photo-pair">
+
+    <div class="photo">
+
+      <img
+        src="san-naum.PNG"
+        alt="Monastero di San Naum"
+      >
+
+      <div class="photo-caption">
+        San Naum.
+      </div>
+
+    </div>
+
+
+    <div class="photo">
+
+      <img
+        src="san-naum-sorgenti.PNG"
+        alt="Sorgenti di San Naum"
+      >
+
+      <div class="photo-caption">
+        Le sorgenti.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="day-text">
+
+    <p>
+      Alle sorgenti abbiamo mangiato al
+      <strong>Restaurant Ostrovo</strong>,
+      che per noi è stata un'altra ottima scoperta.
+    </p>
+
+    <p>
+      Questa zona del lago ci è piaciuta addirittura
+      più di quella di Ohrid.
+    </p>
+
+  </div>
+
+
+  <div class="note">
+
+    <div class="note-title">
+      Consiglio pratico
+    </div>
+
+    All'arrivo abbiamo pagato un ticket di circa
+    <strong>1 €</strong>, che comprendeva anche
+    il parcheggio dell'auto.
+
+    <br><br>
+
+    Si può fare il bagno anche qui:
+    la spiaggia è molto curata e sono presenti
+    anche dei lettini.
+
+  </div>
+
+
+  <div class="note">
+
+    <div class="note-title">
+      Occhio al rientro
+    </div>
+
+    Noi non abbiamo aggiunto Galičica alla giornata.
+
+    Al ritorno verso Ohrid abbiamo trovato parecchio
+    traffico; potrebbe essere dipeso dal periodo in cui
+    siamo stati noi, ma è qualcosa che terrei in
+    considerazione prima di aggiungere altre tappe.
+
+  </div>
+
+</section>
+
+
+<div class="route-divider"></div>
+
+
+<!-- ====================
+     GIORNO 5
+==================== -->
+
+<section class="day">
+
+  <div class="day-number">
+    Giorno 05
+  </div>
+
+  <h2>
+    Ultima mattina & ritorno a Skopje
+  </h2>
+
+
+  <div class="day-text">
+
+    <p>
+      L'ultimo giorno non abbiamo cercato di riempire
+      per forza l'itinerario.
+    </p>
+
+    <p>
+      Abbiamo lasciato il B&B, fatto colazione
+      in un panificio trovato per caso a Ohrid
+      e mangiato un burek macedone che, fino ad ora,
+      rimane il più buono che abbia provato
+      nell'Est Europa.
+    </p>
+
+    <p>
+      Poi strada verso Skopje, con una semplice
+      pausa pranzo lungo il percorso prima
+      di rientrare.
+    </p>
+
+  </div>
+
+
+  <div class="note">
+
+    <div class="note-title">
+      Perché lo lascerei così
+    </div>
+
+    Non ogni giornata deve necessariamente essere piena.
+    Lasciare l'ultimo giorno più leggero ci ha evitato
+    di trasformare il rientro in una corsa contro il tempo.
+
+  </div>
+
+</section>
+
+
+<!-- ====================
+     INFO PRATICHE
+==================== -->
+
+<section class="practical">
+
+  <div class="practical-inner">
+
+    <div class="small">
+      Prima di partire
+    </div>
+
+    <h2>
+      Le cose pratiche che<br>
+      avrei voluto sapere.
+    </h2>
+
+
+    <div class="tips">
+
+
+      <div class="tip">
+
+        <h3>
+          💳 ATM
+        </h3>
+
+        <p>
+          Abbiamo trovato facilmente ATM,
+          ma per le carte fisiche il prelievo
+          era disponibile in multipli di
+          500 denari macedoni:
+          500, 1000, 1500, 2000, 2500 e così via.
+        </p>
+
+      </div>
+
+
+      <div class="tip">
+
+        <h3>
+          🚗 Auto senza caparra
+        </h3>
+
+        <p>
+          Per il nostro viaggio siamo riusciti
+          a trovare un'opzione di noleggio auto
+          senza caparra.
+
+          Per noi è stato uno dei dettagli che
+          ha reso il road trip molto più semplice.
+        </p>
+
+      </div>
+
+
+      <div class="tip">
+
+        <h3>
+          📱 Spostamenti
+        </h3>
+
+        <p>
+          Quando ci è servito un passaggio
+          abbiamo prenotato tramite l'app Uber.
+
+          A Ohrid abbiamo utilizzato anche
+          un taxi boat per raggiungere
+          una spiaggia più distante.
+        </p>
+
+      </div>
+
+
+      <div class="tip">
+
+        <h3>
+          🌊 Ohrid
+        </h3>
+
+        <p>
+          Se vuoi una giornata sul lago,
+          non aspettare il pomeriggio
+          per cercare un posto nelle zone
+          più conosciute del lungolago.
+        </p>
+
+      </div>
+
+
+      <div class="tip">
+
+        <h3>
+          🛣️ Non riempire tutto
+        </h3>
+
+        <p>
+          È un itinerario che funziona meglio
+          lasciando un po' di margine.
+
+          Tra strade, soste e traffico,
+          aggiungere una tappa in più non significa
+          necessariamente vedere meglio il Paese.
+        </p>
+
+      </div>
+
+
+      <div class="tip">
+
+        <h3>
+          ✦ Il nostro percorso
+        </h3>
+
+        <p>
+          Questo è ciò che abbiamo fatto davvero,
+          non un itinerario costruito a tavolino.
+
+          Alcune tappe inizialmente previste
+          sono state cambiate o eliminate
+          durante il viaggio.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ====================
+     CTA
+==================== -->
+
+<section class="cta">
+
+  <div class="small">
+    E adesso?
+  </div>
+
+  <h2>
+    Questa era la nostra Macedonia.<br>
+    La tua può essere diversa.
+  </h2>
+
+  <p>
+    Cinque giorni possono essere organizzati
+    in molti modi diversi.
+
+    Budget, periodo, ritmo del viaggio,
+    interessi e tipo di spostamenti cambiano
+    completamente l'itinerario.
+
+    Se vuoi, possiamo costruirne uno
+    partendo da come viaggi tu.
+  </p>
+
+
+  <!--
+    PER ORA IL PULSANTE TORNA ALLA HOME.
+    PIÙ AVANTI LO COLLEGHEREMO AL FORM.
+  -->
+
+  <a
+    class="button"
+    href="index.html"
+  >
+    Costruiamo il tuo viaggio →
+  </a>
+
+</section>
+
+
+<!-- ====================
+     FOOTER
+==================== -->
+
+<footer>
+
+  FUORI MAPPA · viaggi, idee e qualche deviazione ✦
+
+</footer>
+
+
+</body>
+</html>
