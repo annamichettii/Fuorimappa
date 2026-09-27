@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vienna & Bratislava | Fuorimappa</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf2;
+      color: #252525;
+      line-height: 1.7;
+    }
+
+    /* -------------------------
+       NAV
+    -------------------------- */
+
+    nav {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fffaf2;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #252525;
+      text-decoration: none;
+    }
+
+    .back {
+      color: #252525;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* -------------------------
+       HERO
+    -------------------------- */
+
+    .hero {
+      min-height: 68vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 60px 7%;
+      background:
+        linear-gradient(
+          rgba(0,0,0,.12),
+          rgba(0,0,0,.48)
+        ),
+        url("vienna-bratislava-hero.PNG");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      color: white;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(46px, 8vw, 90px);
+      line-height: .95;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 18px;
+    }
+
+    /* -------------------------
+       CONTENUTO
+    -------------------------- */
+
+    main {
+      width: min(920px, 88%);
+      margin: 0 auto;
+      padding: 75px 0 100px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 70px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .intro p {
+      font-size: 17px;
+    }
+
+    .trip-info {
+      margin: 35px auto 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .trip-info span {
+      background: #e5d6c2;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* -------------------------
+       GIORNI
+    -------------------------- */
+
+    .day {
+      margin: 90px 0;
+    }
+
+    .day-number {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .day h2 {
+      font-family: Georgia, serif;
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    .day h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin: 35px 0 10px;
+    }
+
+    .day p {
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    /* -------------------------
+       FOTO
+       dimensioni volutamente
+       contenute
+    -------------------------- */
+
+    .photo {
+      width: min(100%, 650px);
+      margin: 38px auto;
+      background: white;
+      padding: 10px 10px 24px;
+      box-shadow: 4px 6px 16px rgba(0,0,0,.13);
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+    }
+
+    .photo.small {
+      width: min(100%, 520px);
+    }
+
+    .photo.small img {
+      max-height: 460px;
+    }
+
+    .photo.left {
+      transform: rotate(-1deg);
+    }
+
+    .photo.right {
+      transform: rotate(1deg);
+    }
+
+    .caption {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 13px;
+      margin-top: 11px;
+      padding: 0 5px;
+      color: #555;
+    }
+
+    /* -------------------------
+       BOX CONSIGLI
+    -------------------------- */
+
+    .note {
+      background: #e5d6c2;
+      padding: 28px;
+      margin: 35px 0;
+      transform: rotate(-.4deg);
+      box-shadow: 3px 4px 10px rgba(0,0,0,.08);
+    }
+
+    .note strong {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .food {
+      background: white;
+      border: 2px solid #252525;
+      padding: 24px;
+      margin: 30px 0;
+    }
+
+    .food strong {
+      font-family: Georgia, serif;
+      font-size: 21px;
+    }
+
+    /* -------------------------
+       SEPARATORE
+    -------------------------- */
+
+    .divider {
+      text-align: center;
+      margin: 80px 0;
+      font-size: 24px;
+      letter-spacing: 10px;
+    }
+
+    /* -------------------------
+       FINALE
+    -------------------------- */
+
+    .final {
+      background: #252525;
+      color: white;
+      padding: 45px;
+      margin-top: 80px;
+    }
+
+    .final h2 {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      margin-bottom: 18px;
+    }
+
+    .final p {
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #252525;
+    }
+
+    /* -------------------------
+       MOBILE
+    -------------------------- */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 6%;
+      }
+
+      .hero {
+        min-height: 58vh;
+        padding: 45px 6%;
+      }
+
+      main {
+        width: 88%;
+        padding-top: 55px;
+      }
+
+      .day {
+        margin: 65px 0;
+      }
+
+      .day h2 {
+        font-size: 32px;
+      }
+
+      .photo {
+        width: 100%;
+        margin: 30px auto;
+      }
+
+      .photo.small {
+        width: 92%;
+      }
+
+      .photo img,
+      .photo.small img {
+        max-height: 430px;
+      }
+
+      .final {
+        padding: 30px 24px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Fuorimappa</a>
+    <a href="index.html#destinazioni" class="back">← Torna alle destinazioni</a>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Austria + Slovacchia
+      </div>
+
+      <h1>Vienna &<br>Bratislava</h1>
+
+      <p>
+        Due capitali, un battello sul Danubio e pochi giorni
+        per passare dall'eleganza di Vienna alle stradine di Bratislava.
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+      <h2>Due città in un solo viaggio</h2>
+
+      <p>
+        Vienna e Bratislava sono abbastanza vicine da poter essere
+        facilmente abbinate nello stesso viaggio. Noi lo abbiamo fatto
+        in pochi giorni, spostandoci tra le due capitali anche via Danubio.
+        Qui trovi il nostro itinerario reale, comprese le cose che
+        rifaremmo e quelle che organizzeremmo diversamente.
+      </p>
+
+      <div class="trip-info">
+        <span>📍 Vienna + Bratislava</span>
+        <span>🗓 4 giorni</span>
+        <span>⛴ Battello sul Danubio</span>
+        <span>🚶 Molto fattibile a piedi</span>
+      </div>
+
+    </section>
+
+
+    <!-- ARRIVO -->
+
+    <section class="day">
+
+      <div class="day-number">Arrivo</div>
+
+      <h2>Bratislava → Vienna</h2>
+
+      <p>
+        Il nostro viaggio è iniziato in modo un po' particolare:
+        siamo atterrati a Bratislava intorno a mezzanotte, ma la
+        prima tappa del viaggio era Vienna.
+      </p>
+
+      <p>
+        Avevamo quindi prenotato in anticipo un taxi che ci aspettava
+        direttamente all'aeroporto. Dopo circa un'ora di strada siamo
+        arrivati a Vienna e siamo andati direttamente al B&B a dormire.
+      </p>
+
+      <div class="note">
+        <strong>! Da sapere</strong>
+        Atterrare a Bratislava e raggiungere Vienna in taxi è assolutamente
+        fattibile, soprattutto con voli comodi o economici, ma non è
+        necessariamente la soluzione più conveniente. Nel nostro caso
+        dipendeva semplicemente dai voli che avevamo acquistato.
+      </div>
+
+    </section>
+
+
+    <!-- VIENNA -->
+
+    <section class="day">
+
+      <div class="day-number">Giorno 1</div>
+
+      <h2>Vienna</h2>
+
+      <p>
+        Dopo la notte siamo partiti alla scoperta di Vienna.
+        Con la metro abbiamo raggiunto il centro e siamo arrivati
+        nella zona della Cattedrale di Santo Stefano.
+      </p>
+
+
+      <div class="photo left">
+        <img
+          src="vienna-cattedrale.PNG"
+          alt="Cattedrale di Santo Stefano a Vienna"
+        >
+        <div class="caption">
+          Stephansdom — uno dei punti migliori da cui iniziare a scoprire Vienna.
+        </div>
+      </div>
+
+
+      <p>
+        Da lì abbiamo continuato a piedi, girando il centro senza
+        seguire un percorso troppo rigido. Vienna è una di quelle
+        città in cui buona parte della visita consiste semplicemente
+        nel camminare tra palazzi, piazze e strade del centro.
+      </p>
+
+
+      <h3>Una pausa per assaggiare la torta</h3>
+
+      <p>
+        Durante il giro ci siamo fermati al <strong>Café Fleuri</strong>
+        per provare una delle classiche torte viennesi al cioccolato
+        con confettura.
+      </p>
+
+      <p>
+        Per noi non è stata una delle cose più buone mangiate durante
+        il viaggio, ma è comunque una di quelle esperienze che almeno
+        una volta vale la pena provare quando si visita Vienna.
+      </p>
+
+
+      <h3>Schönbrunn e i giardini</h3>
+
+      <p>
+        Abbiamo poi raggiunto Schönbrunn, il palazzo legato alla figura
+        dell'imperatrice Sissi.
+      </p>
+
+      <p>
+        Noi abbiamo scelto di non visitare gli interni e ci siamo
+        concentrati sui giardini. È stata una pausa molto piacevole:
+        una passeggiata tranquilla, lontana per un po' dal ritmo del
+        centro città.
+      </p>
+
+
+      <div class="photo right">
+        <img
+          src="vienna-schonbrunn.PNG"
+          alt="Schönbrunn a Vienna"
+        >
+        <div class="caption">
+          Schönbrunn — anche senza entrare nel palazzo, vale la pena dedicare tempo ai giardini.
+        </div>
+      </div>
+
+
+      <div class="note">
+        <strong>Il nostro consiglio</strong>
+        Se non siete particolarmente interessati alla visita museale
+        degli interni, i giardini sono già un'ottima tappa e permettono
+        di inserire Schönbrunn nell'itinerario senza dedicarci troppe ore.
+      </div>
+
+
+      <h3>Belvedere e Klimt</h3>
+
+      <p>
+        Una delle visite che avevamo invece programmato in anticipo
+        era il Belvedere. Avevamo acquistato il biglietto prima del
+        viaggio tramite GetYourGuide soprattutto per vedere la
+        collezione di Klimt.
+      </p>
+
+
+      <div class="photo small left">
+        <img
+          src="vienna-klimt.PNG"
+          alt="Il Bacio di Gustav Klimt al Belvedere"
+        >
+        <div class="caption">
+          Il Bacio di Gustav Klimt — uno dei motivi principali della nostra visita al Belvedere.
+        </div>
+      </div>
+
+
+      <p>
+        Dopo la visita siamo tornati verso il centro con i mezzi
+        pubblici e abbiamo proseguito verso l'ultima tappa della giornata.
+      </p>
+
+
+      <h3>Prater</h3>
+
+      <p>
+        Nel tardo pomeriggio siamo arrivati al Prater.
+        Qui abbiamo fatto un giro sulla storica ruota panoramica,
+        quella con i grandi vagoni rossi.
+      </p>
+
+
+      <div class="photo right">
+        <img
+          src="vienna-prater.PNG"
+          alt="Ruota panoramica del Prater a Vienna"
+        >
+        <div class="caption">
+          Wiener Riesenrad — la storica ruota panoramica del Prater.
+        </div>
+      </div>
+
+
+      <p>
+        Dall'alto la vista su Vienna è davvero bella e, tra tutte
+        le attrazioni del parco, questa è quella che volevamo
+        assolutamente provare.
+      </p>
+
+      <p>
+        Abbiamo poi deciso di cenare direttamente nella zona del Prater.
+        Qui abbiamo assaggiato la Wiener Schnitzel.
+      </p>
+
+
+      <div class="food">
+        <strong>🍴 Wiener Schnitzel</strong>
+        <p>
+          È essenzialmente una cotoletta impanata e fritta.
+          La versione tradizionale può essere accompagnata anche da
+          contorni e confettura di mirtilli rossi; quella che abbiamo
+          mangiato noi era invece servita semplicemente con insalata.
+          Non è stata una delle nostre esperienze gastronomiche preferite,
+          ma volevamo comunque provarla almeno una volta.
+        </p>
+      </div>
+
+
+      <div class="note">
+        <strong>! Attenzione agli orari</strong>
+        Se siete abituati agli orari del Sud Italia, organizzate la cena
+        prima di quanto fareste normalmente. Noi abbiamo scoperto che
+        diversi locali la sera chiudevano o smettevano di servire
+        prima di quanto ci aspettassimo e ci siamo ritrovati con
+        molta meno scelta per cenare.
+      </div>
+
+    </section>
+
+
+    <div class="divider">· · ·</div>
+
+
+    <!-- BATTELLO -->
+
+    <section class="day">
+
+      <div class="day-number">Giorno 2</div>
+
+      <h2>Da Vienna a Bratislava sul Danubio</h2>
+
+      <p>
+        La mattina seguente abbiamo lasciato Vienna e raggiunto
+        l'imbarco del battello che avevamo prenotato in anticipo.
+      </p>
+
+      <p>
+        Invece di prendere un normale treno o autobus, abbiamo scelto
+        di trasformare anche lo spostamento in una parte del viaggio:
+        Vienna e Bratislava sono infatti collegate via Danubio.
+      </p>
+
+      <div class="note">
+        <strong>⛴ Il battello</strong>
+        Noi avevamo acquistato i biglietti prima della partenza
+        direttamente dal sito ufficiale. Se volete fare lo stesso
+        percorso, soprattutto nei periodi più frequentati, conviene
+        controllare orari e disponibilità in anticipo.
+      </div>
+
+      <p>
+        L'arrivo dal fiume è stato anche il nostro primo vero
+        incontro con Bratislava.
+      </p>
+
+
+      <div class="photo left">
+        <img
+          src="bratislava-castello.PNG"
+          alt="Castello di Bratislava visto dal Danubio"
+        >
+        <div class="caption">
+          Bratislava vista dal Danubio.
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- BRATISLAVA -->
+
+    <section class="day">
+
+      <div class="day-number">Giorno 2 — continua</div>
+
+      <h2>Bratislava</h2>
+
+      <p>
+        Dal punto in cui ci ha lasciati il battello ci siamo diretti
+        a piedi verso il nostro B&B. Prima, però, ci siamo fermati
+        per pranzo.
+      </p>
+
+
+      <div class="food">
+        <strong>🍔 JUMP Street Burger</strong>
+        <p>
+          Una delle soste che ricordiamo più volentieri del viaggio.
+          Ci siamo fermati qui appena arrivati a Bratislava e gli
+          hamburger ci sono piaciuti molto.
+        </p>
+      </div>
+
+
+      <p>
+        Dopo pranzo abbiamo raggiunto il B&B, lasciato le nostre cose
+        e siamo usciti nuovamente per visitare la città.
+      </p>
+
+
+      <h3>La città vecchia</h3>
+
+      <p>
+        Abbiamo iniziato dal centro storico, girandolo soprattutto
+        a piedi. Bratislava è molto più raccolta di Vienna e il centro
+        si presta bene a essere esplorato senza un itinerario troppo rigido.
+      </p>
+
+      <p>
+        Una delle caratteristiche più divertenti sono le statue sparse
+        per le vie del centro. La più famosa è sicuramente Čumil,
+        l'uomo che spunta da un tombino.
+      </p>
+
+
+      <div class="photo small right">
+        <img
+          src="bratislava-cumil.PNG"
+          alt="Statua di Cumil a Bratislava"
+        >
+        <div class="caption">
+          Čumil — probabilmente l'abitante più fotografato di Bratislava.
+        </div>
+      </div>
+
+
+      <h3>UFO Tower</h3>
+
+      <p>
+        Dal centro ci siamo poi diretti verso uno dei simboli più
+        riconoscibili della città: l'UFO Tower, sopra il ponte sul Danubio.
+      </p>
+
+      <p>
+        Siamo saliti fino in cima e la vista è stata una delle cose
+        che ci sono piaciute di più a Bratislava.
+      </p>
+
+
+      <div class="photo left">
+        <img
+          src="bratislava-ufo.PNG"
+          alt="Vista di Bratislava dalla UFO Tower"
+        >
+        <div class="caption">
+          Bratislava dall'alto dell'UFO Tower.
+        </div>
+      </div>
+
+
+      <p>
+        Dopo essere scesi siamo tornati nel centro storico e abbiamo
+        continuato a passeggiare tra le vie della città fino a cena.
+      </p>
+
+
+      <h3>Una cena slovacca</h3>
+
+      <div class="food">
+        <strong>🍴 Bratislava Flagship</strong>
+
+        <p>
+          Per cena volevamo provare qualcosa di tipico e siamo andati
+          al Bratislava Flagship, un locale molto particolare ricavato
+          negli spazi di un vecchio teatro.
+        </p>
+
+        <p>
+          Quando siamo arrivati c'era un po' di fila, ma scorreva
+          velocemente e sono riusciti a trovarci posto senza problemi.
+          Per noi è stata una delle migliori esperienze gastronomiche
+          del viaggio: il cibo ci è piaciuto tantissimo.
+        </p>
+      </div>
+
+      <p>
+        Dopo cena siamo rientrati al B&B e abbiamo concluso così
+        la nostra giornata a Bratislava.
+      </p>
+
+    </section>
+
+
+    <!-- ULTIMO GIORNO -->
+
+    <section class="day">
+
+      <div class="day-number">Ultimo giorno</div>
+
+      <h2>Bratislava con calma</h2>
+
+      <p>
+        Il nostro volo era nel tardo pomeriggio, quindi non abbiamo
+        riempito l'ultima giornata di visite.
+      </p>
+
+      <p>
+        Dopo aver lasciato il B&B abbiamo semplicemente continuato
+        a girare per Bratislava con calma, tornando nella città vecchia
+        e passando un po' di tempo seduti lungo il corso principale.
+      </p>
+
+      <p>
+        È stato un ultimo giorno volutamente lento, senza dover
+        correre da un'attrazione all'altra.
+      </p>
+
+      <p>
+        Quando è arrivato il momento di partire abbiamo preso
+        l'autobus che collega direttamente la città con l'aeroporto
+        e siamo rientrati.
+      </p>
+
+    </section>
+
+
+    <!-- CONCLUSIONI -->
+
+    <section class="final">
+
+      <h2>Lo rifaremmo?</h2>
+
+      <p>
+        Sì, soprattutto per la combinazione delle due città.
+        Vienna e Bratislava sono molto diverse tra loro e proprio
+        per questo funzionano bene nello stesso viaggio.
+      </p>
+
+      <p>
+        Vienna richiede più tempo e ha molte più attrazioni da scegliere,
+        mentre Bratislava è più piccola e permette di rallentare.
+        Collegarle con il battello sul Danubio rende inoltre lo
+        spostamento parte dell'esperienza.
+      </p>
+
+      <p>
+        Se dovessimo cambiare qualcosa, organizzeremmo meglio
+        l'arrivo direttamente su Vienna o confronteremmo con attenzione
+        il costo del trasferimento da Bratislava. Per il resto,
+        manterremmo volentieri lo stesso ritmo.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>
+      <a href="index.html">Fuorimappa</a> · itinerari, esperienze e deviazioni dalla solita rotta.
+    </p>
+  </footer>
+
+</body>
+</html>
