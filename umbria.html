@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umbria on the road | Fuori Mappa</title>
+<style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f3eee6;
+      color: #252321;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+
+    /* --------------------
+       NAV
+    -------------------- */
+
+    nav {
+      height: 68px;
+      padding: 0 6%;
+      background: rgba(255, 255, 255, 0.96);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      border-bottom: 1px solid #e5dfd6;
+    }
+
+    .logo {
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+
+    /* --------------------
+       HERO
+    -------------------- */
+
+    .hero {
+      min-height: 76vh;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.05),
+          rgba(0, 0, 0, 0.32)
+        ),
+        url("umbria-hero.png") center 52% / cover no-repeat;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 7%;
+
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 8vw, 100px);
+      line-height: 0.92;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 580px;
+      font-size: 17px;
+    }
+
+
+    /* --------------------
+       INTRO
+    -------------------- */
+
+    .intro {
+      max-width: 950px;
+      margin: auto;
+
+      padding: 95px 7% 70px;
+
+      text-align: center;
+    }
+
+    .small {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .intro h2 {
+      font-size: clamp(35px, 5vw, 54px);
+      line-height: 1.12;
+
+      margin-bottom: 28px;
+    }
+
+    .intro p {
+      max-width: 720px;
+      margin: auto;
+
+      font-size: 16px;
+    }
+
+
+    /* --------------------
+       DATI VIAGGIO
+    -------------------- */
+
+    .trip-info {
+      max-width: 900px;
+      margin: 0 auto 110px;
+
+      background: #ffffff;
+
+      padding: 34px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .trip-info div {
+      text-align: center;
+    }
+
+    .trip-info span {
+      display: block;
+
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      margin-bottom: 6px;
+    }
+
+    .trip-info strong {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+
+    /* --------------------
+       GIORNI
+    -------------------- */
+
+    .day {
+      max-width: 980px;
+      margin: 0 auto 120px;
+
+      padding: 0 7%;
+    }
+
+    .day-number {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+    .day h2 {
+      font-size: clamp(37px, 5vw, 55px);
+      line-height: 1.05;
+
+      margin-bottom: 28px;
+    }
+
+    .day-text {
+      max-width: 700px;
+
+      font-size: 16px;
+
+      margin-bottom: 38px;
+    }
+
+    .day-text p + p {
+      margin-top: 18px;
+    }
+
+
+    /* --------------------
+       FOTO
+
+       IMPORTANTISSIMO:
+       larghezza e altezza limitate.
+       Niente immagini giganti.
+    -------------------- */
+
+    .photo {
+      width: 100%;
+      max-width: 720px;
+
+      margin: 42px auto;
+
+      padding: 10px 10px 27px;
+
+      background: #ffffff;
+
+      box-shadow: 7px 9px 0 rgba(0, 0, 0, 0.07);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 440px;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-caption {
+      padding: 13px 5px 0;
+
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+
+    /* FOTO VERTICALI PIÙ PICCOLE */
+
+    .photo.vertical {
+      max-width: 470px;
+    }
+
+    .photo.vertical img {
+      height: 540px;
+    }
+
+
+    /* DUE FOTO AFFIANCATE */
+
+    .photo-pair {
+      max-width: 800px;
+
+      margin: 45px auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+
+      align-items: start;
+    }
+
+    .photo-pair .photo {
+      width: 100%;
+      margin: 0;
+    }
+
+    .photo-pair .photo img {
+      height: 430px;
+    }
+
+    .photo-pair .photo:first-child {
+      transform: rotate(-1deg);
+    }
+
+    .photo-pair .photo:last-child {
+      transform: rotate(1deg);
+    }
+
+
+    /* --------------------
+       BOX APPUNTI
+    -------------------- */
+
+    .note {
+      max-width: 700px;
+
+      margin: 48px 0;
+
+      padding: 32px 35px;
+
+      background: #e7dfcf;
+
+      position: relative;
+    }
+
+    .note::before {
+      content: "";
+
+      position: absolute;
+      width: 80px;
+      height: 22px;
+
+      top: -11px;
+      left: calc(50% - 40px);
+
+      background: #e7d88e;
+
+      transform: rotate(-2deg);
+
+      opacity: 0.8;
+    }
+
+    .note-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+    }
+
+
+    /* --------------------
+       DIVISORE
+    -------------------- */
+
+    .route-divider {
+      width: 100px;
+      height: 1px;
+
+      background: #aaa195;
+
+      margin: 0 auto 120px;
+    }
+
+
+    /* --------------------
+       INFO PRATICHE
+    -------------------- */
+
+    .practical {
+      background: #242321;
+      color: #f8f5ef;
+
+      padding: 100px 7%;
+    }
+
+    .practical-inner {
+      max-width: 950px;
+      margin: auto;
+    }
+
+    .practical h2 {
+      font-size: clamp(38px, 5vw, 60px);
+
+      margin-bottom: 45px;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 20px 45px;
+    }
+
+    .tip {
+      padding: 25px 0;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .tip h3 {
+      font-size: 21px;
+
+      margin-bottom: 9px;
+    }
+
+    .tip p {
+      font-size: 14px;
+      color: #e5e0d8;
+    }
+
+
+    /* --------------------
+       CTA
+    -------------------- */
+
+    .cta {
+      max-width: 850px;
+
+      margin: auto;
+
+      padding: 115px 7%;
+
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 6vw, 65px);
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+    }
+
+    .cta p {
+      max-width: 620px;
+
+      margin: 0 auto 32px;
+
+      font-size: 16px;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 13px 24px;
+
+      border: 1px solid #252321;
+
+      text-decoration: none;
+
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #252321;
+      color: #ffffff;
+    }
+
+
+    /* --------------------
+       FOOTER
+    -------------------- */
+
+    footer {
+      background: #1f1f1e;
+      color: #ffffff;
+
+      padding: 28px;
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+
+    /* --------------------
+       MOBILE
+    -------------------- */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 68vh;
+
+        padding: 10% 6%;
+      }
+
+      .trip-info {
+        grid-template-columns: 1fr 1fr;
+
+        margin-left: 6%;
+        margin-right: 6%;
+
+        padding: 28px 18px;
+      }
+
+      .day {
+        padding: 0 7%;
+
+        margin-bottom: 90px;
+      }
+
+      .photo {
+        max-width: 100%;
+      }
+
+      .photo img {
+        height: 330px;
+      }
+
+      .photo.vertical {
+        max-width: 88%;
+      }
+
+      .photo.vertical img {
+        height: 430px;
+      }
+
+      .photo-pair {
+        grid-template-columns: 1fr;
+
+        max-width: 88%;
+      }
+
+      .photo-pair .photo img {
+        height: 420px;
+      }
+
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .note {
+        padding: 30px 24px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">FUORI MAPPA ✦</a>
+  <div class="nav-links">
+    <a href="index.html#destinazioni">Destinazioni</a>
+    <a href="index.html#itinerari">Itinerari</a>
+    <a href="chi-sono.html">Chi sono</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Fuori Mappa · Italia</div>
+    <h1>Umbria<br>on the road</h1>
+    <p>Quattro giorni tra borghi, città, strade interne e deviazioni nel cuore verde d'Italia.</p>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="small">Il viaggio, davvero</div>
+  <h2>Quattro giorni sulla strada,<br>senza correre da una tappa all'altra.</h2>
+  <p>
+    Questo è il percorso che abbiamo seguito davvero, con qualche modifica rispetto al programma iniziale.
+    Abbiamo scelto spesso le strade interne invece dei percorsi più veloci: richiedono un po' più di tempo,
+    ma permettono di godersi molto di più i paesaggi del cuore verde d'Italia.
+    Non è una lista di cose da spuntare, ma il racconto di un piccolo road trip tra Umbria e una deviazione nelle Marche.
+  </p>
+</section>
+
+<section class="trip-info">
+  <div><span>Durata</span><strong>4 giorni</strong></div>
+  <div><span>Spostamenti</span><strong>Auto</strong></div>
+  <div><span>Basi</span><strong>Perugia · Narni · Acquasanta</strong></div>
+  <div><span>Periodo</span><strong>Inverno</strong></div>
+</section>
+
+<section class="day">
+  <div class="day-number">Giorno 01</div>
+  <h2>Assisi & Perugia</h2>
+
+  <div class="day-text">
+    <p>
+      Appena arrivati all'aeroporto di Perugia non siamo andati direttamente in città:
+      abbiamo ritirato l'auto e iniziato il viaggio da <strong>Assisi</strong>.
+    </p>
+    <p>
+      Basilica di San Francesco, Piazza del Comune, Tempio di Minerva e le vie del centro
+      sono perfetti per una prima passeggiata. Se hai più tempo, puoi allungarti anche verso
+      la Rocca Maggiore o l'Eremo delle Carceri.
+    </p>
+  </div>
+
+  <div class="photo vertical">
+    <img src="umbria-day1.png" alt="Assisi durante il road trip in Umbria">
+    <div class="photo-caption">La prima tappa del viaggio: Assisi.</div>
+  </div>
+
+  <div class="day-text">
+    <p>
+      Da Assisi ci siamo poi spostati a <strong>Perugia</strong>, dove abbiamo concluso la giornata
+      tra Rocca Paolina, Corso Vannucci, Fontana Maggiore, Palazzo dei Priori e il centro storico.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">Fuori Mappa ✦</div>
+    Iniziare da Assisi ci ha permesso di sfruttare bene il giorno di arrivo senza dover tornare
+    sulla stessa strada più avanti. In un road trip, a volte basta cambiare l'ordine delle tappe
+    per rendere tutto più naturale.
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+<section class="day">
+  <div class="day-number">Giorno 02</div>
+  <h2>Trasimeno, Città della Pieve & Orvieto</h2>
+
+  <div class="day-text">
+    <p>
+      Il secondo giorno è quello con più strada. Da Perugia siamo partiti verso il
+      <strong>Lago Trasimeno</strong>, fermandoci a Castiglione del Lago per una passeggiata tra la Rocca e il lungolago.
+    </p>
+    <p>
+      Da lì abbiamo proseguito per <strong>Città della Pieve</strong>, un borgo che si gira bene senza fretta,
+      prima di continuare verso <strong>Orvieto</strong>.
+    </p>
+  </div>
+
+  <div class="photo">
+    <img src="umbria-day2.png" alt="Secondo giorno del road trip in Umbria">
+    <div class="photo-caption">Tra borghi e città, lungo la seconda giornata di viaggio.</div>
+  </div>
+
+  <div class="day-text">
+    <p>
+      A Orvieto abbiamo dedicato tempo al centro e al <strong>Pozzo di San Patrizio</strong>,
+      una delle visite che inserirei di nuovo senza dubbi.
+    </p>
+    <p>
+      Nel programma avevamo poi le <strong>Cascate delle Marmore</strong>. Alla fine non siamo riusciti a vederle:
+      pioveva e gli orari indicati per l'apertura del flusso d'acqua non sempre vengono rispettati.
+      Le terrei comunque nell'itinerario, controllando le informazioni aggiornate prima di partire e lasciando un po' di margine.
+    </p>
+    <p>
+      La giornata si conclude a <strong>Narni</strong>, nostra tappa per la notte.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">La strada fa parte del viaggio</div>
+    Quando possibile abbiamo preferito le strade interne ai percorsi più veloci.
+    In Umbria non sono solo un modo per spostarsi: fanno parte del viaggio e regalano scorci
+    che in autostrada si perderebbero completamente.
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+<section class="day">
+  <div class="day-number">Giorno 03</div>
+  <h2>Norcia, Acquasanta & Ascoli Piceno</h2>
+
+  <div class="day-text">
+    <p>
+      Da Narni ci siamo spostati verso <strong>Norcia</strong>. È una tappa che inserirei soprattutto
+      per l'atmosfera e per quello che si mangia: entrare in una delle tipiche norcinerie e assaggiare
+      i salumi locali fa parte dell'esperienza.
+    </p>
+    <p>
+      Prima di ripartire, per me c'è una cosa da fare assolutamente:
+      <strong>un buon panino con la porchetta</strong> e, se li trovi, un assaggio di <strong>ciccioli di maiale</strong>.
+    </p>
+  </div>
+
+  <div class="photo vertical">
+    <img src="umbria-day3.png" alt="Terzo giorno del road trip tra Umbria e Marche">
+    <div class="photo-caption">Una delle tappe del terzo giorno.</div>
+  </div>
+
+  <div class="day-text">
+    <p>
+      Se hai più tempo, da Norcia continuerei fino a <strong>Castelluccio di Norcia</strong>:
+      il paesaggio merita la deviazione. È anche una zona profondamente segnata dal terremoto del 2016
+      e ancora oggi non tutto ha recuperato la propria bellezza originaria.
+    </p>
+    <p>
+      <strong>Vallecchia e Acquasanta Terme</strong> per noi avevano soprattutto un legame affettivo,
+      quindi non le considererei tappe indispensabili per chi ripete questo itinerario.
+    </p>
+    <p>
+      Da Acquasanta abbiamo fatto anche un salto ad <strong>Ascoli Piceno</strong>.
+      È una bella città e, trovandosi già in zona, merita una passeggiata tra Piazza del Popolo e il centro;
+      nel nostro caso l'abbiamo inserita soprattutto perché dormivamo ad Acquasanta.
+    </p>
+  </div>
+
+  <div class="note">
+    <div class="note-title">Una deviazione nelle Marche</div>
+    Questo giorno esce per qualche ora dall'Umbria. Se non hai un motivo per arrivare fino ad Acquasanta,
+    puoi usare quel tempo per fermarti più a lungo a Norcia o spingerti verso Castelluccio.
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+<section class="day">
+  <div class="day-number">Giorno 04</div>
+  <h2>Rasiglia & ritorno</h2>
+
+  <div class="day-text">
+    <p>
+      L'ultimo giorno, tornando da Acquasanta verso l'aeroporto di Perugia,
+      ci siamo fermati a <strong>Rasiglia</strong>.
+    </p>
+    <p>
+      È un borgo molto piccolo, attraversato dall'acqua, ma proprio per questo suggestivo e caratteristico:
+      una pausa piacevole da inserire lungo la strada senza trasformarla in una giornata piena di tappe.
+    </p>
+  </div>
+
+  <div class="photo vertical">
+    <img src="umbria-rasiglia.png" alt="Canali e ponticelli di Rasiglia">
+    <div class="photo-caption">Rasiglia, una piccola deviazione prima del rientro.</div>
+  </div>
+
+  <div class="note">
+    <div class="note-title">Da sapere prima di arrivare</div>
+    A Rasiglia il telefono può non prendere. Prima di entrare nel borgo controlla quindi la strada
+    che dovrai seguire al ritorno per rimetterti sulla direttrice verso l'autostrada o l'aeroporto:
+    è una piccola accortezza che evita di dover improvvisare senza connessione.
+  </div>
+</section>
+
+<section class="practical">
+  <div class="practical-inner">
+    <div class="small">Prima di partire</div>
+    <h2>Le cose pratiche che<br>terrei a mente.</h2>
+
+    <div class="tips">
+      <div class="tip">
+        <h3>🚗 Auto</h3>
+        <p>Per questo itinerario l'auto è ciò che rende possibile collegare borghi, città e deviazioni senza dipendere dagli orari dei mezzi.</p>
+      </div>
+
+      <div class="tip">
+        <h3>🛣️ Strade interne</h3>
+        <p>Non scegliere sempre il percorso più veloce. Quando i tempi lo permettono, le strade interne sono uno dei modi migliori per godersi il paesaggio umbro.</p>
+      </div>
+
+      <div class="tip">
+        <h3>💧 Cascate delle Marmore</h3>
+        <p>Noi non siamo riusciti a visitarle per pioggia e orari del rilascio dell'acqua. Controlla le informazioni aggiornate e non costruire una giornata troppo rigida intorno a un solo orario.</p>
+      </div>
+
+      <div class="tip">
+        <h3>🥪 Norcia</h3>
+        <p>Lascia spazio anche al cibo: norcinerie, salumi, porchetta e ciccioli sono una parte del viaggio, non soltanto una pausa tra una visita e l'altra.</p>
+      </div>
+
+      <div class="tip">
+        <h3>📵 Rasiglia</h3>
+        <p>La connessione può essere scarsa. Salva o controlla prima la strada per ripartire e rientrare sulla direttrice principale.</p>
+      </div>
+
+      <div class="tip">
+        <h3>✦ Il nostro percorso</h3>
+        <p>È il viaggio che abbiamo fatto davvero, con tappe cambiate rispetto al programma iniziale e deviazioni legate anche a motivi personali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="small">E adesso?</div>
+  <h2>Questa era la nostra Umbria.<br>La tua può prendere un'altra strada.</h2>
+  <p>
+    Quattro giorni possono cambiare molto in base al periodo, al ritmo che vuoi tenere e alle tappe che ti interessano di più.
+    Questo percorso può essere accorciato, allungato o usato semplicemente come punto di partenza per costruirne uno tuo.
+  </p>
+  <a class="button" href="index.html">Costruiamo il tuo viaggio →</a>
+</section>
+
+<footer>FUORI MAPPA · viaggi, idee e qualche deviazione ✦</footer>
+
+</body>
+</html>
