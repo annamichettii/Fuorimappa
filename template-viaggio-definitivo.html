@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>[DESTINAZIONE] | Fuori Mappa</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f3eee6;
+      color: #252321;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+
+    /* --------------------
+       NAV
+    -------------------- */
+
+    nav {
+      height: 68px;
+      padding: 0 6%;
+      background: rgba(255, 255, 255, 0.96);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      border-bottom: 1px solid #e5dfd6;
+    }
+
+    .logo {
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+
+    /* --------------------
+       HERO
+    -------------------- */
+
+    .hero {
+      min-height: 76vh;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.05),
+          rgba(0, 0, 0, 0.32)
+        ),
+        url("FOTO-HERO.PNG") center 57% / cover no-repeat;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 7%;
+
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 8vw, 100px);
+      line-height: 0.92;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      max-width: 580px;
+      font-size: 17px;
+    }
+
+
+    /* --------------------
+       INTRO
+    -------------------- */
+
+    .intro {
+      max-width: 950px;
+      margin: auto;
+
+      padding: 95px 7% 70px;
+
+      text-align: center;
+    }
+
+    .small {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .intro h2 {
+      font-size: clamp(35px, 5vw, 54px);
+      line-height: 1.12;
+
+      margin-bottom: 28px;
+    }
+
+    .intro p {
+      max-width: 720px;
+      margin: auto;
+
+      font-size: 16px;
+    }
+
+
+    /* --------------------
+       DATI VIAGGIO
+    -------------------- */
+
+    .trip-info {
+      max-width: 900px;
+      margin: 0 auto 110px;
+
+      background: #ffffff;
+
+      padding: 34px;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .trip-info div {
+      text-align: center;
+    }
+
+    .trip-info span {
+      display: block;
+
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      margin-bottom: 6px;
+    }
+
+    .trip-info strong {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+
+    /* --------------------
+       GIORNI
+    -------------------- */
+
+    .day {
+      max-width: 980px;
+      margin: 0 auto 120px;
+
+      padding: 0 7%;
+    }
+
+    .day-number {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+    .day h2 {
+      font-size: clamp(37px, 5vw, 55px);
+      line-height: 1.05;
+
+      margin-bottom: 28px;
+    }
+
+    .day-text {
+      max-width: 700px;
+
+      font-size: 16px;
+
+      margin-bottom: 38px;
+    }
+
+    .day-text p + p {
+      margin-top: 18px;
+    }
+
+
+    /* --------------------
+       FOTO
+
+       IMPORTANTISSIMO:
+       larghezza e altezza limitate.
+       Niente immagini giganti.
+    -------------------- */
+
+    .photo {
+      width: 100%;
+      max-width: 720px;
+
+      margin: 42px auto;
+
+      padding: 10px 10px 27px;
+
+      background: #ffffff;
+
+      box-shadow: 7px 9px 0 rgba(0, 0, 0, 0.07);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 440px;
+
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-caption {
+      padding: 13px 5px 0;
+
+      font-family: Georgia, serif;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+
+    /* FOTO VERTICALI PIÙ PICCOLE */
+
+    .photo.vertical {
+      max-width: 470px;
+    }
+
+    .photo.vertical img {
+      height: 540px;
+    }
+
+
+    /* DUE FOTO AFFIANCATE */
+
+    .photo-pair {
+      max-width: 800px;
+
+      margin: 45px auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+
+      align-items: start;
+    }
+
+    .photo-pair .photo {
+      width: 100%;
+      margin: 0;
+    }
+
+    .photo-pair .photo img {
+      height: 430px;
+    }
+
+    .photo-pair .photo:first-child {
+      transform: rotate(-1deg);
+    }
+
+    .photo-pair .photo:last-child {
+      transform: rotate(1deg);
+    }
+
+
+    /* --------------------
+       BOX APPUNTI
+    -------------------- */
+
+    .note {
+      max-width: 700px;
+
+      margin: 48px 0;
+
+      padding: 32px 35px;
+
+      background: #e7dfcf;
+
+      position: relative;
+    }
+
+    .note::before {
+      content: "";
+
+      position: absolute;
+      width: 80px;
+      height: 22px;
+
+      top: -11px;
+      left: calc(50% - 40px);
+
+      background: #e7d88e;
+
+      transform: rotate(-2deg);
+
+      opacity: 0.8;
+    }
+
+    .note-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+    }
+
+
+    /* --------------------
+       DIVISORE
+    -------------------- */
+
+    .route-divider {
+      width: 100px;
+      height: 1px;
+
+      background: #aaa195;
+
+      margin: 0 auto 120px;
+    }
+
+
+    /* --------------------
+       INFO PRATICHE
+    -------------------- */
+
+    .practical {
+      background: #242321;
+      color: #f8f5ef;
+
+      padding: 100px 7%;
+    }
+
+    .practical-inner {
+      max-width: 950px;
+      margin: auto;
+    }
+
+    .practical h2 {
+      font-size: clamp(38px, 5vw, 60px);
+
+      margin-bottom: 45px;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 20px 45px;
+    }
+
+    .tip {
+      padding: 25px 0;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .tip h3 {
+      font-size: 21px;
+
+      margin-bottom: 9px;
+    }
+
+    .tip p {
+      font-size: 14px;
+      color: #e5e0d8;
+    }
+
+
+    /* --------------------
+       CTA
+    -------------------- */
+
+    .cta {
+      max-width: 850px;
+
+      margin: auto;
+
+      padding: 115px 7%;
+
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 6vw, 65px);
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+    }
+
+    .cta p {
+      max-width: 620px;
+
+      margin: 0 auto 32px;
+
+      font-size: 16px;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 13px 24px;
+
+      border: 1px solid #252321;
+
+      text-decoration: none;
+
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #252321;
+      color: #ffffff;
+    }
+
+
+    /* --------------------
+       FOOTER
+    -------------------- */
+
+    footer {
+      background: #1f1f1e;
+      color: #ffffff;
+
+      padding: 28px;
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+
+    /* --------------------
+       MOBILE
+    -------------------- */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 68vh;
+
+        padding: 10% 6%;
+      }
+
+      .trip-info {
+        grid-template-columns: 1fr 1fr;
+
+        margin-left: 6%;
+        margin-right: 6%;
+
+        padding: 28px 18px;
+      }
+
+      .day {
+        padding: 0 7%;
+
+        margin-bottom: 90px;
+      }
+
+      .photo {
+        max-width: 100%;
+      }
+
+      .photo img {
+        height: 330px;
+      }
+
+      .photo.vertical {
+        max-width: 88%;
+      }
+
+      .photo.vertical img {
+        height: 430px;
+      }
+
+      .photo-pair {
+        grid-template-columns: 1fr;
+
+        max-width: 88%;
+      }
+
+      .photo-pair .photo img {
+        height: 420px;
+      }
+
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .note {
+        padding: 30px 24px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- ====================
+     NAV
+==================== -->
+
+<nav>
+  <a class="logo" href="index.html">FUORI MAPPA ✦</a>
+
+  <div class="nav-links">
+    <a href="index.html#destinazioni">Destinazioni</a>
+    <a href="index.html#itinerari">Itinerari</a>
+    <a href="chi-sono.html">Chi sono</a>
+  </div>
+</nav>
+
+
+<!-- ====================
+     COPERTINA
+==================== -->
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Fuori Mappa · [CONTINENTE / AREA]</div>
+
+    <h1>[DESTINAZIONE]</h1>
+
+    <p>
+      [BREVE FRASE DI COPERTINA: durata, atmosfera e tipo di viaggio.]
+    </p>
+  </div>
+</header>
+
+
+<!-- ====================
+     INTRO
+==================== -->
+
+<section class="intro">
+  <div class="small">Il viaggio, davvero</div>
+
+  <h2>
+    [TITOLO INTRODUZIONE]<br>
+    [SECONDA RIGA FACOLTATIVA]
+  </h2>
+
+  <p>
+    [INTRODUZIONE AL VIAGGIO.]
+
+    [Racconta in poche righe cosa avete fatto davvero,
+    il ritmo del viaggio e cosa troverà il lettore nella pagina.]
+  </p>
+</section>
+
+
+<!-- ====================
+     DATI
+==================== -->
+
+<section class="trip-info">
+  <div>
+    <span>Durata</span>
+    <strong>[X giorni]</strong>
+  </div>
+
+  <div>
+    <span>Spostamenti</span>
+    <strong>[AUTO / TRENO / MEZZI / ...]</strong>
+  </div>
+
+  <div>
+    <span>Basi</span>
+    <strong>[BASE 1 + BASE 2]</strong>
+  </div>
+
+  <div>
+    <span>Periodo</span>
+    <strong>[PERIODO]</strong>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     GIORNI
+     Duplica o elimina i blocchi .day in base alla durata.
+========================================================= -->
+
+<section class="day">
+  <div class="day-number">Giorno 01</div>
+
+  <h2>[TITOLO / TAPPA DEL GIORNO 1]</h2>
+
+  <div class="day-text">
+    <p>[TESTO DEL GIORNO 1 — prima parte.]</p>
+    <p>[SECONDO PARAGRAFO FACOLTATIVO.]</p>
+  </div>
+
+  <!-- FOTO NORMALE -->
+  <div class="photo">
+    <img src="FOTO-GIORNO-01.PNG" alt="[DESCRIZIONE FOTO]">
+    <div class="photo-caption">[DIDASCALIA FOTO]</div>
+  </div>
+
+  <div class="day-text">
+    <p>[TESTO DEL GIORNO 1 — seconda parte / cibo / spostamenti.]</p>
+  </div>
+
+  <!-- BOX FACOLTATIVO -->
+  <div class="note">
+    <div class="note-title">[FUORI MAPPA ✦ / DA SAPERE / CONSIGLIO PRATICO]</div>
+    [TESTO DEL BOX.]
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+
+<section class="day">
+  <div class="day-number">Giorno 02</div>
+
+  <h2>[TITOLO / TAPPA DEL GIORNO 2]</h2>
+
+  <div class="day-text">
+    <p>[TESTO DEL GIORNO 2.]</p>
+  </div>
+
+  <!-- FOTO VERTICALE -->
+  <div class="photo vertical">
+    <img src="FOTO-GIORNO-02.PNG" alt="[DESCRIZIONE FOTO]">
+    <div class="photo-caption">[DIDASCALIA FOTO]</div>
+  </div>
+
+  <div class="note">
+    <div class="note-title">[DA SAPERE]</div>
+    [TESTO DEL BOX.]
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+
+<section class="day">
+  <div class="day-number">Giorno 03</div>
+
+  <h2>[TITOLO / TAPPA DEL GIORNO 3]</h2>
+
+  <div class="day-text">
+    <p>[TESTO DEL GIORNO 3.]</p>
+  </div>
+
+  <!-- DUE FOTO AFFIANCATE -->
+  <div class="photo-pair">
+    <div class="photo">
+      <img src="FOTO-GIORNO-03-A.PNG" alt="[DESCRIZIONE FOTO 1]">
+      <div class="photo-caption">[DIDASCALIA 1]</div>
+    </div>
+
+    <div class="photo">
+      <img src="FOTO-GIORNO-03-B.PNG" alt="[DESCRIZIONE FOTO 2]">
+      <div class="photo-caption">[DIDASCALIA 2]</div>
+    </div>
+  </div>
+
+  <div class="day-text">
+    <p>[TESTO DEL GIORNO 3 — seconda parte.]</p>
+  </div>
+</section>
+
+<div class="route-divider"></div>
+
+
+<!--
+COPIA QUESTO BLOCCO PER AGGIUNGERE ALTRI GIORNI:
+
+<section class="day">
+  <div class="day-number">Giorno 04</div>
+  <h2>[TITOLO / TAPPA]</h2>
+
+  <div class="day-text">
+    <p>[TESTO]</p>
+  </div>
+
+  <div class="photo">
+    <img src="FOTO-GIORNO-04.PNG" alt="[DESCRIZIONE FOTO]">
+    <div class="photo-caption">[DIDASCALIA]</div>
+  </div>
+
+  <div class="note">
+    <div class="note-title">[TITOLO BOX]</div>
+    [TESTO BOX]
+  </div>
+</section>
+
+<div class="route-divider"></div>
+-->
+
+
+<!-- ====================
+     INFO PRATICHE
+==================== -->
+
+<section class="practical">
+  <div class="practical-inner">
+
+    <div class="small">Prima di partire</div>
+
+    <h2>
+      Le cose pratiche che<br>
+      avrei voluto sapere.
+    </h2>
+
+    <div class="tips">
+
+      <div class="tip">
+        <h3>💳 [CONSIGLIO 1]</h3>
+        <p>[TESTO CONSIGLIO 1]</p>
+      </div>
+
+      <div class="tip">
+        <h3>🚗 [CONSIGLIO 2]</h3>
+        <p>[TESTO CONSIGLIO 2]</p>
+      </div>
+
+      <div class="tip">
+        <h3>📱 [CONSIGLIO 3]</h3>
+        <p>[TESTO CONSIGLIO 3]</p>
+      </div>
+
+      <div class="tip">
+        <h3>🍽️ [CONSIGLIO 4]</h3>
+        <p>[TESTO CONSIGLIO 4]</p>
+      </div>
+
+      <div class="tip">
+        <h3>🗺️ [CONSIGLIO 5]</h3>
+        <p>[TESTO CONSIGLIO 5]</p>
+      </div>
+
+      <div class="tip">
+        <h3>✦ Il nostro percorso</h3>
+        <p>
+          Questo è ciò che abbiamo fatto davvero,
+          non un itinerario costruito a tavolino.
+
+          [COSA RIFARESTI / COSA CAMBIERESTI / NOTA FINALE.]
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================
+     CTA
+==================== -->
+
+<section class="cta">
+  <div class="small">E adesso?</div>
+
+  <h2>
+    Questa era la nostra [DESTINAZIONE].<br>
+    La tua può essere diversa.
+  </h2>
+
+  <p>
+    [X giorni] possono essere organizzati
+    in molti modi diversi.
+
+    Budget, periodo, ritmo del viaggio,
+    interessi e tipo di spostamenti cambiano
+    completamente l'itinerario.
+
+    Se vuoi, possiamo costruirne uno
+    partendo da come viaggi tu.
+  </p>
+
+  <!-- PER ORA TORNA ALLA HOME; PIÙ AVANTI COLLEGARE AL FORM. -->
+  <a class="button" href="costruiamo-il-tuo-viaggio.html">
+    Costruiamo il tuo viaggio →
+  </a>
+</section>
+
+
+<!-- ====================
+     FOOTER
+==================== -->
+
+<footer>
+  FUORI MAPPA · viaggi, idee e qualche deviazione ✦
+</footer>
+
+</body>
+</html>
