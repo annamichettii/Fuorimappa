@@ -152,7 +152,6 @@
   text-transform: uppercase;
   opacity: 0.65;
 }
-   .
     .card:nth-child(1) {
       transform: rotate(-2deg);
     }
@@ -387,31 +386,152 @@
     object-fit: cover;
     display: block;
 }
-    .extra-card {
-    display: none;
-}
+    /* DUE TIPI DI ITINERARIO */
+    .journey-section {
+      padding: 90px 7%;
+    }
 
-.destination-arrows {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin-top: 30px;
-}
+    .journey-section.lived {
+      background: #fffaf2;
+    }
 
-.destination-arrows button {
-    background: transparent;
-    border: none;
-    font-family: Georgia, serif;
-    font-size: 30px;
-    color: #222;
-    cursor: pointer;
-    padding: 5px 12px;
-}
+    .journey-section.designed {
+      background: #f4eadb;
+    }
 
-.destination-arrows button:hover {
-    transform: translateX(2px);
-}
+    .journey-intro {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .journey-intro h2 {
+      font-family: Georgia, serif;
+      font-size: 45px;
+      margin: 10px 0 14px;
+    }
+
+    .journey-intro p {
+      font-size: 16px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .journey-card {
+      padding: 10px 10px 22px;
+      background: #fff;
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 4px 5px 12px rgba(0,0,0,.12);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 300px;
+    }
+
+    .journey-card:nth-child(1) { transform: rotate(-1.5deg); }
+    .journey-card:nth-child(2) { transform: rotate(1deg); }
+    .journey-card:nth-child(3) { transform: rotate(-.6deg); }
+
+    .journey-card img,
+    .journey-placeholder {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      margin-bottom: 18px;
+    }
+
+    .journey-placeholder {
+      background: #ded2c0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 19px;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .journey-card h3 {
+      font-family: Georgia, serif;
+      font-size: 29px;
+      margin: 0 10px 6px;
+    }
+
+    .journey-meta {
+      margin: 0 10px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: .65;
+    }
+
+    .journey-badge {
+      margin: 0 10px 9px;
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .future-card {
+      cursor: default;
+    }
+
+    .home-cta {
+      padding: 105px 8%;
+      text-align: center;
+      background: #fffaf2;
+    }
+
+    .home-cta h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(38px, 6vw, 62px);
+      margin: 12px 0 20px;
+    }
+
+    .home-cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 1px solid #222;
+      color: #222;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .5px;
+      transition: .2s;
+    }
+
+    .cta-button:hover {
+      background: #222;
+      color: #fff;
+    }
+
 @media (max-width: 700px) {
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-card {
+    transform: none !important;
+  }
+
+  .journey-intro h2 {
+    font-size: 38px;
+  }
+
   .about {
     padding: 70px 7%;
   }
@@ -439,9 +559,8 @@
     <div class="logo">FUORI MAPPA ✦</div>
 
     <div class="menu">
-      <a href="#destinazioni">Destinazioni</a>
-      <a href="#">Itinerari</a>
-      <a href="#">Diario</a>
+      <a href="#viaggi-vissuti">Viaggi vissuti</a>
+      <a href="#itinerari-progettati">Itinerari progettati</a>
       <a href="chi-sono.html">Chi sono</a>
     </div>
   </nav>
@@ -461,44 +580,86 @@
     </div>
   </section>
 
-  <section class="destinations" id="destinazioni">
-    <div class="small">Da dove partiamo?</div>
-
-    <h2>Ultime destinazioni</h2>
-
-    <div class="cards">
-      <a href="macedonia.html" class="card macedonia-card">
-  <img src="macedonia-hero.PNG" alt="Macedonia del Nord">
-  <h3>Macedonia<br>del Nord</h3>
-  <span class="card-trip">5 giorni · road trip</span>
-</a>
-
-      <a href="vienna-bratislava.html" class="card macedonia-card">
-    <img src="vienna-bratislava-hero.PNG" alt="Vienna e Bratislava">
-    <h3>Vienna &<br>Bratislava</h3>
-    <span class="card-trip">3 giorni · city break</span>
-</a>
-
-      <div class="card">
-        <h3>Varsavia</h3>
-      </div>
-      <div class="card extra-card">
-    <h3>Sofia</h3>
-</div>
-
-<div class="card extra-card">
-    <h3>Svizzera</h3>
-</div>
-
-<div class="card extra-card">
-    <h3>Norvegia</h3>
-</div>
+  <section class="journey-section lived" id="viaggi-vissuti">
+    <div class="journey-intro">
+      <div class="small">Li ho fatti davvero ✦</div>
+      <h2>Viaggi vissuti</h2>
+      <p>
+        Itinerari nati dai miei viaggi, con tappe, spostamenti, costi e soprattutto
+        quello che ho imparato strada facendo. Qui racconto ciò che ho vissuto davvero.
+      </p>
     </div>
-    <div class="destination-arrows">
-    <button id="prevDest" aria-label="Destinazioni precedenti">←</button>
-    <button id="nextDest" aria-label="Destinazioni successive">→</button>
-</div>
+
+    <div class="journey-grid">
+      <a href="macedonia.html" class="journey-card">
+        <img src="macedonia-hero.PNG" alt="Macedonia del Nord">
+        <span class="journey-badge">✦ Viaggio vissuto</span>
+        <h3>Macedonia<br>del Nord</h3>
+        <span class="journey-meta">5 giorni · road trip · città, natura e lago</span>
+      </a>
+
+      <a href="vienna-bratislava.html" class="journey-card">
+        <img src="vienna-bratislava-hero.PNG" alt="Vienna e Bratislava">
+        <span class="journey-badge">✦ Viaggio vissuto</span>
+        <h3>Vienna &<br>Bratislava</h3>
+        <span class="journey-meta">3 giorni · due capitali · city break</span>
+      </a>
+
+      <div class="journey-card future-card">
+        <div class="journey-placeholder">UMBRIA<br>ON THE ROAD</div>
+        <span class="journey-badge">✦ Viaggio vissuto</span>
+        <h3>Umbria<br>on the road</h3>
+        <span class="journey-meta">4 giorni · borghi, natura e città</span>
+      </div>
+    </div>
   </section>
+
+  <section class="journey-section designed" id="itinerari-progettati">
+    <div class="journey-intro">
+      <div class="small">Progettati da Fuori Mappa ✎</div>
+      <h2>Itinerari da partire</h2>
+      <p>
+        Viaggi che non ho ancora vissuto in prima persona, ma che ho progettato come se
+        dovessi partire domani: tappe, tempi, spostamenti e budget pensati per costruire
+        un viaggio fattibile, senza riempire ogni giornata fino all'ultimo minuto.
+      </p>
+    </div>
+
+    <div class="journey-grid">
+      <div class="journey-card future-card">
+        <div class="journey-placeholder">MAROCCO</div>
+        <span class="journey-badge">✎ Itinerario progettato</span>
+        <h3>Marocco</h3>
+        <span class="journey-meta">Marrakech + deserto · 6 giorni</span>
+      </div>
+
+      <div class="journey-card future-card">
+        <div class="journey-placeholder">GEORGIA</div>
+        <span class="journey-badge">✎ Itinerario progettato</span>
+        <h3>Georgia<br>on the road</h3>
+        <span class="journey-meta">Tbilisi e oltre · in progettazione</span>
+      </div>
+
+      <div class="journey-card future-card">
+        <div class="journey-placeholder">IL PROSSIMO<br>ITINERARIO</div>
+        <span class="journey-badge">✎ Su richiesta</span>
+        <h3>Nuove rotte</h3>
+        <span class="journey-meta">Gli itinerari creati su misura troveranno spazio qui</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-cta">
+    <div class="small">E tu, dove vuoi andare?</div>
+    <h2>La prossima destinazione può essere la tua.</h2>
+    <p>
+      Parti da uno degli itinerari che trovi qui oppure raccontami la tua idea.
+      Possiamo adattare un percorso già esistente ai tuoi tempi e al tuo modo di viaggiare,
+      o costruirne uno completamente nuovo.
+    </p>
+    <a class="cta-button" href="costruiamo-il-tuo-viaggio.html">Raccontami il tuo viaggio →</a>
+  </section>
+
 <section class="about">
   <div class="about-paper">
     <span class="about-tape"></span>
@@ -509,14 +670,14 @@
 
       <p>
         Viaggio, fotografo e prendo appunti praticamente su tutto.
-        Fuori Mappa nasce per raccogliere itinerari reali, esperienze
-        e posti che vale la pena scoprire.
+        Fuori Mappa nasce per raccontare i viaggi che ho vissuto e
+        trasformare nuove idee in itinerari pensati con cura.
       </p>
 
       <p>
-        Qui trovi viaggi accessibili, idee meno scontate e itinerari
-        costruiti partendo da esperienze vere, senza corse e senza
-        l'idea che per partire serva spendere una fortuna.
+        Qui trovi esperienze vissute in prima persona e itinerari progettati
+        per partire davvero: con tempi realistici, idee meno scontate e senza
+        l'idea che per viaggiare serva spendere una fortuna.
       </p>
 
       <a href="chi-sono.html" class="about-link">Scopri chi sono →</a>
@@ -542,25 +703,6 @@
   <footer>
     FUORI MAPPA · viaggi, idee e qualche deviazione ✦
   </footer>
-<script>
-const normalCards = document.querySelectorAll('.card:not(.extra-card)');
-const extraCards = document.querySelectorAll('.extra-card');
 
-const nextDest = document.getElementById('nextDest');
-const prevDest = document.getElementById('prevDest');
-
-function showNormal() {
-    normalCards.forEach(card => card.style.display = '');
-    extraCards.forEach(card => card.style.display = 'none');
-}
-
-function showExtra() {
-    normalCards.forEach(card => card.style.display = 'none');
-    extraCards.forEach(card => card.style.display = 'flex');
-}
-
-nextDest.addEventListener('click', showExtra);
-prevDest.addEventListener('click', showNormal);
-</script>
 </body>
 </html>
