@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serbia on the road | Fuori Mappa</title>
+  <meta name="description" content="Serbia on the road: 7 giorni tra Belgrado, Drina, Tara, Zlatibor e i meandri dell'Uvac. Un viaggio da vivere firmato Fuori Mappa.">
+  <style>
+    :root{
+      --paper:#f3eadb; --paper2:#e7d5ba; --ink:#25231f; --rust:#a84f35;
+      --green:#536a55; --blue:#667d86; --line:#bba98e; --white:#fffaf0;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink);
+      font-family:Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(126,92,55,.08), transparent 20%),
+        radial-gradient(circle at 85% 70%, rgba(91,111,83,.08), transparent 22%),
+        var(--paper);
+      line-height:1.6;
+    }
+    img{display:block;width:100%;object-fit:cover}
+    a{color:inherit}
+    .wrap{width:min(1120px,92%);margin:auto}
+    .brand{
+      position:absolute;right:4%;bottom:4%;z-index:3;
+      font:700 12px/1.2 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;
+      background:rgba(245,237,222,.9);padding:9px 12px;border:1px solid rgba(35,32,27,.25)
+    }
+    .hero{
+      min-height:88vh;position:relative;display:grid;align-items:end;
+      background:linear-gradient(to top,rgba(20,20,17,.76),rgba(20,20,17,.06) 62%),
+                 url("serbia-hero.png") center/cover no-repeat;
+      color:white;
+    }
+    .hero-copy{padding:80px 0 72px;max-width:760px}
+    .eyebrow{font:700 12px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase}
+    h1{font-size:clamp(52px,10vw,112px);line-height:.85;margin:12px 0 22px;text-transform:uppercase}
+    .hero p{font-size:clamp(20px,3vw,31px);margin:0 0 24px;font-style:italic}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{border:1px solid rgba(255,255,255,.6);padding:8px 12px;background:rgba(0,0,0,.18);font:600 12px Arial,sans-serif;letter-spacing:.08em}
+    section{padding:74px 0}
+    .intro{font-size:clamp(22px,3vw,34px);max-width:900px;line-height:1.35}
+    .rule{width:80px;border-top:3px solid var(--rust);margin:24px 0}
+    h2{font-size:clamp(34px,5vw,58px);line-height:1;margin:0 0 18px;text-transform:uppercase}
+    h3{font-size:28px;margin:0 0 8px}
+    .sub{font-style:italic;font-size:18px;max-width:760px}
+    .route{
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:26px 0;margin-top:30px;font-weight:bold;font-size:18px
+    }
+    .days{display:grid;gap:42px;margin-top:45px}
+    .day{
+      display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;
+      border-bottom:1px solid var(--line);padding-bottom:42px
+    }
+    .day:nth-child(even) .photo{order:2}
+    .photo{position:relative;padding:12px;background:#f9f2e6;box-shadow:0 7px 24px rgba(49,39,27,.14);transform:rotate(-.7deg)}
+    .day:nth-child(even) .photo{transform:rotate(.7deg)}
+    .photo img{height:390px}
+    .label{font:700 11px Arial,sans-serif;letter-spacing:.2em;color:var(--rust);text-transform:uppercase;margin-bottom:10px}
+    .note{background:#e7d0b4;padding:16px 18px;margin-top:18px;border-left:4px solid var(--rust)}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+    .pair img{height:220px;border:9px solid #faf4e8;box-shadow:0 4px 14px rgba(0,0,0,.1)}
+    .special{background:#24342d;color:#f8efe2}
+    .special .note{background:#384a40;border-color:#d8bd85}
+    .special .photo{background:#efe2cc}
+    .practical{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+    .card{border:1px solid var(--line);padding:24px;background:rgba(255,250,240,.45)}
+    .card strong{display:block;text-transform:uppercase;font:700 12px Arial,sans-serif;letter-spacing:.18em;margin-bottom:10px;color:var(--rust)}
+    .cta{background:#d8b28c;text-align:center}
+    .cta-box{max-width:760px;margin:auto}
+    .cta a{display:inline-block;margin-top:20px;background:var(--ink);color:white;text-decoration:none;padding:15px 24px;font:700 12px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+    footer{padding:28px;text-align:center;font:11px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+    @media(max-width:760px){
+      .hero{min-height:78vh}.hero-copy{padding-bottom:58px}
+      section{padding:54px 0}.day{grid-template-columns:1fr;gap:20px}
+      .day:nth-child(even) .photo{order:0}.photo img{height:310px}
+      .pair{grid-template-columns:1fr 1fr}.pair img{height:160px}
+      .practical{grid-template-columns:1fr}.brand{font-size:9px}
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-copy">
+    <div class="eyebrow">Fuori Mappa · Viaggio da vivere</div>
+    <h1>Serbia</h1>
+    <p>Dalla Jugoslavia al “Colorado serbo”.</p>
+    <div class="chips">
+      <span class="chip">7 giorni / 6 notti</span>
+      <span class="chip">Road trip</span>
+      <span class="chip">Natura + storia + acqua</span>
+    </div>
+  </div>
+  <div class="brand">Fuori Mappa</div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="rule"></div>
+    <p class="intro">Una capitale segnata da epoche diverse, una casa sospesa nel mezzo della Drina, foreste e laghi nelle Alpi Dinariche, tradizioni conservate nei villaggi di montagna, grotte e cascate. E alla fine una gola che sembra appartenere a un altro continente.</p>
+    <div class="route">Belgrado → Bajina Bašta → Drina → Tara → Sirogojno → Zlatibor → Uvac → Belgrado</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>I volti della Serbia</h2>
+    <p class="sub">Sette giorni per attraversare una Serbia che cambia continuamente: città, memoria jugoslava, fiumi, montagne, tradizioni e paesaggi che non sembrano appartenere allo stesso viaggio.</p>
+
+    <div class="days">
+      <article class="day">
+        <div class="photo"><img src="serbia-1.png" alt="Belgrado"></div>
+        <div>
+          <div class="label">01 · Capitale</div>
+          <h3>Belgrado</h3>
+          <p>Vivace, stratificata e piena di contrasti. La storia passa dalla fortezza che domina la confluenza tra Sava e Danubio alle testimonianze dell'epoca jugoslava e del brutalismo. Il Museo della Jugoslavia e la Casa dei Fiori permettono di entrare ancora di più nel Novecento del Paese.</p>
+          <p>Poi c'è la Belgrado contemporanea: bohemienne, notturna e completamente diversa dalla natura che incontreremo poco dopo.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-2.png" alt="Kućica na Drini"></div>
+        <div>
+          <div class="label">02 · Valle della Drina</div>
+          <h3>Bajina Bašta & Kućica na Drini</h3>
+          <p>Bajina Bašta introduce la Serbia occidentale e la valle della Drina. Poco fuori compare una delle immagini più insolite del viaggio: una minuscola casa costruita su una roccia nel mezzo del fiume.</p>
+          <div class="note">✦ Una piccola deviazione diventata uno dei simboli della Drina.</div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-3.png" alt="Parco Nazionale di Tara e Banjska Stena"></div>
+        <div>
+          <div class="label">03 · Alpi Dinariche</div>
+          <h3>Tara & Banjska Stena</h3>
+          <p>Un grande paesaggio calcareo ricoperto di foreste, attraversato da strade, sentieri e punti panoramici. Banjska Stena apre la vista sulla Drina e sul lago Perućac ed è uno dei luoghi simbolo del Parco Nazionale di Tara.</p>
+          <p>Qui il viaggio rallenta e comincia a seguire il ritmo della montagna.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-4.png" alt="Lago Zaovine"></div>
+        <div>
+          <div class="label">04 · Acqua tra le montagne</div>
+          <h3>Perućac & Zaovine</h3>
+          <p>I laghi cambiano il volto di Tara. In estate possono diventare vere soste dedicate all'acqua e alle attività all'aperto; nelle mezze stagioni lasciano più spazio a sentieri, belvederi e foreste.</p>
+          <div class="note">Le tappe restano, cambia il modo di viverle.</div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-5.png" alt="Sirogojno"></div>
+        <div>
+          <div class="label">05 · Tradizioni</div>
+          <h3>Sirogojno</h3>
+          <p>Alle pendici del monte Zlatibor, Sirogojno racconta la Serbia rurale attraverso il suo museo a cielo aperto, le costruzioni tradizionali in legno e una lunga tradizione legata alla lavorazione della lana.</p>
+          <p>Un cambio di atmosfera che porta il viaggio dalla natura alla cultura materiale della montagna serba.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-6.WEBP" alt="Stopića Cave"></div>
+        <div>
+          <div class="label">06 · Sotto la montagna</div>
+          <h3>Stopića Cave & Gostilje</h3>
+          <p>Grandi vasche di tufo e una cascata sotterranea rendono Stopića una delle grotte più particolari della zona. Poco distante, l'acqua torna in superficie nelle cascate di Gostilje.</p>
+          <div class="pair"><img src="serbia-6.WEBP" alt="Stopića Cave"><img src="serbia-7.png" alt="Cascate di Gostilje"></div>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-8.png" alt="Gold Gondola Zlatibor"></div>
+        <div>
+          <div class="label">07 · Zlatibor</div>
+          <h3>Gold Gondola</h3>
+          <p>Una cabinovia panoramica di circa nove chilometri attraversa il paesaggio di Zlatibor fino a Tornik. Un modo completamente diverso di osservare la montagna prima di continuare verso il volto più selvaggio del viaggio.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="serbia-9.png" alt="El Paso City"></div>
+        <div>
+          <div class="label">✦ Deviazione Fuori Mappa</div>
+          <h3>El Paso City</h3>
+          <p>Un piccolo Far West nel mezzo della Serbia occidentale: edifici western, Cowboy Town e ambientazioni ispirate al confine tra Stati Uniti e Messico di fine Ottocento.</p>
+          <p>Non è una tappa indispensabile. È semplicemente una di quelle deviazioni abbastanza strane da meritare di essere considerate.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="special">
+  <div class="wrap">
+    <div class="day" style="border:0;padding:0">
+      <div class="photo"><img src="serbia-10.WEBP" alt="Grifone nella riserva di Uvac"></div>
+      <div>
+        <div class="label" style="color:#e0c18a">Il gran finale · Uvac</div>
+        <h2>Il “Colorado serbo”</h2>
+        <p>I grandi meandri dell'Uvac sono il finale naturale del road trip. Dall'alto disegnano curve enormi tra le pareti della gola; dall'acqua il paesaggio cambia ancora, tra natura, grotte e pareti rocciose.</p>
+        <p>Qui vive anche uno dei simboli della riserva: il grifone.</p>
+        <div class="note">✦ Il “Colorado serbo”: uno dei paesaggi che dà identità all’intero viaggio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Un viaggio che cambia con le stagioni</h2>
+    <p class="sub">Lo stesso percorso può avere un carattere completamente diverso a seconda del periodo in cui si parte.</p>
+
+    <div class="practical">
+      <div class="card"><strong>Estate</strong>Laghi, attività sull'acqua e giornate lunghe rendono Tara e Uvac ancora più centrali.</div>
+      <div class="card"><strong>Primavera / autunno</strong>Più spazio a sentieri, cascate, grotte e belvederi, con le foreste che diventano protagoniste.</div>
+      <div class="card"><strong>On the road</strong>Questo itinerario nasce per essere percorso in auto: molti dei luoghi che gli danno identità sono distribuiti tra montagne, laghi e aree naturali.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-box">
+    <div class="eyebrow">Fuori Mappa</div>
+    <h2>Questo viaggio non l'ho ancora fatto.<br>L'ho progettato.</h2>
+    <p>E potrebbe diventare il tuo. Quello che hai visto è l'idea del viaggio, non il programma completo. Durata, distribuzione delle tappe, pernottamenti, spostamenti ed esperienze possono essere costruiti intorno al tuo modo di viaggiare.</p>
+    <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio →</a>
+  </div>
+</section>
+
+<footer>Fuori Mappa · Viaggi costruiti fuori dalle rotte più ovvie</footer>
+
+</body>
+</html>
