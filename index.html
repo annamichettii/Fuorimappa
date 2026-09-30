@@ -193,19 +193,45 @@
       color: white;
     }
 
-    @media(max-width: 700px) {
-      .menu {
-        display: none;
-      }
+   @media(max-width: 700px) {
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 5%;
+  }
 
-      .paper {
-        padding: 45px 25px;
-      }
-    }
+  .logo {
+    font-size: 24px;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+  }
+
+  .menu a {
+    font-size: 13px;
+  }
+
+  .menu a:last-child {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .paper {
+    padding: 45px 25px;
+  }
+}
 
   /* SEZIONE DESTINAZIONI */
 
@@ -571,6 +597,7 @@
       <a href="#viaggi-vissuti">Viaggi vissuti</a>
       <a href="#itinerari-progettati">Itinerari progettati</a>
       <a href="chi-sono.html">Chi sono</a>
+      <a href="costruiamo-il-tuo-viaggio.html#form-viaggio">Costruiamo il tuo viaggio ✦</a>
     </div>
   </nav>
 
