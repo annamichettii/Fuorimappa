@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albania | Fuori Mappa</title>
+  <meta name="description" content="Albania: un viaggio da vivere tra città storiche, vicoli di pietra, sorgenti termali e il fiume Vjosa. Un itinerario progettato da Fuori Mappa.">
+  <style>
+    :root{
+      --paper:#f3eadb; --paper2:#e7d5ba; --ink:#25231f; --rust:#a84f35;
+      --green:#536a55; --blue:#667d86; --line:#bba98e; --white:#fffaf0;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink);
+      font-family:Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(126,92,55,.08), transparent 20%),
+        radial-gradient(circle at 85% 70%, rgba(91,111,83,.08), transparent 22%),
+        var(--paper);
+      line-height:1.6;
+    }
+    img{display:block;width:100%;object-fit:cover}
+    a{color:inherit}
+    .wrap{width:min(1120px,92%);margin:auto}
+    .brand{
+      position:absolute;right:4%;bottom:4%;z-index:3;
+      font:700 12px/1.2 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;
+      background:rgba(245,237,222,.9);padding:9px 12px;border:1px solid rgba(35,32,27,.25)
+    }
+    .hero{
+      min-height:88vh;position:relative;display:grid;align-items:end;
+      background:linear-gradient(to top,rgba(20,20,17,.76),rgba(20,20,17,.06) 62%),
+                 url("albania-hero.png") center/cover no-repeat;
+      color:white;
+    }
+    .hero-copy{padding:80px 0 72px;max-width:760px}
+    .eyebrow{font:700 12px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase}
+    h1{font-size:clamp(52px,10vw,112px);line-height:.85;margin:12px 0 22px;text-transform:uppercase}
+    .hero p{font-size:clamp(20px,3vw,31px);margin:0 0 24px;font-style:italic}
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{border:1px solid rgba(255,255,255,.6);padding:8px 12px;background:rgba(0,0,0,.18);font:600 12px Arial,sans-serif;letter-spacing:.08em}
+    section{padding:74px 0}
+    .intro{font-size:clamp(22px,3vw,34px);max-width:900px;line-height:1.35}
+    .rule{width:80px;border-top:3px solid var(--rust);margin:24px 0}
+    h2{font-size:clamp(34px,5vw,58px);line-height:1;margin:0 0 18px;text-transform:uppercase}
+    h3{font-size:28px;margin:0 0 8px}
+    .sub{font-style:italic;font-size:18px;max-width:760px}
+    .route{
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:26px 0;margin-top:30px;font-weight:bold;font-size:18px
+    }
+    .days{display:grid;gap:42px;margin-top:45px}
+    .day{
+      display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;
+      border-bottom:1px solid var(--line);padding-bottom:42px
+    }
+    .day:nth-child(even) .photo{order:2}
+    .photo{position:relative;padding:12px;background:#f9f2e6;box-shadow:0 7px 24px rgba(49,39,27,.14);transform:rotate(-.7deg)}
+    .day:nth-child(even) .photo{transform:rotate(.7deg)}
+    .photo img{height:390px}
+    .label{font:700 11px Arial,sans-serif;letter-spacing:.2em;color:var(--rust);text-transform:uppercase;margin-bottom:10px}
+    .note{background:#e7d0b4;padding:16px 18px;margin-top:18px;border-left:4px solid var(--rust)}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+    .pair img{height:220px;border:9px solid #faf4e8;box-shadow:0 4px 14px rgba(0,0,0,.1)}
+    .special{background:#24342d;color:#f8efe2}
+    .special .note{background:#384a40;border-color:#d8bd85}
+    .special .photo{background:#efe2cc}
+    .practical{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+    .card{border:1px solid var(--line);padding:24px;background:rgba(255,250,240,.45)}
+    .card strong{display:block;text-transform:uppercase;font:700 12px Arial,sans-serif;letter-spacing:.18em;margin-bottom:10px;color:var(--rust)}
+    .cta{background:#d8b28c;text-align:center}
+    .cta-box{max-width:760px;margin:auto}
+    .cta a{display:inline-block;margin-top:20px;background:var(--ink);color:white;text-decoration:none;padding:15px 24px;font:700 12px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+    footer{padding:28px;text-align:center;font:11px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+    @media(max-width:760px){
+      .hero{min-height:78vh}.hero-copy{padding-bottom:58px}
+      section{padding:54px 0}.day{grid-template-columns:1fr;gap:20px}
+      .day:nth-child(even) .photo{order:0}.photo img{height:310px}
+      .pair{grid-template-columns:1fr 1fr}.pair img{height:160px}
+      .practical{grid-template-columns:1fr}.brand{font-size:9px}
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-copy">
+    <div class="eyebrow">Fuori Mappa · Viaggio da vivere</div>
+    <h1>Albania</h1>
+    <p>Tra memoria, pietra e acqua.</p>
+    <div class="chips">
+      <span class="chip">8 giorni</span>
+      <span class="chip">Città + cultura + natura</span>
+      <span class="chip">Un viaggio da vivere</span>
+    </div>
+  </div>
+  <div class="brand">Fuori Mappa</div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="rule"></div>
+    <p class="intro">Mercati e vita quotidiana, case bianche affacciate sulla collina, vicoli di pietra e acqua che attraversa le montagne. Un viaggio nell’entroterra albanese, dove ogni luogo cambia il ritmo e il volto del Paese.</p>
+    <div class="route">Memoria · Città storiche · Pietra · Sorgenti termali · Fiumi</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>I volti dell’Albania</h2>
+    <p class="sub">Un’Albania da conoscere attraverso le sue città, le storie che custodiscono e i paesaggi che invitano a fermarsi.</p>
+    <div class="days">
+      <article class="day">
+        <div class="photo"><img src="albania-1.png" alt="Mercato e vita quotidiana a Tirana"></div>
+        <div>
+          <div class="label">Capitale · Vita quotidiana</div>
+          <h3>Tirana</h3>
+          <p>Tirana introduce il viaggio con i suoi mercati, le botteghe e il movimento della capitale. Una città da scoprire attraverso le cose che succedono ogni giorno, tra bancarelle, incontri e pause nei locali.</p>
+          <p>Accanto alla vita contemporanea, conserva una memoria del Novecento che aiuta a comprendere il Paese e la sua storia recente.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="albania-2.png" alt="Berat e le sue antiche case ottomane bianche"></div>
+        <div>
+          <div class="label">Panorami · Patrimonio</div>
+          <h3>Berat</h3>
+          <p>La città dalle mille finestre. Le antiche case ottomane bianche si raccolgono sulla collina e compongono un panorama immediatamente riconoscibile, dominato dal castello.</p>
+          <p>Il suo carattere emerge camminando, osservando le facciate e lasciando spazio alle prospettive che cambiano tra una strada e l’altra.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="albania-3.png" alt="Old Bazaar e vicoli di pietra a Gjirokastër"></div>
+        <div>
+          <div class="label">Pietra · Storia</div>
+          <h3>Gjirokastër</h3>
+          <p>La città di pietra ha un’atmosfera diversa: tetti, strade lastricate e botteghe raccontano un altro volto dell’Albania. Nell’Old Bazaar il viaggio diventa una passeggiata tra dettagli, artigianato e scorci.</p>
+          <p>La storia rimane parte del paesaggio, tra le architetture della città e le testimonianze delle epoche che l’hanno attraversata.</p>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="photo"><img src="albania-4.png" alt="Ponte di Katiu presso le sorgenti termali di Bënjë"></div>
+        <div>
+          <div class="label">Natura · Acqua</div>
+          <h3>Përmet e le sorgenti termali</h3>
+          <p>La città delle rose introduce una parte del viaggio dedicata alla natura. Le sorgenti termali all’aperto e il ponte di Katiu, all’ingresso del canyon di Langarica, portano il racconto tra acqua, pietra e montagne.</p>
+          <div class="note">✦ Una pausa nel paesaggio, da vivere con il proprio ritmo.</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="special">
+  <div class="wrap">
+    <div class="day" style="border:0;padding:0">
+      <div class="photo"><img src="albania-5.png" alt="Il fiume Vjosa nel paesaggio dell’entroterra albanese"></div>
+      <div>
+        <div class="label" style="color:#e0c18a">Il volto selvaggio</div>
+        <h2>Il fiume Vjosa</h2>
+        <p>Uno degli ultimi grandi fiumi selvaggi d’Europa: il Vjosa attraversa un paesaggio che dà spazio all’acqua e alle montagne, lontano dal ritmo delle città.</p>
+        <p>Non serve riempire ogni momento di attività. Anche fermarsi a osservare il fiume può diventare una parte importante del viaggio.</p>
+        <div class="note">✦ L’acqua come filo del paesaggio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Un viaggio che cambia con le stagioni</h2>
+    <p class="sub">Il periodo e il modo di muoversi cambiano l’esperienza, lasciando al viaggio la stessa identità.</p>
+    <div class="practical">
+      <div class="card"><strong>Estate</strong>Più spazio alle pause vicino all’acqua e alle passeggiate nelle ore più fresche.</div>
+      <div class="card"><strong>Primavera / autunno</strong>Le città storiche e i paesaggi dell’entroterra invitano a un viaggio fatto di passeggiate e soste.</div>
+      <div class="card"><strong>Il tuo modo di viaggiare</strong>Un percorso pensato anche senza auto a noleggio, con possibilità di arricchirlo per chi preferisce maggiore libertà negli spostamenti.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap cta-box">
+    <div class="eyebrow">Fuori Mappa</div>
+    <h2>Questo viaggio non l'ho ancora fatto.<br>L'ho progettato.</h2>
+    <p>E potrebbe diventare il tuo. Quello che hai visto è l'idea del viaggio, non il programma completo. Durata, distribuzione delle tappe, pernottamenti, spostamenti ed esperienze possono essere costruiti intorno al tuo modo di viaggiare.</p>
+    <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio →</a>
+  </div>
+</section>
+
+<footer>Fuori Mappa · Viaggi costruiti fuori dalle rotte più ovvie</footer>
+
+</body>
+</html>
