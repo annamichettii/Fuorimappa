@@ -405,6 +405,64 @@
     background: #252321;
     color: #ffffff;
 }
+    /* TOUR E ATTIVITÀ */
+.activities {
+  margin: 0 auto 65px;
+  padding: 28px;
+  max-width: 760px;
+  background: #e5d6c2;
+  text-align: center;
+}
+
+.activities h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.activities-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 22px 0 16px;
+}
+
+.activities-links a {
+  flex: 1;
+  padding: 14px 18px;
+  background: #252525;
+  color: #fffaf2;
+  border: 2px solid #252525;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.activities-links a:hover {
+  background: #fffaf2;
+  color: #252525;
+}
+
+.activities-links a:focus-visible {
+  outline: 3px solid #252525;
+  outline-offset: 4px;
+}
+
+.activities-disclosure {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .activities {
+    padding: 24px 18px;
+  }
+
+  .activities-links {
+    flex-direction: column;
+  }
+}
   </style>
 </head>
 
@@ -463,7 +521,38 @@
 
     </section>
 
+<!-- TOUR E ATTIVITÀ -->
 
+<section class="activities" aria-labelledby="activities-title">
+  <h2 id="activities-title">Un’esperienza in più nel tuo viaggio</h2>
+
+  <p>
+    Cerca tour, biglietti e attività per esplorare le due capitali.
+  </p>
+
+  <div class="activities-links">
+    <a
+      href="https://www.getyourguide.com/vienna-l7/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=vienna_sito"
+      target="_blank"
+      rel="sponsored noopener"
+    >
+      Scopri le attività a Vienna ↗
+    </a>
+
+    <a
+      href="https://www.getyourguide.com/bratislava-l765/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=bratislava_sito"
+      target="_blank"
+      rel="sponsored noopener"
+    >
+      Scopri le attività a Bratislava ↗
+    </a>
+  </div>
+
+  <p class="activities-disclosure">
+    Pubblicità · Link affiliati GetYourGuide:
+    potrei ricevere una commissione sulle prenotazioni.
+  </p>
+</section>
     <!-- ARRIVO -->
 
     <section class="day">
