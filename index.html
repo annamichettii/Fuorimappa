@@ -586,9 +586,52 @@
     @media(max-width:700px){.journey-carousel{padding:0 46px}.journey-carousel .journey-grid{display:block}.journey-carousel .journey-card{display:none}.journey-carousel .journey-card.carousel-active{display:flex}.carousel-arrow{width:36px;height:36px;font-size:20px}}
     @media(min-width:701px){.journey-carousel .journey-card{display:none}.journey-carousel .journey-card.carousel-active{display:flex}}
   </style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+<style>
+#newsletter-dialog {border:0;padding:48px 24px 24px;width:min(620px,calc(100% - 28px));max-height:90vh;max-height:90dvh;overflow:auto;background:#dcc7a5;color:#423b34;border-radius:8px;box-shadow:0 20px 80px #0005;}
+#newsletter-dialog::backdrop {background:rgba(0,0,0,.75);}
+#newsletter-dialog .newsletter-close {position:absolute;right:10px;top:6px;width:44px;height:44px;background:transparent;border:0;font-size:32px;color:#423b34;cursor:pointer;}
+#newsletter-dialog .sib-form {padding:0;background:transparent;}
+#newsletter-dialog #sib-container {padding:22px;background:rgba(255,255,255,.66);max-width:540px;border-radius:3px;text-align:left;}
+#newsletter-dialog h2 {font-size:clamp(25px,5vw,32px);line-height:1.2;margin:0 0 18px;}
+#newsletter-dialog p {line-height:1.55;}
+#newsletter-dialog .entry__label {color:#3c4858;font-size:16px;}
+#newsletter-dialog .entry__specification {color:#586574;font-size:12px;}
+#newsletter-dialog .sib-form-block {padding:0;}
+#newsletter-dialog .newsletter-block {padding:10px 0;}
+#newsletter-dialog .sib-form-message-panel {display:none;max-width:540px;margin:0 auto 16px;}
+#newsletter-dialog .sib-form-message-panel--active {display:block;}
+#newsletter-dialog .sib-notification__icon {width:20px;height:20px;}
+#newsletter-dialog button[type=submit] {background:#458761;color:white;border:0;border-radius:3px;font-size:16px;font-weight:700;padding:16px 24px;cursor:pointer;}
+#newsletter-dialog :focus-visible {outline:3px solid #423b34;outline-offset:3px;}
+.newsletter-reopen {border:0;background:transparent;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;padding:12px;}
+@media(max-width:480px){#newsletter-dialog{padding:48px 14px 14px;}#newsletter-dialog #sib-container{padding:18px;}}
+</style>
 </head>
 
 <body>
+
+<dialog id="newsletter-dialog" aria-labelledby="newsletter-title">
+<button type="button" class="newsletter-close" aria-label="Chiudi la newsletter">×</button>
+<div class="sib-form"><div id="sib-form-container" class="sib-form-container">
+<div id="error-message" class="sib-form-message-panel" role="alert" style="color:#661d1d;background:#ffeded;border:1px solid #ff4949;padding:16px;"><div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">La tua iscrizione non può essere convalidata. Riprova.</span></div></div>
+<div id="success-message" class="sib-form-message-panel" role="status" style="color:#085229;background:#e7faf0;border:1px solid #13ce66;padding:16px;"><div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Iscrizione riuscita! La prossima deviazione arriverà nella tua casella email ✦</span></div></div>
+<div id="sib-container" class="sib-container--large sib-container--vertical">
+<form id="sib-form" method="POST" action="https://eb88d85c.sibforms.com/serve/MUIFAPrSbF2rrmE1Ng-4AYfg9GFlrUSv2s_n9kgRCZDPKzUtrDBzwtLU7gym1H2em0zXIPUvnhx6tJl7hr-jAnks0wLSMBZFZ7w5Zc_PwrFLQNq9dFknKDD75Josqr7m8Dhvh2ycciGD1periFjxvSbiOi7qZaEEy_aNJqAVqouH09gjQ3ooLRYR5OkkeGl84lIkg5lsS_wWc1CEdQ==" data-type="subscription">
+<h2 id="newsletter-title">La prossima deviazione arriva via email ✦</h2>
+<p style="color:#1c3d2f;">Idee di viaggio, nuovi itinerari e piccoli consigli per uscire dalla solita rotta. Iscriviti alla newsletter di Fuori Mappa.</p>
+<div class="newsletter-block"><div class="sib-input sib-form-block"><div class="form__entry entry_block"><div class="form__label-row">
+<label class="entry__label" for="EMAIL" data-required="*">Inserisci il tuo indirizzo email per iscriverti</label>
+<div class="entry__field"><input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="La tua email" data-required="true" required></div></div>
+<label class="entry__error entry__error--primary"></label></div></div></div>
+<div class="newsletter-block"><div class="sib-optin sib-form-block" data-required="true"><div class="form__entry entry_mcq"><div class="form__label-row">
+<div class="entry__choice"><label><input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required><span class="checkbox checkbox_tick_positive"></span><span style="font-size:14px;color:#3c4858;">Desidero ricevere via email la newsletter di Fuori Mappa.</span></label></div></div>
+<label class="entry__error entry__error--primary"></label><p class="entry__specification">Puoi annullare l’iscrizione in qualsiasi momento utilizzando il link incluso nella newsletter.</p></div></div></div>
+<div class="sib-form-block" style="text-align:center"><button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit"><svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M256 8a248 248 0 0 1 248 248h-48A200 200 0 0 0 256 56z"/></svg>ISCRIVITI</button></div>
+<input type="text" name="email_address_check" value="" class="input--hidden"><input type="hidden" name="locale" value="it">
+</form></div></div></div></dialog>
+
 
   <nav>
     <div class="logo">FUORI MAPPA ✦</div>
@@ -769,6 +812,7 @@
 
     <footer>
   <strong>CONTATTI</strong><br><br>
+  <button class="newsletter-reopen" type="button">Iscriviti alla newsletter ✦</button><br><br>
   Instagram · @fuorimappa.travel<br>
   Email · fuorimappa.travel@gmail.com
   <br><br>
@@ -778,5 +822,34 @@
 <script>
 document.querySelectorAll('[data-carousel]').forEach(function(carousel){const cards=[...carousel.querySelectorAll('.journey-card')],prev=carousel.querySelector('.carousel-prev'),next=carousel.querySelector('.carousel-next');let start=0;function count(){return innerWidth<=700?1:Math.min(3,cards.length)}function render(){cards.forEach(c=>c.classList.remove('carousel-active'));for(let i=0;i<count();i++)cards[(start+i)%cards.length].classList.add('carousel-active')}prev.onclick=()=>{start=(start-1+cards.length)%cards.length;render()};next.onclick=()=>{start=(start+1)%cards.length;render()};addEventListener('resize',render);render()});
 </script>
+
+<script>
+window.LOCALE='it';
+window.REQUIRED_CODE_ERROR_MESSAGE='Scegli un prefisso paese';
+window.EMAIL_INVALID_MESSAGE=window.SMS_INVALID_MESSAGE=window.GENERIC_INVALID_MESSAGE=window.INVALID_NUMBER='Le informazioni fornite non sono valide. Controlla il formato del campo e riprova.';
+window.REQUIRED_ERROR_MESSAGE='Questo campo non può essere lasciato vuoto.';
+window.INVALID_DATE='Inserisci una data valida';window.REQUIRED_MULTISELECT_MESSAGE='Seleziona almeno 1 opzione';
+window.translation={common:{selectedList:'{quantity} lista selezionata',selectedLists:'{quantity} liste selezionate',selectedOption:'{quantity} selezionato',selectedOptions:'{quantity} selezionati'}};
+var AUTOHIDE=false;
+(function(){
+const dialog=document.getElementById('newsletter-dialog');
+const close=dialog.querySelector('.newsletter-close');
+const key='fuorimappa-newsletter-dismissed',subscribed='fuorimappa-newsletter-subscribed';
+let previousOverflow='',lastFocus=null;
+function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function write(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function open(){if(dialog.open)return;lastFocus=document.activeElement;previousOverflow=document.body.style.overflow;dialog.showModal();document.body.style.overflow='hidden';close.focus();}
+function dismiss(){write(key,String(Date.now()));dialog.close();}
+close.addEventListener('click',dismiss);
+dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss();});
+dialog.addEventListener('close',function(){document.body.style.overflow=previousOverflow;if(lastFocus)lastFocus.focus();});
+document.querySelector('.newsletter-reopen').addEventListener('click',open);
+const success=document.getElementById('success-message');
+new MutationObserver(function(){if(success.classList.contains('sib-form-message-panel--active')||success.style.display==='block'){write(subscribed,'1');}}).observe(success,{attributes:true,attributeFilter:['class','style']});
+if(!read(subscribed)&&Date.now()-Number(read(key)||0)>=7*24*60*60*1000)open();
+})();
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
 </body>
 </html>
