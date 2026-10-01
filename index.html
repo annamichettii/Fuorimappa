@@ -627,7 +627,7 @@
 <label class="entry__error entry__error--primary"></label></div></div></div>
 <div class="newsletter-block"><div class="sib-optin sib-form-block" data-required="true"><div class="form__entry entry_mcq"><div class="form__label-row">
 <div class="entry__choice"><label><input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required><span class="checkbox checkbox_tick_positive"></span><span style="font-size:14px;color:#3c4858;">Desidero ricevere via email la newsletter di Fuori Mappa.</span></label></div></div>
-<label class="entry__error entry__error--primary"></label><p class="entry__specification">Puoi annullare l’iscrizione in qualsiasi momento utilizzando il link incluso nella newsletter.</p></div></div></div>
+<label class="entry__error entry__error--primary"></label><p class="entry__specification">Puoi annullare l’iscrizione in qualsiasi momento utilizzando il link incluso nella newsletter. Leggi l’<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a>.</p></div></div></div>
 <div class="sib-form-block" style="text-align:center"><button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit"><svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M256 8a248 248 0 0 1 248 248h-48A200 200 0 0 0 256 56z"/></svg>ISCRIVITI</button></div>
 <input type="text" name="email_address_check" value="" class="input--hidden"><input type="hidden" name="locale" value="it">
 </form></div></div></div></dialog>
@@ -816,7 +816,7 @@
   Instagram · @fuorimappa.travel<br>
   Email · fuorimappa.travel@gmail.com
   <br><br>
-  FUORI MAPPA · viaggi, idee e qualche deviazione ✦
+  FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br><a href="privacy.html">Privacy e preferenze del sito</a>
 </footer>
 
 <script>
@@ -845,7 +845,7 @@ dialog.addEventListener('cancel',function(e){e.preventDefault();dismiss();});
 dialog.addEventListener('close',function(){document.body.style.overflow=previousOverflow;if(lastFocus)lastFocus.focus();});
 document.querySelector('.newsletter-reopen').addEventListener('click',open);
 const success=document.getElementById('success-message');
-new MutationObserver(function(){if(success.classList.contains('sib-form-message-panel--active')||success.style.display==='block'){write(subscribed,'1');}}).observe(success,{attributes:true,attributeFilter:['class','style']});
+new MutationObserver(function(){if(success.classList.contains('sib-form-message-panel--active')||success.style.display==='block'){write(subscribed,'1');if(dialog.open){setTimeout(function(){if(dialog.open)dialog.close();},1200);}}}).observe(success,{attributes:true,attributeFilter:['class','style']});
 if(!read(subscribed)&&Date.now()-Number(read(key)||0)>=7*24*60*60*1000)open();
 })();
 </script>
