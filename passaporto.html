@@ -1,54 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Il mio passaporto | Fuori Mappa</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4eadb;color:#222;font-family:Arial,sans-serif}nav{display:flex;justify-content:space-between;align-items:center;padding:22px 7%;background:#fffaf2;border-bottom:1px solid #d8c8b5}.logo{font-size:28px;font-weight:900;letter-spacing:-1px}.logo a{color:#222;text-decoration:none}.menu{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.menu a{color:#222;text-decoration:none;font-size:15px}.menu .active{font-weight:700;border-bottom:2px solid #e89218;padding-bottom:5px}.cta{border:1px solid #222;padding:11px 16px;font-weight:700}
-main{overflow:hidden}.passport-hero{background:#fffaf2;padding:70px 7% 55px}.hero-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:4px;font-size:12px}.passport-hero h1{font-family:Georgia,serif;font-size:clamp(54px,7vw,90px);line-height:.88;margin:18px 0 28px}.passport-hero h1 em{display:block;color:#e89218;font-weight:400}.intro{font-family:Georgia,serif;font-size:20px;line-height:1.6;max-width:500px}.map-wrap{max-width:1180px;margin:34px auto 0;position:relative}
-.passport-map{display:block;width:100%;height:auto;mix-blend-mode:multiply}
-.map-note{position:absolute;right:4%;top:5%;background:#fffaf2;padding:12px 16px;transform:rotate(3deg);font-family:Georgia,serif;font-style:italic;box-shadow:3px 4px 8px rgba(0,0,0,.08)}
-.stats{max-width:680px;margin:22px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center}
-.stat{padding:7px 12px;border-right:1px solid #d8c8b5}
+:root{--paper:#f4eadb;--light:#fffaf2;--ink:#222;--line:#d8c8b5;--orange:#df8a19;--brown:#7a6045}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+nav{background:#fffaf2;border-bottom:1px solid #d8c8b5;padding:22px 7%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:28px;font-weight:700}
+.menu{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.menu a{color:#222;text-decoration:none;font-size:14px}
+.menu a:hover{color:var(--orange)}
+main{overflow:hidden}
+.hero{position:relative;max-width:1280px;margin:auto;padding:68px 7% 22px;text-align:center}
+.hero:before,.hero:after{content:"";position:absolute;width:160px;height:80px;border-top:1px dashed #7b6a58;opacity:.55}
+.hero:before{left:-35px;top:155px;transform:rotate(20deg)}
+.hero:after{right:-35px;top:115px;transform:rotate(-18deg)}
+.kicker{font-family:Georgia,serif;letter-spacing:.16em;font-size:13px;margin:0 0 12px}
+h1{font:700 clamp(46px,7vw,82px)/.95 Georgia,serif;margin:0}
+.brand-script{display:inline-block;margin-top:4px;color:var(--orange);font:italic 32px/1 Georgia,serif;transform:rotate(-3deg)}
+.intro{max-width:720px;margin:28px auto 0;font:16px/1.7 Georgia,serif}
+.map-sheet{position:relative;max-width:1150px;margin:26px auto 0;padding:24px 4% 10px}
+.map-sheet:before{content:"";position:absolute;inset:5% 1% 0;background:#fff8ed;transform:rotate(-.6deg);box-shadow:0 12px 30px rgba(79,54,28,.07);z-index:-1}
+.passport-map{display:block;width:100%;height:auto}
+.stats{max-width:650px;margin:12px auto 0;display:grid;grid-template-columns:repeat(3,1fr);background:rgba(255,250,242,.72);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:10px 8px;border-right:1px solid var(--line)}
 .stat:last-child{border-right:0}
-.stat strong{display:block;color:#e89218;font-family:Georgia,serif;font-size:27px;line-height:1.05}
-.stat span{font-family:Georgia,serif;font-size:12px}
-.places{padding:70px 7% 90px;max-width:1250px;margin:auto}.places-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:42px}.places h2{font-family:Georgia,serif;font-size:48px;margin:0}.legend{font-size:13px}.star{color:#e89218}.country-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 34px}.country{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:center;min-width:0}.flag{font-size:30px;line-height:1}.country h3{font-family:Georgia,serif;font-size:17px;margin:0 0 3px}.country p{font-family:Georgia,serif;font-size:12.5px;margin:0;line-height:1.4;color:#444}.country a{color:inherit;text-decoration:none}.country a:hover h3{text-decoration:underline}.sicilia{background:#fffaf2;padding:12px;border:1px solid #dfd0bd;transform:rotate(-1deg);grid-column:span 2;grid-template-columns:110px 1fr}.sicilia .flag{display:none}.sicilia-photo{width:110px;height:82px;object-fit:cover;border:6px solid #fff;box-shadow:3px 4px 10px #0002;transform:rotate(-2deg)}
-.memories{background:#fffaf2;padding:70px 7% 90px}.memory-inner{max-width:1050px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.photos{position:relative;min-height:430px}.polaroid{position:absolute;background:#fff;padding:12px 12px 48px;width:58%;box-shadow:5px 8px 18px #0002}.polaroid img{width:100%;height:280px;object-fit:cover;display:block}.p1{left:0;top:0;transform:rotate(-5deg)}.p2{right:3%;top:85px;transform:rotate(5deg)}.quote{font-family:Georgia,serif;font-size:27px;line-height:1.55;font-style:italic}.quote:before{content:'“';display:block;color:#e89218;font-size:90px;line-height:.5;margin-bottom:22px}footer{padding:35px;text-align:center;background:#222;color:#fff}footer a{color:#fff}
-@media(max-width:850px){nav{flex-direction:column;gap:16px}.menu{justify-content:center}.hero-grid{grid-template-columns:1fr}.passport-hero{text-align:center}.intro{margin:auto}.map-wrap{margin-top:15px}.country-grid{grid-template-columns:repeat(2,1fr)}.memory-inner{grid-template-columns:1fr}.photos{min-height:460px}.places-head{display:block}.legend{margin-top:16px}}
-@media(max-width:520px){.sicilia{grid-column:span 1;grid-template-columns:88px 1fr}.sicilia-photo{width:88px;height:70px}.passport-hero{padding:55px 6% 40px}.passport-hero h1{font-size:54px}.stats{grid-template-columns:repeat(3,1fr);gap:0}.stat{padding:6px 4px;border-bottom:0}.stat strong{font-size:22px}.stat span{font-size:10px}.map-note{font-size:12px;padding:8px 10px;right:2%;top:2%}.country-grid{grid-template-columns:1fr;gap:24px}.places{padding:55px 8%}.places h2{font-size:40px}.menu{gap:10px 16px}.menu a{font-size:13px}.photos{min-height:390px}.polaroid{width:65%}.polaroid img{height:220px}.quote{font-size:22px}}
-
-.flag{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff;
-  box-shadow:0 2px 6px rgba(0,0,0,.12);
-  font-size:0 !important;
+.stat strong{display:block;font:700 25px/1 Georgia,serif;color:var(--orange)}
+.stat span{font:12px Georgia,serif}
+.section{max-width:1160px;margin:64px auto;padding:0 7%;position:relative}
+.torn-title{width:max-content;max-width:100%;margin:0 auto 38px;padding:10px 32px;background:#ead8bd;font:italic 34px Georgia,serif;transform:rotate(-1deg);box-shadow:5px 5px 0 rgba(112,83,53,.06)}
+.countries{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 28px}
+.country{display:grid;grid-template-columns:38px 1fr;gap:11px;align-items:center;min-width:0}
+.flag{width:34px;height:34px;border-radius:50%;overflow:hidden;border:2px solid #fffaf2;box-shadow:0 2px 7px rgba(0,0,0,.18);background:#fff}
+.flag img{width:100%;height:100%;object-fit:cover;display:block}
+.country h3{font:700 16px Georgia,serif;margin:0 0 3px}
+.country p{font:italic 12.5px/1.35 Georgia,serif;color:#66584c;margin:0}
+.country a{color:inherit;text-decoration:none}
+.country a:hover h3{color:var(--orange)}
+.star{color:var(--orange)}
+.legend{margin:34px auto 0;width:max-content;max-width:100%;padding:10px 18px;background:#efe0c9;transform:rotate(1deg);font:italic 13px Georgia,serif}
+.memory{position:absolute;width:150px;padding:9px 9px 28px;background:#fff;box-shadow:0 8px 20px rgba(50,35,20,.15);z-index:2}
+.memory img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.memory.one{left:-118px;top:60px;transform:rotate(-7deg)}
+.memory.two{right:-118px;bottom:-35px;transform:rotate(7deg)}
+.memory small{position:absolute;left:0;right:0;bottom:8px;text-align:center;font:italic 11px Georgia,serif;color:#6a5744}
+.sicily-wrap{max-width:1120px;margin:100px auto 70px;padding:0 7%;position:relative}
+.sicily-card{display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:42px;background:#ead8bd;padding:34px;box-shadow:0 12px 28px rgba(71,49,29,.10);transform:rotate(.25deg);position:relative}
+.sicily-card:before,.sicily-card:after{content:"";position:absolute;width:92px;height:24px;background:rgba(255,250,242,.65);top:-9px}
+.sicily-card:before{left:12%;transform:rotate(-4deg)} .sicily-card:after{right:12%;transform:rotate(5deg)}
+.sicily-copy h2{font:italic clamp(44px,6vw,70px)/.9 Georgia,serif;margin:0 0 18px}
+.sicily-copy h3{font:400 19px Georgia,serif;margin:0 0 14px}
+.sicily-copy p{font:15px/1.65 Georgia,serif;margin:0}
+.sicily-photo{width:100%;max-height:390px;object-fit:cover;display:block;border:10px solid #fffaf2;box-shadow:0 10px 20px rgba(50,35,20,.14);transform:rotate(-2deg)}
+.closing{max-width:760px;margin:0 auto 80px;padding:28px 7%;text-align:center;font:italic 20px/1.6 Georgia,serif;position:relative}
+.closing:before{content:"✦";display:block;color:var(--orange);font-size:24px;margin-bottom:10px}
+footer{background:#222;color:#fff;text-align:center;padding:44px 7%;font-size:14px;line-height:1.7}
+footer a{color:#fff}
+.newsletter-reopen{background:transparent;color:#fff;border:1px solid #fff;padding:9px 14px;cursor:pointer}
+@media(max-width:1180px){.memory{position:relative;inset:auto!important;display:inline-block;margin:35px 15px 0}.section{text-align:center}.countries{text-align:left}}
+@media(max-width:900px){.countries{grid-template-columns:repeat(2,minmax(0,1fr))}.sicily-card{grid-template-columns:1fr}.sicily-photo{max-height:440px}.menu{gap:14px}}
+@media(max-width:650px){
+nav{padding:18px 6%;flex-direction:column;align-items:flex-start}.logo{font-size:24px}.menu{gap:12px 18px}
+.hero{padding:48px 6% 15px}.intro{font-size:14px}.map-sheet{padding:14px 2% 6px}
+.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:8px 3px}.stat strong{font-size:20px}.stat span{font-size:10px}
+.section{padding:0 6%;margin-top:48px}.torn-title{font-size:28px;padding:9px 22px}
+.countries{grid-template-columns:1fr 1fr;gap:20px 13px}.country{grid-template-columns:32px 1fr;gap:8px}.flag{width:30px;height:30px}.country h3{font-size:14px}.country p{font-size:11px}
+.memory{width:125px;margin:30px 7px 0}
+.sicily-wrap{padding:0 6%;margin-top:70px}.sicily-card{padding:25px 20px;gap:25px}.sicily-copy{text-align:center}.sicily-copy p{font-size:14px}.sicily-photo{border-width:7px}
 }
-.flag img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
 </style>
-</head><body>
-<nav><div class="logo"><a href="index.html">FUORI MAPPA ✦</a></div><div class="menu"><a href="index.html#viaggi-vissuti">Viaggi vissuti</a><a href="index.html#itinerari-progettati">Itinerari progettati</a><a href="dove-dormire.html">Dove dormire</a><a href="chi-sono.html">Chi sono</a><a class="active" href="passaporto.html">Il mio passaporto</a><a class="cta" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a></div></nav>
-<main><section class="passport-hero"><div class="hero-grid"><div><div class="eyebrow">Prima di creare itinerari, c'erano già i viaggi.</div><h1>Il mio passaporto <em>Fuori Mappa</em></h1><p class="intro">Alcuni li ho organizzati da zero, altri li ho scoperti viaggiando. Tutti hanno lasciato qualcosa nel mio modo di vedere il mondo.</p></div><div class="map-wrap"><img class="passport-map" src="passaporto-mappa.png" alt="Mappa dei Paesi visitati"><div class="map-note">Il mondo visto fin qui ✦</div></div><div class="stats"><div class="stat"><strong>16</strong><span>Paesi visitati</span></div><div class="stat"><strong>+30</strong><span>Destinazioni</span></div><div class="stat"><strong>tante</strong><span>Storie da raccontare</span></div></div></section>
-<section class="places"><div class="places-head"><h2>Le destinazioni</h2><div class="legend"><span class="star">✦</span> trovi anche il mio itinerario sul sito</div></div><div class="country-grid">
-<div class="country"><div class="flag"><img src="https://flagcdn.com/w80/sk.png" alt="Bandiera Slovacchia"></div><div><a href="vienna-bratislava.html"><h3>Slovacchia <span class="star">✦</span></h3><p>Bratislava</p></a></div></div>
-<div class="country"><div class="flag">🇪🇸</div><div><h3>Spagna</h3><p>Valencia · Barcellona · Ibiza (Dalt Vila)</p></div></div>
-<div class="country"><div class="flag">🇫🇷</div><div><h3>Francia</h3><p>Nizza</p></div></div>
-<div class="country"><div class="flag">🇬🇧</div><div><h3>Regno Unito</h3><p>Londra · Bath · Cheltenham · Stonehenge</p></div></div>
-<div class="country"><div class="flag">🇮🇹</div><div><h3>Italia</h3><p>Genova · Bologna · Verona · Venezia · Roma · Perugia · Ascoli Piceno · Alberobello · Polignano a Mare · Reggio Calabria · Napoli</p></div></div>
-<div class="country sicilia"><img class="sicilia-photo" src="passaporto-sicilia.png" alt="Sicilia"><div><h3>Sicilia ♡</h3><p>Casa, e il posto che conosco meglio.</p></div></div>
-</div></section>
-<section class="memories"><div class="memory-inner"><div class="photos"><div class="polaroid p1"><img src="passaporto-1.png" alt="Ricordo di viaggio"></div><div class="polaroid p2"><img src="passaporto-2.png" alt="Ricordo di viaggio"></div></div><div class="quote">Ogni viaggio, anche il più semplice, ha contribuito a far crescere la mia curiosità e la voglia di scoprire sempre nuovi posti.</div></div></section></main>
-<footer>FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br><br><a href="index.html">Torna alla home</a> · <a href="privacy.html">Privacy e preferenze del sito</a></footer>
-</body></html>
+</head>
+<body>
+<nav>
+  <div class="logo">FUORI MAPPA ✦</div>
+  <div class="menu">
+    <a href="index.html#viaggi-vissuti">Viaggi vissuti</a>
+    <a href="index.html#itinerari-progettati">Itinerari progettati</a>
+    <a href="dove-dormire.html">Dove dormire</a>
+    <a href="passaporto.html">Il mio passaporto</a>
+    <a href="chi-sono.html">Chi sono</a>
+    <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero">
+  <p class="kicker">PRIMA DI CREARE ITINERARI, C’ERANO GIÀ I VIAGGI.</p>
+  <h1>Il mio passaporto</h1>
+  <div class="brand-script">Fuori Mappa ✦</div>
+  <p class="intro">Alcuni li ho organizzati da zero, altri li ho scoperti viaggiando.<br>Tutti hanno lasciato qualcosa nel mio modo di vedere il mondo.</p>
+
+  <div class="map-sheet">
+    <img class="passport-map" src="passaporto-mappa.png" alt="Mappa dei Paesi visitati">
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>16</strong><span>Paesi visitati</span></div>
+    <div class="stat"><strong>+30</strong><span>Destinazioni</span></div>
+    <div class="stat"><strong>Tante</strong><span>storie da raccontare</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="torn-title">Dove sono stata</h2>
+
+  <div class="countries">
+    <div class="country"><div class="flag"><img src="bandiera-marocco.png" alt="Bandiera Marocco"></div><div><a href="marocco.html"><h3>Marocco <span class="star">✦</span></h3><p>Marrakech</p></a></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-tunisia.png" alt="Bandiera Tunisia"></div><div><h3>Tunisia</h3><p>Tunisi</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-turchia.png" alt="Bandiera Turchia"></div><div><h3>Turchia</h3><p>Istanbul</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-albania.png" alt="Bandiera Albania"></div><div><a href="albania.html"><h3>Albania <span class="star">✦</span></h3><p>Tirana</p></a></div></div>
+
+    <div class="country"><div class="flag"><img src="bandiera-austria.png" alt="Bandiera Austria"></div><div><a href="vienna-bratislava.html"><h3>Austria <span class="star">✦</span></h3><p>Vienna</p></a></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-bulgaria.png" alt="Bandiera Bulgaria"></div><div><h3>Bulgaria</h3><p>Sofia</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-grecia.png" alt="Bandiera Grecia"></div><div><h3>Grecia</h3><p>Atene</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-ungheria.png" alt="Bandiera Ungheria"></div><div><a href="budapest.html"><h3>Ungheria <span class="star">✦</span></h3><p>Budapest</p></a></div></div>
+
+    <div class="country"><div class="flag"><img src="bandiera-macedonia.png" alt="Bandiera Macedonia del Nord"></div><div><a href="macedonia.html"><h3>Macedonia del Nord <span class="star">✦</span></h3><p>Skopje · Ohrid</p></a></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-polonia.png" alt="Bandiera Polonia"></div><div><h3>Polonia</h3><p>Varsavia</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-romania.png" alt="Bandiera Romania"></div><div><h3>Romania</h3><p>Bucarest</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-slovacchia.png" alt="Bandiera Slovacchia"></div><div><a href="vienna-bratislava.html"><h3>Slovacchia <span class="star">✦</span></h3><p>Bratislava</p></a></div></div>
+
+    <div class="country"><div class="flag"><img src="bandiera-spagna.png" alt="Bandiera Spagna"></div><div><h3>Spagna</h3><p>Valencia · Barcellona · Ibiza (Dalt Vila)</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-francia.png" alt="Bandiera Francia"></div><div><h3>Francia</h3><p>Nizza</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-inghilterra.png" alt="Bandiera Inghilterra"></div><div><h3>Regno Unito</h3><p>Londra · Bath · Cheltenham · Stonehenge</p></div></div>
+    <div class="country"><div class="flag"><img src="bandiera-italia.png" alt="Bandiera Italia"></div><div><a href="umbria.html"><h3>Italia <span class="star">✦</span></h3><p>Genova · Bologna · Verona · Venezia · Roma · Perugia · Ascoli Piceno · Alberobello · Polignano a Mare · Reggio Calabria · Napoli</p></a></div></div>
+  </div>
+
+  <div class="legend"><span class="star">✦</span> Per queste destinazioni trovi anche un itinerario sul sito.</div>
+
+  <figure class="memory one">
+    <img src="passaporto-1.png" alt="Ricordo di Istanbul">
+    <small>Istanbul</small>
+  </figure>
+  <figure class="memory two">
+    <img src="passaporto-2.png" alt="Ricordo di Valencia">
+    <small>Valencia</small>
+  </figure>
+</section>
+
+<section class="sicily-wrap">
+  <div class="sicily-card">
+    <div class="sicily-copy">
+      <h2>Sicilia ♡</h2>
+      <h3>Casa, e il posto che conosco meglio.</h3>
+      <p>La mia isola, il punto di partenza di ogni viaggio. Tra borghi, mare, montagne e tradizioni, è il luogo che mi ha insegnato ad amare i dettagli, le persone e la libertà di partire, sempre.</p>
+    </div>
+    <img class="sicily-photo" src="passaporto-sicilia.png" alt="Sicilia">
+  </div>
+</section>
+
+<p class="closing">“Ogni viaggio, anche il più semplice, ha contribuito a far crescere la mia curiosità e la voglia di scoprire sempre nuovi posti.”</p>
+</main>
+
+<footer>
+<strong>CONTATTI</strong><br><br>
+<button class="newsletter-reopen" type="button">Iscriviti alla newsletter ✦</button><br><br>
+Instagram · @fuorimappa.travel<br>
+Email · fuorimappa.travel@gmail.com
+<br><br>
+FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br>
+<a href="privacy.html">Privacy e preferenze del sito</a>
+</footer>
+</body>
+</html>
