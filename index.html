@@ -586,6 +586,8 @@
     .carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid #bcae9b;background:#fffaf2;color:#222;border-radius:50%;cursor:pointer;font-size:24px;z-index:5;box-shadow:2px 3px 8px rgba(0,0,0,.12)}.carousel-arrow:hover{background:#222;color:#fff}.carousel-prev{left:0}.carousel-next{right:0}
     @media(max-width:700px){.journey-carousel{padding:0 46px}.journey-carousel .journey-grid{display:block}.journey-carousel .journey-card{display:none}.journey-carousel .journey-card.carousel-active{display:flex}.carousel-arrow{width:36px;height:36px;font-size:20px}}
     @media(min-width:701px){.journey-carousel .journey-card{display:none}.journey-carousel .journey-card.carousel-active{display:flex}}
+      .hero-button { margin-top: 26px; }
+    .cta-button:focus-visible { outline: 3px solid #222; outline-offset: 4px; }
   </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -642,7 +644,7 @@
       <a href="#itinerari-progettati">Itinerari progettati</a>
       <a href="dove-dormire.html">Dove dormire</a>
       <a href="chi-sono.html">Chi sono</a>
-      <a href="costruiamo-il-tuo-viaggio.html#form-viaggio">Costruiamo il tuo viaggio ✦</a>
+      <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
     </div>
   </nav>
 
@@ -658,6 +660,7 @@
         Itinerari autentici, viaggi accessibili e posti che meritano
         una deviazione dalla solita rotta.
       </p>
+      <a class="cta-button hero-button" href="#viaggi-vissuti">Esplora i viaggi ↓</a>
     </div>
   </section>
 
@@ -848,7 +851,17 @@ dialog.addEventListener('close',function(){document.body.style.overflow=previous
 document.querySelector('.newsletter-reopen').addEventListener('click',open);
 const success=document.getElementById('success-message');
 new MutationObserver(function(){if(success.classList.contains('sib-form-message-panel--active')||success.style.display==='block'){write(subscribed,'1');if(dialog.open){setTimeout(function(){if(dialog.open)dialog.close();},1200);}}}).observe(success,{attributes:true,attributeFilter:['class','style']});
-if(!read(subscribed)&&Date.now()-Number(read(key)||0)>=7*24*60*60*1000)open();
+function eligible(){return !read(subscribed)&&Date.now()-Number(read(key)||0)>=7*24*60*60*1000;}
+setTimeout(function(){
+  if(!eligible())return;
+  if(document.visibilityState==='visible'){open();return;}
+  function onVisible(){
+    if(document.visibilityState!=='visible')return;
+    document.removeEventListener('visibilitychange',onVisible);
+    if(eligible())open();
+  }
+  document.addEventListener('visibilitychange',onVisible);
+},30000);
 })();
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
