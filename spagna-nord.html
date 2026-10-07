@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spagna del Nord | Fuori Mappa</title>
+  <meta name="description" content="Un itinerario on the road di 9 giorni nella Spagna del Nord, tra Paesi Baschi, Cantabria, Picos de Europa e Asturie.">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <style>
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:#f4eadb;color:#222;font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+    h1,h2,h3{font-family:Georgia,'Times New Roman',serif;color:#31483B;margin-top:0}
+    a{color:inherit}
+    nav{position:sticky;top:0;z-index:20;background:rgba(255,250,242,.96);border-bottom:1px solid #d8c8b5;display:flex;align-items:center;justify-content:space-between;padding:16px 5%;backdrop-filter:blur(8px)}
+    .logo{font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:.04em;text-decoration:none;color:#31483B;white-space:nowrap}
+    .menu{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .menu a{text-decoration:none;font-size:14px}.menu a:last-child{color:#df8a19;font-weight:700}
+    .hero{min-height:70vh;background:linear-gradient(rgba(0,0,0,.22),rgba(0,0,0,.4)),url('spagna-nord-hero.png') center/cover no-repeat;display:flex;align-items:flex-end;padding:7% 7% 6%;color:#fff}
+    .hero-inner{max-width:850px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;margin-bottom:10px}.hero h1{font-size:clamp(42px,7vw,82px);line-height:1;color:#fff;margin-bottom:14px}.hero p{font-family:Georgia,'Times New Roman',serif;font-size:clamp(19px,2.5vw,29px);margin:0 0 12px}.meta{font-size:14px;letter-spacing:.05em}
+    main{overflow:hidden}.wrap{width:min(1120px,90%);margin:auto}.intro{padding:78px 0 42px;text-align:center}.intro h2{font-size:36px}.intro p{max-width:780px;margin:0 auto 16px;font-size:17px}.note{display:inline-block;margin-top:12px;padding:9px 14px;border:1px solid #d8c8b5;background:#fffaf2;border-radius:999px;font-size:13px;color:#31483B}
+    .activities{padding:18px 0 70px}.activities-box{background:#31483B;color:#fff;border-radius:22px;padding:30px;text-align:center}.activities-box h2{color:#fff;margin-bottom:8px}.activities-box p{margin-top:0}.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}.btn{display:inline-block;text-decoration:none;background:#fffaf2;color:#31483B;border:1px solid #d8c8b5;padding:12px 18px;border-radius:999px;font-weight:700;font-size:14px}.btn:hover{transform:translateY(-1px)}
+    .story{padding:20px 0 60px}.moment{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;margin:0 0 80px}.moment:nth-child(even){grid-template-columns:.95fr 1.05fr}.moment:nth-child(even) .photo{order:2}.photo img{width:100%;height:440px;object-fit:cover;border-radius:20px;display:block;box-shadow:0 12px 30px rgba(49,72,59,.12)}.copy .num{font-family:Georgia,'Times New Roman',serif;color:#e89218;font-size:18px;font-weight:700}.copy h2{font-size:34px;margin:4px 0 12px}.copy p{font-size:16px;margin:0}.tag{display:inline-block;margin-top:16px;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#6b6258}
+    .dino{margin:10px 0 80px;background:#fffaf2;border:1px solid #d8c8b5;border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}.dino img{width:100%;height:100%;min-height:390px;object-fit:cover}.dino-copy{padding:48px}.dino-copy .mini{color:#e89218;font-weight:700;text-transform:uppercase;letter-spacing:.15em;font-size:12px}.dino-copy h2{font-size:39px;margin:8px 0 15px}.dino-copy p{font-size:17px}
+    .chicche{padding:70px 0;background:#fffaf2;border-top:1px solid #d8c8b5;border-bottom:1px solid #d8c8b5}.section-title{text-align:center;margin-bottom:36px}.section-title h2{font-size:38px;margin-bottom:8px}.section-title p{max-width:650px;margin:auto}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:#f4eadb;border-radius:18px;overflow:hidden;border:1px solid #d8c8b5}.card img{width:100%;height:230px;object-fit:cover;display:block}.card div{padding:20px}.card h3{font-size:22px;margin-bottom:7px}.card p{font-size:14px;margin:0}
+    .practical{padding:75px 0}.practical-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.info{border-top:3px solid #e89218;padding:20px 4px}.info h3{font-size:20px}.info p{font-size:14px}.route{font-family:Georgia,'Times New Roman',serif;text-align:center;font-size:20px;color:#31483B;margin:35px auto 0;max-width:850px}
+    .cta{padding:80px 0;text-align:center;background:#31483B;color:#fff}.cta h2{color:#fff;font-size:40px}.cta p{max-width:690px;margin:0 auto 24px}.cta .btn{background:#e89218;color:#222;border-color:#e89218}
+    footer{background:#fffaf2;border-top:1px solid #d8c8b5;padding:32px 5%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}.footer-logo{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:#31483B}
+    @media(max-width:820px){nav{align-items:flex-start;gap:12px}.menu{gap:12px}.menu a{font-size:12px}.hero{min-height:62vh}.moment,.moment:nth-child(even),.dino{grid-template-columns:1fr}.moment:nth-child(even) .photo{order:0}.photo img{height:330px}.moment{gap:24px;margin-bottom:55px}.dino img{min-height:300px}.dino-copy{padding:30px}.cards,.practical-grid{grid-template-columns:1fr}.intro{padding-top:55px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="logo" href="index.html">FUORI MAPPA ✦</a>
+    <div class="menu">
+      <a href="index.html#itinerari">Itinerari</a>
+      <a href="dove-dormire.html">Dove dormire</a>
+      <a href="passaporto.html">Il mio passaporto</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Itinerario progettato · On the Road</div>
+      <h1>Spagna del Nord</h1>
+      <p>Dall'Atlantico ai Picos de Europa, seguendo una Spagna più verde e selvaggia.</p>
+      <div class="meta">9 giorni · Paesi Baschi + Cantabria + Asturie</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro wrap">
+      <h2>Un'altra Spagna</h2>
+      <p>Scogliere sull'Atlantico, villaggi di pietra, montagne che sembrano comparire all'improvviso e una costa dove sono rimaste perfino le tracce dei dinosauri.</p>
+      <p>Questo viaggio attraversa il nord della Spagna senza correre da una città all'altra: il bello è proprio ciò che succede nel mezzo.</p>
+      <span class="note">✦ Auto consigliata · percorso pensato con arrivo a Bilbao e partenza dalle Asturie</span>
+    </section>
+
+    <section class="activities wrap">
+      <div class="activities-box">
+        <h2>Cerchi attività lungo il viaggio?</h2>
+        <p>Tre punti utili da cui partire per escursioni, visite ed esperienze lungo il percorso.</p>
+        <div class="buttons">
+          <a class="btn" href="https://www.getyourguide.com/it-it/bilbao-l93/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=bilbao_attivita" target="_blank" rel="sponsored noopener">Attività a Bilbao →</a>
+          <a class="btn" href="https://www.getyourguide.com/it-it/cantabria-l2195/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=cantabria_attivita" target="_blank" rel="sponsored noopener">Esperienze in Cantabria →</a>
+          <a class="btn" href="https://www.getyourguide.com/it-it/asturie-l2196/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=asturie_attivita" target="_blank" rel="sponsored noopener">Scopri le Asturie →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story wrap">
+      <article class="moment">
+        <div class="photo"><img src="spagna-nord-1.png" alt="Bilbao"></div>
+        <div class="copy"><span class="num">01</span><h2>Si parte da Bilbao</h2><p>Una prima giornata urbana tra il Casco Viejo, il Nervión e l'architettura contemporanea. Poi si lascia la città e comincia davvero il viaggio verso la costa.</p><span class="tag">Paesi Baschi</span></div>
+      </article>
+      <article class="moment">
+        <div class="photo"><img src="spagna-nord-2.png" alt="Costa e natura dei Paesi Baschi"></div>
+        <div class="copy"><span class="num">02</span><h2>La costa basca cambia ritmo</h2><p>Tra Gaztelugatxe e Urdaibai il paesaggio diventa il protagonista: mare, piccoli porti, boschi e strade che invitano continuamente a deviare dal percorso principale.</p><span class="tag">Urdaibai · Atlantico</span></div>
+      </article>
+      <article class="moment">
+        <div class="photo"><img src="spagna-nord-3.png" alt="Costa della Cantabria"></div>
+        <div class="copy"><span class="num">03</span><h2>Cantabria, tra roccia e oceano</h2><p>Si continua verso ovest seguendo una costa frastagliata, alternando borghi, spiagge e punti panoramici. È una parte del viaggio in cui vale la pena lasciare spazio alle deviazioni.</p><span class="tag">Cantabria</span></div>
+      </article>
+      <article class="moment">
+        <div class="photo"><img src="spagna-nord-4.png" alt="Picos de Europa"></div>
+        <div class="copy"><span class="num">04</span><h2>Dall'oceano ai Picos de Europa</h2><p>In poche ore il mare lascia posto alle montagne. Potes e l'area dei Picos segnano il cambio di scenario più netto dell'intero itinerario: qui il viaggio rallenta.</p><span class="tag">Picos de Europa</span></div>
+      </article>
+      <article class="moment">
+        <div class="photo"><img src="spagna-nord-5.png" alt="Villaggio di montagna nelle Asturie"></div>
+        <div class="copy"><span class="num">05</span><h2>Villaggi incastrati tra le montagne</h2><p>Il passaggio verso le Asturie porta tra valli profonde e piccoli centri di montagna. Alcuni luoghi richiedono un po' più di organizzazione, ed è proprio qui che si nascondono alcune delle tappe più belle.</p><span class="tag">Montagna · Asturie</span></div>
+      </article>
+      <article class="moment">
+        <div class="photo"><img src="spagna-nord-6.png" alt="Costa naturale delle Asturie"></div>
+        <div class="copy"><span class="num">06</span><h2>Una costa che fa cose strane</h2><p>Spiagge nascoste nell'entroterra, scogliere e fenomeni naturali creati dall'incontro tra il mare e la roccia calcarea: la costa orientale asturiana è tutto tranne che monotona.</p><span class="tag">Asturie · Natura</span></div>
+      </article>
+    </section>
+
+    <section class="wrap">
+      <div class="dino">
+        <img src="spagna-nord-7.png" alt="Impronte fossili di dinosauro nelle Asturie">
+        <div class="dino-copy">
+          <span class="mini">Una delle chicche del viaggio 🦕</span>
+          <h2>Sulle tracce dei dinosauri</h2>
+          <p>Lungo la costa asturiana si possono osservare vere impronte fossilizzate lasciate dai dinosauri milioni di anni fa. La cosiddetta Costa dei Dinosauri attraversa proprio questa parte del nostro percorso.</p>
+          <p>Nel viaggio completo scegliamo dove fermarci e come inserire la deviazione senza trasformarla in una tappa frettolosa.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chicche">
+      <div class="wrap">
+        <div class="section-title"><h2>Tre immagini da ricordare</h2><p>Il percorso completo resta nel viaggio personalizzato, ma queste danno già un'idea del Nord che vogliamo raccontare.</p></div>
+        <div class="cards">
+          <div class="card"><img src="spagna-nord-2.png" alt="Paesaggio del nord della Spagna"><div><h3>Urdaibai</h3><p>Una costa verde dove boschi, estuari e piccoli paesi si incontrano a pochi chilometri di distanza.</p></div></div>
+          <div class="card"><img src="spagna-nord-4.png" alt="Montagne dei Picos de Europa"><div><h3>Picos de Europa</h3><p>Il momento in cui il road trip lascia l'Atlantico e si infila tra pareti di roccia e vallate.</p></div></div>
+          <div class="card"><img src="spagna-nord-8.png" alt="Costa atlantica delle Asturie"><div><h3>Il finale sull'Atlantico</h3><p>Fari, scogliere e vento: l'ultima parte del viaggio continua verso ovest senza dover tornare sui propri passi.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="practical wrap">
+      <div class="section-title"><h2>Info pratiche</h2><p>La struttura è semplice; sono le deviazioni a renderla speciale.</p></div>
+      <div class="practical-grid">
+        <div class="info"><h3>🚗 Come muoversi</h3><p>L'auto è la scelta consigliata per seguire l'itinerario completo. Bilbao può essere visitata senza auto, ritirandola solo quando si lascia la città.</p></div>
+        <div class="info"><h3>🚆 Senza auto?</h3><p>Bilbao, Santander, Oviedo e Gijón sono collegabili con treni e autobus. Per un viaggio senza auto costruirei però una variante dedicata, adattando le tappe naturalistiche più isolate.</p></div>
+        <div class="info"><h3>✈️ Aeroporti</h3><p>Il percorso è pensato in modo lineare: arrivo a Bilbao e partenza dall'aeroporto delle Asturie, così non serve rifare centinaia di chilometri per tornare al punto iniziale.</p></div>
+      </div>
+      <p class="route">Bilbao → costa basca → Cantabria → Picos de Europa → costa asturiana → Asturias Airport</p>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <h2>Vuoi costruire il tuo viaggio nel Nord della Spagna?</h2>
+        <p>Partiamo dai tuoi giorni, dai voli e dal modo in cui preferisci viaggiare. Poi costruiamo il percorso, scegliendo quali deviazioni meritano davvero di entrare nel tuo itinerario.</p>
+        <a class="btn" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-logo">FUORI MAPPA ✦</span>
+    <span>Itinerari pensati con calma, curiosità e qualche deviazione.</span>
+  </footer>
+</body>
+</html>
