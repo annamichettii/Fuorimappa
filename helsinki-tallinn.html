@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Helsinki + Tallinn | Fuori Mappa</title>
+  <meta name="description" content="Cinque giorni tra Helsinki e Tallinn: due capitali del Baltico unite dal mare, tra architettura nordica, quartieri in legno, città medievali e tracce del passato sovietico.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <style>
+    :root{--bg:#f4eadb;--paper:#fffaf2;--line:#d8c8b5;--ink:#222;--muted:#6f665d;--orange:#df8a19;--green:#31483b}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif;line-height:1.65}
+    a{color:inherit}
+    nav{position:sticky;top:0;z-index:50;background:rgba(255,250,242,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+    .nav-inner{max-width:1180px;margin:auto;padding:15px 24px;display:flex;align-items:center;gap:26px}
+    .logo{font-family:Georgia,serif;font-weight:700;letter-spacing:.08em;text-decoration:none;white-space:nowrap}
+    .menu{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px}
+    .menu a{text-decoration:none}
+    .menu .cta{background:var(--green);color:#fff;padding:9px 13px;border-radius:999px}
+    .hero{min-height:72vh;display:grid;place-items:center;text-align:center;color:#fff;padding:80px 22px;position:relative;background:
+      linear-gradient(rgba(25,29,25,.30),rgba(25,29,25,.48)),
+      url("helsinki-tallin-hero.png") center/cover no-repeat}
+    .hero-content{max-width:850px;text-shadow:0 2px 20px rgba(0,0,0,.38)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700}
+    h1,h2,h3{font-family:Georgia,serif}
+    h1{font-size:clamp(48px,8vw,88px);line-height:.98;margin:12px 0}
+    .hero h2{font-size:clamp(22px,3vw,34px);margin:0 0 14px;font-weight:400}
+    .hero p{font-size:18px;max-width:720px;margin:0 auto 18px}
+    .meta{display:inline-block;background:rgba(255,250,242,.93);color:var(--green);padding:9px 15px;border-radius:999px;font-weight:700;font-size:13px;text-shadow:none}
+    main{max-width:1080px;margin:auto;padding:76px 24px}
+    .intro{text-align:center;max-width:780px;margin:0 auto 80px}
+    .intro h2{font-size:36px;color:var(--green);margin:0 0 15px}
+    .intro p{font-size:18px}
+    .face{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin:0 0 90px}
+    .face:nth-of-type(even) .photo{order:2}
+    .photo img{width:100%;height:440px;object-fit:cover;border-radius:3px;box-shadow:12px 12px 0 var(--paper),12px 12px 0 1px var(--line)}
+    .copy .num{font-family:Georgia,serif;color:var(--orange);font-size:17px;font-weight:bold}
+    .copy h2{font-size:34px;line-height:1.1;color:var(--green);margin:6px 0 14px}
+    .copy p{color:#403b36}
+    .crossing{margin:30px 0 90px;padding:48px;background:var(--green);color:#fff;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+    .crossing img{width:100%;height:330px;object-fit:cover}
+    .crossing h2{font-size:36px;margin:4px 0 12px}
+    .crossing .num{color:#f2ad47;font-weight:700;letter-spacing:.1em;font-size:12px}
+    .philosophy{max-width:800px;margin:30px auto 90px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:48px 20px}
+    .philosophy h2{font-size:34px;color:var(--green)}
+    .extras{margin:0 0 90px}
+    .extras-head{text-align:center;max-width:700px;margin:0 auto 35px}
+    .extras-head h2{font-size:38px;color:var(--green);margin-bottom:8px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .card{background:var(--paper);border:1px solid var(--line);padding-bottom:22px}
+    .card img{width:100%;height:230px;object-fit:cover}
+    .card h3{font-size:23px;color:var(--green);margin:18px 20px 8px}
+    .card p{font-size:14px;margin:0 20px;color:#4f4943}
+    .practical{background:var(--paper);border:1px solid var(--line);padding:34px;margin-bottom:70px}
+    .practical h2{color:var(--green);font-size:30px;margin-top:0}
+    .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .fact{border-left:3px solid var(--orange);padding-left:12px}
+    .fact b{display:block;color:var(--green);margin-bottom:3px}
+    .final-cta{text-align:center;background:var(--orange);padding:58px 25px;color:#231b12}
+    .final-cta h2{font-size:38px;margin:0 0 10px}
+    .final-cta p{max-width:650px;margin:0 auto 22px}
+    .button{display:inline-block;text-decoration:none;background:var(--green);color:#fff;padding:13px 20px;border-radius:999px;font-weight:700}
+    footer{text-align:center;padding:34px 20px;color:var(--muted);font-size:13px}
+    .activity-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px 0 0}
+    .activity-button{display:inline-block;text-decoration:none;background:var(--orange);color:#231b12;padding:11px 17px;border-radius:999px;font-weight:700;font-size:14px}
+    @media(max-width:800px){
+      .menu{display:none}.nav-inner{justify-content:center}
+      .hero{min-height:62vh}
+      main{padding:55px 18px}
+      .face,.crossing{grid-template-columns:1fr;gap:25px}
+      .face:nth-of-type(even) .photo{order:0}
+      .photo img{height:330px}
+      .crossing{padding:28px}
+      .grid,.facts{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">FUORI MAPPA ✦</a>
+    <div class="menu">
+      <a href="index.html#itinerari-testati">Itinerari testati</a>
+      <a href="index.html#itinerari-progettati">Itinerari progettati</a>
+      <a href="dove-dormire.html">Dove dormire</a>
+      <a href="passaporto.html">Il mio passaporto</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a class="cta" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Fuori Mappa · Itinerari progettati</div>
+    <h1>Helsinki + Tallinn</h1>
+    <h2>Due capitali, un viaggio sul Baltico</h2>
+    <p>Cinque giorni tra design nordico, quartieri in legno, città medievali e tracce del passato sovietico. Con il mare, letteralmente, nel mezzo.</p>
+    <span class="meta">5 giorni · senza auto · Finlandia + Estonia</span>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="eyebrow" style="color:var(--orange)">Da una città all'altra</div>
+    <h2>Due atmosfere, senza trasformare il viaggio in una corsa</h2>
+    <p>Helsinki e Tallinn sono abbastanza vicine da stare nello stesso viaggio, ma abbastanza diverse da sembrare due mondi. L'idea è attraversarle con calma, lasciando spazio ai luoghi simbolo e a qualche deviazione meno ovvia.</p>
+    <div class="activity-links">
+      <a class="activity-button" href="https://www.getyourguide.com/it-it/helsinki-l13/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=helsinki_attivita" target="_blank" rel="sponsored noopener">Prenota attività a Helsinki ✦</a>
+      <a class="activity-button" href="https://www.getyourguide.com/it-it/tallinn-l394/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=tallinn_attivita" target="_blank" rel="sponsored noopener">Prenota attività a Tallinn ✦</a>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="helsinki-tallinn-1.png" alt="Cattedrale di Helsinki"></div>
+    <div class="copy">
+      <div class="num">01 · HELSINKI</div>
+      <h2>Architettura e mare</h2>
+      <p>La prima Helsinki è luminosa e monumentale: piazze neoclassiche, cupole, mercati sul porto e il profilo delle isole appena oltre la costa.</p>
+      <p>Tra le tappe che meritano spazio c'è anche <strong>Suomenlinna</strong>, la fortezza sul mare che permette di cambiare prospettiva senza lasciare davvero la città.</p>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="helsinki-tallinn-3.png" alt="Case in legno di Puu-Vallila a Helsinki"></div>
+    <div class="copy">
+      <div class="num">02 · UN'ALTRA HELSINKI</div>
+      <h2>Fuori dal centro</h2>
+      <p>Basta allontanarsi dalle cartoline più note per incontrare una città diversa: vecchie aree produttive, quartieri residenziali e case in legno.</p>
+      <p><strong>Puu-Vallila</strong> è uno di quei posti che fanno dimenticare per un momento di trovarsi in una capitale nordica.</p>
+    </div>
+  </section>
+
+  <section class="crossing">
+    <div>
+      <div class="num">03 · FINLANDIA → ESTONIA</div>
+      <h2>Attraversare il Baltico</h2>
+      <p>Qui il trasferimento non è tempo perso: diventa parte del viaggio. Helsinki e Tallinn sono collegate via mare e la traversata permette di passare da una capitale all'altra in circa due ore.</p>
+      <p>Si lascia alle spalle la Finlandia guardando il porto dal traghetto e si arriva in Estonia pronti a cambiare completamente scenario.</p>
+    </div>
+    <img src="helsinki-tallinn-4.png" alt="Traghetto tra Helsinki e Tallinn">
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="helsinki-tallinn-5.png" alt="Panorama della città vecchia di Tallinn"></div>
+    <div class="copy">
+      <div class="num">04 · TALLINN</div>
+      <h2>Medievale, ma non solo</h2>
+      <p>Torri, mura e tetti rossi sono inevitabilmente il primo incontro con Tallinn. La città vecchia merita di essere attraversata senza fretta, ma il viaggio non si ferma dentro le mura.</p>
+      <p>Quartieri come <strong>Kalamaja</strong> iniziano a mostrare un'altra Tallinn: più quotidiana, creativa e legata alla sua storia operaia.</p>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="helsinki-tallinn-6.png" alt="Waterfront di Noblessner a Tallinn"></div>
+    <div class="copy">
+      <div class="num">05 · OLTRE LE MURA</div>
+      <h2>Industriale, creativa, sul mare</h2>
+      <p>Vecchi spazi produttivi e cantieri navali hanno lasciato tracce che oggi convivono con nuovi quartieri e waterfront affacciati sul Baltico.</p>
+      <p><strong>Noblessner</strong> racconta bene questa trasformazione. E andando ancora oltre, Tallinn cambia di nuovo: memoria del Novecento, grandi spazi e costa verso Pirita.</p>
+    </div>
+  </section>
+
+  <section class="philosophy">
+    <div class="eyebrow" style="color:var(--orange)">Fuori Mappa ✦</div>
+    <h2>Il bello è ciò che succede tra una capitale e l'altra</h2>
+    <p>Non è un itinerario costruito per collezionare due città. Il mare, i quartieri fuori dal centro e i contrasti tra passato e presente sono parte del percorso quanto i monumenti più famosi.</p>
+  </section>
+
+  <section class="extras">
+    <div class="extras-head">
+      <div class="eyebrow" style="color:var(--orange)">Tre deviazioni da segnare</div>
+      <h2>Qualche chicca Fuori Mappa ✦</h2>
+      <p>Non tutto quello che vale la pena vedere finisce nelle prime pagine delle guide.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <img src="helsinki-tallinn-3.png" alt="Puu-Vallila">
+        <h3>Puu-Vallila</h3>
+        <p>Casette in legno, cortili e un'atmosfera quasi da piccolo paese nel cuore di Helsinki.</p>
+      </article>
+      <article class="card">
+        <img src="helsinki-tallinn-7.png" alt="Banned Books Museum a Tallinn">
+        <h3>Banned Books Museum</h3>
+        <p>Un piccolo museo dedicato ai libri censurati e vietati in diverse parti del mondo, nascosto nella Tallinn storica.</p>
+      </article>
+      <article class="card">
+        <img src="helsinki-tallin-8.png" alt="Maarjamäe a Tallinn">
+        <h3>Maarjamäe</h3>
+        <p>Un luogo dove la memoria del periodo sovietico e la storia più recente dell'Estonia convivono a pochi passi dal Baltico.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="practical">
+    <h2>Info pratiche</h2>
+    <div class="facts">
+      <div class="fact"><b>Durata</b>5 giorni</div>
+      <div class="fact"><b>Auto</b>Non necessaria</div>
+      <div class="fact"><b>Tra le capitali</b>Traghetto sul Baltico</div>
+      <div class="fact"><b>Ritmo</b>Città + quartieri + mare</div>
+    </div>
+  </section>
+</main>
+
+<section class="final-cta">
+  <h2>Due capitali, due atmosfere e il Baltico nel mezzo.</h2>
+  <p>Possiamo costruire il viaggio sui tuoi giorni, scegliendo quanto spazio lasciare ai classici e quanto alle deviazioni Fuori Mappa.</p>
+  <a class="button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+</section>
+
+<footer>Fuori Mappa · itinerari costruiti con curiosità ✦</footer>
+</body>
+</html>
