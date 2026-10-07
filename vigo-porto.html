@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vigo + Porto | Fuori Mappa</title>
+  <meta name="description" content="Vigo + Porto in 5 giorni: due città atlantiche, due Paesi e un viaggio senza auto dalla Galizia al Portogallo.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#f4eadb;color:#222;font-family:Arial,sans-serif;line-height:1.65}
+    a{color:inherit}
+    nav{background:#fffaf2;border-bottom:1px solid #d8c8b5;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:25px;position:relative;z-index:10}
+    .logo{font-family:Georgia,serif;font-weight:bold;letter-spacing:.08em;text-decoration:none}
+    .menu{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .menu a{text-decoration:none;font-size:14px}
+    .menu a:last-child{background:#31483B;color:#fffaf2;padding:9px 14px;border-radius:999px}
+    .hero{height:67vh;min-height:480px;background:linear-gradient(rgba(20,28,24,.18),rgba(20,28,24,.38)),url('vigo-porto-hero.png') center/cover no-repeat;display:flex;align-items:flex-end}
+    .hero-inner{width:min(1120px,88%);margin:0 auto 55px;color:white;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:13px;font-weight:bold}
+    h1,h2,h3{font-family:Georgia,serif}
+    h1{font-size:clamp(44px,7vw,78px);margin:5px 0 4px;line-height:1}
+    .hero p{font-size:20px;margin:8px 0}
+    .meta{font-size:14px!important;font-weight:bold;letter-spacing:.04em}
+    main{width:min(1100px,88%);margin:auto}
+    .intro{text-align:center;padding:65px 8% 45px}
+    .intro h2,.section-title{font-size:34px;color:#31483B;margin:0 0 14px}
+    .intro p{max-width:760px;margin:0 auto 18px}
+    .route-pill{display:inline-block;margin-top:12px;border:1px solid #d8c8b5;background:#fffaf2;padding:10px 18px;border-radius:999px;font-weight:bold}
+    .gyg{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{display:inline-block;background:#df8a19;color:white;text-decoration:none;padding:11px 18px;border-radius:999px;font-weight:bold}
+    .story{padding:35px 0}
+    .block{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center;margin:55px 0}
+    .block.reverse .photo{order:2}
+    .photo img{width:100%;height:390px;object-fit:cover;border-radius:3px;display:block}
+    .copy h2{font-size:30px;color:#31483B;margin:0 0 10px}
+    .copy p{margin:0 0 12px}
+    .note{background:#fffaf2;border:1px solid #d8c8b5;border-left:5px solid #df8a19;padding:17px 20px;margin-top:18px}
+    .crossing{background:#31483B;color:#fffaf2;margin:70px calc(50% - 50vw);padding:58px max(6%,calc((100vw - 1100px)/2));text-align:center}
+    .crossing h2{font-size:35px;margin:0 0 10px}
+    .crossing p{max-width:760px;margin:0 auto 20px}
+    .crossing .line{font-family:Georgia,serif;font-size:24px;color:#f2b354}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:25px 0 70px}
+    .gallery img{width:100%;height:260px;object-fit:cover}
+    .practical{background:#fffaf2;border:1px solid #d8c8b5;padding:30px;margin:55px 0}
+    .practical h2{color:#31483B;margin-top:0}
+    .cta{background:#df8a19;color:white;text-align:center;padding:55px 25px;margin:70px 0 0}
+    .cta h2{font-size:34px;margin:0 0 10px}
+    .cta p{max-width:650px;margin:0 auto 22px}
+    .cta a{display:inline-block;background:#31483B;color:white;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:bold}
+    footer{background:#fffaf2;border-top:1px solid #d8c8b5;text-align:center;padding:28px 20px;font-size:13px}
+    @media(max-width:800px){
+      nav{align-items:flex-start}.menu{gap:11px}.menu a{font-size:12px}
+      .hero{height:58vh;min-height:420px}.hero-inner{margin-bottom:35px}
+      .block,.block.reverse{grid-template-columns:1fr;gap:20px}.block.reverse .photo{order:0}
+      .photo img{height:300px}.gallery{grid-template-columns:1fr 1fr}.gallery img{height:220px}
+    }
+    @media(max-width:520px){.gallery{grid-template-columns:1fr}.gallery img{height:260px}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html">FUORI MAPPA ✦</a>
+  <div class="menu">
+    <a href="index.html#itinerari">Itinerari</a>
+    <a href="dove-dormire.html">Dove dormire</a>
+    <a href="chi-sono.html">Chi sono</a>
+    <a href="passaporto.html">Il mio passaporto</a>
+    <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Da una città all'altra</div>
+    <h1>Vigo + Porto</h1>
+    <p>Dalla Galizia al Portogallo, seguendo l'Atlantico.</p>
+    <p class="meta">5 giorni · 2 Paesi · senza auto</p>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <h2>Due città, un solo viaggio</h2>
+    <p>Un weekend lungo tra Spagna e Portogallo: dalla ría di Vigo alle rive del Douro, attraversando il confine senza bisogno di noleggiare un'auto. Cinque giorni pensati per cambiare Paese senza sacrificare una giornata agli spostamenti.</p>
+    <div class="route-pill">Porto ✈ → Vigo → Porto → ✈ ritorno</div>
+    <div class="gyg">
+      <a class="btn" href="https://www.getyourguide.com/it-it/vigo-l1636/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=vigo_attivita" target="_blank" rel="sponsored noopener">Attività a Vigo ↗</a>
+      <a class="btn" href="https://www.getyourguide.com/it-it/porto-l151/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=porto_attivita" target="_blank" rel="sponsored noopener">Attività a Porto ↗</a>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="block">
+      <div class="photo"><img src="vigo-porto-1.png" alt="Panorama sulla ría di Vigo"></div>
+      <div class="copy">
+        <h2>Vigo, affacciata sulla ría</h2>
+        <p>Una città costruita intorno al mare. Il viaggio comincia tra il Casco Vello, il porto e i punti panoramici che si aprono sulla grande ría galiziana.</p>
+        <p>Vigo non è soltanto una tappa di passaggio: il suo carattere marinaro, la storia nascosta sotto la città moderna e il rapporto continuo con l'Atlantico meritano tempo.</p>
+      </div>
+    </div>
+
+    <div class="block reverse">
+      <div class="photo"><img src="vigo-porto-3.png" alt="Costa atlantica della Galizia"></div>
+      <div class="copy">
+        <h2>Una Galizia che guarda l'Atlantico</h2>
+        <p>Fuori dal centro, Vigo cambia rapidamente: quartieri marinari, costa frastagliata e piccoli angoli dove la città lascia spazio all'oceano.</p>
+        <div class="note"><strong>Una chicca:</strong> Bouzas conserva ancora un'identità tutta sua, tra case, mare e passeggiate lontane dalla parte più urbana di Vigo.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="crossing">
+    <h2>Due Paesi, senza auto</h2>
+    <p>Il viaggio è costruito usando Porto come aeroporto di riferimento e collegando le due città con i mezzi pubblici. Si può arrivare in Portogallo, iniziare dalla Galizia e poi tornare verso Porto continuando il viaggio, senza inutili avanti e indietro.</p>
+    <div class="line">Vigo 🇪🇸 → Porto 🇵🇹</div>
+  </section>
+
+  <section class="story">
+    <div class="block">
+      <div class="photo"><img src="vigo-porto-5.png" alt="Strade e azulejos di Porto"></div>
+      <div class="copy">
+        <h2>Porto, tra azulejos e Douro</h2>
+        <p>Il cambio di Paese si sente subito. Porto si scopre tra facciate rivestite di azulejos, strade in pendenza, piazze, Ribeira e scorci sul Douro.</p>
+        <p>Ci sono i luoghi iconici, certo, ma il percorso lascia spazio anche a quartieri e dettagli meno evidenti: quelli che fanno sentire la città oltre la cartolina.</p>
+      </div>
+    </div>
+
+    <div class="block reverse">
+      <div class="photo"><img src="vigo-porto-8.png" alt="Atlantico nella zona di Foz a Porto"></div>
+      <div class="copy">
+        <h2>Dove il Douro incontra l'Atlantico</h2>
+        <p>Il finale del viaggio segue il fiume verso ovest, fino a Foz. Qui Porto cambia ancora: il Douro termina, comincia l'oceano e il centro storico lascia spazio al lungomare.</p>
+        <p>È il filo perfetto per chiudere il percorso: si parte dalla ría di Vigo e si finisce di nuovo davanti all'Atlantico.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <img src="vigo-porto-2.png" alt="Una strada di Vigo">
+    <img src="vigo-porto-4.png" alt="Paesaggio costiero della Galizia">
+    <img src="vigo-porto-6.png" alt="Vicoli di Porto">
+    <img src="vigo-porto-7.png" alt="Porto e i suoi azulejos">
+    <img src="vigo-porto-1.png" alt="Ría di Vigo">
+    <img src="vigo-porto-8.png" alt="Costa atlantica di Porto">
+  </section>
+
+  <section class="practical">
+    <h2>Info pratiche</h2>
+    <p><strong>Durata consigliata:</strong> 5 giorni / 4 notti, con due notti a Vigo e due a Porto.</p>
+    <p><strong>Auto:</strong> non necessaria. Il percorso è pensato per essere realizzato con mezzi pubblici e a piedi.</p>
+    <p><strong>Aeroporto:</strong> Porto può essere utilizzato sia all'andata sia al ritorno. In base all'orario del volo, il trasferimento verso Vigo può essere fatto subito all'arrivo.</p>
+    <p><strong>Quando partire:</strong> l'itinerario base non dipende dall'estate. Nei mesi in cui i collegamenti sono attivi si può valutare anche una variante verso le Isole Cíes.</p>
+    <p><strong>Da controllare prima della partenza:</strong> orari e modalità del collegamento internazionale Vigo–Porto possono variare; vanno sempre verificati sulle date effettive del viaggio.</p>
+  </section>
+</main>
+
+<section class="cta">
+  <h2>Vuoi fare questo viaggio?</h2>
+  <p>Possiamo adattare Vigo + Porto ai tuoi voli, ai giorni che hai a disposizione e al periodo in cui parti, costruendo il percorso completo su misura.</p>
+  <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+</section>
+
+<footer>FUORI MAPPA ✦ · itinerari pensati per andare un po' oltre la cartolina</footer>
+</body>
+</html>
