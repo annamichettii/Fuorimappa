@@ -588,6 +588,71 @@
     @media(min-width:701px){.journey-carousel .journey-card{display:none}.journey-carousel .journey-card.carousel-active{display:flex}}
       .hero-button { margin-top: 26px; }
     .cta-button:focus-visible { outline: 3px solid #222; outline-offset: 4px; }
+
+    /* CATALOGO ITINERARI + FILTRI */
+    .journey-section.catalogue { background:#fffaf2; }
+    .journey-filters {
+      max-width:1100px;
+      margin:0 auto 42px;
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      padding:24px;
+      background:#f4eadb;
+      border:1px solid #d8c8b5;
+      box-shadow:4px 5px 12px rgba(0,0,0,.07);
+    }
+    .filter-group { flex:1 1 250px; }
+    .filter-group label {
+      display:block;
+      margin:0 0 8px;
+      font-size:10px;
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .filter-group select {
+      width:100%;
+      padding:13px 42px 13px 14px;
+      border:1px solid #bcae9b;
+      background:#fffaf2;
+      color:#222;
+      font:inherit;
+      cursor:pointer;
+    }
+    .filter-count {
+      flex:1 0 100%;
+      margin:2px 0 0;
+      font-size:12px;
+      opacity:.68;
+    }
+    .journey-catalogue {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:25px;
+      max-width:1100px;
+      margin:auto;
+    }
+    .journey-catalogue .journey-card:nth-child(3n+1){transform:rotate(-1.2deg)}
+    .journey-catalogue .journey-card:nth-child(3n+2){transform:rotate(.8deg)}
+    .journey-catalogue .journey-card:nth-child(3n){transform:rotate(-.5deg)}
+    .journey-card[hidden]{display:none !important}
+    .journey-empty {
+      display:none;
+      max-width:1100px;
+      margin:30px auto 0;
+      padding:25px;
+      text-align:center;
+      border:1px dashed #bcae9b;
+      background:#f4eadb;
+    }
+    @media(max-width:700px){
+      .journey-filters{padding:18px}
+      .journey-catalogue{grid-template-columns:1fr}
+      .journey-catalogue .journey-card{transform:none !important}
+    }
+
   </style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
@@ -643,8 +708,7 @@
     <a class="logo" href="index.html" style="color:inherit;text-decoration:none;">FUORI MAPPA ✦</a>
 
     <div class="menu">
-      <a href="#itinerari-testati">Itinerari testati</a>
-      <a href="#itinerari-progettati">Itinerari progettati</a>
+      <a href="#itinerari">Itinerari</a>
       <a href="dove-dormire.html">Dove dormire</a>
       <a href="chi-sono.html">Chi sono</a>
       <a href="passaporto.html">Il mio passaporto</a>
@@ -664,126 +728,129 @@
         Itinerari autentici, viaggi accessibili e posti che meritano
         una deviazione dalla solita rotta.
       </p>
-      <a class="cta-button hero-button" href="#itinerari-testati">Esplora i viaggi ↓</a>
+      <a class="cta-button hero-button" href="#itinerari">Esplora i viaggi ↓</a>
     </div>
   </section>
 
-  <section class="journey-section lived" id="itinerari-testati">
+  <section class="journey-section catalogue" id="itinerari">
     <div class="journey-intro">
-      <div class="small">Provati in prima persona ✦</div>
-      <h2>Itinerari testati</h2>
+      <div class="small">Trova il viaggio che fa per te ✦</div>
+      <h2>Itinerari</h2>
       <p>
-        Itinerari nati dai miei viaggi, con tappe, spostamenti, costi e soprattutto
-        quello che ho imparato strada facendo. Qui racconto ciò che ho vissuto davvero.
+        Itinerari testati in prima persona e percorsi progettati da Fuori Mappa.
+        Scegli il tipo di viaggio e il continente: i filtri lavorano insieme per mostrarti solo le idee che stai cercando.
       </p>
     </div>
 
-    <div class="journey-carousel" data-carousel>
-      <button class="carousel-arrow carousel-prev" type="button" aria-label="Viaggio precedente">‹</button>
-      <div class="journey-grid">
-      <a href="macedonia.html" class="journey-card">
+    <div class="journey-filters" aria-label="Filtra gli itinerari">
+      <div class="filter-group">
+        <label for="filter-type">Tipo di viaggio</label>
+        <select id="filter-type">
+          <option value="all">Tutti i tipi di viaggio</option>
+          <option value="on-the-road">On the Road</option>
+          <option value="citta-citta">Da una città all'altra</option>
+          <option value="una-citta">Una città alla volta</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-continent">Continente</label>
+        <select id="filter-continent">
+          <option value="all">Tutti i continenti</option>
+          <option value="europa">Europa</option>
+          <option value="africa">Africa</option>
+        </select>
+      </div>
+      <p class="filter-count" id="filter-count" aria-live="polite"></p>
+    </div>
+
+    <div class="journey-catalogue" id="journey-catalogue">
+      <a href="macedonia.html" class="journey-card" data-type="on-the-road" data-continent="europa">
         <img src="macedonia-hero.PNG" alt="Macedonia del Nord">
         <span class="journey-badge">✦ Itinerario testato</span>
         <h3>Macedonia<br>del Nord</h3>
         <span class="journey-meta">5 giorni · road trip · città, natura e lago</span>
       </a>
 
-      <a href="vienna-bratislava.html" class="journey-card">
+      <a href="vienna-bratislava.html" class="journey-card" data-type="citta-citta" data-continent="europa">
         <img src="vienna-bratislava-hero.PNG" alt="Vienna e Bratislava">
         <span class="journey-badge">✦ Itinerario testato</span>
-        <h3>Vienna &<br>Bratislava</h3>
+        <h3>Vienna &amp;<br>Bratislava</h3>
         <span class="journey-meta">3 giorni · due capitali · city break</span>
       </a>
 
-      <a href="umbria.html" class="journey-card">
-  <img src="umbria-hero.png" alt="Umbria on the road">
-  <span class="journey-badge">✦ Itinerario testato</span>
-  <h3>Umbria<br>on the road</h3>
-  <span class="journey-meta">4 giorni · borghi, natura e città</span>
-</a>
-    </div>
-      <button class="carousel-arrow carousel-next" type="button" aria-label="Viaggio successivo">›</button>
-    </div>
-  </section>
+      <a href="umbria.html" class="journey-card" data-type="on-the-road" data-continent="europa">
+        <img src="umbria-hero.png" alt="Umbria on the road">
+        <span class="journey-badge">✦ Itinerario testato</span>
+        <h3>Umbria<br>on the road</h3>
+        <span class="journey-meta">4 giorni · borghi, natura e città</span>
+      </a>
 
-  <section class="journey-section designed" id="itinerari-progettati">
-    <div class="journey-intro">
-      <div class="small">Progettati da Fuori Mappa ✎</div>
-      <h2>Itinerari progettati</h2>
-      <p>
-        Viaggi che non ho ancora vissuto in prima persona, ma che ho progettato come se
-        dovessi partire domani: tappe, tempi, spostamenti e budget pensati per costruire
-        un viaggio fattibile, senza riempire ogni giornata fino all'ultimo minuto.
-      </p>
-    </div>
+      <a href="budapest.html" class="journey-card" data-type="una-citta" data-continent="europa">
+        <img src="budapest-hero.png" alt="Budapest sul Danubio">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Budapest</h3>
+        <span class="journey-meta">3 o 4 giorni · senza auto · città e terme</span>
+      </a>
 
-    <div class="journey-carousel" data-carousel>
-      <button class="carousel-arrow carousel-prev" type="button" aria-label="Viaggio precedente">‹</button>
-      <div class="journey-grid">
-  
-        <a href="budapest.html" class="journey-card">
-  <img src="budapest-hero.png" alt="Budapest sul Danubio">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Budapest</h3>
-  <span class="journey-meta">3 o 4 giorni · senza auto · città e terme</span>
-</a>
-        <a href="istanbul.html" class="journey-card">
-  <img src="istanbul-hero.png" alt="Istanbul sul Bosforo">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Istanbul</h3>
-  <span class="journey-meta">4 giorni · senza auto · Europa e Asia</span>
-</a>
-      <a href="helsinki-tallinn.html" class="journey-card">
-  <img src="helsinki-tallin-hero.png" alt="Helsinki e Tallinn sul Baltico">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Helsinki + Tallinn</h3>
-  <span class="journey-meta">5 giorni · senza auto · Finlandia + Estonia</span>
-</a>
-        <a href="marocco.html" class="journey-card">
-  <img src="marocco-hero.png" alt="Marocco">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Marocco</h3>
-  <span class="journey-meta">11–12 giorni · 6 volti del Marocco</span>
-</a>
-      
+      <a href="istanbul.html" class="journey-card" data-type="una-citta" data-continent="europa">
+        <img src="istanbul-hero.png" alt="Istanbul sul Bosforo">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Istanbul</h3>
+        <span class="journey-meta">4 giorni · senza auto · Europa e Asia</span>
+      </a>
 
-      <a href="georgia.html" class="journey-card">
-  <img src="georgia-hero.png" alt="Georgia">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Georgia<br>on the road</h3>
-  <span class="journey-meta">8 o 13–14 giorni · Road trip nel Caucaso</span>
-</a>
-    
-        <a href="croazia.html" class="journey-card">
-  <img src="croazia-hero.png" alt="Croazia">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Croazia<br>on the road</h3>
-  <span class="journey-meta">5 o 6 giorni · Natura, storia e acqua</span>
-</a>
-    
+      <a href="helsinki-tallinn.html" class="journey-card" data-type="citta-citta" data-continent="europa">
+        <img src="helsinki-tallin-hero.png" alt="Helsinki e Tallinn sul Baltico">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Helsinki + Tallinn</h3>
+        <span class="journey-meta">5 giorni · senza auto · Finlandia + Estonia</span>
+      </a>
 
-      <a href="serbia.html" class="journey-card">
+      <a href="marocco.html" class="journey-card" data-type="on-the-road" data-continent="africa">
+        <img src="marocco-hero.png" alt="Marocco">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Marocco</h3>
+        <span class="journey-meta">11–12 giorni · 6 volti del Marocco</span>
+      </a>
+
+      <a href="georgia.html" class="journey-card" data-type="on-the-road" data-continent="europa">
+        <img src="georgia-hero.png" alt="Georgia">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Georgia<br>on the road</h3>
+        <span class="journey-meta">8 o 13–14 giorni · Road trip nel Caucaso</span>
+      </a>
+
+      <a href="croazia.html" class="journey-card" data-type="on-the-road" data-continent="europa">
+        <img src="croazia-hero.png" alt="Croazia">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Croazia<br>on the road</h3>
+        <span class="journey-meta">5 o 6 giorni · Natura, storia e acqua</span>
+      </a>
+
+      <a href="serbia.html" class="journey-card" data-type="on-the-road" data-continent="europa">
         <img src="serbia-hero.png" alt="Serbia on the road">
         <span class="journey-badge">✦ Itinerario progettato</span>
         <h3>Serbia<br>on the road</h3>
         <span class="journey-meta">7 giorni · Drina, Tara, Zlatibor e Uvac</span>
       </a>
 
-              <a href="albania.html" class="journey-card">
+      <a href="albania.html" class="journey-card" data-type="on-the-road" data-continent="europa">
         <img src="albania-hero.png" alt="Albania">
         <span class="journey-badge">✦ Itinerario progettato</span>
         <h3>Albania</h3>
         <span class="journey-meta">8 giorni · Memoria, pietra e acqua</span>
       </a>
 
-        <a href="montenegro.html" class="journey-card">
-  <img src="montenegro-hero.png" alt="Montenegro">
-  <span class="journey-badge">✦ Itinerario progettato</span>
-  <h3>Montenegro<br>on the road</h3>
-  <span class="journey-meta">6 giorni · Baie, laghi e montagne</span>
-</a>
+      <a href="montenegro.html" class="journey-card" data-type="on-the-road" data-continent="europa">
+        <img src="montenegro-hero.png" alt="Montenegro">
+        <span class="journey-badge">✦ Itinerario progettato</span>
+        <h3>Montenegro<br>on the road</h3>
+        <span class="journey-meta">6 giorni · Baie, laghi e montagne</span>
+      </a>
     </div>
-      <button class="carousel-arrow carousel-next" type="button" aria-label="Viaggio successivo">›</button>
+
+    <div class="journey-empty" id="journey-empty">
+      Nessun itinerario corrisponde ancora a questi filtri. Ma la mappa continua a riempirsi ✦
     </div>
   </section>
 
@@ -848,7 +915,34 @@
 </footer>
 
 <script>
-document.querySelectorAll('[data-carousel]').forEach(function(carousel){const cards=[...carousel.querySelectorAll('.journey-card')],prev=carousel.querySelector('.carousel-prev'),next=carousel.querySelector('.carousel-next');let start=0;function count(){return innerWidth<=700?1:Math.min(3,cards.length)}function render(){cards.forEach(c=>c.classList.remove('carousel-active'));for(let i=0;i<count();i++)cards[(start+i)%cards.length].classList.add('carousel-active')}prev.onclick=()=>{start=(start-1+cards.length)%cards.length;render()};next.onclick=()=>{start=(start+1)%cards.length;render()};addEventListener('resize',render);render()});
+(function(){
+  const typeFilter = document.getElementById('filter-type');
+  const continentFilter = document.getElementById('filter-continent');
+  const cards = [...document.querySelectorAll('#journey-catalogue .journey-card')];
+  const count = document.getElementById('filter-count');
+  const empty = document.getElementById('journey-empty');
+
+  function applyFilters(){
+    const type = typeFilter.value;
+    const continent = continentFilter.value;
+    let visible = 0;
+
+    cards.forEach(card => {
+      const matchesType = type === 'all' || card.dataset.type === type;
+      const matchesContinent = continent === 'all' || card.dataset.continent === continent;
+      const show = matchesType && matchesContinent;
+      card.hidden = !show;
+      if(show) visible++;
+    });
+
+    count.textContent = visible === 1 ? '1 itinerario trovato' : visible + ' itinerari trovati';
+    empty.style.display = visible ? 'none' : 'block';
+  }
+
+  typeFilter.addEventListener('change', applyFilters);
+  continentFilter.addEventListener('change', applyFilters);
+  applyFilters();
+})();
 </script>
 
 <script>
