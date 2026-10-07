@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stoccolma + Gotland | Fuori Mappa</title>
+  <meta name="description" content="Sei giorni tra Stoccolma e Gotland: città sull'acqua, Visby medievale, Villa Villekulla, Fårö e paesaggi di pietra sul Baltico.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <style>
+    :root{--bg:#f4eadb;--paper:#fffaf2;--line:#d8c8b5;--ink:#222;--muted:#6f665d;--orange:#df8a19;--green:#31483b}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif;line-height:1.65}
+    a{color:inherit}
+    nav{position:sticky;top:0;z-index:50;background:rgba(255,250,242,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+    .nav-inner{max-width:1180px;margin:auto;padding:15px 24px;display:flex;align-items:center;gap:26px}
+    .logo{font-family:Georgia,serif;font-weight:700;letter-spacing:.08em;text-decoration:none;white-space:nowrap}
+    .menu{margin-left:auto;display:flex;gap:20px;align-items:center;font-size:13px}
+    .menu a{text-decoration:none}
+    .menu .cta{background:var(--green);color:#fff;padding:9px 13px;border-radius:999px}
+    .hero{min-height:72vh;display:grid;place-items:center;text-align:center;color:#fff;padding:80px 22px;position:relative;background:
+      linear-gradient(rgba(25,29,25,.30),rgba(25,29,25,.50)),
+      url("stoccolma-gotland-hero.png") center/cover no-repeat}
+    .hero-content{max-width:850px;text-shadow:0 2px 20px rgba(0,0,0,.38)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700}
+    h1,h2,h3{font-family:Georgia,serif}
+    h1{font-size:clamp(48px,8vw,88px);line-height:.98;margin:12px 0}
+    .hero h2{font-size:clamp(22px,3vw,34px);margin:0 0 14px;font-weight:400}
+    .hero p{font-size:18px;max-width:720px;margin:0 auto 18px}
+    .meta{display:inline-block;background:rgba(255,250,242,.93);color:var(--green);padding:9px 15px;border-radius:999px;font-weight:700;font-size:13px;text-shadow:none}
+    main{max-width:1080px;margin:auto;padding:76px 24px}
+    .intro{text-align:center;max-width:780px;margin:0 auto 80px}
+    .intro h2{font-size:36px;color:var(--green);margin:0 0 15px}
+    .intro p{font-size:18px}
+    .face{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin:0 0 90px}
+    .face:nth-of-type(even) .photo{order:2}
+    .photo img{width:100%;height:440px;object-fit:cover;border-radius:3px;box-shadow:12px 12px 0 var(--paper),12px 12px 0 1px var(--line)}
+    .copy .num{font-family:Georgia,serif;color:var(--orange);font-size:17px;font-weight:bold}
+    .copy h2{font-size:34px;line-height:1.1;color:var(--green);margin:6px 0 14px}
+    .copy p{color:#403b36}
+    .crossing{margin:30px 0 90px;padding:48px;background:var(--green);color:#fff;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+    .crossing img{width:100%;height:330px;object-fit:cover}
+    .crossing h2{font-size:36px;margin:4px 0 12px}
+    .crossing .num{color:#f2ad47;font-weight:700;letter-spacing:.1em;font-size:12px}
+    .philosophy{max-width:800px;margin:30px auto 90px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:48px 20px}
+    .philosophy h2{font-size:34px;color:var(--green)}
+    .extras{margin:0 0 90px}
+    .extras-head{text-align:center;max-width:700px;margin:0 auto 35px}
+    .extras-head h2{font-size:38px;color:var(--green);margin-bottom:8px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .card{background:var(--paper);border:1px solid var(--line);padding-bottom:22px}
+    .card img{width:100%;height:230px;object-fit:cover}
+    .card h3{font-size:23px;color:var(--green);margin:18px 20px 8px}
+    .card p{font-size:14px;margin:0 20px;color:#4f4943}
+    .practical{background:var(--paper);border:1px solid var(--line);padding:34px;margin-bottom:70px}
+    .practical h2{color:var(--green);font-size:30px;margin-top:0}
+    .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .fact{border-left:3px solid var(--orange);padding-left:12px}
+    .fact b{display:block;color:var(--green);margin-bottom:3px}
+    .season-note{margin-top:28px;padding:20px 22px;border-top:1px solid var(--line);background:#fffdf8}
+    .season-note strong{color:var(--green)}
+    .final-cta{text-align:center;background:var(--orange);padding:58px 25px;color:#231b12}
+    .final-cta h2{font-size:38px;margin:0 0 10px}
+    .final-cta p{max-width:650px;margin:0 auto 22px}
+    .button{display:inline-block;text-decoration:none;background:var(--green);color:#fff;padding:13px 20px;border-radius:999px;font-weight:700}
+    footer{text-align:center;padding:34px 20px;color:var(--muted);font-size:13px}
+    .activity-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px 0 0}
+    .activity-button{display:inline-block;text-decoration:none;background:var(--orange);color:#231b12;padding:11px 17px;border-radius:999px;font-weight:700;font-size:14px}
+    @media(max-width:800px){
+      .menu{display:none}.nav-inner{justify-content:center}
+      .hero{min-height:62vh}
+      main{padding:55px 18px}
+      .face,.crossing{grid-template-columns:1fr;gap:25px}
+      .face:nth-of-type(even) .photo{order:0}
+      .photo img{height:330px}
+      .crossing{padding:28px}
+      .grid,.facts{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">FUORI MAPPA ✦</a>
+    <div class="menu">
+      <a href="index.html#itinerari">Itinerari</a>
+      <a href="dove-dormire.html">Dove dormire</a>
+      <a href="passaporto.html">Il mio passaporto</a>
+      <a href="chi-sono.html">Chi sono</a>
+      <a class="cta" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Fuori Mappa · Itinerari progettati</div>
+    <h1>Stoccolma + Gotland</h1>
+    <h2>Dalla città sull'acqua a un'isola fuori dal tempo</h2>
+    <p>Sei giorni tra vicoli, arcipelago, mura medievali, Pippi Calzelunghe e paesaggi di pietra sul Baltico.</p>
+    <span class="meta">6 giorni · città + isola · Svezia</span>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="eyebrow" style="color:var(--orange)">Da una città all'altra</div>
+    <h2>Stoccolma è il punto di partenza. Gotland cambia completamente il viaggio.</h2>
+    <p>Prima una capitale costruita sull'acqua, poi il Baltico e infine un'isola fatta di mura medievali, scogliere, case colorate e paesaggi quasi lunari. L'idea non è usare Gotland come una semplice escursione, ma darle il tempo che merita.</p>
+    <div class="activity-links">
+      <a class="activity-button" href="https://www.getyourguide.com/it-it/stoccolma-l50/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=stoccolma_attivita" target="_blank" rel="sponsored noopener">Prenota attività a Stoccolma ✦</a>
+      <a class="activity-button" href="https://www.getyourguide.com/it-it/contea-di-gotland-l137793/?partner_id=C84NLFH&amp;utm_medium=online_publisher&amp;cmp=gotland_attivita" target="_blank" rel="sponsored noopener">Prenota attività a Gotland ✦</a>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="stoccolma-gotland-1.png" alt="Panorama di Stoccolma sull'acqua"></div>
+    <div class="copy">
+      <div class="num">01 · STOCCOLMA</div>
+      <h2>Una capitale costruita sull'acqua</h2>
+      <p>Il viaggio comincia tra le facciate di Gamla Stan, i ponti e il profilo della città riflesso sul mare. I grandi classici restano, ma senza trasformare la prima giornata in una lista di monumenti da spuntare.</p>
+      <p>Appena ci si sposta verso <strong>Södermalm</strong>, Stoccolma cambia ritmo: quartieri vissuti, passeggiate panoramiche e viste che fanno capire quanto l'acqua faccia parte della città.</p>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="stoccolma-gotland-2.png" alt="Stoccolma vista dall'acqua"></div>
+    <div class="copy">
+      <div class="num">02 · TRA CITTÀ E ARCIPELAGO</div>
+      <h2>Il Baltico comincia già qui</h2>
+      <p>Stoccolma non finisce sul lungomare. Basta salire su un battello per iniziare a vedere la città da un'altra prospettiva e avvicinarsi al suo arcipelago.</p>
+      <p>È il passaggio perfetto prima di lasciare la capitale: il mare smette di essere soltanto uno sfondo e diventa parte vera del percorso.</p>
+    </div>
+  </section>
+
+  <section class="crossing">
+    <div>
+      <div class="num">03 · STOCCOLMA → GOTLAND</div>
+      <h2>Verso Visby, attraversando il Baltico</h2>
+      <p>Per raggiungere Gotland si scende verso il porto di <strong>Nynäshamn</strong> e da lì si prosegue in traghetto fino a Visby.</p>
+      <p>Non è soltanto uno spostamento: è il momento in cui il viaggio cambia completamente scenario, lasciando la capitale per un'isola con un'identità tutta sua.</p>
+    </div>
+    <img src="stoccolma-gotland-3.png" alt="Traghetto in Svezia">
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="stoccolma-gotland-4.png" alt="Vicoli medievali di Visby a Gotland"></div>
+    <div class="copy">
+      <div class="num">04 · VISBY</div>
+      <h2>Dentro una città medievale sul mare</h2>
+      <p>Mura, torri, rovine e strade acciottolate: Visby sembra costruita per essere esplorata a piedi, senza bisogno di rincorrere una sequenza infinita di attrazioni.</p>
+      <p>E tra queste strade si nasconde anche un pezzo di cultura pop svedese: diverse scene delle produzioni di <strong>Pippi Calzelunghe</strong> sono legate proprio a Visby.</p>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="stoccolma-gotland-5.png" alt="Villa Villekulla a Gotland"></div>
+    <div class="copy">
+      <div class="num">05 · L'ISOLA DI PIPPI</div>
+      <h2>Villa Villekulla e la costa</h2>
+      <p>A pochi chilometri da Visby si trova <strong>Villa Villekulla</strong>, la casa originale utilizzata nelle produzioni televisive di Pippi Calzelunghe.</p>
+      <p>Da qui il viaggio continua verso la costa occidentale, dove le case colorate lasciano spazio alle scogliere e al Baltico. È uno di quei giorni in cui Gotland mostra due facce completamente diverse.</p>
+    </div>
+  </section>
+
+  <section class="face">
+    <div class="photo"><img src="stoccolma-gotland-6.png" alt="Raukar sulla costa di Gotland e Fårö"></div>
+    <div class="copy">
+      <div class="num">06 · FÅRÖ</div>
+      <h2>Il paesaggio diventa quasi lunare</h2>
+      <p>Attraversato lo stretto verso Fårö, l'isola cambia ancora. Lungo la costa compaiono i <strong>raukar</strong>, grandi formazioni calcaree scolpite dal vento e dal mare.</p>
+      <p>Tra pietra, spiagge e strade secondarie, questa è la parte più selvaggia dell'itinerario — e quella in cui vale maggiormente la pena lasciare spazio alle deviazioni.</p>
+    </div>
+  </section>
+
+  <section class="philosophy">
+    <div class="eyebrow" style="color:var(--orange)">Fuori Mappa ✦</div>
+    <h2>Non una gita a Gotland, ma due metà dello stesso viaggio</h2>
+    <p>Stoccolma introduce il Baltico. Gotland lo trasforma in paesaggio, storia e strada. Per questo l'isola non viene compressa in una giornata: Visby, Fårö e la costa meritano di diventare una parte del viaggio tanto importante quanto la capitale.</p>
+  </section>
+
+  <section class="extras">
+    <div class="extras-head">
+      <div class="eyebrow" style="color:var(--orange)">Tre deviazioni da segnare</div>
+      <h2>Qualche chicca Fuori Mappa ✦</h2>
+      <p>Tre indizi di quello che c'è oltre le tappe più conosciute. Il percorso completo resta nell'itinerario personalizzato.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <img src="stoccolma-gotland-5.png" alt="Villa Villekulla">
+        <h3>Villa Villekulla</h3>
+        <p>La vera casa utilizzata nelle produzioni di Pippi: un pezzo di immaginario svedese a pochi chilometri da Visby.</p>
+      </article>
+      <article class="card">
+        <img src="stoccolma-gotland-6.png" alt="Raukar di Fårö">
+        <h3>Fårö e i raukar</h3>
+        <p>Formazioni di calcare, costa battuta dal vento e paesaggi che sembrano appartenere a un'altra isola.</p>
+      </article>
+      <article class="card">
+        <img src="stoccolma-gotland-7.png" alt="Paesaggio di Gotland">
+        <h3>Furillen</h3>
+        <p>Il lato più minimale di Gotland: calcare, vecchie cave e tracce industriali immerse in un paesaggio spoglio.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="practical">
+    <h2>Info pratiche</h2>
+    <div class="facts">
+      <div class="fact"><b>Durata</b>6 giorni</div>
+      <div class="fact"><b>Stoccolma</b>Auto non necessaria</div>
+      <div class="fact"><b>Verso Gotland</b>Traghetto da Nynäshamn</div>
+      <div class="fact"><b>Ritmo</b>Città + isola + costa</div>
+    </div>
+    <div class="season-note">
+      <strong>☀️ Estate:</strong> Gotland è organizzabile anche con i bus, pianificando bene tratte e orari.<br>
+      <strong>❄️ Fuori stagione / inverno:</strong> per Fårö, Furillen e le zone più isolate l'auto è la soluzione consigliata.
+    </div>
+  </section>
+</main>
+
+<section class="final-cta">
+  <h2>Una capitale, un'isola e il Baltico nel mezzo.</h2>
+  <p>Possiamo costruire il viaggio sui tuoi giorni e sulla stagione in cui parti, scegliendo quanto spazio lasciare ai classici e quanto alle deviazioni Fuori Mappa.</p>
+  <a class="button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+</section>
+
+<footer>Fuori Mappa · itinerari costruiti con curiosità ✦</footer>
+</body>
+</html>
