@@ -653,7 +653,43 @@
       .journey-catalogue .journey-card{transform:none !important}
     }
 
-  </style>
+  
+/* FUORI MAPPA - SERVIZI E ANTEPRIMA */
+.fm-hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.fm-hero-actions .cta-button{margin-top:26px}
+.fm-hero-actions .cta-button-primary{background:#222;color:#fff}
+.fm-services,.fm-preview{padding:85px 8%;background:#f4eadb}
+.fm-preview{background:#fffaf2}
+.fm-wrap{max-width:1100px;margin:auto}
+.fm-eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:12px}
+.fm-heading{font-family:Georgia,serif;font-size:clamp(34px,5vw,49px);margin:12px 0 20px}
+.fm-lead{max-width:730px;line-height:1.75;margin:0 0 30px}
+.fm-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.fm-service-card{background:#fffdf8;padding:34px;border:1px solid #ded0bd;box-shadow:5px 7px 0 #00000010}
+.fm-service-card:nth-child(1){transform:rotate(-.7deg)}
+.fm-service-card:nth-child(2){transform:rotate(.6deg)}
+.fm-service-card h3{font-family:Georgia,serif;font-size:29px;margin:10px 0}
+.fm-service-card p{line-height:1.7}
+.fm-status{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:bold}
+.fm-preview-pages{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;margin:35px auto}
+.fm-preview-pages img{width:min(21%,220px);min-width:145px;height:auto;box-shadow:5px 8px 18px #0003;border:6px solid white}
+.fm-preview-pages img:nth-child(odd){transform:rotate(-3deg)}
+.fm-preview-pages img:nth-child(even){transform:rotate(3deg)}
+.fm-preview-note{font-size:13px;opacity:.7;line-height:1.6}
+.fm-mobile-toggle{display:none}
+@media(max-width:700px){
+ .fm-service-grid{grid-template-columns:1fr}
+ .fm-service-card{transform:none!important;padding:25px}
+ .fm-services,.fm-preview{padding:65px 7%}
+ nav{position:relative;flex-direction:row;flex-wrap:wrap;justify-content:space-between}
+ .fm-mobile-toggle{display:inline-block;background:transparent;border:1px solid #222;padding:10px 13px;font:inherit;font-weight:bold;cursor:pointer}
+ nav .menu{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0}
+ nav .menu.fm-open{display:flex}
+ nav .menu a{padding:12px 6px;border-top:1px solid #ded0bd}
+ nav .menu a:last-child{width:auto;text-align:left}
+ .fm-preview-pages img{min-width:0;width:42%}
+}
+</style>
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
 <style>
@@ -707,8 +743,10 @@
   <nav>
     <a class="logo" href="index.html" style="color:inherit;text-decoration:none;">FUORI MAPPA ✦</a>
 
-    <div class="menu">
+    <button class="fm-mobile-toggle" type="button" aria-expanded="false" aria-controls="main-menu">☰ Menu</button>
+    <div class="menu" id="main-menu">
       <a href="#itinerari">Itinerari</a>
+      <a href="#servizi">Servizi</a>
       <a href="dove-dormire.html">Dove dormire</a>
       <a href="chi-sono.html">Chi sono</a>
       <a href="passaporto.html">Il mio passaporto</a>
@@ -728,7 +766,7 @@
         Itinerari autentici, viaggi accessibili e posti che meritano
         una deviazione dalla solita rotta.
       </p>
-      <a class="cta-button hero-button" href="#itinerari">Esplora i viaggi ↓</a>
+      <div class="fm-hero-actions"><a class="cta-button hero-button" href="#itinerari">Esplora i viaggi ↓</a><a class="cta-button cta-button-primary" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ✦</a></div>
     </div>
   </section>
 
@@ -892,6 +930,29 @@
     </div>
   </section>
 
+
+<section class="fm-services" id="servizi" aria-labelledby="fm-services-title">
+ <div class="fm-wrap"><div class="fm-eyebrow">Ogni viaggio comincia da un'idea ✦</div>
+ <h2 class="fm-heading" id="fm-services-title">Viaggia con Fuori Mappa</h2>
+ <p class="fm-lead">Non un itinerario uguale per tutti, ma un percorso pensato per il tuo tempo, i tuoi interessi e il tuo budget.</p>
+ <div class="fm-service-grid">
+  <article class="fm-service-card"><span class="fm-status">✦ Disponibile ora</span><h3>Il tuo viaggio, su misura</h3><p>Studio delle tappe, spostamenti, esperienze e consigli pratici: ricevi una guida personalizzata per organizzare il viaggio in autonomia. Le prenotazioni restano a tuo carico.</p><a class="cta-button" href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea →</a></article>
+  <article class="fm-service-card"><span class="fm-status">✦ Progetto futuro · non ancora disponibile</span><h3>Dall'idea alla partenza</h3><p>Stiamo valutando una collaborazione con un'agenzia di viaggi autorizzata per offrire, in futuro, anche servizi di prenotazione gestiti direttamente dall'agenzia partner.</p><p>Al momento Fuori Mappa non vende pacchetti turistici e non effettua prenotazioni per conto dei clienti.</p></article>
+ </div></div>
+</section>
+<section class="fm-preview" aria-labelledby="fm-preview-title"><div class="fm-wrap">
+ <div class="fm-eyebrow">Dentro un itinerario ✦</div><h2 class="fm-heading" id="fm-preview-title">Un viaggio progettato per te</h2>
+ <p class="fm-lead">Non riceverai soltanto un elenco di luoghi da visitare. Costruiamo ogni giornata partendo dalla posizione del tuo alloggio, studiando l’ordine delle tappe e cercando gli spostamenti più pratici, a piedi o con i mezzi pubblici. Nella guida troverai collegamenti utili per consultare attrazioni e biglietti, suggerimenti sulle app da scaricare prima della partenza, indicazioni per i trasferimenti, alternative e un budget orientativo. Tutto pensato per aiutarti a organizzare il viaggio in autonomia, senza dover ricominciare ogni ricerca da zero.</p><p class="fm-lead">Qui sotto trovi un piccolo assaggio di una guida personalizzata realizzata per Amsterdam.</p>
+ <div class="fm-preview-pages">
+  <img loading="lazy" src="anteprima-amsterdam-1.webp" alt="Copertina esemplificativa della guida di Amsterdam, con dettagli personali oscurati">
+  <img loading="lazy" src="anteprima-amsterdam-2.webp" alt="Panoramica delle giornate dell'itinerario">
+  <img loading="lazy" src="anteprima-amsterdam-8.webp" alt="Tabella operativa di una giornata di viaggio">
+  <img loading="lazy" src="anteprima-amsterdam-17.webp" alt="Budget indicativo per persona">
+ </div>
+ <p class="fm-preview-note">Estratti dimostrativi da una guida realizzata su commissione. Informazioni personali omesse. Le tariffe riportate nell'esempio si riferiscono al periodo di preparazione e non sono prezzi attuali.</p>
+ <a class="cta-button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+ </div></section>
+
   <section class="home-cta">
     <div class="small">E tu, dove vuoi andare?</div>
     <h2>La prossima destinazione può essere la tua.</h2>
@@ -952,6 +1013,9 @@
   FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br><a href="privacy.html">Privacy e preferenze del sito</a>
 </footer>
 
+<script>
+(function(){const toggle=document.querySelector(".fm-mobile-toggle"),menu=document.getElementById("main-menu");if(toggle&&menu){toggle.addEventListener("click",()=>{const open=menu.classList.toggle("fm-open");toggle.setAttribute("aria-expanded",String(open));});menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("fm-open");toggle.setAttribute("aria-expanded","false");}));}})();
+</script>
 <script>
 (function(){
   const typeFilter = document.getElementById('filter-type');
