@@ -1,534 +1,60 @@
 <!DOCTYPE html>
-<html lang="it">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Chi sono | Fuori Mappa</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: #f4eadb;
-      color: #222;
-      font-family: Arial, sans-serif;
-    }
-
-
-    /* MENU */
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 22px 7%;
-      background: #fffaf2;
-      border-bottom: 1px solid #d8c8b5;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      text-decoration: none;
-      color: #222;
-    }
-
-    .home-link {
-      color: #222;
-      text-decoration: none;
-      font-size: 15px;
-    }
-
-
-    /* INTRO */
-
-    .hero {
-      padding: 90px 8% 60px;
-      text-align: center;
-    }
-
-    .small {
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 12px;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(55px, 9vw, 95px);
-      line-height: .95;
-      margin: 18px 0;
-    }
-
-    .intro {
-      max-width: 650px;
-      margin: auto;
-      font-size: 19px;
-      line-height: 1.7;
-    }
-
-
-    /* LA MIA STORIA */
-
-    .story {
-      padding: 40px 8% 100px;
-    }
-
-    .paper {
-      position: relative;
-      max-width: 900px;
-      margin: auto;
-      background: #fffaf2;
-      padding: 65px;
-      box-shadow: 8px 10px 0 rgba(0,0,0,.08);
-      transform: rotate(-0.4deg);
-    }
-
-    .tape {
-      position: absolute;
-      width: 110px;
-      height: 28px;
-      background: #d9c79f;
-      opacity: .8;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%) rotate(3deg);
-    }
-
-    .paper h2 {
-      font-family: Georgia, serif;
-      font-size: 42px;
-      margin: 15px 0 25px;
-    }
-
-    .paper p {
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 22px;
-    }
-
-
-    /* PERCORSO */
-
-    .travel-path {
-      margin: 45px 0;
-      padding: 30px;
-      border-top: 1px solid #d8c8b5;
-      border-bottom: 1px solid #d8c8b5;
-    }
-
-    .travel-path-title {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-bottom: 25px;
-    }
-
-    .travel-path-item {
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 25px;
-      margin: 18px 0;
-      align-items: start;
-    }
-
-    .travel-path-item strong {
-      font-family: Georgia, serif;
-      font-size: 18px;
-    }
-
-    .travel-path-item span {
-      line-height: 1.6;
-    }
-
-
-    /* FRASE */
-
-    .note {
-      max-width: 700px;
-      margin: 60px auto 0;
-      padding: 35px;
-      background: #dfe5d6;
-      transform: rotate(1deg);
-      font-family: Georgia, serif;
-      font-size: 23px;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-
-    /* COME VIAGGIO */
-
-    .values {
-      padding: 90px 8%;
-      background: #fffaf2;
-    }
-
-    .values-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .values-title h2 {
-      font-family: Georgia, serif;
-      font-size: 45px;
-      margin: 10px 0;
-    }
-
-    .value-grid {
-      max-width: 950px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .value {
-      background: #f4eadb;
-      padding: 35px 25px;
-      min-height: 220px;
-      border: 1px solid #dfd1bf;
-    }
-
-    .value:nth-child(1) {
-      transform: rotate(-1deg);
-    }
-
-    .value:nth-child(2) {
-      transform: rotate(1deg);
-    }
-
-    .value:nth-child(3) {
-      transform: rotate(-.5deg);
-    }
-
-    .value span {
-      font-size: 28px;
-    }
-
-    .value h3 {
-      font-family: Georgia, serif;
-      font-size: 25px;
-      margin: 15px 0 10px;
-    }
-
-    .value p {
-      line-height: 1.6;
-      margin: 0;
-    }
-
-
-    /* FINALE */
-
-    .next {
-      padding: 100px 8%;
-      text-align: center;
-    }
-
-    .next h2 {
-      font-family: Georgia, serif;
-      font-size: 45px;
-      margin: 10px 0 20px;
-    }
-
-    .next p {
-      line-height: 1.6;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 22px;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      padding: 35px;
-      text-align: center;
-      background: #222;
-      color: white;
-    }
-
-
-    /* TELEFONO */
-
-    @media (max-width: 700px) {
-
-      nav {
-        padding: 18px 5%;
-      }
-
-      .logo {
-        font-size: 22px;
-      }
-
-      .home-link {
-        font-size: 13px;
-      }
-
-      .hero {
-        padding: 70px 7% 45px;
-      }
-
-      .intro {
-        font-size: 17px;
-      }
-
-      .story {
-        padding: 30px 7% 70px;
-      }
-
-      .paper {
-        padding: 45px 25px;
-        transform: none;
-      }
-
-      .paper h2 {
-        font-size: 34px;
-      }
-
-      .travel-path {
-        padding: 25px 0;
-      }
-
-      .travel-path-item {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .value-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .value {
-        transform: none !important;
-      }
-
-      .values {
-        padding: 70px 7%;
-      }
-
-      .values-title h2,
-      .next h2 {
-        font-size: 36px;
-      }
-    }
-
-  </style>
-</head>
-
-
-<body>
-
-
-  <!-- MENU -->
-
-  <nav>
-    <a href="index.html" class="logo">FUORI MAPPA ✦</a>
-    <a href="index.html" class="home-link">← Torna alla home</a>
-  </nav>
-
-
-  <!-- INTRO -->
-
-  <header class="hero">
-
-    <span class="small">DIETRO FUORI MAPPA</span>
-
-    <h1>Ciao, sono Anna.</h1>
-
-    <p class="intro">
-      Amo partire, ma probabilmente amo quasi altrettanto tutto quello
-      che succede prima: cercare, confrontare, costruire itinerari e
-      trovare quel posto che rischiava di rimanere fuori dalla mappa.
-    </p>
-
-  </header>
-
-
-  <!-- STORIA -->
-
-  <section class="story">
-
-    <div class="paper">
-
-      <span class="tape"></span>
-
-      <span class="small">COME È INIZIATO TUTTO</span>
-
-      <h2>Da una passione a Fuori Mappa</h2>
-
-      <p>
-        Fuori Mappa nasce dalla mia passione per i viaggi e soprattutto
-        per la loro organizzazione. Negli anni ho iniziato a costruire
-        autonomamente i miei itinerari, confrontando voli, alloggi,
-        trasporti, esperienze e costi per riuscire a conoscere davvero
-        ogni destinazione senza trasformare il viaggio in una corsa.
-      </p>
-
-      <p>
-        Mi piace vedere i luoghi che tutti conoscono, ma ancora di più
-        scoprire quello che c'è intorno: un quartiere meno turistico,
-        una strada presa quasi per caso, la cucina locale, un paesaggio
-        che non avevo programmato di trovare.
-      </p>
-
-      <p>
-        A un certo punto mi sono resa conto che la parte che precede
-        ogni partenza — cercare, pianificare e mettere insieme tutti
-        i pezzi — era diventata una delle cose che preferivo.
-        Da lì è nato Fuori Mappa: uno spazio in cui raccogliere
-        esperienze reali, itinerari e idee che possano essere utili
-        anche a chi sta preparando il prossimo viaggio.
-      </p>
-
-
-      <!-- FORMAZIONE -->
-
-      <div class="travel-path">
-
-        <span class="travel-path-title">
-          UN PO' DI ME, ANCHE FUORI DALLA MAPPA
-        </span>
-
-        <div class="travel-path-item">
-          <strong>🎓 Scienze del Turismo</strong>
-
-          <span>
-            La mia laurea e il punto in cui la passione per i viaggi
-            ha incontrato lo studio del turismo.
-          </span>
-        </div>
-
-        <div class="travel-path-item">
-          <strong>🌱 Turismo Sostenibile</strong>
-
-          <span>
-            Oggi continuo questo percorso con un Master in Turismo
-            Sostenibile, per imparare a progettare viaggi sempre più
-            consapevoli.
-          </span>
-        </div>
-
-      </div>
-
-
-      <!-- FRASE -->
-
-      <div class="note">
-        “Vedere i posti importanti, sì. Ma lasciare sempre un po'
-        di spazio per quello che non avevamo previsto.”
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- IL MIO MODO DI VIAGGIARE -->
-
-  <section class="values">
-
-    <div class="values-title">
-
-      <span class="small">
-        IL MIO MODO DI VIAGGIARE
-      </span>
-
-      <h2>Cosa trovi qui</h2>
-
-    </div>
-
-
-    <div class="value-grid">
-
-
-      <div class="value">
-
-        <span>⌖</span>
-
-        <h3>Fuori dalle solite rotte</h3>
-
-        <p>
-          I luoghi famosi meritano di essere visti, ma una destinazione
-          non finisce mai nelle sue attrazioni principali.
-        </p>
-
-      </div>
-
-
-      <div class="value">
-
-        <span>€</span>
-
-        <h3>Viaggi accessibili</h3>
-
-        <p>
-          Partire non deve necessariamente significare spendere una
-          fortuna. Costi e alternative fanno parte dell'itinerario.
-        </p>
-
-      </div>
-
-
-      <div class="value">
-
-        <span>✦</span>
-
-        <h3>Senza corse</h3>
-
-        <p>
-          Organizzare bene non significa riempire ogni minuto.
-          Preferisco itinerari che lasciano il tempo di vivere un posto.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- FINALE -->
-
-  <section class="next">
-
-    <span class="small">E ADESSO?</span>
-
-    <h2>Dove andiamo?</h2>
-
-    <p>
-      Inizia dalle destinazioni che sono già finite Fuori Mappa.
-    </p>
-
-    <a href="index.html" class="button">
-      Esplora i viaggi →
-    </a>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-    FUORI MAPPA · viaggi, idee e qualche deviazione ✦
-  </footer>
-
-
-</body>
-</html>
+<html lang="it"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Conosci Anna, la storia di Fuori Mappa e il suo passaporto di viaggio: luoghi, esperienze e itinerari." name="description"/><title>Chi sono &amp; Il mio passaporto | Fuori Mappa</title><link href="favicon.png" rel="icon"/><style>
+:root{--paper:#fbf5e9;--cream:#f4eadb;--ink:#30281f;--green:#5e7264;--line:#d6c5ab;--brown:#916a48}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Arial,sans-serif;background:var(--paper) url('home-paper.jpg') center/700px}a{color:inherit}nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:19px 6%;background:#fbf5e9f2;border-bottom:1px solid var(--line)}.logo{font:700 26px Georgia,serif;text-decoration:none}.menu{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.menu a{text-decoration:none;font-size:13px;font-weight:600}.menu a:hover{color:var(--brown)}.menu a:last-child{border:1px solid var(--ink);padding:11px}.toggle{display:none}.eyebrow{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:#886343}.hero{background:linear-gradient(95deg,#17241cc9,#203b32a8),url('home-mappa.jpg') center/cover;padding:105px 7% 100px;color:#fff9ed}.hero-inner{max-width:1150px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:55px}.hero h1{font:normal clamp(54px,7vw,94px)/.98 Georgia,serif;margin:20px 0}.hero p{font:19px/1.7 Georgia,serif;max-width:660px}.hero .eyebrow{color:#e7d2a9}.hero-photo{padding:12px 12px 44px;background:#fff9ed;transform:rotate(4deg);box-shadow:0 16px 32px #0005;color:var(--ink);max-width:390px;justify-self:center}.hero-photo img{width:100%;height:330px;object-fit:cover;display:block}.photo-caption{text-align:center;font:italic 16px Georgia,serif;margin:15px 0 0}.wrap{max-width:1130px;margin:auto}.section{padding:95px 7%}.section h2{font:normal clamp(36px,5vw,60px)/1.12 Georgia,serif;margin:14px 0 24px}.section p{line-height:1.85;font-size:16px}.paper{background:#fffbf3;border:1px solid #dfd1bd;padding:clamp(26px,5vw,60px);box-shadow:9px 12px 0 #5c493019;position:relative}.paper:before{content:'';position:absolute;top:-12px;left:44%;width:115px;height:26px;background:#dcc89dbb;transform:rotate(-4deg)}.story-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:45px;align-items:start}.side-note{background:#dce4d8;padding:34px;transform:rotate(2deg);font:italic 24px/1.55 Georgia,serif;box-shadow:5px 7px 15px #0001}.vallecchia{background:#e7e7d9;position:relative}.vallecchia-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center}.polaroid{background:#fffdf8;padding:14px 14px 46px;box-shadow:8px 12px 24px #30281f30;transform:rotate(-2deg)}.polaroid img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.polaroid figcaption{text-align:center;margin-top:16px;font:italic 16px Georgia,serif}.path{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:28px}.path article{background:#f0e4d0;border:1px solid var(--line);padding:28px}.path h3{font:26px Georgia,serif;margin:0 0 12px}.values{background:#fff9ed}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.value{padding:30px;background:#f2e6d2;border:1px solid var(--line);transform:rotate(-.7deg)}.value:nth-child(2){transform:rotate(1deg)}.value h3{font:26px Georgia,serif}.passport{background:linear-gradient(#f9f0e2ed,#f9f0e2ed),url('home-mappa.jpg') center/cover}.passport-header{text-align:center;max-width:780px;margin:0 auto 34px}.passport-header p{font:18px/1.7 Georgia,serif}.map-sheet{padding:20px;background:#fffaf2c9;box-shadow:0 15px 35px #30281f22;transform:rotate(-.5deg)}.passport-map{width:100%;display:block}.stats{display:flex;justify-content:center;gap:0;margin:25px auto 60px;max-width:650px;background:#e4cfb0;transform:rotate(.5deg)}.stat{flex:1;text-align:center;padding:18px 8px;border-right:1px solid #c9b596}.stat:last-child{border:0}.stat strong{display:block;font:700 29px Georgia,serif;color:#8a603d}.stat span{font:13px Georgia,serif}.torn-title{font:italic 37px Georgia,serif;text-align:center;margin:15px 0 36px}.countries{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}.country{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;min-width:0}.flag{width:35px;height:35px;border-radius:50%;overflow:hidden;border:2px solid white;box-shadow:0 2px 8px #0002}.flag img{width:100%;height:100%;object-fit:cover}.country h3{font:700 16px Georgia,serif;margin:2px 0 5px}.country p{font:italic 12.5px/1.45 Georgia,serif;margin:0;color:#65574a}.country a{text-decoration:none}.country a:hover h3{color:#9a6445}.star{color:#b07a42}.legend{text-align:center;margin:30px auto 20px;font:italic 14px Georgia,serif}.memories{display:flex;justify-content:center;gap:45px;margin:45px auto 0}.memory{width:170px;padding:9px 9px 30px;background:white;box-shadow:0 8px 20px #0002;position:relative;transform:rotate(-6deg);margin:0}.memory:nth-child(2){transform:rotate(5deg)}.memory img{width:100%;aspect-ratio:4/3;object-fit:cover}.memory small{position:absolute;bottom:8px;left:0;right:0;text-align:center;font:italic 12px Georgia,serif}.sicily{background:#f7efe3}.sicily-card{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center;padding:35px;background:#ead8bd;box-shadow:0 10px 28px #0002;transform:rotate(.3deg)}.sicily-copy h2{font:italic clamp(42px,6vw,70px) Georgia,serif}.sicily-copy h3{font:22px Georgia,serif}.sicily-photo{width:100%;max-height:400px;object-fit:cover;border:10px solid white;transform:rotate(-2deg)}.closing{background:#587064;color:white;text-align:center;padding:90px 7%}.closing h2{font:normal clamp(35px,5vw,58px) Georgia,serif;margin:0 0 18px}.closing p{max-width:690px;margin:0 auto 30px;line-height:1.8}.button{display:inline-block;padding:15px 24px;background:#fff9ed;text-decoration:none;color:var(--ink);font-weight:700}footer{text-align:center;background:#2e281f;color:#fff8e9;padding:38px 7%;line-height:1.9}footer a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #b78b60;outline-offset:3px}@media(max-width:900px){.hero-inner,.story-grid,.vallecchia-grid{grid-template-columns:1fr}.hero-photo{max-width:330px}.countries{grid-template-columns:repeat(2,minmax(0,1fr))}.value-grid{grid-template-columns:1fr}.sicily-card{grid-template-columns:1fr}.story-grid{gap:20px}}@media(max-width:700px){nav{flex-wrap:wrap}.toggle{display:block;background:none;border:1px solid var(--ink);padding:10px 12px;font-weight:bold}.menu{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0}.menu.open{display:flex}.menu a{padding:12px 0;border-bottom:1px solid var(--line)}.hero{padding:65px 7%}.hero h1{font-size:55px}.hero-photo img{height:240px}.section{padding:65px 7%}.path{grid-template-columns:1fr}.countries{gap:18px 12px}.country{grid-template-columns:30px 1fr;gap:7px}.flag{width:29px;height:29px}.country h3{font-size:14px}.country p{font-size:11px}.stats strong{font-size:22px}.stat span{font-size:10px}.memories{gap:15px}.memory{width:130px}.sicily-card{padding:23px}.side-note{font-size:20px}}
+
+/* Restyling sfondi · diario Fuori Mappa */
+.hero{position:relative;isolation:isolate;background:linear-gradient(100deg,rgba(239,228,207,.90),rgba(245,237,220,.72)),url('home-mappa.jpg') center/cover;color:var(--ink)}
+.hero:before{content:'';position:absolute;inset:16px;border:1px solid rgba(112,91,65,.24);pointer-events:none;z-index:-1}
+.hero .eyebrow{color:#806144}
+.hero-photo{box-shadow:12px 18px 35px #4b3b2a45}
+.hero-photo:before{content:'';position:absolute;top:-14px;left:36%;width:95px;height:28px;background:#d8c49bba;transform:rotate(-7deg)}
+.story-grid .paper{background:linear-gradient(#fffaf3eb,#fffaf3eb),url('home-paper.jpg') center/650px}
+.passport{background:linear-gradient(120deg,rgba(103,127,109,.88),rgba(156,174,146,.86)),url('home-mappa.jpg') center/cover}
+.passport-header .eyebrow{color:#f2e2bf}
+.passport-header h2,.passport-header p{color:#fffaf0}
+.passport .map-sheet{background:#fffaf0e8;border:10px solid #fffaf0;box-shadow:0 20px 45px #1b322d55}
+.passport .torn-title{display:table;margin:20px auto 38px;padding:12px 28px;background:#f5e9d5;color:#493c2c;transform:rotate(-1deg);box-shadow:5px 7px 0 #233b3026}
+.passport .country{background:#fffaf0e8;padding:12px 9px;border:1px solid #e7dac3;box-shadow:2px 4px 8px #263c2a22}
+.passport .country h3{color:#30281f}
+.passport .country p{color:#65574a}
+.passport .legend{display:table;padding:12px 18px;background:#f5e9d5;color:#493c2c;transform:rotate(1deg)}
+.sicily{background:linear-gradient(#fbf4e9df,#fbf4e9df),url('home-paper.jpg') center/700px}
+@media(max-width:700px){.hero:before{inset:9px}.passport .map-sheet{border-width:5px}.passport .country{padding:8px 6px}}
+</style></head><body><nav><a class="logo" href="index.html">FUORI MAPPA ✦</a><button aria-controls="main-menu" aria-expanded="false" class="toggle">☰ Menu</button><div class="menu" id="main-menu"><a href="index.html">Home</a><a href="itinerari.html">Itinerari</a><a href="index.html#servizi">Servizi</a><a href="dove-dormire.html">Dove dormire</a><a href="#passaporto">Il mio passaporto</a><a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a></div></nav><main>
+<header class="hero"><div class="hero-inner"><div><span class="eyebrow">DIETRO FUORI MAPPA ✦</span><h1>Ciao, sono Anna.</h1><p>Amo partire, ma probabilmente amo quasi altrettanto tutto quello che succede prima: cercare, confrontare, costruire itinerari e trovare quel posto che rischiava di rimanere fuori dalla mappa.</p><p>Questo è il mio diario: le radici, le esperienze e i luoghi che mi hanno portata fin qui.</p></div><figure class="hero-photo"><img alt="Anna, fondatrice di Fuori Mappa" src="anna-fuori-mappa.PNG"/><figcaption class="photo-caption">Una viaggiatrice con mille appunti ✦</figcaption></figure></div></header>
+<section class="section"><div class="wrap story-grid"><div class="paper"><span class="eyebrow">COME È INIZIATO TUTTO</span><h2>Da una passione a Fuori Mappa</h2><p>Negli anni ho iniziato a costruire autonomamente i miei itinerari, confrontando voli, alloggi, trasporti, esperienze e costi per conoscere davvero ogni destinazione senza trasformare il viaggio in una corsa.</p><p>Mi piace vedere i luoghi che tutti conoscono, ma ancora di più scoprire quello che c'è intorno: un quartiere meno turistico, una strada presa quasi per caso, la cucina locale, un paesaggio che non avevo programmato di trovare.</p><p>A un certo punto ho capito che preparare ogni partenza era diventato una delle cose che preferivo. Da lì è nato Fuori Mappa: uno spazio in cui raccogliere esperienze reali, itinerari progettati e idee per chi sta preparando il prossimo viaggio.</p><p>Sono cresciuta tra la Sicilia e i racconti di un piccolo borgo nelle Marche, Vallecchia. Due luoghi molto diversi, che mi hanno insegnato a guardare oltre le destinazioni più conosciute e ad apprezzare anche gli angoli meno raccontati.</p></div><aside class="side-note">“Vedere i posti importanti, sì. Ma lasciare sempre un po' di spazio per quello che non avevamo previsto.” ✦</aside></div></section>
+
+<section class="section"><div class="wrap"><span class="eyebrow">UN PO' DI ME, ANCHE FUORI DALLA MAPPA</span><h2>La passione incontra lo studio</h2><div class="path"><article><h3>🎓 Scienze del Turismo</h3><p>La mia laurea e il punto in cui la passione per i viaggi ha incontrato lo studio del turismo.</p></article><article><h3>🌱 Turismo Sostenibile</h3><p>Continuo questo percorso con un Master in Turismo Sostenibile, per imparare a progettare viaggi sempre più consapevoli.</p></article></div></div></section>
+<section class="section values"><div class="wrap"><span class="eyebrow">IL MIO MODO DI VIAGGIARE</span><h2>Cosa trovi su Fuori Mappa</h2><div class="value-grid"><article class="value"><h3>⌖ Fuori dalle solite rotte</h3><p>I luoghi famosi meritano di essere visti, ma una destinazione non finisce mai nelle sue attrazioni principali.</p></article><article class="value"><h3>€ Viaggi accessibili</h3><p>Partire non deve necessariamente significare spendere una fortuna. Costi e alternative fanno parte dell'itinerario.</p></article><article class="value"><h3>✦ Senza corse</h3><p>Organizzare bene non significa riempire ogni minuto. Preferisco itinerari che lasciano il tempo di vivere un posto.</p></article></div></div></section>
+<section class="section passport" id="passaporto"><div class="wrap"><div class="passport-header"><span class="eyebrow">LE PAGINE DEL MIO DIARIO ✦</span><h2>Il mio passaporto</h2><p>Alcuni viaggi li ho organizzati da zero, altri li ho scoperti strada facendo. Tutti hanno lasciato qualcosa nel mio modo di vedere il mondo.</p></div><div class="map-sheet"><img alt="Mappa dei Paesi visitati" class="passport-map" src="passaporto-mappa.png"/></div><div class="stats"><div class="stat"><strong>16</strong><span>Paesi visitati</span></div><div class="stat"><strong>+30</strong><span>Destinazioni</span></div><div class="stat"><strong>Tante</strong><span>storie da raccontare</span></div></div><h3 class="torn-title">Dove sono stata</h3><div class="countries">
+<div class="country"><div class="flag"><img alt="Bandiera Marocco" src="bandiera-marocco.png"/></div><div><a href="marocco.html"><h3>Marocco <span class="star">✦</span></h3><p>Marrakech</p></a></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Tunisia" src="bandiera-tunisia.png"/></div><div><h3>Tunisia</h3><p>Tunisi</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Turchia" src="bandiera-turchia.png"/></div><div><h3>Turchia</h3><p>Istanbul</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Albania" src="bandiera-albania.png"/></div><div><a href="albania.html"><h3>Albania <span class="star">✦</span></h3><p>Tirana</p></a></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Austria" src="bandiera-austria.png"/></div><div><a href="vienna-bratislava.html"><h3>Austria <span class="star">✦</span></h3><p>Vienna</p></a></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Bulgaria" src="bandiera-bulgaria.png"/></div><div><h3>Bulgaria</h3><p>Sofia</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Grecia" src="bandiera-grecia.png"/></div><div><h3>Grecia</h3><p>Atene</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Ungheria" src="bandiera-ungheria.png"/></div><div><a href="budapest.html"><h3>Ungheria <span class="star">✦</span></h3><p>Budapest</p></a></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Macedonia del Nord" src="bandiera-macedonia.png"/></div><div><a href="macedonia.html"><h3>Macedonia del Nord <span class="star">✦</span></h3><p>Skopje · Ohrid</p></a></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Polonia" src="bandiera-polonia.png"/></div><div><h3>Polonia</h3><p>Varsavia</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Romania" src="bandiera-romania.png"/></div><div><h3>Romania</h3><p>Bucarest</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Slovacchia" src="bandiera-slovacchia.png"/></div><div><a href="vienna-bratislava.html"><h3>Slovacchia <span class="star">✦</span></h3><p>Bratislava</p></a></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Spagna" src="bandiera-spagna.png"/></div><div><h3>Spagna</h3><p>Valencia · Barcellona · Ibiza (Dalt Vila)</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Francia" src="bandiera-francia.png"/></div><div><h3>Francia</h3><p>Nizza</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Inghilterra" src="bandiera-inghilterra.png"/></div><div><h3>Regno Unito</h3><p>Londra · Bath · Cheltenham · Stonehenge</p></div></div>
+<div class="country"><div class="flag"><img alt="Bandiera Italia" src="bandiera-italia.png"/></div><div><a href="umbria.html"><h3>Italia <span class="star">✦</span></h3><p>Genova · Bologna · Verona · Venezia · Roma · Perugia · Ascoli Piceno · Alberobello · Polignano a Mare · Reggio Calabria · Napoli</p></a></div></div>
+</div><p class="legend"><span class="star">✦</span> Per queste destinazioni trovi anche un itinerario sul sito.</p><div class="memories"><figure class="memory one">
+<img alt="Ricordo di Istanbul" src="passaporto-1.png"/>
+<small>Istanbul</small>
+</figure><figure class="memory two">
+<img alt="Ricordo di Valencia" src="passaporto-2.png"/>
+<small>Valencia</small>
+</figure></div></div></section>
+<section class="section sicily"><div class="wrap"><div class="sicily-card">
+<div class="sicily-copy">
+<h2>Sicilia ♡</h2>
+<h3>Casa, e il posto che conosco meglio.</h3>
+<p>La mia isola, il punto di partenza di ogni viaggio. Tra borghi, mare, montagne e tradizioni, è il luogo che mi ha insegnato ad amare i dettagli, le persone e la libertà di partire, sempre.</p>
+</div>
+<img alt="Sicilia" class="sicily-photo" src="passaporto-sicilia.png"/>
+</div></div></section><section class="closing"><span class="eyebrow" style="color:#e8d6b9">LA PROSSIMA PAGINA ✦</span><h2>E adesso, dove andiamo?</h2><p>Ogni viaggio, anche il più semplice, ha fatto crescere la mia curiosità. Se hai un luogo in mente, possiamo iniziare a disegnare la tua rotta.</p><a class="button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio →</a></section></main><footer>FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br/>Instagram · @fuorimappa.travel · fuorimappa.travel@gmail.com<br/><a href="privacy.html">Privacy e preferenze del sito</a></footer><script>const t=document.querySelector('.toggle'),m=document.querySelector('.menu');t?.addEventListener('click',()=>{let o=m.classList.toggle('open');t.setAttribute('aria-expanded',String(o))});m?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');t?.setAttribute('aria-expanded','false')}));</script></body></html>

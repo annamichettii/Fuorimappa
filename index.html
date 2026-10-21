@@ -746,6 +746,14 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 @media(max-width:900px){.fm-choices-grid{grid-template-columns:1fr}.fm-choice{min-height:0;transform:none!important}.fm-vallecchia-wrap{grid-template-columns:1fr;gap:45px}.journey-catalogue{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){nav{padding:15px 5%}.menu a:last-child{border:0;padding:12px 6px}.hero{min-height:690px;padding:80px 12px;background-position:52% center}.hero .paper{width:100%;padding:62px 23px 43px;transform:rotate(-.6deg)}.hero .paper:before{font-size:8px;letter-spacing:1px;padding:10px}.hero h1{font-size:clamp(66px,17vw,100px);letter-spacing:-3px}.hero .small{font-size:10px}.hero .subtitle{font-size:17px}.hero .cta-button{width:100%;margin-top:10px}.journey-section.catalogue{padding:75px 6%}.journey-intro h2{font-size:42px}.journey-catalogue{grid-template-columns:1fr;gap:24px}.journey-catalogue .journey-card{transform:none!important}.journey-filters{padding:20px}.fm-choices{padding:80px 7%}.fm-choices-heading h2{font-size:42px}.fm-choice{padding:28px}.home-cta{padding:100px 7%}.fm-vallecchia{padding:75px 7%}.fm-vallecchia-photo{transform:rotate(-1deg)}.fm-vallecchia-text h2{font-size:40px}.about{padding:70px 7%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.journey-catalogue .journey-card{transition:none}}
+</style><style>
+/* Homepage: sei cartoline, una storia personale */
+.fm-all-trips{text-align:center;margin:55px auto 0}
+.fm-all-trips .cta-button{background:#342b22;color:#fffaf2;border-color:#342b22;padding:17px 26px}
+.fm-all-trips .cta-button:hover{background:#6e5540;color:#fff}
+.fm-vallecchia-text p{margin-bottom:18px}
+.fm-vallecchia-text .fm-ink-link{margin-top:10px}
+@media(max-width:700px){.fm-all-trips{margin-top:38px}}
 </style></head>
 <body>
 <dialog aria-labelledby="newsletter-title" id="newsletter-dialog">
@@ -771,50 +779,29 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <a class="logo" href="index.html" style="color:inherit;text-decoration:none;">FUORI MAPPA ✦</a>
 <button aria-controls="main-menu" aria-expanded="false" class="fm-mobile-toggle" type="button">☰ Menu</button>
 <div class="menu" id="main-menu">
-<a href="#itinerari">Itinerari</a>
+<a href="itinerari.html">Itinerari</a>
 <a href="#servizi">Servizi</a>
 <a href="dove-dormire.html">Dove dormire</a>
-<a href="chi-sono.html">Chi sono</a>
-<a href="passaporto.html">Il mio passaporto</a>
+<a href="chi-sono.html">Chi sono &amp; Passaporto</a>
+
 <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
 </div>
 </nav>
 <section aria-label="Fuori Mappa, il tuo prossimo viaggio comincia qui" class="hero">
-
 <div class="paper">
 <div class="small">UN DIARIO DI LUOGHI, IDEE E DEVIAZIONI ✦</div>
 <h1>Fuori<br/>Mappa</h1>
 <p class="subtitle">Ogni viaggio nasce da un’idea. Sfoglia le nostre ispirazioni, scegli la tua rotta e rendila davvero tua.</p>
-<div class="fm-hero-actions"><a class="cta-button hero-button" href="#itinerari">Esplora i viaggi ↓</a><a class="cta-button cta-button-primary" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ✦</a></div>
+<div class="fm-hero-actions"><a class="cta-button hero-button" href="itinerari.html">Esplora gli itinerari ↗</a><a class="cta-button cta-button-primary" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ✦</a></div>
 </div>
 </section>
 <section class="journey-section catalogue" id="itinerari">
 <div class="journey-intro">
-<div class="small">IL CATALOGO DELLE ISPIRAZIONI ✦</div>
+<div class="small">SEI CARTOLINE DAL NOSTRO DIARIO ✦</div>
 <h2>Dove ti porta la curiosità?</h2>
-<p>Questa è una raccolta di idee, non un elenco di viaggi preconfezionati. Esplora gli itinerari, lasciati ispirare e scegli se partire da una di queste tracce o immaginare qualcosa di completamente diverso.</p>
+<p>Una piccola selezione di itinerari da cui lasciarti ispirare. Nel catalogo completo trovi tutte le destinazioni e puoi scegliere la rotta che ti incuriosisce di più.</p>
 </div><div class="fm-catalogue-note"><span class="fm-stamp">COLLEZIONE DI VIAGGI ✦</span><p>Ogni cartolina è un punto di partenza, mai un percorso obbligato.</p></div>
-<div aria-label="Filtra gli itinerari" class="journey-filters">
-<div class="filter-group">
-<label for="filter-type">Tipo di viaggio</label>
-<select id="filter-type">
-<option value="all">Tutti i tipi di viaggio</option>
-<option value="on-the-road">On the Road</option>
-<option value="citta-citta">Da una città all'altra</option>
-<option value="una-citta">Una città alla volta</option>
-</select>
-</div>
-<div class="filter-group">
-<label for="filter-continent">Continente</label>
-<select id="filter-continent">
-<option value="all">Tutti i continenti</option>
-<option value="europa">Europa</option>
-<option value="asia">Asia</option>
-<option value="africa">Africa</option>
-</select>
-</div>
-<p aria-live="polite" class="filter-count" id="filter-count"></p>
-</div>
+
 <div class="journey-catalogue" id="journey-catalogue">
 <a class="journey-card" data-continent="europa" data-type="on-the-road" href="macedonia.html">
 <img alt="Macedonia del Nord" src="macedonia-hero.PNG"/>
@@ -852,95 +839,22 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <h3>Helsinki + Tallinn</h3>
 <span class="journey-meta">5 giorni · senza auto · Finlandia + Estonia</span>
 </a>
-<a class="journey-card" data-continent="africa" data-type="on-the-road" href="marocco.html">
-<img alt="Marocco" src="marocco-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Marocco</h3>
-<span class="journey-meta">11–12 giorni · 6 volti del Marocco</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="georgia.html">
-<img alt="Georgia" src="georgia-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Georgia<br/>on the road</h3>
-<span class="journey-meta">8 o 13–14 giorni · Road trip nel Caucaso</span>
-</a>
-<a class="journey-card" data-continent="asia" data-type="on-the-road" href="giordania.html">
-<img alt="Il Tesoro di Petra, Giordania" loading="lazy" src="giordania-hero.jpg"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Giordania<br/>Dalla pietra rossa al deserto</h3>
-<span class="journey-meta">7 o 10 giorni · Petra, Dana e Wadi Rum</span>
-</a>
-<a class="journey-card" data-continent="asia" data-type="on-the-road" href="uzbekistan.html">
-<img alt="Il Registan di Samarcanda, Uzbekistan" loading="lazy" src="uzbekistan-hero.jpg"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Uzbekistan<br/>Sulle tracce della Via della Seta</h3>
-<span class="journey-meta">
-    8 o 12 giorni · Samarcanda, Bukhara e Khiva
-  </span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="norvegia.html">
-<img alt="Norvegia, villaggi e montagne delle isole Lofoten" loading="lazy" src="norvegia-hero.jpg"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Norvegia<br/>Dalle città all'Artico</h3>
-<span class="journey-meta">
-    10–14 giorni · Lofoten, fiordi e Artico
-  </span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="croazia.html">
-<img alt="Croazia" src="croazia-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Croazia<br/>on the road</h3>
-<span class="journey-meta">5 o 6 giorni · Natura, storia e acqua</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="serbia.html">
-<img alt="Serbia on the road" src="serbia-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Serbia<br/>on the road</h3>
-<span class="journey-meta">7 giorni · Drina, Tara, Zlatibor e Uvac</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="albania.html">
-<img alt="Albania" src="albania-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Albania</h3>
-<span class="journey-meta">8 giorni · Memoria, pietra e acqua</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="montenegro.html">
-<img alt="Montenegro" src="montenegro-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Montenegro<br/>on the road</h3>
-<span class="journey-meta">6 giorni · Baie, laghi e montagne</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="citta-citta" href="stoccolma-gotland.html">
-<img alt="Stoccolma e Gotland" src="stoccolma-gotland-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Stoccolma + Gotland</h3>
-<span class="journey-meta">6 giorni · città + isola · Svezia</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="on-the-road" href="spagna-nord.html">
-<img alt="Spagna del Nord on the road" src="spagna-nord-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Spagna del Nord<br/>on the road</h3>
-<span class="journey-meta">9 giorni · Atlantico, Picos e Asturie</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="citta-citta" href="vigo-porto.html">
-<img alt="Vigo e Porto, dalla Galizia al Portogallo" src="vigo-porto-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Vigo + Porto</h3>
-<span class="journey-meta">5 giorni · 2 Paesi · senza auto</span>
-</a>
-<a class="journey-card" data-continent="europa" data-type="citta-citta" href="colmar-baden.html">
-<img alt="Colmar e Baden-Baden, tra Alsazia e Foresta Nera" src="colmar-baden-hero.png"/>
-<span class="journey-badge">✦ Itinerario progettato</span>
-<h3>Colmar + Baden-Baden</h3>
-<span class="journey-meta">
-    5 giorni · Francia + Germania · senza auto
-  </span>
-</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
-<div class="journey-empty" id="journey-empty">
-      Nessun itinerario corrisponde ancora a questi filtri. Ma la mappa continua a riempirsi ✦
-    </div>
-</section><section aria-labelledby="fm-choices-title" class="fm-choices" id="come-partire"><div class="fm-wrap"><div class="fm-choices-heading"><span class="fm-eyebrow">IL VIAGGIO PRENDE FORMA ✦</span><h2 id="fm-choices-title">Tre modi di partire. <em>La rotta è tua.</em></h2><p>Il catalogo serve ad accendere la curiosità. Da lì possiamo costruire qualcosa che ti somigli davvero.</p></div><div class="fm-choices-grid"><article class="fm-choice"><span class="fm-choice-number">01 / SCEGLI</span><h3>Parti da un'ispirazione</h3><p>Hai trovato un itinerario che ti fa sognare? Usalo come punto di partenza per il tuo viaggio.</p><a href="#itinerari">Sfoglia il catalogo ↗</a></article><article class="fm-choice"><span class="fm-choice-number">02 / REINVENTA</span><h3>Cambia la rotta</h3><p>Aggiungi una tappa, rallenta il ritmo, cambia durata o interessi. La traccia si adatta a te.</p><a href="costruiamo-il-tuo-viaggio.html">Personalizza un itinerario ↗</a></article><article class="fm-choice"><span class="fm-choice-number">03 / IMMAGINA</span><h3>Comincia da zero</h3><p>La tua destinazione non è nel catalogo? Nessun problema: possiamo progettare un viaggio completamente nuovo.</p><a href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea ↗</a></article></div></div></section>
+
+<div class="fm-all-trips"><a class="cta-button" href="itinerari.html">Scopri tutti i 19 itinerari ↗</a></div></section><section aria-labelledby="fm-choices-title" class="fm-choices" id="come-partire"><div class="fm-wrap"><div class="fm-choices-heading"><span class="fm-eyebrow">IL VIAGGIO PRENDE FORMA ✦</span><h2 id="fm-choices-title">Tre modi di partire. <em>La rotta è tua.</em></h2><p>Il catalogo serve ad accendere la curiosità. Da lì possiamo costruire qualcosa che ti somigli davvero.</p></div><div class="fm-choices-grid"><article class="fm-choice"><span class="fm-choice-number">01 / SCEGLI</span><h3>Parti da un'ispirazione</h3><p>Hai trovato un itinerario che ti fa sognare? Usalo come punto di partenza per il tuo viaggio.</p><a href="itinerari.html">Sfoglia il catalogo ↗</a></article><article class="fm-choice"><span class="fm-choice-number">02 / REINVENTA</span><h3>Cambia la rotta</h3><p>Aggiungi una tappa, rallenta il ritmo, cambia durata o interessi. La traccia si adatta a te.</p><a href="costruiamo-il-tuo-viaggio.html">Personalizza un itinerario ↗</a></article><article class="fm-choice"><span class="fm-choice-number">03 / IMMAGINA</span><h3>Comincia da zero</h3><p>La tua destinazione non è nel catalogo? Nessun problema: possiamo progettare un viaggio completamente nuovo.</p><a href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea ↗</a></article></div></div></section>
 <section aria-labelledby="fm-services-title" class="fm-services" id="servizi">
 <div class="fm-wrap"><div class="fm-eyebrow">Ogni viaggio comincia da un'idea ✦</div>
 <h2 class="fm-heading" id="fm-services-title">Viaggia con Fuori Mappa</h2>
@@ -968,29 +882,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <p>Un luogo che hai sempre sognato, un itinerario da trasformare o una destinazione ancora da scegliere: raccontami la tua idea e iniziamo a darle forma.</p>
 <a class="cta-button" href="costruiamo-il-tuo-viaggio.html">Raccontami il tuo viaggio →</a>
 </section>
-<section aria-labelledby="fm-vallecchia-title" class="fm-vallecchia"><div class="fm-vallecchia-wrap"><div class="fm-vallecchia-photo"><img alt="Panorama delle montagne e della valle vicino a Vallecchia, nelle Marche" loading="lazy" src="home-hero.PNG"/><span class="fm-photo-label">VALLECCHIA · MARCHE · ITALIA</span></div><div class="fm-vallecchia-text"><span class="fm-eyebrow">UNA PAGINA DEL MIO DIARIO ✦</span><h2 id="fm-vallecchia-title">Ci sono luoghi da cui cominciano tutti i viaggi.</h2><p>Alcuni posti non sono soltanto destinazioni: sono ricordi, radici, storie da custodire. Fuori Mappa nasce anche da questo modo di guardare il mondo, con curiosità e affetto per ogni luogo.</p><a class="fm-ink-link" href="chi-sono.html">La storia dietro Fuori Mappa ↗</a></div></div></section><section class="about">
-<div class="about-paper">
-<span class="about-tape"></span>
-<div class="about-text">
-<span class="small">DIETRO FUORI MAPPA</span>
-<h2>Ciao, sono Anna ✈︎</h2>
-<p>
-        Viaggio, fotografo e prendo appunti praticamente su tutto.
-        Fuori Mappa nasce per raccontare i viaggi che ho vissuto e
-        trasformare nuove idee in itinerari pensati con cura.
-      </p>
-<p>
-        Qui trovi esperienze vissute in prima persona e itinerari progettati
-        per partire davvero: con tempi realistici, idee meno scontate e senza
-        l'idea che per viaggiare serva spendere una fortuna.
-      </p>
-<a class="about-link" href="chi-sono.html">Scopri chi sono →</a>
-</div>
-<div class="about-photo">
-<img alt="Anna - Fuori Mappa" src="anna-fuori-mappa.PNG"/>
-</div>
-</div>
-</section>
+<section aria-label="Chi sono, il mio passaporto e Vallecchia" aria-labelledby="fm-vallecchia-title" class="fm-vallecchia" id="chi-sono"><div class="fm-vallecchia-wrap"><div class="fm-vallecchia-photo"><img alt="Anna, creatrice di Fuori Mappa" loading="lazy" src="anna-fuori-mappa.PNG"/><span class="fm-photo-label">ANNA · FUORI MAPPA ✦</span></div><div class="fm-vallecchia-text"><span class="fm-eyebrow">DIETRO FUORI MAPPA ✦</span><h2 id="fm-vallecchia-title">Ciao, sono Anna. Ogni viaggio ha le sue radici.</h2><p>Viaggio, fotografo e prendo appunti praticamente su tutto. Fuori Mappa nasce dalla voglia di trasformare luoghi vissuti e nuove idee in itinerari curati, accessibili e personali.</p><p>C’è un posto che per me significa più di qualunque destinazione: Vallecchia, tra le montagne delle Marche. È il luogo dei ricordi con mio nonno, delle passeggiate fino al nostro “paradiso” di terra chiara e delle storie scolpite nella roccia. Mi ha insegnato che un luogo non è soltanto un punto sulla mappa: sono le persone e i ricordi a renderlo speciale.</p><p>Nella mia pagina personale ti racconto anche i Paesi che ho visitato: un passaporto di esperienze, curiosità e strade che continuano a ispirare Fuori Mappa.</p><a class="fm-ink-link" href="chi-sono.html">Conoscimi e sfoglia il mio passaporto ↗</a></div></div></section>
 <section class="manifesto">
 <div class="small">Fuori dalla solita rotta</div>
 <p>
@@ -1011,36 +903,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <script>
 (function(){const toggle=document.querySelector(".fm-mobile-toggle"),menu=document.getElementById("main-menu");if(toggle&&menu){toggle.addEventListener("click",()=>{const open=menu.classList.toggle("fm-open");toggle.setAttribute("aria-expanded",String(open));});menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("fm-open");toggle.setAttribute("aria-expanded","false");}));}})();
 </script>
-<script>
-(function(){
-  const typeFilter = document.getElementById('filter-type');
-  const continentFilter = document.getElementById('filter-continent');
-  const cards = [...document.querySelectorAll('#journey-catalogue .journey-card')];
-  const count = document.getElementById('filter-count');
-  const empty = document.getElementById('journey-empty');
 
-  function applyFilters(){
-    const type = typeFilter.value;
-    const continent = continentFilter.value;
-    let visible = 0;
-
-    cards.forEach(card => {
-      const matchesType = type === 'all' || card.dataset.type === type;
-      const matchesContinent = continent === 'all' || card.dataset.continent === continent;
-      const show = matchesType && matchesContinent;
-      card.hidden = !show;
-      if(show) visible++;
-    });
-
-    count.textContent = visible === 1 ? '1 itinerario trovato' : visible + ' itinerari trovati';
-    empty.style.display = visible ? 'none' : 'block';
-  }
-
-  typeFilter.addEventListener('change', applyFilters);
-  continentFilter.addEventListener('change', applyFilters);
-  applyFilters();
-})();
-</script>
 <script>
 window.LOCALE='it';
 window.REQUIRED_CODE_ERROR_MESSAGE='Scegli un prefisso paese';
