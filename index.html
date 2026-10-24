@@ -756,6 +756,60 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 .fm-vallecchia-text p{margin-bottom:18px}
 .fm-vallecchia-text .fm-ink-link{margin-top:10px}
 @media(max-width:700px){.fm-all-trips{margin-top:38px}}
+</style><style>
+/* FUORI MAPPA — MOBILE APP EXPERIENCE (desktop untouched) */
+.fm-app-bottom,.fm-drawer-backdrop{display:none}
+@media(max-width:700px){
+ html{scroll-padding-top:72px}
+ body{overflow-x:hidden;padding-bottom:68px}
+ nav{position:sticky;top:0;z-index:80;min-height:65px;padding:12px 5%;flex-wrap:nowrap;background:#fbf5e9f7;backdrop-filter:blur(12px)}
+ nav .logo{font-size:clamp(19px,5.4vw,25px);white-space:nowrap}
+ .fm-mobile-toggle{font-size:0;border:1px solid #cbb89d;border-radius:12px;width:44px;height:42px;padding:0;display:grid;place-items:center;color:#342b22}
+ .fm-mobile-toggle:before{content:'☰';font-size:23px;font-weight:400}
+ nav .menu,nav .menu.fm-open{position:fixed;display:flex;top:0;right:0;width:min(84vw,330px);height:100dvh;padding:86px 24px 32px;background:#fbf5e9;box-shadow:-15px 0 45px #30281f30;flex-direction:column;align-items:stretch;gap:6px;overflow-y:auto;transform:translateX(110%);transition:transform .25s ease;z-index:100}
+ nav .menu.fm-open{transform:translateX(0)}
+ nav .menu a,nav .menu a:last-child{padding:16px 8px;font-size:16px;border:0;border-bottom:1px solid #d6c5ab;text-align:left;font-weight:600}
+ nav .menu a:last-child{background:#342b22;color:#fffaf2;border-radius:10px;margin-top:16px;text-align:center}
+ .fm-drawer-backdrop{position:fixed;inset:0;background:#20170e8c;z-index:79}
+ .fm-drawer-backdrop.fm-open{display:block}
+ .fm-app-bottom{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;z-index:70;padding:7px 7px calc(7px + env(safe-area-inset-bottom));background:#fffaf2f5;border-top:1px solid #d6c5ab;box-shadow:0 -5px 25px #30281f17;backdrop-filter:blur(12px)}
+ .fm-app-bottom a{text-decoration:none;color:#67533f;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:700;min-width:0}
+ .fm-app-bottom a span:first-child{font-size:21px;line-height:1.1}
+ .hero{min-height:0;padding:53px 17px 44px}
+ .hero .paper{padding:45px 20px 26px;border-radius:8px;transform:none}
+ .hero .paper:before{font-size:8px;letter-spacing:.8px;top:-14px;padding:8px 12px}
+ .hero .small{font-size:9px;letter-spacing:1.4px}
+ .hero h1{font-size:clamp(55px,15vw,76px);letter-spacing:-2px;margin:18px 0;line-height:.88}
+ .hero .subtitle{font-size:15px;line-height:1.5}
+ .fm-hero-actions{gap:7px;margin-top:15px}
+ .hero .cta-button{margin-top:5px;padding:13px 10px;font-size:13px;border-radius:8px}
+ .journey-section.catalogue{padding:49px 0 55px}
+ .journey-intro{padding:0 7%}.journey-intro .small{font-size:10px;letter-spacing:2px}
+ .journey-intro h2{font-size:clamp(32px,9vw,40px);line-height:1.06;letter-spacing:-1px;margin:10px 0}
+ .journey-intro p{font-size:14px;line-height:1.55}
+ .fm-catalogue-note{margin-bottom:20px}.fm-catalogue-note p{font-size:13px;padding:0 7%}
+ .journey-catalogue{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:6%;gap:13px;padding:5px 6% 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .journey-catalogue::-webkit-scrollbar{display:none}
+ .journey-catalogue .journey-card{flex:0 0 min(76vw,300px);scroll-snap-align:start;min-height:0;padding:9px 9px 19px;border-radius:9px;box-shadow:0 5px 15px #392e231c}
+ .journey-catalogue .journey-card img{height:160px;border-radius:5px;margin-bottom:12px}
+ .journey-card h3{font-size:23px!important;margin:0 8px 7px}
+ .journey-badge{font-size:9px;margin:0 8px 8px}.journey-meta{font-size:10px;margin:0 8px}
+ .fm-all-trips{margin:15px 6% 0}.fm-all-trips .cta-button{border-radius:9px;padding:13px 18px;font-size:13px}
+ .fm-choices{padding:48px 6%}.fm-choices-heading{margin-bottom:20px}.fm-choices-heading h2{font-size:clamp(31px,8vw,39px);letter-spacing:-.6px}.fm-choices-heading p{font-size:14px;line-height:1.5}
+ .fm-choices-grid{gap:10px}.fm-choice{padding:0 17px;background:#fffaf5;border-radius:10px;box-shadow:2px 4px 0 #65503912}
+ .fm-choice summary{cursor:pointer;list-style:none;padding:17px 0;font:normal 20px Georgia,serif;display:flex;justify-content:space-between;align-items:center;gap:10px}
+ .fm-choice summary::-webkit-details-marker{display:none}.fm-choice summary:after{content:'+';font:24px Arial,sans-serif;color:#946746}.fm-choice[open] summary:after{content:'−'}
+ .fm-choice-number{display:block;padding-top:15px;font-size:10px}.fm-choice p{font-size:14px;margin:0 0 14px}.fm-choice a{display:inline-block;margin-bottom:18px}
+ .fm-services,.fm-preview{padding:50px 6%}.fm-heading{font-size:clamp(30px,8vw,38px)}.fm-lead{font-size:14px;line-height:1.65;margin-bottom:18px}
+ .fm-service-grid{gap:12px}.fm-service-card{padding:20px;border-radius:10px}.fm-service-card h3{font-size:24px}.fm-service-card p{font-size:14px;line-height:1.65}.fm-service-card .cta-button{font-size:13px;padding:12px}
+ .fm-preview-pages{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;gap:13px;padding:8px 8px 20px;scrollbar-width:none}
+ .fm-preview-pages img{width:70%;min-width:70%;scroll-snap-align:center;transform:none!important;border-radius:5px}
+ .home-cta{padding:65px 7%}.home-cta h2{font-size:clamp(33px,9vw,43px);line-height:1.12}.home-cta p{font-size:14px}
+ .fm-vallecchia{padding:50px 7%}.fm-vallecchia-wrap{gap:25px}.fm-vallecchia-text h2{font-size:clamp(30px,8vw,38px)}.fm-vallecchia-text p{font-size:14px;line-height:1.7}
+ .manifesto{padding:50px 8%}.manifesto p{font-size:21px;line-height:1.5}
+ footer{padding:32px 18px 45px;font-size:13px;line-height:1.7}
+}
+@media(prefers-reduced-motion:reduce){nav .menu{transition:none}}
 </style></head>
 <body>
 <dialog aria-labelledby="newsletter-title" id="newsletter-dialog">
@@ -777,6 +831,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <div class="sib-form-block" style="text-align:center"><button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit"><svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewbox="0 0 512 512"><path d="M256 8a248 248 0 0 1 248 248h-48A200 200 0 0 0 256 56z"></path></svg>ISCRIVITI</button></div>
 <input class="input--hidden" name="email_address_check" type="text" value=""/><input name="locale" type="hidden" value="it"/>
 </form></div></div></div></dialog>
+<div class="fm-drawer-backdrop" aria-hidden="true"></div>
 <nav>
 <a class="logo" href="index.html" style="color:inherit;text-decoration:none;">FUORI MAPPA ✦</a>
 <button aria-controls="main-menu" aria-expanded="false" class="fm-mobile-toggle" type="button">☰ Menu</button>
@@ -789,6 +844,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
 </div>
 </nav>
+<div class="fm-app-bottom" aria-label="Navigazione rapida"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="#servizi"><span>✧</span>Servizi</a><a href="chi-sono.html"><span>♙</span>Anna</a></div>
 <section aria-label="Fuori Mappa, il tuo prossimo viaggio comincia qui" class="hero">
 <div class="paper">
 <div class="small">UN DIARIO DI LUOGHI, IDEE E DEVIAZIONI ✦</div>
@@ -856,7 +912,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 
 </div>
 
-<div class="fm-all-trips"><a class="cta-button" href="itinerari.html">Scopri tutti gli itinerari ↗</a></div></section><section aria-labelledby="fm-choices-title" class="fm-choices" id="come-partire"><div class="fm-wrap"><div class="fm-choices-heading"><span class="fm-eyebrow">IL VIAGGIO PRENDE FORMA ✦</span><h2 id="fm-choices-title">Tre modi di partire. <em>La rotta è tua.</em></h2><p>Il catalogo serve ad accendere la curiosità. Da lì possiamo costruire qualcosa che ti somigli davvero.</p></div><div class="fm-choices-grid"><article class="fm-choice"><span class="fm-choice-number">01 / SCEGLI</span><h3>Parti da un'ispirazione</h3><p>Hai trovato un itinerario che ti fa sognare? Usalo come punto di partenza per il tuo viaggio.</p><a href="itinerari.html">Sfoglia il catalogo ↗</a></article><article class="fm-choice"><span class="fm-choice-number">02 / REINVENTA</span><h3>Cambia la rotta</h3><p>Aggiungi una tappa, rallenta il ritmo, cambia durata o interessi. La traccia si adatta a te.</p><a href="costruiamo-il-tuo-viaggio.html">Personalizza un itinerario ↗</a></article><article class="fm-choice"><span class="fm-choice-number">03 / IMMAGINA</span><h3>Comincia da zero</h3><p>La tua destinazione non è nel catalogo? Nessun problema: possiamo progettare un viaggio completamente nuovo.</p><a href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea ↗</a></article></div></div></section>
+<div class="fm-all-trips"><a class="cta-button" href="itinerari.html">Scopri tutti gli itinerari ↗</a></div></section><section aria-labelledby="fm-choices-title" class="fm-choices" id="come-partire"><div class="fm-wrap"><div class="fm-choices-heading"><span class="fm-eyebrow">IL VIAGGIO PRENDE FORMA ✦</span><h2 id="fm-choices-title">Tre modi di partire. <em>La rotta è tua.</em></h2><p>Il catalogo serve ad accendere la curiosità. Da lì possiamo costruire qualcosa che ti somigli davvero.</p></div><div class="fm-choices-grid"><details class="fm-choice"><span class="fm-choice-number">01 / SCEGLI</span><summary>Parti da un'ispirazione</summary><p>Hai trovato un itinerario che ti fa sognare? Usalo come punto di partenza per il tuo viaggio.</p><a href="itinerari.html">Sfoglia il catalogo ↗</a></details><details class="fm-choice"><span class="fm-choice-number">02 / REINVENTA</span><summary>Cambia la rotta</summary><p>Aggiungi una tappa, rallenta il ritmo, cambia durata o interessi. La traccia si adatta a te.</p><a href="costruiamo-il-tuo-viaggio.html">Personalizza un itinerario ↗</a></details><details class="fm-choice"><span class="fm-choice-number">03 / IMMAGINA</span><summary>Comincia da zero</summary><p>La tua destinazione non è nel catalogo? Nessun problema: possiamo progettare un viaggio completamente nuovo.</p><a href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea ↗</a></details></div></div></section>
 <section aria-labelledby="fm-services-title" class="fm-services" id="servizi">
 <div class="fm-wrap"><div class="fm-eyebrow">Ogni viaggio comincia da un'idea ✦</div>
 <h2 class="fm-heading" id="fm-services-title">Viaggia con Fuori Mappa</h2>
@@ -903,7 +959,16 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
   FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br/><a href="privacy.html">Privacy e preferenze del sito</a>
 </footer>
 <script>
-(function(){const toggle=document.querySelector(".fm-mobile-toggle"),menu=document.getElementById("main-menu");if(toggle&&menu){toggle.addEventListener("click",()=>{const open=menu.classList.toggle("fm-open");toggle.setAttribute("aria-expanded",String(open));});menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{menu.classList.remove("fm-open");toggle.setAttribute("aria-expanded","false");}));}})();
+(function(){
+ const toggle=document.querySelector('.fm-mobile-toggle'),menu=document.getElementById('main-menu'),backdrop=document.querySelector('.fm-drawer-backdrop');
+ if(!toggle||!menu)return;
+ function setOpen(open){menu.classList.toggle('fm-open',open);backdrop.classList.toggle('fm-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Chiudi menu':'Apri menu');document.body.style.overflow=open?'hidden':'';}
+ toggle.addEventListener('click',()=>setOpen(!menu.classList.contains('fm-open')));
+ backdrop.addEventListener('click',()=>setOpen(false));
+ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)});
+ window.addEventListener('resize',()=>{if(window.innerWidth>700)setOpen(false)});
+})();
 </script>
 
 <script>
