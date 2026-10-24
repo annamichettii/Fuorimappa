@@ -21,6 +21,22 @@
 @media(max-width:470px){.brand{font-size:22px}.hero-decor{min-height:200px}.polaroid{width:56%}.polaroid img{height:130px}.travel-stamp{font-size:11px;padding:9px 11px}.filters{grid-template-columns:1fr;padding:17px}.filter-search{grid-column:auto}.journey-card{padding:6px 6px 14px}.journey-card img{margin-bottom:10px}.journey-badge{font-size:8px;margin:0 5px 6px;letter-spacing:.4px}.journey-card h3{font-size:17px;margin:0 5px 8px}.journey-meta{font-size:10px;margin: auto 22px 0 5px}.journey-card:after{width:22px;height:22px;right:7px;bottom:10px;font-size:13px}.cards{gap:15px 11px}.hero-paper:before{font-size:8px;letter-spacing:1px}.catalogue-heading p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.journey-card{transition:none}}
 @media print{.hero{background:#e6e1d0}.hero-inner{display:block}.hero-decor{display:none}.cards{grid-template-columns:repeat(3,1fr)}.journey-card{break-inside:avoid;transform:none!important}.filters,.closing{display:none}}
+
+/* Fuori Mappa — catalogo compatto solo su smartphone */
+@media (min-width:390px) and (max-width:760px){
+  .catalogue{padding-left:3%;padding-right:3%}
+  .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px 8px}
+  .journey-card{padding:4px 4px 9px;min-width:0}
+  .journey-card img{aspect-ratio:4/5;margin-bottom:7px}
+  .journey-card h3{font-size:clamp(11px,2.9vw,14px);line-height:1.16;margin:0 3px 3px;padding:0;overflow-wrap:anywhere}
+  .journey-card h3 br{display:none}
+  .journey-badge,.journey-meta,.journey-card:after{display:none}
+}
+@media (max-width:389px){
+  .journey-card h3{font-size:14px;line-height:1.2}
+  .journey-badge,.journey-meta,.journey-card:after{display:none}
+  .journey-card img{aspect-ratio:4/5}
+}
 </style>
 </head>
 <body>
