@@ -21,22 +21,6 @@
 @media(max-width:470px){.brand{font-size:22px}.hero-decor{min-height:200px}.polaroid{width:56%}.polaroid img{height:130px}.travel-stamp{font-size:11px;padding:9px 11px}.filters{grid-template-columns:1fr;padding:17px}.filter-search{grid-column:auto}.journey-card{padding:6px 6px 14px}.journey-card img{margin-bottom:10px}.journey-badge{font-size:8px;margin:0 5px 6px;letter-spacing:.4px}.journey-card h3{font-size:17px;margin:0 5px 8px}.journey-meta{font-size:10px;margin: auto 22px 0 5px}.journey-card:after{width:22px;height:22px;right:7px;bottom:10px;font-size:13px}.cards{gap:15px 11px}.hero-paper:before{font-size:8px;letter-spacing:1px}.catalogue-heading p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.journey-card{transition:none}}
 @media print{.hero{background:#e6e1d0}.hero-inner{display:block}.hero-decor{display:none}.cards{grid-template-columns:repeat(3,1fr)}.journey-card{break-inside:avoid;transform:none!important}.filters,.closing{display:none}}
-
-/* Fuori Mappa — catalogo compatto solo su smartphone */
-@media (min-width:390px) and (max-width:760px){
-  .catalogue{padding-left:3%;padding-right:3%}
-  .cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px 8px}
-  .journey-card{padding:4px 4px 9px;min-width:0}
-  .journey-card img{aspect-ratio:4/5;margin-bottom:7px}
-  .journey-card h3{font-size:clamp(11px,2.9vw,14px);line-height:1.16;margin:0 3px 3px;padding:0;overflow-wrap:anywhere}
-  .journey-card h3 br{display:none}
-  .journey-badge,.journey-meta,.journey-card:after{display:none}
-}
-@media (max-width:389px){
-  .journey-card h3{font-size:14px;line-height:1.2}
-  .journey-badge,.journey-meta,.journey-card:after{display:none}
-  .journey-card img{aspect-ratio:4/5}
-}
 </style>
 </head>
 <body>
@@ -218,6 +202,12 @@
 
 </a>
 
+<a class="journey-card" data-continent="asia" data-type="on-the-road" href="thailandia.html">
+<img alt="Lago Cheow Lan, Thailandia, tra acque verdi e montagne" decoding="async" loading="lazy" src="thailandia-hero.jpg"/>
+<span class="journey-badge">✦ Collezione di itinerari progettati</span>
+<h3>Thailandia<br/>5 modi di scoprirla</h3>
+<span class="journey-meta">10–18 giorni · cultura, montagna, foresta e isole</span>
+</a>
 </div><p class="empty" id="journey-empty">Nessun itinerario corrisponde alla ricerca. Prova a cambiare i filtri: c'è sempre una nuova strada da scoprire ✦</p>
 </section>
 <section class="closing" aria-labelledby="closing-title"><div class="closing-inner"><div><span class="eyebrow">✦ La prossima pagina del diario</span><h2 id="closing-title">Pronta a creare il tuo viaggio?</h2><p>Parti da una delle nostre idee, trasformala oppure raccontami una destinazione completamente diversa. Ogni itinerario Fuori Mappa nasce da te.</p></div><a class="button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ↗</a></div></section>
