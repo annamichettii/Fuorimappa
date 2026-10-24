@@ -6,8 +6,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fuori Mappa | Itinerari di viaggio e viaggi su misura</title>
-<meta name="description" content="Scopri itinerari di viaggio, destinazioni e consigli pratici. Con Fuori Mappa puoi trovare ispirazione e richiedere un itinerario personalizzato.">
-<link rel="canonical" href="https://www.fuorimappa.it/">
+<meta content="Scopri itinerari di viaggio, destinazioni e consigli pratici. Con Fuori Mappa puoi trovare ispirazione e richiedere un itinerario personalizzato." name="description"/>
+<link href="https://www.fuorimappa.it/" rel="canonical"/>
 <style>
     * {
       box-sizing: border-box;
@@ -691,7 +691,7 @@
  .fm-preview-pages img{min-width:0;width:42%}
 }
 </style>
-<link href="https://sibforms.com/forms/end-form/build/sib-styles.css" rel="stylesheet"/>
+<link href="https://sibforms.com/forms/end-form/build/sib-styles.css" rel="stylesheet">
 <style>
 #newsletter-dialog {border:0;padding:48px 24px 24px;width:min(620px,calc(100% - 28px));max-height:90vh;max-height:90dvh;overflow:auto;background:#dcc7a5;color:#423b34;border-radius:8px;box-shadow:0 20px 80px #0005;}
 #newsletter-dialog::backdrop {background:rgba(0,0,0,.75);}
@@ -810,6 +810,33 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
  footer{padding:32px 18px 45px;font-size:13px;line-height:1.7}
 }
 @media(prefers-reduced-motion:reduce){nav .menu{transition:none}}
+</style></link><style>
+/* HOME MOBILE DEFINITIVA: contenuti conservati, consultazione a richiesta */
+.fm-mobile-hub{display:none}
+@media(max-width:700px){
+ .hero{padding:34px 14px 30px}.hero .paper{padding:39px 19px 23px}
+ .hero h1{font-size:clamp(52px,14vw,68px);margin:15px 0}
+ .journey-section.catalogue{padding-top:36px;padding-bottom:28px}
+ .journey-intro p{max-width:340px;margin:auto}
+ .fm-catalogue-note{margin-bottom:12px}.fm-catalogue-note p{display:none}
+ .fm-mobile-hub{display:block;padding:28px 6% 34px;background:#f7ecdc url('home-paper.jpg') center/700px}
+ .fm-mobile-hub-heading{text-align:center;margin-bottom:20px}
+ .fm-mobile-hub-heading span{font-size:10px;letter-spacing:2px;color:#8a593d;font-weight:700}
+ .fm-mobile-hub-heading h2{font:normal 34px Georgia,serif;margin:8px 0}
+ .fm-mobile-hub-heading p{font-size:13px;line-height:1.5;margin:0;color:#6c5946}
+ .fm-hub-button{display:flex;width:100%;align-items:center;justify-content:space-between;text-align:left;gap:12px;padding:17px 18px;margin:0 0 10px;background:#fffcf6;border:1px solid #dac8ad;border-radius:12px;box-shadow:0 3px 8px #30281f0d;color:#30281f;cursor:pointer;font:inherit}
+ .fm-hub-button strong{display:block;font:normal 21px Georgia,serif}
+ .fm-hub-button small{display:block;font-size:12px;color:#786149;margin-top:5px;line-height:1.35}
+ .fm-hub-chevron{font-size:24px;color:#8a593d;flex-shrink:0}
+ .fm-hub-button[aria-expanded=true]{background:#eee0c9;border-color:#b99c7d}
+ .fm-mobile-panel{display:none!important}
+ .fm-mobile-panel.fm-panel-open{display:block!important;padding-top:32px;padding-bottom:36px}
+ .fm-mobile-extra{display:none!important}
+ .fm-preview-pages img{width:65%;min-width:65%}
+ .fm-service-card{padding:17px}
+ .fm-vallecchia-text p{line-height:1.55;margin-bottom:12px}
+ .fm-app-bottom{min-height:65px}
+}
 </style></head>
 <body>
 <dialog aria-labelledby="newsletter-title" id="newsletter-dialog">
@@ -831,7 +858,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <div class="sib-form-block" style="text-align:center"><button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit"><svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewbox="0 0 512 512"><path d="M256 8a248 248 0 0 1 248 248h-48A200 200 0 0 0 256 56z"></path></svg>ISCRIVITI</button></div>
 <input class="input--hidden" name="email_address_check" type="text" value=""/><input name="locale" type="hidden" value="it"/>
 </form></div></div></div></dialog>
-<div class="fm-drawer-backdrop" aria-hidden="true"></div>
+<div aria-hidden="true" class="fm-drawer-backdrop"></div>
 <nav>
 <a class="logo" href="index.html" style="color:inherit;text-decoration:none;">FUORI MAPPA ✦</a>
 <button aria-controls="main-menu" aria-expanded="false" class="fm-mobile-toggle" type="button">☰ Menu</button>
@@ -840,11 +867,10 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <a href="#servizi">Servizi</a>
 <a href="dove-dormire.html">Dove dormire</a>
 <a href="chi-sono.html">Chi sono &amp; Passaporto</a>
-
 <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
 </div>
 </nav>
-<div class="fm-app-bottom" aria-label="Navigazione rapida"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="#servizi"><span>✧</span>Servizi</a><a href="chi-sono.html"><span>♙</span>Anna</a></div>
+<div aria-label="Navigazione rapida" class="fm-app-bottom"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="#servizi"><span>✧</span>Servizi</a><a href="chi-sono.html"><span>♙</span>Anna</a></div>
 <section aria-label="Fuori Mappa, il tuo prossimo viaggio comincia qui" class="hero">
 <div class="paper">
 <div class="small">UN DIARIO DI LUOGHI, IDEE E DEVIAZIONI ✦</div>
@@ -859,7 +885,6 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <h2>Dove ti porta la curiosità?</h2>
 <p>Una piccola selezione di itinerari da cui lasciarti ispirare. Nel catalogo completo trovi tutte le destinazioni e puoi scegliere la rotta che ti incuriosisce di più.</p>
 </div><div class="fm-catalogue-note"><span class="fm-stamp">COLLEZIONE DI VIAGGI ✦</span><p>Ogni cartolina è un punto di partenza, mai un percorso obbligato.</p></div>
-
 <div class="journey-catalogue" id="journey-catalogue">
 <a class="journey-card" data-continent="europa" data-type="on-the-road" href="macedonia.html">
 <img alt="Macedonia del Nord" src="macedonia-hero.PNG"/>
@@ -897,23 +922,9 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <h3>Helsinki + Tallinn</h3>
 <span class="journey-meta">5 giorni · senza auto · Finlandia + Estonia</span>
 </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-<div class="fm-all-trips"><a class="cta-button" href="itinerari.html">Scopri tutti gli itinerari ↗</a></div></section><section aria-labelledby="fm-choices-title" class="fm-choices" id="come-partire"><div class="fm-wrap"><div class="fm-choices-heading"><span class="fm-eyebrow">IL VIAGGIO PRENDE FORMA ✦</span><h2 id="fm-choices-title">Tre modi di partire. <em>La rotta è tua.</em></h2><p>Il catalogo serve ad accendere la curiosità. Da lì possiamo costruire qualcosa che ti somigli davvero.</p></div><div class="fm-choices-grid"><details class="fm-choice"><span class="fm-choice-number">01 / SCEGLI</span><summary>Parti da un'ispirazione</summary><p>Hai trovato un itinerario che ti fa sognare? Usalo come punto di partenza per il tuo viaggio.</p><a href="itinerari.html">Sfoglia il catalogo ↗</a></details><details class="fm-choice"><span class="fm-choice-number">02 / REINVENTA</span><summary>Cambia la rotta</summary><p>Aggiungi una tappa, rallenta il ritmo, cambia durata o interessi. La traccia si adatta a te.</p><a href="costruiamo-il-tuo-viaggio.html">Personalizza un itinerario ↗</a></details><details class="fm-choice"><span class="fm-choice-number">03 / IMMAGINA</span><summary>Comincia da zero</summary><p>La tua destinazione non è nel catalogo? Nessun problema: possiamo progettare un viaggio completamente nuovo.</p><a href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea ↗</a></details></div></div></section>
-<section aria-labelledby="fm-services-title" class="fm-services" id="servizi">
+<div class="fm-all-trips"><a class="cta-button" href="itinerari.html">Scopri tutti gli itinerari ↗</a></div></section><section aria-label="Scopri Fuori Mappa" class="fm-mobile-hub"><div class="fm-mobile-hub-heading"><span>✦ IL TUO DIARIO DI VIAGGIO</span><h2>Scopri di più</h2><p>Scegli cosa vuoi approfondire, senza scorrere tutta la pagina.</p></div><button aria-controls="come-partire" aria-expanded="false" class="fm-hub-button" data-open-panel="come-partire" type="button"><span><strong>Come funziona</strong><small>Tre modi per partire</small></span><span aria-hidden="true" class="fm-hub-chevron">＋</span></button><button aria-controls="servizi" aria-expanded="false" class="fm-hub-button" data-open-panel="servizi" type="button"><span><strong>I servizi</strong><small>Cosa posso organizzare per te</small></span><span aria-hidden="true" class="fm-hub-chevron">＋</span></button><button aria-controls="fm-panel-anteprima" aria-expanded="false" class="fm-hub-button" data-open-panel="anteprima" type="button"><span><strong>Dentro un itinerario</strong><small>Sfoglia un esempio di guida</small></span><span aria-hidden="true" class="fm-hub-chevron">＋</span></button><button aria-controls="chi-sono" aria-expanded="false" class="fm-hub-button" data-open-panel="storia" type="button"><span><strong>La mia storia</strong><small>Scopri chi c’è dietro Fuori Mappa</small></span><span aria-hidden="true" class="fm-hub-chevron">＋</span></button></section><section aria-labelledby="fm-choices-title" class="fm-choices fm-mobile-panel" data-mobile-panel="come-partire" id="come-partire"><div class="fm-wrap"><div class="fm-choices-heading"><span class="fm-eyebrow">IL VIAGGIO PRENDE FORMA ✦</span><h2 id="fm-choices-title">Tre modi di partire. <em>La rotta è tua.</em></h2><p>Il catalogo serve ad accendere la curiosità. Da lì possiamo costruire qualcosa che ti somigli davvero.</p></div><div class="fm-choices-grid"><details class="fm-choice"><span class="fm-choice-number">01 / SCEGLI</span><summary>Parti da un'ispirazione</summary><p>Hai trovato un itinerario che ti fa sognare? Usalo come punto di partenza per il tuo viaggio.</p><a href="itinerari.html">Sfoglia il catalogo ↗</a></details><details class="fm-choice"><span class="fm-choice-number">02 / REINVENTA</span><summary>Cambia la rotta</summary><p>Aggiungi una tappa, rallenta il ritmo, cambia durata o interessi. La traccia si adatta a te.</p><a href="costruiamo-il-tuo-viaggio.html">Personalizza un itinerario ↗</a></details><details class="fm-choice"><span class="fm-choice-number">03 / IMMAGINA</span><summary>Comincia da zero</summary><p>La tua destinazione non è nel catalogo? Nessun problema: possiamo progettare un viaggio completamente nuovo.</p><a href="costruiamo-il-tuo-viaggio.html">Raccontami la tua idea ↗</a></details></div></div></section>
+<section aria-labelledby="fm-services-title" class="fm-services fm-mobile-panel" data-mobile-panel="servizi" id="servizi">
 <div class="fm-wrap"><div class="fm-eyebrow">Ogni viaggio comincia da un'idea ✦</div>
 <h2 class="fm-heading" id="fm-services-title">Viaggia con Fuori Mappa</h2>
 <p class="fm-lead">Non un itinerario uguale per tutti, ma un percorso pensato per il tuo tempo, i tuoi interessi e il tuo budget.</p>
@@ -922,7 +933,7 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <article class="fm-service-card"><span class="fm-status">✦ Progetto futuro · non ancora disponibile</span><h3>Dall'idea alla partenza</h3><p>Stiamo valutando una collaborazione con un'agenzia di viaggi autorizzata per offrire, in futuro, anche servizi di prenotazione gestiti direttamente dall'agenzia partner.</p><p>Al momento Fuori Mappa non vende pacchetti turistici e non effettua prenotazioni per conto dei clienti.</p></article>
 </div></div>
 </section>
-<section aria-labelledby="fm-preview-title" class="fm-preview"><div class="fm-wrap">
+<section aria-labelledby="fm-preview-title" class="fm-preview fm-mobile-panel" data-mobile-panel="anteprima" id="fm-panel-anteprima"><div class="fm-wrap">
 <div class="fm-eyebrow">Dentro un itinerario ✦</div><h2 class="fm-heading" id="fm-preview-title">Un viaggio progettato per te</h2>
 <p class="fm-lead">Non riceverai soltanto un elenco di luoghi da visitare. Costruiamo ogni giornata partendo dalla posizione del tuo alloggio, studiando l’ordine delle tappe e cercando gli spostamenti più pratici, a piedi o con i mezzi pubblici. Nella guida troverai collegamenti utili per consultare attrazioni e biglietti, suggerimenti sulle app da scaricare prima della partenza, indicazioni per i trasferimenti, alternative e un budget orientativo. Tutto pensato per aiutarti a organizzare il viaggio in autonomia, senza dover ricominciare ogni ricerca da zero.</p><p class="fm-lead">Qui sotto trovi un piccolo assaggio di una guida personalizzata realizzata per Amsterdam.</p>
 <div class="fm-preview-pages">
@@ -934,14 +945,14 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <p class="fm-preview-note">Estratti dimostrativi da una guida realizzata su commissione. Informazioni personali omesse. Le tariffe riportate nell'esempio si riferiscono al periodo di preparazione e non sono prezzi attuali.</p>
 <a class="cta-button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
 </div></section>
-<section class="home-cta">
+<section class="home-cta fm-mobile-extra">
 <div class="small">E tu, dove vuoi andare?</div>
 <h2>La prossima pagina del diario potrebbe essere la tua.</h2>
 <p>Un luogo che hai sempre sognato, un itinerario da trasformare o una destinazione ancora da scegliere: raccontami la tua idea e iniziamo a darle forma.</p>
 <a class="cta-button" href="costruiamo-il-tuo-viaggio.html">Raccontami il tuo viaggio →</a>
 </section>
-<section aria-label="Chi sono, il mio passaporto e Vallecchia" aria-labelledby="fm-vallecchia-title" class="fm-vallecchia" id="chi-sono"><div class="fm-vallecchia-wrap"><div class="fm-vallecchia-photo"><img alt="Anna, creatrice di Fuori Mappa" loading="lazy" src="anna-fuori-mappa.PNG"/><span class="fm-photo-label">ANNA · FUORI MAPPA ✦</span></div><div class="fm-vallecchia-text"><span class="fm-eyebrow">DIETRO FUORI MAPPA ✦</span><h2 id="fm-vallecchia-title">Ciao, sono Anna. Ogni viaggio ha le sue radici.</h2><p>Viaggio, fotografo e prendo appunti praticamente su tutto. Fuori Mappa nasce dalla voglia di trasformare luoghi vissuti e nuove idee in itinerari curati, accessibili e personali.</p><p>C’è un posto che per me significa più di qualunque destinazione: Vallecchia, tra le montagne delle Marche. È il luogo dei ricordi con mio nonno, delle passeggiate fino al nostro “paradiso” di terra chiara e delle storie scolpite nella roccia. Mi ha insegnato che un luogo non è soltanto un punto sulla mappa: sono le persone e i ricordi a renderlo speciale.</p><p>Nella mia pagina personale ti racconto anche i Paesi che ho visitato: un passaporto di esperienze, curiosità e strade che continuano a ispirare Fuori Mappa.</p><a class="fm-ink-link" href="chi-sono.html">Conoscimi e sfoglia il mio passaporto ↗</a></div></div></section>
-<section class="manifesto">
+<section aria-label="Chi sono, il mio passaporto e Vallecchia" aria-labelledby="fm-vallecchia-title" class="fm-vallecchia fm-mobile-panel" data-mobile-panel="storia" id="chi-sono"><div class="fm-vallecchia-wrap"><div class="fm-vallecchia-photo"><img alt="Anna, creatrice di Fuori Mappa" loading="lazy" src="anna-fuori-mappa.PNG"/><span class="fm-photo-label">ANNA · FUORI MAPPA ✦</span></div><div class="fm-vallecchia-text"><span class="fm-eyebrow">DIETRO FUORI MAPPA ✦</span><h2 id="fm-vallecchia-title">Ciao, sono Anna. Ogni viaggio ha le sue radici.</h2><p>Viaggio, fotografo e prendo appunti praticamente su tutto. Fuori Mappa nasce dalla voglia di trasformare luoghi vissuti e nuove idee in itinerari curati, accessibili e personali.</p><p>C’è un posto che per me significa più di qualunque destinazione: Vallecchia, tra le montagne delle Marche. È il luogo dei ricordi con mio nonno, delle passeggiate fino al nostro “paradiso” di terra chiara e delle storie scolpite nella roccia. Mi ha insegnato che un luogo non è soltanto un punto sulla mappa: sono le persone e i ricordi a renderlo speciale.</p><p>Nella mia pagina personale ti racconto anche i Paesi che ho visitato: un passaporto di esperienze, curiosità e strade che continuano a ispirare Fuori Mappa.</p><a class="fm-ink-link" href="chi-sono.html">Conoscimi e sfoglia il mio passaporto ↗</a></div></div></section>
+<section class="manifesto fm-mobile-extra">
 <div class="small">Fuori dalla solita rotta</div>
 <p>
       Non servono viaggi impossibili per scoprire qualcosa di nuovo.
@@ -970,7 +981,6 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
  window.addEventListener('resize',()=>{if(window.innerWidth>700)setOpen(false)});
 })();
 </script>
-
 <script>
 window.LOCALE='it';
 window.REQUIRED_CODE_ERROR_MESSAGE='Scegli un prefisso paese';
@@ -1008,5 +1018,26 @@ setTimeout(function(){
 })();
 </script>
 <script defer="" src="https://sibforms.com/forms/end-form/build/main.js"></script>
-</body>
+<script>
+(function(){
+ const buttons=[...document.querySelectorAll('[data-open-panel]')];
+ const panels=[...document.querySelectorAll('[data-mobile-panel]')];
+ function openPanel(id){
+  const button=buttons.find(b=>b.dataset.openPanel===id);
+  const panel=panels.find(p=>p.dataset.mobilePanel===id);
+  if(!button||!panel)return;
+  const shouldOpen=!panel.classList.contains('fm-panel-open');
+  panels.forEach(p=>p.classList.remove('fm-panel-open'));
+  buttons.forEach(b=>{b.setAttribute('aria-expanded','false');b.querySelector('.fm-hub-chevron').textContent='＋'});
+  if(shouldOpen){panel.classList.add('fm-panel-open');button.setAttribute('aria-expanded','true');button.querySelector('.fm-hub-chevron').textContent='−';}
+ }
+ buttons.forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.openPanel)));
+ document.querySelectorAll('a[href="#servizi"],a[href="#chi-sono"],a[href="#come-partire"]').forEach(a=>a.addEventListener('click',()=>{
+  if(window.innerWidth>700)return;
+  const map={'#servizi':'servizi','#chi-sono':'storia','#come-partire':'come-partire'};
+  const id=map[a.getAttribute('href')];const p=panels.find(p=>p.dataset.mobilePanel===id);
+  if(p&&!p.classList.contains('fm-panel-open'))openPanel(id);
+ }));
+})();
+</script></body>
 </html>
