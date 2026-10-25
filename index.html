@@ -2,6 +2,13 @@
 
 <html lang="it">
 <head>
+<script id="fm-mode-detection">(function(){
+  var installed = window.matchMedia && (
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.matchMedia('(display-mode: fullscreen)').matches && window.navigator.standalone === true
+  );
+  if (installed || window.navigator.standalone === true) document.documentElement.classList.add('fm-is-app');
+})();</script>
 <meta name="impact-site-verification" value="e036bd34-42e1-4238-9c31-296897ad8dc6"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -760,82 +767,82 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 /* FUORI MAPPA — MOBILE APP EXPERIENCE (desktop untouched) */
 .fm-app-bottom,.fm-drawer-backdrop{display:none}
 @media(max-width:700px){
- html{scroll-padding-top:72px}
- body{overflow-x:hidden;padding-bottom:68px}
- nav{position:sticky;top:0;z-index:80;min-height:65px;padding:12px 5%;flex-wrap:nowrap;background:#fbf5e9f7;backdrop-filter:blur(12px)}
- nav .logo{font-size:clamp(19px,5.4vw,25px);white-space:nowrap}
- .fm-mobile-toggle{font-size:0;border:1px solid #cbb89d;border-radius:12px;width:44px;height:42px;padding:0;display:grid;place-items:center;color:#342b22}
- .fm-mobile-toggle:before{content:'☰';font-size:23px;font-weight:400}
- nav .menu,nav .menu.fm-open{position:fixed;display:flex;top:0;right:0;width:min(84vw,330px);height:100dvh;padding:86px 24px 32px;background:#fbf5e9;box-shadow:-15px 0 45px #30281f30;flex-direction:column;align-items:stretch;gap:6px;overflow-y:auto;transform:translateX(110%);transition:transform .25s ease;z-index:100}
- nav .menu.fm-open{transform:translateX(0)}
- nav .menu a,nav .menu a:last-child{padding:16px 8px;font-size:16px;border:0;border-bottom:1px solid #d6c5ab;text-align:left;font-weight:600}
- nav .menu a:last-child{background:#342b22;color:#fffaf2;border-radius:10px;margin-top:16px;text-align:center}
- .fm-drawer-backdrop{position:fixed;inset:0;background:#20170e8c;z-index:79}
- .fm-drawer-backdrop.fm-open{display:block}
- .fm-app-bottom{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;z-index:70;padding:7px 7px calc(7px + env(safe-area-inset-bottom));background:#fffaf2f5;border-top:1px solid #d6c5ab;box-shadow:0 -5px 25px #30281f17;backdrop-filter:blur(12px)}
- .fm-app-bottom a{text-decoration:none;color:#67533f;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:700;min-width:0}
- .fm-app-bottom a span:first-child{font-size:21px;line-height:1.1}
- .hero{min-height:0;padding:53px 17px 44px}
- .hero .paper{padding:45px 20px 26px;border-radius:8px;transform:none}
- .hero .paper:before{font-size:8px;letter-spacing:.8px;top:-14px;padding:8px 12px}
- .hero .small{font-size:9px;letter-spacing:1.4px}
- .hero h1{font-size:clamp(55px,15vw,76px);letter-spacing:-2px;margin:18px 0;line-height:.88}
- .hero .subtitle{font-size:15px;line-height:1.5}
- .fm-hero-actions{gap:7px;margin-top:15px}
- .hero .cta-button{margin-top:5px;padding:13px 10px;font-size:13px;border-radius:8px}
- .journey-section.catalogue{padding:49px 0 55px}
- .journey-intro{padding:0 7%}.journey-intro .small{font-size:10px;letter-spacing:2px}
- .journey-intro h2{font-size:clamp(32px,9vw,40px);line-height:1.06;letter-spacing:-1px;margin:10px 0}
- .journey-intro p{font-size:14px;line-height:1.55}
- .fm-catalogue-note{margin-bottom:20px}.fm-catalogue-note p{font-size:13px;padding:0 7%}
- .journey-catalogue{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:6%;gap:13px;padding:5px 6% 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
- .journey-catalogue::-webkit-scrollbar{display:none}
- .journey-catalogue .journey-card{flex:0 0 min(76vw,300px);scroll-snap-align:start;min-height:0;padding:9px 9px 19px;border-radius:9px;box-shadow:0 5px 15px #392e231c}
- .journey-catalogue .journey-card img{height:160px;border-radius:5px;margin-bottom:12px}
- .journey-card h3{font-size:23px!important;margin:0 8px 7px}
- .journey-badge{font-size:9px;margin:0 8px 8px}.journey-meta{font-size:10px;margin:0 8px}
- .fm-all-trips{margin:15px 6% 0}.fm-all-trips .cta-button{border-radius:9px;padding:13px 18px;font-size:13px}
- .fm-choices{padding:48px 6%}.fm-choices-heading{margin-bottom:20px}.fm-choices-heading h2{font-size:clamp(31px,8vw,39px);letter-spacing:-.6px}.fm-choices-heading p{font-size:14px;line-height:1.5}
- .fm-choices-grid{gap:10px}.fm-choice{padding:0 17px;background:#fffaf5;border-radius:10px;box-shadow:2px 4px 0 #65503912}
- .fm-choice summary{cursor:pointer;list-style:none;padding:17px 0;font:normal 20px Georgia,serif;display:flex;justify-content:space-between;align-items:center;gap:10px}
- .fm-choice summary::-webkit-details-marker{display:none}.fm-choice summary:after{content:'+';font:24px Arial,sans-serif;color:#946746}.fm-choice[open] summary:after{content:'−'}
- .fm-choice-number{display:block;padding-top:15px;font-size:10px}.fm-choice p{font-size:14px;margin:0 0 14px}.fm-choice a{display:inline-block;margin-bottom:18px}
- .fm-services,.fm-preview{padding:50px 6%}.fm-heading{font-size:clamp(30px,8vw,38px)}.fm-lead{font-size:14px;line-height:1.65;margin-bottom:18px}
- .fm-service-grid{gap:12px}.fm-service-card{padding:20px;border-radius:10px}.fm-service-card h3{font-size:24px}.fm-service-card p{font-size:14px;line-height:1.65}.fm-service-card .cta-button{font-size:13px;padding:12px}
- .fm-preview-pages{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;gap:13px;padding:8px 8px 20px;scrollbar-width:none}
- .fm-preview-pages img{width:70%;min-width:70%;scroll-snap-align:center;transform:none!important;border-radius:5px}
- .home-cta{padding:65px 7%}.home-cta h2{font-size:clamp(33px,9vw,43px);line-height:1.12}.home-cta p{font-size:14px}
- .fm-vallecchia{padding:50px 7%}.fm-vallecchia-wrap{gap:25px}.fm-vallecchia-text h2{font-size:clamp(30px,8vw,38px)}.fm-vallecchia-text p{font-size:14px;line-height:1.7}
- .manifesto{padding:50px 8%}.manifesto p{font-size:21px;line-height:1.5}
- footer{padding:32px 18px 45px;font-size:13px;line-height:1.7}
+ html.fm-is-app html{scroll-padding-top:72px}
+ html.fm-is-app body{overflow-x:hidden;padding-bottom:68px}
+ html.fm-is-app nav{position:sticky;top:0;z-index:80;min-height:65px;padding:12px 5%;flex-wrap:nowrap;background:#fbf5e9f7;backdrop-filter:blur(12px)}
+ html.fm-is-app nav .logo{font-size:clamp(19px,5.4vw,25px);white-space:nowrap}
+ html.fm-is-app .fm-mobile-toggle{font-size:0;border:1px solid #cbb89d;border-radius:12px;width:44px;height:42px;padding:0;display:grid;place-items:center;color:#342b22}
+ html.fm-is-app .fm-mobile-toggle:before{content:"☰";font-size:23px;font-weight:400}
+ html.fm-is-app nav .menu, html.fm-is-app nav .menu.fm-open{position:fixed;display:flex;top:0;right:0;width:min(84vw,330px);height:100dvh;padding:86px 24px 32px;background:#fbf5e9;box-shadow:-15px 0 45px #30281f30;flex-direction:column;align-items:stretch;gap:6px;overflow-y:auto;transform:translateX(110%);transition:transform .25s ease;z-index:100}
+ html.fm-is-app nav .menu.fm-open{transform:translateX(0)}
+ html.fm-is-app nav .menu a, html.fm-is-app nav .menu a:last-child{padding:16px 8px;font-size:16px;border:0;border-bottom:1px solid #d6c5ab;text-align:left;font-weight:600}
+ html.fm-is-app nav .menu a:last-child{background:#342b22;color:#fffaf2;border-radius:10px;margin-top:16px;text-align:center}
+ html.fm-is-app .fm-drawer-backdrop{position:fixed;inset:0;background:#20170e8c;z-index:79}
+ html.fm-is-app .fm-drawer-backdrop.fm-open{display:block}
+ html.fm-is-app .fm-app-bottom{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;z-index:70;padding:7px 7px calc(7px + env(safe-area-inset-bottom));background:#fffaf2f5;border-top:1px solid #d6c5ab;box-shadow:0 -5px 25px #30281f17;backdrop-filter:blur(12px)}
+ html.fm-is-app .fm-app-bottom a{text-decoration:none;color:#67533f;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;font-weight:700;min-width:0}
+ html.fm-is-app .fm-app-bottom a span:first-child{font-size:21px;line-height:1.1}
+ html.fm-is-app .hero{min-height:0;padding:53px 17px 44px}
+ html.fm-is-app .hero .paper{padding:45px 20px 26px;border-radius:8px;transform:none}
+ html.fm-is-app .hero .paper:before{font-size:8px;letter-spacing:.8px;top:-14px;padding:8px 12px}
+ html.fm-is-app .hero .small{font-size:9px;letter-spacing:1.4px}
+ html.fm-is-app .hero h1{font-size:clamp(55px,15vw,76px);letter-spacing:-2px;margin:18px 0;line-height:.88}
+ html.fm-is-app .hero .subtitle{font-size:15px;line-height:1.5}
+ html.fm-is-app .fm-hero-actions{gap:7px;margin-top:15px}
+ html.fm-is-app .hero .cta-button{margin-top:5px;padding:13px 10px;font-size:13px;border-radius:8px}
+ html.fm-is-app .journey-section.catalogue{padding:49px 0 55px}
+ html.fm-is-app .journey-intro{padding:0 7%}html.fm-is-app .journey-intro .small{font-size:10px;letter-spacing:2px}
+ html.fm-is-app .journey-intro h2{font-size:clamp(32px,9vw,40px);line-height:1.06;letter-spacing:-1px;margin:10px 0}
+ html.fm-is-app .journey-intro p{font-size:14px;line-height:1.55}
+ html.fm-is-app .fm-catalogue-note{margin-bottom:20px}html.fm-is-app .fm-catalogue-note p{font-size:13px;padding:0 7%}
+ html.fm-is-app .journey-catalogue{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:6%;gap:13px;padding:5px 6% 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ html.fm-is-app .journey-catalogue::-webkit-scrollbar{display:none}
+ html.fm-is-app .journey-catalogue .journey-card{flex:0 0 min(76vw,300px);scroll-snap-align:start;min-height:0;padding:9px 9px 19px;border-radius:9px;box-shadow:0 5px 15px #392e231c}
+ html.fm-is-app .journey-catalogue .journey-card img{height:160px;border-radius:5px;margin-bottom:12px}
+ html.fm-is-app .journey-card h3{font-size:23px!important;margin:0 8px 7px}
+ html.fm-is-app .journey-badge{font-size:9px;margin:0 8px 8px}html.fm-is-app .journey-meta{font-size:10px;margin:0 8px}
+ html.fm-is-app .fm-all-trips{margin:15px 6% 0}html.fm-is-app .fm-all-trips .cta-button{border-radius:9px;padding:13px 18px;font-size:13px}
+ html.fm-is-app .fm-choices{padding:48px 6%}html.fm-is-app .fm-choices-heading{margin-bottom:20px}html.fm-is-app .fm-choices-heading h2{font-size:clamp(31px,8vw,39px);letter-spacing:-.6px}html.fm-is-app .fm-choices-heading p{font-size:14px;line-height:1.5}
+ html.fm-is-app .fm-choices-grid{gap:10px}html.fm-is-app .fm-choice{padding:0 17px;background:#fffaf5;border-radius:10px;box-shadow:2px 4px 0 #65503912}
+ html.fm-is-app .fm-choice summary{cursor:pointer;list-style:none;padding:17px 0;font:normal 20px Georgia,serif;display:flex;justify-content:space-between;align-items:center;gap:10px}
+ html.fm-is-app .fm-choice summary::-webkit-details-marker{display:none}html.fm-is-app .fm-choice summary:after{content:"+";font:24px Arial,sans-serif;color:#946746}html.fm-is-app .fm-choice[open] summary:after{content:"−"}
+ html.fm-is-app .fm-choice-number{display:block;padding-top:15px;font-size:10px}html.fm-is-app .fm-choice p{font-size:14px;margin:0 0 14px}html.fm-is-app .fm-choice a{display:inline-block;margin-bottom:18px}
+ html.fm-is-app .fm-services, html.fm-is-app .fm-preview{padding:50px 6%}html.fm-is-app .fm-heading{font-size:clamp(30px,8vw,38px)}html.fm-is-app .fm-lead{font-size:14px;line-height:1.65;margin-bottom:18px}
+ html.fm-is-app .fm-service-grid{gap:12px}html.fm-is-app .fm-service-card{padding:20px;border-radius:10px}html.fm-is-app .fm-service-card h3{font-size:24px}html.fm-is-app .fm-service-card p{font-size:14px;line-height:1.65}html.fm-is-app .fm-service-card .cta-button{font-size:13px;padding:12px}
+ html.fm-is-app .fm-preview-pages{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;gap:13px;padding:8px 8px 20px;scrollbar-width:none}
+ html.fm-is-app .fm-preview-pages img{width:70%;min-width:70%;scroll-snap-align:center;transform:none!important;border-radius:5px}
+ html.fm-is-app .home-cta{padding:65px 7%}html.fm-is-app .home-cta h2{font-size:clamp(33px,9vw,43px);line-height:1.12}html.fm-is-app .home-cta p{font-size:14px}
+ html.fm-is-app .fm-vallecchia{padding:50px 7%}html.fm-is-app .fm-vallecchia-wrap{gap:25px}html.fm-is-app .fm-vallecchia-text h2{font-size:clamp(30px,8vw,38px)}html.fm-is-app .fm-vallecchia-text p{font-size:14px;line-height:1.7}
+ html.fm-is-app .manifesto{padding:50px 8%}html.fm-is-app .manifesto p{font-size:21px;line-height:1.5}
+ html.fm-is-app footer{padding:32px 18px 45px;font-size:13px;line-height:1.7}
 }
 @media(prefers-reduced-motion:reduce){nav .menu{transition:none}}
 </style></link><style>
 /* HOME MOBILE DEFINITIVA: contenuti conservati, consultazione a richiesta */
 .fm-mobile-hub{display:none}
 @media(max-width:700px){
- .hero{padding:34px 14px 30px}.hero .paper{padding:39px 19px 23px}
- .hero h1{font-size:clamp(52px,14vw,68px);margin:15px 0}
- .journey-section.catalogue{padding-top:36px;padding-bottom:28px}
- .journey-intro p{max-width:340px;margin:auto}
- .fm-catalogue-note{margin-bottom:12px}.fm-catalogue-note p{display:none}
- .fm-mobile-hub{display:block;padding:28px 6% 34px;background:#f7ecdc url('home-paper.jpg') center/700px}
- .fm-mobile-hub-heading{text-align:center;margin-bottom:20px}
- .fm-mobile-hub-heading span{font-size:10px;letter-spacing:2px;color:#8a593d;font-weight:700}
- .fm-mobile-hub-heading h2{font:normal 34px Georgia,serif;margin:8px 0}
- .fm-mobile-hub-heading p{font-size:13px;line-height:1.5;margin:0;color:#6c5946}
- .fm-hub-button{display:flex;width:100%;align-items:center;justify-content:space-between;text-align:left;gap:12px;padding:17px 18px;margin:0 0 10px;background:#fffcf6;border:1px solid #dac8ad;border-radius:12px;box-shadow:0 3px 8px #30281f0d;color:#30281f;cursor:pointer;font:inherit}
- .fm-hub-button strong{display:block;font:normal 21px Georgia,serif}
- .fm-hub-button small{display:block;font-size:12px;color:#786149;margin-top:5px;line-height:1.35}
- .fm-hub-chevron{font-size:24px;color:#8a593d;flex-shrink:0}
- .fm-hub-button[aria-expanded=true]{background:#eee0c9;border-color:#b99c7d}
- .fm-mobile-panel{display:none!important}
- .fm-mobile-panel.fm-panel-open{display:block!important;padding-top:32px;padding-bottom:36px}
- .fm-mobile-extra{display:none!important}
- .fm-preview-pages img{width:65%;min-width:65%}
- .fm-service-card{padding:17px}
- .fm-vallecchia-text p{line-height:1.55;margin-bottom:12px}
- .fm-app-bottom{min-height:65px}
+ html.fm-is-app .hero{padding:34px 14px 30px}html.fm-is-app .hero .paper{padding:39px 19px 23px}
+ html.fm-is-app .hero h1{font-size:clamp(52px,14vw,68px);margin:15px 0}
+ html.fm-is-app .journey-section.catalogue{padding-top:36px;padding-bottom:28px}
+ html.fm-is-app .journey-intro p{max-width:340px;margin:auto}
+ html.fm-is-app .fm-catalogue-note{margin-bottom:12px}html.fm-is-app .fm-catalogue-note p{display:none}
+ html.fm-is-app .fm-mobile-hub{display:block;padding:28px 6% 34px;background:#f7ecdc url("home-paper.jpg") center/700px}
+ html.fm-is-app .fm-mobile-hub-heading{text-align:center;margin-bottom:20px}
+ html.fm-is-app .fm-mobile-hub-heading span{font-size:10px;letter-spacing:2px;color:#8a593d;font-weight:700}
+ html.fm-is-app .fm-mobile-hub-heading h2{font:normal 34px Georgia,serif;margin:8px 0}
+ html.fm-is-app .fm-mobile-hub-heading p{font-size:13px;line-height:1.5;margin:0;color:#6c5946}
+ html.fm-is-app .fm-hub-button{display:flex;width:100%;align-items:center;justify-content:space-between;text-align:left;gap:12px;padding:17px 18px;margin:0 0 10px;background:#fffcf6;border:1px solid #dac8ad;border-radius:12px;box-shadow:0 3px 8px #30281f0d;color:#30281f;cursor:pointer;font:inherit}
+ html.fm-is-app .fm-hub-button strong{display:block;font:normal 21px Georgia,serif}
+ html.fm-is-app .fm-hub-button small{display:block;font-size:12px;color:#786149;margin-top:5px;line-height:1.35}
+ html.fm-is-app .fm-hub-chevron{font-size:24px;color:#8a593d;flex-shrink:0}
+ html.fm-is-app .fm-hub-button[aria-expanded=true]{background:#eee0c9;border-color:#b99c7d}
+ html.fm-is-app .fm-mobile-panel{display:none!important}
+ html.fm-is-app .fm-mobile-panel.fm-panel-open{display:block!important;padding-top:32px;padding-bottom:36px}
+ html.fm-is-app .fm-mobile-extra{display:none!important}
+ html.fm-is-app .fm-preview-pages img{width:65%;min-width:65%}
+ html.fm-is-app .fm-service-card{padding:17px}
+ html.fm-is-app .fm-vallecchia-text p{line-height:1.55;margin-bottom:12px}
+ html.fm-is-app .fm-app-bottom{min-height:65px}
 }
 </style>
 <!-- FUORI MAPPA · Installazione app (PWA) -->
@@ -882,6 +889,33 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
  .fm-save-toggle{right:15px;top:14px}
 }
 </style>
+<style id="fm-standalone-layout">
+/* SITO: stessa esperienza e contenuti del desktop, in impaginazione responsiva. */
+.fm-app-dashboard{display:none}
+/* APP: layout dedicato solo alla modalità installata standalone su smartphone. */
+@media(max-width:700px){
+ html.fm-is-app .fm-app-dashboard{display:block;background:#ede0ca url('/home-paper.jpg') center/700px;padding:28px 6% 18px;color:#30281f}
+ html.fm-is-app .fm-app-dashboard-inner{max-width:580px;margin:auto}
+ html.fm-is-app .fm-app-kicker{font-size:10px;font-weight:700;letter-spacing:2.2px;color:#906c4b}
+ html.fm-is-app .fm-app-dashboard h1{font:normal clamp(34px,10vw,47px)/1.06 Georgia,serif;letter-spacing:-1px;margin:12px 0 10px;color:#30281f}
+ html.fm-is-app .fm-app-dashboard p{font-size:14px;line-height:1.6;margin:0 0 21px;color:#6a5b49}
+ html.fm-is-app .fm-app-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-bottom:19px}
+ html.fm-is-app .fm-app-shortcuts a{display:flex;flex-direction:column;align-items:flex-start;gap:5px;background:#fffaf3;text-decoration:none;color:#30281f;padding:17px 14px;border-radius:15px;border:1px solid #d9c6a9;box-shadow:0 4px 11px #35261a13}
+ html.fm-is-app .fm-app-shortcuts a span{font-size:26px;line-height:1}
+ html.fm-is-app .fm-app-shortcuts strong{font:normal 22px Georgia,serif}
+ html.fm-is-app .fm-app-shortcuts small{color:#786149;font-size:11px}
+ html.fm-is-app .fm-app-dashboard-cta{display:flex;justify-content:space-between;align-items:center;background:#392f25;color:#fffaf0;border-radius:12px;padding:14px 15px;font-size:13px;font-weight:bold;text-decoration:none}
+ html.fm-is-app .hero{display:none}
+ html.fm-is-app .journey-section.catalogue{padding-top:32px}
+ html.fm-is-app .journey-intro .small{font-size:10px}
+ html.fm-is-app .journey-intro h2{font-size:32px}
+ html.fm-is-app .journey-intro p{display:none}
+ html.fm-is-app .fm-app-install{display:none!important}
+ html.fm-is-app footer{padding-bottom:95px}
+}
+/* Nelle finestre normali del browser non appaiono i collegamenti personali. */
+html:not(.fm-is-app) .fm-app-bottom,html:not(.fm-is-app) .fm-only-app{display:none!important}
+</style>
 </head>
 <body>
 <dialog aria-labelledby="newsletter-title" id="newsletter-dialog">
@@ -915,7 +949,21 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
 </div>
 </nav>
-<div aria-label="Navigazione rapida" class="fm-app-bottom"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="il-mio-spazio.html"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#passaporto"><span>✈</span>Passaporto</a></div>
+<div aria-label="Navigazione rapida" class="fm-app-bottom"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="il-mio-spazio.html"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></div>
+<section class="fm-app-dashboard" aria-labelledby="fm-app-welcome">
+  <div class="fm-app-dashboard-inner">
+    <span class="fm-app-kicker">✦ IL TUO FUORI MAPPA</span>
+    <h1 id="fm-app-welcome">Pronta per una nuova rotta?</h1>
+    <p>Le idee migliori sono quelle che puoi ritrovare quando vuoi.</p>
+    <div class="fm-app-shortcuts" aria-label="Funzioni dell'app">
+      <a href="itinerari.html"><span aria-hidden="true">🧭</span><strong>Esplora</strong><small>Nuove destinazioni</small></a>
+      <a href="il-mio-spazio.html#preferiti"><span aria-hidden="true">♡</span><strong>Preferiti</strong><small>Le tue idee salvate</small></a>
+      <a href="il-mio-spazio.html#passaporto"><span aria-hidden="true">🌍</span><strong>Passaporto</strong><small>I tuoi Paesi</small></a>
+      <a href="il-mio-spazio.html#profilo"><span aria-hidden="true">♙</span><strong>Profilo</strong><small>Il tuo account</small></a>
+    </div>
+    <a href="costruiamo-il-tuo-viaggio.html" class="fm-app-dashboard-cta">✦ Progettiamo il tuo prossimo viaggio <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
 <section aria-label="Fuori Mappa, il tuo prossimo viaggio comincia qui" class="hero">
 <div class="paper">
 <div class="small">UN DIARIO DI LUOGHI, IDEE E DEVIAZIONI ✦</div>
@@ -1092,7 +1140,7 @@ setTimeout(function(){
  }
  buttons.forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.openPanel)));
  document.querySelectorAll('a[href="#servizi"],a[href="#chi-sono"],a[href="#come-partire"]').forEach(a=>a.addEventListener('click',()=>{
-  if(window.innerWidth>700)return;
+  if(window.innerWidth>700 || !document.documentElement.classList.contains('fm-is-app'))return;
   const map={'#servizi':'servizi','#chi-sono':'storia','#come-partire':'come-partire'};
   const id=map[a.getAttribute('href')];const p=panels.find(p=>p.dataset.mobilePanel===id);
   if(p&&!p.classList.contains('fm-panel-open'))openPanel(id);

@@ -1,6 +1,7 @@
 /* Fuori Mappa · dati locali · niente account o tracciamento (v1) */
 (()=>{
 'use strict';
+if (!document.documentElement.classList.contains('fm-is-app')) return;
 const PREFIX='fm-personal-v1';
 const FAV=PREFIX+'-saved',VISITED=PREFIX+'-visited',WISH=PREFIX+'-wish';
 const storageOk=(()=>{try{localStorage.setItem(PREFIX+'-test','1');localStorage.removeItem(PREFIX+'-test');return true}catch(e){return false}})();

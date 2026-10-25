@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="it">
 <head>
+<script id="fm-mode-detection">(function(){
+  var installed = window.matchMedia && (
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.matchMedia('(display-mode: fullscreen)').matches && window.navigator.standalone === true
+  );
+  if (installed || window.navigator.standalone === true) document.documentElement.classList.add('fm-is-app');
+})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#e8ddc7">
@@ -37,12 +44,21 @@
  .fm-save-toggle{right:15px;top:14px}
 }
 </style>
-</head>
-<body>
+<style id="fm-app-catalogue-layout">
+ html:not(.fm-is-app) .fm-only-app{display:none!important}
+ .fm-app-tabs{display:none}
+ @media(max-width:700px){
+  html.fm-is-app body{padding-bottom:80px}
+  html.fm-is-app .fm-app-tabs{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;z-index:90;background:#fffaf2f5;border-top:1px solid #d6c5ab;padding:8px 8px calc(9px + env(safe-area-inset-bottom));box-shadow:0 -4px 17px #30281f14}
+  html.fm-is-app .fm-app-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;color:#67533f;text-decoration:none;font-weight:bold;font-size:10px}
+  html.fm-is-app .fm-app-tabs a span{font-size:23px;line-height:1.1}
+ }
+</style></head>
+<body><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html" aria-current="page"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
 <header class="site-header"><nav class="nav-inner" aria-label="Navigazione principale">
 <a class="brand" href="index.html">FUORI MAPPA <span>✦</span></a>
 <button class="mobile-toggle" type="button" aria-controls="site-menu" aria-expanded="false">☰ Menu</button>
-<div class="site-menu" id="site-menu"><a href="index.html">Home</a><a href="itinerari.html" aria-current="page">Itinerari</a><a href="index.html#servizi">Servizi</a><a href="dove-dormire.html">Dove dormire</a><a href="chi-sono.html">Chi sono</a><a href="passaporto.html">Il passaporto di Anna</a><a href="il-mio-spazio.html">Il tuo spazio ♡</a><a class="nav-cta" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ↗</a></div>
+<div class="site-menu" id="site-menu"><a href="index.html">Home</a><a href="itinerari.html" aria-current="page">Itinerari</a><a href="index.html#servizi">Servizi</a><a href="dove-dormire.html">Dove dormire</a><a href="chi-sono.html">Chi sono</a><a href="passaporto.html">Il passaporto di Anna</a><a class="fm-only-app" href="il-mio-spazio.html">Il tuo spazio ♡</a><a class="nav-cta" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ↗</a></div>
 </nav></header>
 <main>
 <section class="hero" aria-labelledby="page-title"><div class="hero-inner"><div class="hero-paper"><span class="eyebrow">✦ Lasciati ispirare ✦</span><h1 id="page-title">I nostri itinerari <em>Fuori Mappa</em></h1><p>Idee di viaggio e itinerari da cui prendere ispirazione per la tua prossima avventura.</p><p class="hero-note">Scegli una destinazione, personalizza un percorso oppure lasciati ispirare per crearne uno completamente nuovo.</p></div><div class="hero-decor" aria-hidden="true"><figure class="polaroid"><img src="itinerario-polaroid.jpg" alt=""><figcaption>Stesse strade, nuovi sguardi.</figcaption></figure><div class="travel-stamp"> vari itinerari<br>3 continenti<br>Infinite possibilità ✦</div></div></div></section>
