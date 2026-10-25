@@ -22,12 +22,27 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.journey-card{transition:none}}
 @media print{.hero{background:#e6e1d0}.hero-inner{display:block}.hero-decor{display:none}.cards{grid-template-columns:repeat(3,1fr)}.journey-card{break-inside:avoid;transform:none!important}.filters,.closing{display:none}}
 </style>
+<style>
+/* FUORI MAPPA · PREFERITI — 2026 */
+.fm-save-frame{position:relative;min-width:0;isolation:isolate}
+.fm-save-frame[hidden]{display:none!important}
+.fm-save-frame>.journey-card{height:100%;width:100%;transform:none!important}
+.fm-save-toggle{position:absolute;right:18px;top:17px;z-index:3;width:39px;height:39px;border-radius:50%;border:1px solid #e0cab0;background:#fffaf3f2;box-shadow:0 2px 9px #342b2229;display:grid;place-items:center;cursor:pointer;color:#513c2d;font-size:22px;line-height:1;backdrop-filter:blur(6px)}
+.fm-save-toggle[aria-pressed=true]{color:#a33c4a;background:#fff0f0;border-color:#dc9ca4}
+.fm-save-toggle:focus-visible{outline:3px solid #a66d44;outline-offset:3px}
+.fm-saved-nav-link{color:inherit;text-decoration:none;font-weight:700}
+@media(max-width:700px){
+ #journey-catalogue.journey-catalogue .fm-save-frame{flex:0 0 min(76vw,300px);scroll-snap-align:start}
+ #journey-catalogue.journey-catalogue .fm-save-frame .journey-card{display:flex;width:100%;height:100%;min-height:100%}
+ .fm-save-toggle{right:15px;top:14px}
+}
+</style>
 </head>
 <body>
 <header class="site-header"><nav class="nav-inner" aria-label="Navigazione principale">
 <a class="brand" href="index.html">FUORI MAPPA <span>✦</span></a>
 <button class="mobile-toggle" type="button" aria-controls="site-menu" aria-expanded="false">☰ Menu</button>
-<div class="site-menu" id="site-menu"><a href="index.html">Home</a><a href="itinerari.html" aria-current="page">Itinerari</a><a href="index.html#servizi">Servizi</a><a href="dove-dormire.html">Dove dormire</a><a href="chi-sono.html">Chi sono</a><a href="passaporto.html">Il mio passaporto</a><a class="nav-cta" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ↗</a></div>
+<div class="site-menu" id="site-menu"><a href="index.html">Home</a><a href="itinerari.html" aria-current="page">Itinerari</a><a href="index.html#servizi">Servizi</a><a href="dove-dormire.html">Dove dormire</a><a href="chi-sono.html">Chi sono</a><a href="passaporto.html">Il passaporto di Anna</a><a href="il-mio-spazio.html">Il tuo spazio ♡</a><a class="nav-cta" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ↗</a></div>
 </nav></header>
 <main>
 <section class="hero" aria-labelledby="page-title"><div class="hero-inner"><div class="hero-paper"><span class="eyebrow">✦ Lasciati ispirare ✦</span><h1 id="page-title">I nostri itinerari <em>Fuori Mappa</em></h1><p>Idee di viaggio e itinerari da cui prendere ispirazione per la tua prossima avventura.</p><p class="hero-note">Scegli una destinazione, personalizza un percorso oppure lasciati ispirare per crearne uno completamente nuovo.</p></div><div class="hero-decor" aria-hidden="true"><figure class="polaroid"><img src="itinerario-polaroid.jpg" alt=""><figcaption>Stesse strade, nuovi sguardi.</figcaption></figure><div class="travel-stamp"> vari itinerari<br>3 continenti<br>Infinite possibilità ✦</div></div></div></section>
@@ -203,10 +218,10 @@
 </a>
 
 <a class="journey-card" data-continent="asia" data-type="on-the-road" href="thailandia.html">
-<img alt="Lago Cheow Lan, Thailandia, tra acque verdi e montagne" decoding="async" loading="lazy" src="thailandia-hero.jpg"/>
+<img src="thailandia-hero.jpg" alt="Thailandia, cinque itinerari tra templi, montagne, foresta e isole" loading="lazy" decoding="async" />
 <span class="journey-badge">✦ Collezione di itinerari progettati</span>
-<h3>Thailandia<br/>5 modi di scoprirla</h3>
-<span class="journey-meta">10–18 giorni · cultura, montagna, foresta e isole</span>
+<h3>Thailandia<br/>Cinque modi di andare oltre</h3>
+<span class="journey-meta">5 itinerari · 10–18 giorni · cultura, natura e mare</span>
 </a>
 </div><p class="empty" id="journey-empty">Nessun itinerario corrisponde alla ricerca. Prova a cambiare i filtri: c'è sempre una nuova strada da scoprire ✦</p>
 </section>
@@ -214,6 +229,7 @@
 </main>
 <footer class="footer"><p><strong>FUORI MAPPA ✦</strong> · Viaggi, idee e qualche deviazione</p><p><a href="index.html">Home</a> · <a href="chi-sono.html">Chi sono</a> · <a href="privacy.html">Privacy e preferenze del sito</a></p><p>Instagram · @fuorimappa.travel &nbsp; | &nbsp; fuorimappa.travel@gmail.com</p></footer>
 <script>
-(()=>{const toggle=document.querySelector('.mobile-toggle'),menu=document.getElementById('site-menu');toggle.addEventListener('click',()=>{const open=menu.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open))});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false')}));const continent=document.getElementById('filter-continent'),type=document.getElementById('filter-type'),search=document.getElementById('filter-search'),count=document.getElementById('filter-count'),empty=document.getElementById('journey-empty'),cards=[...document.querySelectorAll('#journey-catalogue .journey-card')];function apply(){let n=0;const q=search.value.toLocaleLowerCase('it').trim();for(const card of cards){const show=(continent.value==='all'||card.dataset.continent===continent.value)&&(type.value==='all'||card.dataset.type===type.value)&&(!q||card.textContent.toLocaleLowerCase('it').includes(q));card.hidden=!show;if(show)n++}count.textContent=n===1?'1 itinerario trovato':n+' itinerari trovati';empty.style.display=n?'none':'block'}[continent,type].forEach(el=>el.addEventListener('change',apply));search.addEventListener('input',apply);document.getElementById('reset-filters').addEventListener('click',()=>{continent.value='all';type.value='all';search.value='';apply()});apply()})();
+(()=>{const toggle=document.querySelector('.mobile-toggle'),menu=document.getElementById('site-menu');toggle.addEventListener('click',()=>{const open=menu.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open))});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false')}));const continent=document.getElementById('filter-continent'),type=document.getElementById('filter-type'),search=document.getElementById('filter-search'),count=document.getElementById('filter-count'),empty=document.getElementById('journey-empty'),cards=[...document.querySelectorAll('#journey-catalogue .journey-card')];function apply(){let n=0;const q=search.value.toLocaleLowerCase('it').trim();for(const card of cards){const show=(continent.value==='all'||card.dataset.continent===continent.value)&&(type.value==='all'||card.dataset.type===type.value)&&(!q||card.textContent.toLocaleLowerCase('it').includes(q));card.hidden=!show; const frame=card.closest('.fm-save-frame'); if(frame) frame.hidden=!show;if(show)n++}count.textContent=n===1?'1 itinerario trovato':n+' itinerari trovati';empty.style.display=n?'none':'block'}[continent,type].forEach(el=>el.addEventListener('change',apply));search.addEventListener('input',apply);document.getElementById('reset-filters').addEventListener('click',()=>{continent.value='all';type.value='all';search.value='';apply()});apply()})();
 </script>
+<script defer src="/fm-personale.js"></script>
 </body></html>
