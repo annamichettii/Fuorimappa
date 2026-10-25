@@ -837,7 +837,37 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
  .fm-vallecchia-text p{line-height:1.55;margin-bottom:12px}
  .fm-app-bottom{min-height:65px}
 }
-</style></head>
+</style>
+<!-- FUORI MAPPA · Installazione app (PWA) -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#1c3d2f">
+<meta name="application-name" content="Fuori Mappa">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fuori Mappa">
+<link rel="apple-touch-icon" sizes="180x180" href="/app-icon-180.png">
+
+<style id="fuorimappa-app-install-styles">
+/* Piccolo invito a installare l'app: non altera il layout del sito */
+.fm-app-install { background:#e9dcc9; padding:28px 6%; border-top:1px solid #d7c7b2; }
+.fm-app-install-inner { max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+.fm-app-install-copy { display:flex; align-items:center; gap:14px; }
+.fm-app-install-icon { flex:0 0 auto; width:64px; height:64px; border-radius:16px; object-fit:cover; box-shadow:0 3px 14px rgba(30,42,28,.12); }
+.fm-app-install h2 { font-family:Georgia,serif; font-size:clamp(23px,2.6vw,30px); margin:0 0 6px; color:#1c3d2f; line-height:1.12; }
+.fm-app-install p { margin:0; color:#4c4a40; font-size:14px; line-height:1.5; }
+.fm-app-install-button { border:0; background:#1c3d2f; color:#fffaf2; padding:13px 20px; min-width:172px; border-radius:7px; cursor:pointer; font:700 14px Arial,sans-serif; }
+.fm-app-install-button:hover, .fm-app-install-button:focus-visible { background:#2a543f; }
+.fm-app-install-help { display:none; max-width:1040px; margin:15px auto 0; background:#fffaf2; padding:12px 16px; color:#1c3d2f; font-size:14px; line-height:1.6; border-left:3px solid #c36f39; }
+.fm-app-install-help.fm-app-install-help-visible { display:block; }
+@media(max-width:700px) {
+ .fm-app-install {padding:22px 6%;}
+ .fm-app-install-inner {align-items:stretch; flex-direction:column; gap:15px;}
+ .fm-app-install-icon {width:56px; height:56px; border-radius:13px;}
+ .fm-app-install h2 {font-size:23px;}
+ .fm-app-install-button {width:100%;}
+}
+</style>
+</head>
 <body>
 <dialog aria-labelledby="newsletter-title" id="newsletter-dialog">
 <button aria-label="Chiudi la newsletter" class="newsletter-close" type="button">×</button>
@@ -961,6 +991,20 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
       fuori dai radar.
     </p>
 </section>
+
+<section class="fm-app-install" id="fm-app-install" aria-labelledby="fm-app-install-title">
+  <div class="fm-app-install-inner">
+    <div class="fm-app-install-copy">
+      <img class="fm-app-install-icon" src="/app-icon-192.png" width="64" height="64" alt="Icona Fuori Mappa" loading="lazy">
+      <div>
+        <h2 id="fm-app-install-title">Porta Fuori Mappa con te ✦</h2>
+        <p>Installa gratuitamente Fuori Mappa sul telefono: una scorciatoia tutta tua, sempre a portata di mano.</p>
+      </div>
+    </div>
+    <button type="button" class="fm-app-install-button" id="fm-app-install-button" aria-controls="fm-app-install-help" aria-expanded="false">Installa l'app gratuita</button>
+  </div>
+  <p class="fm-app-install-help" id="fm-app-install-help" role="status" aria-live="polite"></p>
+</section>
 <footer>
 <strong>CONTATTI</strong><br/><br/>
 <button class="newsletter-reopen" type="button">Iscriviti alla newsletter ✦</button><br/><br/>
@@ -1039,5 +1083,70 @@ setTimeout(function(){
   if(p&&!p.classList.contains('fm-panel-open'))openPanel(id);
  }));
 })();
-</script></body>
+</script>
+<script id="fuorimappa-pwa-script">
+(function () {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/service-worker.js').catch(function (err) {
+        console.warn('Fuori Mappa: registrazione app non riuscita', err);
+      });
+    });
+  }
+
+  var area = document.getElementById('fm-app-install');
+  var button = document.getElementById('fm-app-install-button');
+  var help = document.getElementById('fm-app-install-help');
+  if (!area || !button || !help) return;
+
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone) { area.hidden = true; area.style.display = 'none'; return; }
+  var installPrompt = null;
+  function showHelp(message) {
+    help.textContent = message;
+    help.classList.add('fm-app-install-help-visible');
+    button.setAttribute('aria-expanded', 'true');
+  }
+
+  window.addEventListener('beforeinstallprompt', function (event) {
+    event.preventDefault();
+    installPrompt = event;
+  });
+
+  button.addEventListener('click', async function () {
+    if (installPrompt) {
+      var prompt = installPrompt;
+      installPrompt = null;
+      try {
+        await prompt.prompt();
+        var choice = await prompt.userChoice;
+        if (choice && choice.outcome === 'accepted') {
+          showHelp('Installazione avviata! Troverai Fuori Mappa tra le app del telefono.');
+        } else {
+          showHelp('Puoi installare Fuori Mappa quando vuoi, dal menu del browser.');
+        }
+      } catch (error) { showManualInstructions(); }
+      return;
+    }
+    showManualInstructions();
+  });
+
+  function showManualInstructions() {
+    var ua = navigator.userAgent || '';
+    if (/iPad|iPhone|iPod/.test(ua)) {
+      showHelp('Su iPhone: apri www.fuorimappa.it in Safari, tocca Condividi (oppure il menu del browser), poi scegli “Aggiungi alla schermata Home”.');
+    } else if (/Android/i.test(ua)) {
+      showHelp('Su Android: apri www.fuorimappa.it in Chrome, tocca il menu ⋮ e seleziona “Installa app” o “Aggiungi a schermata Home”.');
+    } else {
+      showHelp('Apri www.fuorimappa.it dal telefono. Su iPhone usa il menu Condividi di Safari; su Android apri il menu ⋮ di Chrome e scegli Installa app.');
+    }
+  }
+
+  window.addEventListener('appinstalled', function () {
+    area.hidden = true;
+    area.style.display = 'none';
+  });
+})();
+</script>
+</body>
 </html>
