@@ -57,13 +57,13 @@
         <li><strong>Sicurezza e funzionamento:</strong> dati tecnici di accesso, sessione, operazioni e segnalazioni di errore, nella misura necessaria a mantenere il servizio e contrastare utilizzi impropri.</li>
       </ul>
       <p>Questi dati vengono utilizzati per creare e gestire l’account, autenticarti, conservare e sincronizzare le tue scelte e consentirti di recuperare l’accesso. La base giuridica principale è l’esecuzione del servizio richiesto (art. 6, par. 1, lettera b, GDPR); per le misure proporzionate di sicurezza può applicarsi il legittimo interesse a proteggere il servizio e gli utenti (art. 6, par. 1, lettera f, GDPR).</p>
-      <p>La registrazione è facoltativa per consultare il sito e richiedere un itinerario. Per utilizzare le funzioni personali anche su dispositivi differenti è invece necessario un account. Creare un account <strong>non comporta l’iscrizione alla newsletter</strong> e non autorizza l’invio di comunicazioni promozionali.</p>
+      <p>La registrazione è facoltativa per consultare il sito e richiedere un itinerario. Per <strong>salvare preferiti e passaporto</strong> e utilizzare le funzioni personali anche su dispositivi differenti è invece necessario un account. Creare un account <strong>non comporta l’iscrizione alla newsletter</strong> e non autorizza l’invio di comunicazioni promozionali.</p>
       <p>Il database e l’autenticazione sono gestiti con <strong>Supabase</strong>. Il progetto utilizza un database ospitato nella regione di Francoforte, Germania. Per i dati personali della tabella preferiti/passaporto sono configurate regole di accesso a livello di riga (RLS), finalizzate a permettere a ogni account di leggere e modificare soltanto i propri dati tramite l’app. Il titolare e i fornitori tecnici possono comunque avere accessi amministrativi nei limiti necessari alla gestione del servizio.</p>
     </section>
 
     <section>
       <h2>Email relative all’account</h2>
-      <p>Per registrazione, conferma dell’indirizzo email, recupero password e altre comunicazioni strettamente necessarie alla sicurezza dell’account possiamo inviare email di servizio. L’invio è gestito dal sistema di autenticazione Supabase e, quando configurato e attivato, dal servizio SMTP transazionale di Brevo.</p>
+      <p>Per registrazione, conferma dell’indirizzo email, recupero password e altre comunicazioni strettamente necessarie alla sicurezza dell’account possiamo inviare email di servizio. L’invio è gestito da <strong>Supabase Auth</strong> attraverso il servizio SMTP transazionale <strong>Brevo</strong>, con mittente <code>noreply@fuorimappa.it</code>. Questo indirizzo è destinato all’invio: per contattarci utilizza <a href="mailto:fuorimappa.travel@gmail.com">fuorimappa.travel@gmail.com</a>.</p>
       <p>Queste comunicazioni sono distinte dalla newsletter: non richiedono il consenso al marketing perché servono a fornire il servizio richiesto o a proteggerne l’accesso. La possibilità di riceverle dipende dalla correttezza dell’indirizzo email e dalla disponibilità dei fornitori.</p>
     </section>
 
@@ -79,7 +79,7 @@
       <ul>
         <li><strong>Richieste che non diventano un servizio:</strong> conserviamo le informazioni nella nostra casella e negli archivi operativi per massimo 12 mesi dall’ultimo contatto, poi le cancelliamo.</li>
         <li><strong>Eventuali incarichi:</strong> conserviamo i dati necessari per eseguire il servizio e adempiere agli obblighi legali applicabili. Documentazione contabile ed eventuali controversie possono richiedere tempi ulteriori secondo la legge.</li>
-        <li><strong>Account e preferenze personali:</strong> conserviamo l’account e i relativi preferiti/passaporto finché il servizio resta attivo e non richiedi la cancellazione, salvo dati che debbano essere mantenuti per obblighi di legge o per la tutela di diritti. Puoi chiederne la cancellazione scrivendo all’indirizzo di contatto indicato sopra.</li>
+        <li><strong>Account e preferenze personali:</strong> conserviamo l’account e i relativi preferiti/passaporto finché il servizio resta attivo e non elimini l’account dall’app o ne richiedi la cancellazione, salvo dati da conservare per obblighi di legge o per la tutela di diritti. Puoi gestire la cancellazione dal Profilo dell’app o contattarci all’indirizzo indicato sopra.</li>
         <li><strong>Newsletter:</strong> l’indirizzo resta nella lista attiva finché mantieni l’iscrizione. Dopo la revoca interrompiamo gli invii; i soli dati necessari a documentare il consenso o rispettare la disiscrizione possono essere conservati per il tempo necessario a tali finalità e alla tutela dei diritti. Non vengono utilizzati per continuare gli invii promozionali.</li>
       </ul>
       <p>Le copie, i backup e i log gestiti dai fornitori possono seguire anche i loro tempi tecnici di conservazione e cancellazione. La rimozione dai sistemi attivi non implica necessariamente la cancellazione immediata da tutti i backup. Web3Forms dichiara un limite massimo di tre anni per i dati delle submission, salvo periodi più brevi previsti dal piano o cancellazione anticipata. Puoi contattarci per richiedere informazioni o la cancellazione delle copie ove applicabile.</p>
@@ -89,7 +89,7 @@
       <h2>Fornitori e dati tecnici</h2>
       <p>Il sito è ospitato su <strong>GitHub Pages</strong> e il dominio è gestito tramite <strong>Aruba</strong>. I fornitori dell’infrastruttura possono trattare indirizzi IP e informazioni tecniche necessarie a erogazione, manutenzione e sicurezza. Per tali finalità tecniche il trattamento del titolare si basa sul legittimo interesse a rendere disponibile e proteggere il sito (art. 6, par. 1, lettera f, GDPR).</p>
       <p>Utilizziamo <strong>Supabase</strong> per account, autenticazione e database personale; <strong>Google</strong> per l’accesso facoltativo tramite il tuo account Google; <strong>Brevo</strong> per newsletter ed eventuali email transazionali dell’account; <strong>Web3Forms</strong> per il modulo viaggio; e <strong>Google/Gmail</strong> per ricevere e gestire la corrispondenza.</p>
-      <p>La pagina del modulo viaggio carica Google Fonts da Google; il modulo newsletter carica risorse da sibforms.com. L’app può inoltre caricare la libreria tecnica Supabase da un servizio di distribuzione dei contenuti. Questi collegamenti possono trasmettere ai rispettivi fornitori dati tecnici necessari alla richiesta di rete, come indirizzo IP e informazioni del browser.</p>
+      <p>La pagina del modulo viaggio carica Google Fonts da Google; il modulo newsletter carica risorse da sibforms.com. L’app può inoltre caricare la libreria tecnica Supabase da un servizio di distribuzione dei contenuti. Questi collegamenti possono trasmettere ai rispettivi fornitori dati tecnici necessari alla richiesta di rete, come indirizzo IP e informazioni del browser. La verifica delle tecnologie effettivamente utilizzate va ripetuta ogni volta che vengono aggiunti servizi o script esterni.</p>
       <p>I dati possono essere accessibili ai fornitori e ai loro subfornitori per l’erogazione dei servizi, e alle autorità nei casi previsti dalla legge. Non pubblichiamo le richieste personali né vendiamo le liste degli iscritti.</p>
     </section>
 
@@ -109,14 +109,14 @@
 
     <section>
       <h2>Preferenze, accesso e memorizzazione sul dispositivo</h2>
-      <p>Il popup newsletter utilizza la memoria locale del browser (<code>localStorage</code>) per ricordare la tua scelta. Non memorizza l’indirizzo email in queste preferenze. Le funzionalità personali dell’app usano inoltre la memoria locale per preferiti, passaporto e stato della sincronizzazione; Supabase conserva sul dispositivo informazioni tecniche di sessione necessarie a mantenere l’accesso.</p>
+      <p>Il popup newsletter utilizza la memoria locale del browser (<code>localStorage</code>) per ricordare la tua scelta. Non memorizza l’indirizzo email in queste preferenze. <strong>Preferiti e passaporto richiedono un account autenticato:</strong> quando accedi, l’app conserva anche copie locali associate all’identificativo dell’account per visualizzare e sincronizzare le tue scelte. Senza accesso non puoi salvare nuovi preferiti o Paesi nel passaporto. Supabase conserva sul dispositivo informazioni tecniche di sessione necessarie a mantenere l’accesso.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Voce</th><th>Funzione e durata</th></tr></thead>
           <tbody>
             <tr><td><code>fuorimappa-newsletter-dismissed</code></td><td>Memorizza quando chiudi il popup e ne evita l’apertura automatica per sette giorni. Il valore resta nella memoria fino a una nuova chiusura o alla cancellazione dei dati del browser.</td></tr>
             <tr><td><code>fuorimappa-newsletter-subscribed</code></td><td>Ricorda l’iscrizione riuscita in quel browser ed evita ulteriori aperture automatiche. Resta fino alla cancellazione dei dati del browser.</td></tr>
-            <tr><td><code>fm-personal-v1</code> e chiavi correlate</td><td>Conservano sul dispositivo preferiti, Paesi visitati/desiderati, copie locali e informazioni necessarie alla sincronizzazione. I dati possono restare finché non li elimini o cancelli la memoria del sito/app.</td></tr>
+            <tr><td><code>fm-personal-v1</code> e chiavi correlate, riferite al singolo account</td><td>Conservano sul dispositivo copie dei preferiti, Paesi visitati/desiderati e informazioni necessarie alla sincronizzazione dopo l’accesso. Le copie possono rimanere nel dispositivo fino alla loro eliminazione o alla cancellazione della memoria del sito/app; chi usa lo stesso dispositivo dovrebbe quindi proteggerne l’accesso.</td></tr>
             <tr><td><code>fuorimappa.auth.v1</code></td><td>Memorizza le informazioni di sessione necessarie a riconoscere un account già autenticato e a rinnovare l’accesso, finché la sessione rimane valida o viene terminata.</td></tr>
             <tr><td>Cache dell’app installata</td><td>Permette di caricare alcune risorse e pagine in modo più rapido o, se previsto, anche senza rete; la durata può dipendere dalla versione dell’app e dalle impostazioni del dispositivo.</td></tr>
           </tbody>
@@ -134,11 +134,12 @@
     <section>
       <h2>I tuoi diritti, correzione ed eliminazione dell’account</h2>
       <p>Nei casi previsti dal GDPR puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei dati, e opporti ai trattamenti basati sul legittimo interesse. Puoi revocare il consenso alla newsletter in qualsiasi momento.</p>
-      <p>Per richiedere la <strong>cancellazione dell’account Fuori Mappa e dei relativi dati personali</strong>, scrivi a <a href="mailto:fuorimappa.travel@gmail.com?subject=Cancellazione%20account%20Fuori%20Mappa">fuorimappa.travel@gmail.com</a>, indicando che desideri eliminare il profilo. Potremo chiederti informazioni limitate per verificare che l’account appartenga effettivamente a te. Dopo la verifica procederemo secondo i termini di legge, fatti salvi eventuali dati da conservare per obblighi legali.</p>
+      <p><strong>Eliminazione autonoma dell’account:</strong> accedi nell’app installata, apri <strong>Profilo → Gestisci i tuoi dati → Elimina definitivamente account e dati</strong> e conferma la richiesta. Questa procedura elimina il tuo account di autenticazione Fuori Mappa e, tramite il collegamento previsto nel database, la relativa raccolta di preferiti e passaporto archiviata per quell’account. L’operazione è definitiva per i dati attivi interessati e non può essere annullata dall’app.</p>
+      <p><strong>Alternativa e altri dati:</strong> puoi chiedere assistenza o la cancellazione scrivendo a <a href="mailto:fuorimappa.travel@gmail.com?subject=Cancellazione%20account%20Fuori%20Mappa">fuorimappa.travel@gmail.com</a>. Potremo chiedere informazioni limitate per verificare che l’account appartenga a te. L’eliminazione dell’account <strong>non annulla automaticamente l’iscrizione alla newsletter</strong>, che si gestisce dal link di disiscrizione nelle email, e non elimina automaticamente eventuali richieste di viaggio o corrispondenze gestite separatamente: per queste puoi esercitare i tuoi diritti scrivendoci. Alcuni log, backup e dati soggetti a obblighi di legge possono seguire i tempi di conservazione pertinenti.</p>
       <p>Per rettificare preferiti e Paesi selezionati puoi utilizzare le funzioni dell’app; per altri dati personali puoi contattarci. Risponderemo alle richieste nei termini previsti dal GDPR, normalmente entro un mese. Puoi presentare reclamo al <a href="https://www.garanteprivacy.it/">Garante per la protezione dei dati personali</a>.</p>
       <p>Non utilizziamo i dati delle richieste o del passaporto per decisioni esclusivamente automatizzate con effetti giuridici o analogamente significativi.</p>
     </section>
   </main>
-  <footer><a href="index.html">← Torna al sito</a></footer>
+  <footer><a href="index.html">← Torna al sito</a> &nbsp; · &nbsp; <a href="termini-app.html">Termini di utilizzo</a> &nbsp; · &nbsp; <a href="mailto:fuorimappa.travel@gmail.com">Contatti</a></footer>
 </body>
 </html>
