@@ -57,6 +57,163 @@ function renderSaved(){
 }
 const countries=window.FM_COUNTRIES||[];
 function flag(code){return /^([A-Z]{2})$/.test(code)?Array.from(code).map(x=>String.fromCodePoint(x.charCodeAt(0)+127397)).join(''):'🌍'}
+/* Carta geografica personalizzata: stessi codici e stesso storage di FM_PERSONAL, nessun duplicato. */
+const mapNodes=new Map();
+let mapSelected=null;
+const MAP_W=960, MAP_H=510;
+const mapSVG=(tag)=>document.createElementNS('http://www.w3.org/2000/svg',tag);
+const mapNameByCode=new Map(countries);
+let mapReady=false;
+let mapView={x:0,y:0,w:MAP_W,h:MAP_H};
+function mapBox(x,y,w){
+ const width=Math.min(MAP_W,Math.max(MAP_W/9,w)),height=width*MAP_H/MAP_W;
+ mapView={x:Math.min(MAP_W-width,Math.max(0,x)),y:Math.min(MAP_H-height,Math.max(0,y)),w:width,h:height};
+ document.getElementById('fm-world-map')?.setAttribute('viewBox',`${mapView.x} ${mapView.y} ${mapView.w} ${mapView.h}`);
+}
+function mapZoom(factor,point){
+ if(!mapReady)return;
+ const focal=point||{x:mapView.x+mapView.w/2,y:mapView.y+mapView.h/2};
+ const w=Math.min(MAP_W,Math.max(MAP_W/9,mapView.w/factor));
+ const r=w/mapView.w;
+ mapBox(focal.x-(focal.x-mapView.x)*r,focal.y-(focal.y-mapView.y)*r,w);
+}
+function mapPoint(clientX,clientY){
+ const svg=document.getElementById('fm-world-map');
+ const matrix=svg?.getScreenCTM();
+ if(!matrix)return {x:mapView.x+mapView.w/2,y:mapView.y+mapView.h/2};
+ try{const p=svg.createSVGPoint();p.x=clientX;p.y=clientY;const pt=p.matrixTransform(matrix.inverse());return {x:pt.x,y:pt.y}}catch(_){return {x:mapView.x+mapView.w/2,y:mapView.y+mapView.h/2}}
+}
+function mapClass(node,visited,wish){
+ node.classList.toggle('is-visited',visited&&!wish);
+ node.classList.toggle('is-wish',wish&&!visited);
+ node.classList.toggle('is-both',visited&&wish);
+}
+function updateMapColors(){
+ if(!mapReady)return;
+ const visited=new Set(get(VISITED)),wish=new Set(get(WISH));
+ for(const [code,els] of mapNodes){for(const el of els){mapClass(el,visited.has(code),wish.has(code));el.classList.toggle('is-selected',code===mapSelected)}}
+ updateMapDetailButtons();
+}
+function updateMapDetailButtons(){
+ if(!mapSelected)return;
+ const v=get(VISITED).includes(mapSelected),w=get(WISH).includes(mapSelected);
+ for(const [id,on] of [['fm-map-mark-visited',v],['fm-map-mark-wish',w]]){
+  const el=document.getElementById(id);if(!el)continue;
+  el.classList.toggle('is-active',on);el.setAttribute('aria-pressed',String(on));
+  el.textContent=id==='fm-map-mark-visited'?(on?'✓ Visitato · rimuovi':'✓ Sono stata qui'):(on?'★ Da visitare · rimuovi':'★ Voglio andarci');
+ }
+}
+function mapSelect(code){
+ if(!mapNameByCode.has(code))return;
+ mapSelected=code;
+ const detail=document.getElementById('fm-map-detail');
+ const name=document.getElementById('fm-map-selected-name');
+ if(name)name.textContent=flag(code)+'  '+mapNameByCode.get(code);
+ if(detail)detail.hidden=false;
+ updateMapColors();
+}
+function mapClose(){mapSelected=null;const n=document.getElementById('fm-map-detail');if(n)n.hidden=true;updateMapColors()}
+function mapFocus(code){
+ if(!mapReady||!mapNodes.has(code))return;
+ mapSelect(code);
+ const items=mapNodes.get(code),svg=document.getElementById('fm-world-map');
+ let extent=null;
+ for(const el of items){
+  try{const b=el.getBBox();if(!b.width&&!b.height)continue;
+   if(!extent)extent={x:b.x,y:b.y,x2:b.x+b.width,y2:b.y+b.height};
+   else{extent.x=Math.min(extent.x,b.x);extent.y=Math.min(extent.y,b.y);extent.x2=Math.max(extent.x2,b.x+b.width);extent.y2=Math.max(extent.y2,b.y+b.height)}
+  }catch(_){}
+ }
+ if(extent){
+  const cx=(extent.x+extent.x2)/2,cy=(extent.y+extent.y2)/2;
+  const width=Math.min(MAP_W,Math.max(MAP_W/7,Math.max((extent.x2-extent.x)*2.2,(extent.y2-extent.y)*2.4*MAP_W/MAP_H)));
+  mapBox(cx-width/2,cy-(width*MAP_H/MAP_W)/2,width);
+ }
+ svg?.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function mapAttach(code,node){
+ if(!code||!mapNameByCode.has(code))return;
+ node.dataset.code=code;
+ node.setAttribute('tabindex','0');
+ node.setAttribute('role','button');
+ node.setAttribute('aria-label',mapNameByCode.get(code)+', seleziona sulla mappa');
+ const title=mapSVG('title');title.textContent=mapNameByCode.get(code);node.prepend(title);
+ node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();mapSelect(code)}});
+ if(!mapNodes.has(code))mapNodes.set(code,[]);
+ mapNodes.get(code).push(node);
+}
+function initPassportMap(){
+ const svg=document.getElementById('fm-world-map'),shell=document.getElementById('fm-map-shell');
+ if(!svg||!shell)return;
+ const features=window.FM_WORLD_SHAPES;
+ if(!Array.isArray(features)||!features.length){
+  shell.classList.add('is-unavailable');
+  const hint=document.getElementById('fm-map-help');if(hint)hint.textContent='La mappa non è disponibile al momento. Puoi comunque usare l’elenco dei Paesi qui sotto.';
+  return;
+ }
+ const grid=document.getElementById('fm-map-graticule');
+ for(let lon=60;lon<960;lon+=160){const line=mapSVG('path');line.classList.add('fm-map-grid');line.setAttribute('d',`M ${lon} 0 V ${MAP_H}`);grid.append(line)}
+ for(let lat=85;lat<510;lat+=85){const line=mapSVG('path');line.classList.add('fm-map-grid');line.setAttribute('d',`M 0 ${lat} H ${MAP_W}`);grid.append(line)}
+ const root=document.getElementById('fm-map-countries');
+ for(const {c,d} of features){
+  const p=mapSVG('path');p.classList.add('fm-world-shape');p.setAttribute('d',d);
+  mapAttach(c,p);root.append(p);
+ }
+ const pins=document.getElementById('fm-map-pins');
+ for(const [code,x,y] of (window.FM_WORLD_PINS||[])){
+  if(!mapNameByCode.has(code))continue;
+  const g=mapSVG('g');g.classList.add('fm-world-pin');
+  const visible=mapSVG('circle');visible.classList.add('fm-pin-visible');visible.setAttribute('cx',x);visible.setAttribute('cy',y);visible.setAttribute('r','3.3');
+  const hit=mapSVG('circle');hit.classList.add('fm-pin-hit');hit.setAttribute('cx',x);hit.setAttribute('cy',y);hit.setAttribute('r','8');
+  g.append(visible,hit);mapAttach(code,g);pins.append(g);
+ }
+ mapReady=true;mapBox(0,0,MAP_W);updateMapColors();
+ document.getElementById('fm-map-zoom-in')?.addEventListener('click',()=>mapZoom(1.6));
+ document.getElementById('fm-map-zoom-out')?.addEventListener('click',()=>mapZoom(1/1.6));
+ document.getElementById('fm-map-reset')?.addEventListener('click',()=>mapBox(0,0,MAP_W));
+ document.getElementById('fm-map-close')?.addEventListener('click',mapClose);
+ document.getElementById('fm-map-mark-visited')?.addEventListener('click',()=>{if(mapSelected)toggleCountry(VISITED,mapSelected)});
+ document.getElementById('fm-map-mark-wish')?.addEventListener('click',()=>{if(mapSelected)toggleCountry(WISH,mapSelected)});
+ // Gesti touch/pointer: tocco=seleziona, trascinamento=sposta, due dita=zoom.
+ const pointers=new Map();let pinching=false,afterPinch=false,previousPinchDistance=0;
+ svg.addEventListener('pointerdown',e=>{
+  if(e.button!==0&&e.pointerType==='mouse')return;
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY,code:e.target.closest('[data-code]')?.dataset.code||null,moved:false});
+  if(pointers.size>=2){pinching=true;afterPinch=true;previousPinchDistance=0;}
+  try{svg.setPointerCapture(e.pointerId)}catch(_){}
+  svg.classList.add('is-grabbing');
+ });
+ svg.addEventListener('pointermove',e=>{
+  if(!pointers.has(e.pointerId))return;
+  const info=pointers.get(e.pointerId),old={x:info.x,y:info.y};
+  const movement=Math.hypot(e.clientX-info.sx,e.clientY-info.sy);
+  if(movement>6)info.moved=true;
+  if(pointers.size>=2){
+   info.x=e.clientX;info.y=e.clientY;
+   const [p1,p2]=[...pointers.values()];const distance=Math.hypot(p1.x-p2.x,p1.y-p2.y);
+   if(previousPinchDistance>0&&distance>0){const center=mapPoint((p1.x+p2.x)/2,(p1.y+p2.y)/2);mapZoom(distance/previousPinchDistance,center)}
+   previousPinchDistance=distance;return;
+  }
+  if(info.moved&&!pinching){
+   const prior=mapPoint(old.x,old.y),next=mapPoint(e.clientX,e.clientY);
+   mapBox(mapView.x+prior.x-next.x,mapView.y+prior.y-next.y,mapView.w);
+  }
+  info.x=e.clientX;info.y=e.clientY;
+ });
+ const finish=e=>{
+  const info=pointers.get(e.pointerId);if(!info)return;
+  if(!info.moved&&!pinching&&!afterPinch&&info.code&&e.type==='pointerup')mapSelect(info.code);
+  pointers.delete(e.pointerId);
+  if(pointers.size<2){pinching=false;previousPinchDistance=0;}
+  if(pointers.size===0){afterPinch=false;svg.classList.remove('is-grabbing')}
+ };
+ svg.addEventListener('pointerup',finish);svg.addEventListener('pointercancel',finish);
+ svg.addEventListener('wheel',e=>{
+  if(!e.ctrlKey)return;
+  e.preventDefault();mapZoom(e.deltaY>0?0.85:1.15,mapPoint(e.clientX,e.clientY));
+ },{passive:false});
+}
+
 function updateCounts(){
  for(const [id,val] of [['fm-total-fav',mySaved().length],['fm-total-visited',get(VISITED).length],['fm-total-wish',get(WISH).length]]){
  const node=document.getElementById(id);if(node)node.textContent=String(val)
@@ -75,10 +232,15 @@ function renderCountries(){
   for(const [key,activeLabel,inactiveLabel,active] of [[VISITED,'✓ Visitato','Visitato',visited.has(code)],[WISH,'★ Sogno','Da visitare',wish.has(code)]]){
     const button=mk('button','fm-country-action'+(active?' is-active':''),active?activeLabel:inactiveLabel);button.type='button';button.setAttribute('aria-pressed',String(active));button.setAttribute('aria-label',(active?'Rimuovi da ':'Aggiungi a ')+(key===VISITED?'Paesi visitati: ':'Da visitare: ')+name);button.addEventListener('click',()=>toggleCountry(key,code));actions.append(button)
   }
-  row.append(actions);root.append(row)
+  row.append(actions);
+  if(mapReady&&mapNodes.has(code)){
+   const viewButton=mk('button','fm-country-map-link','⌖ Mappa');viewButton.type='button';viewButton.title='Mostra '+name+' sulla cartina';viewButton.setAttribute('aria-label','Mostra '+name+' sulla mappa');viewButton.addEventListener('click',()=>mapFocus(code));row.append(viewButton);
+  }
+  root.append(row)
  }
  if(!matched)root.append(mk('p','fm-empty','Nessun Paese trovato con questi filtri.'));
  const total=document.getElementById('fm-country-count');if(total)total.textContent=matched+' Paesi e territori';
+ updateMapColors();
 }
 function setupBackup(){
  const exportButton=document.getElementById('fm-export');if(exportButton)exportButton.addEventListener('click',()=>{if(!currentUid){notify('Accedi prima di esportare i dati.');return;}
@@ -185,7 +347,7 @@ function setupAuthSync(){
 function init(){
  // Le preferenze anonime della vecchia versione non devono essere utilizzate nella nuova app.
  try{for(const key of [FAV,VISITED,WISH])localStorage.removeItem(key);}catch(_){}
- enhanceCards();renderSaved();renderCountries();updateCounts();setupBackup();setupAuthSync();
+ enhanceCards();initPassportMap();renderSaved();renderCountries();updateCounts();setupBackup();setupAuthSync();
  const search=document.getElementById('fm-country-search');if(search)search.addEventListener('input',renderCountries);
  const filter=document.getElementById('fm-country-view');if(filter)filter.addEventListener('change',renderCountries);
  if(!storageOk)notify('Attenzione: il salvataggio locale non è disponibile in questa modalità.');
