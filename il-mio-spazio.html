@@ -109,6 +109,26 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
 .fm-account-actions{display:flex;gap:8px;flex-wrap:wrap}.fm-account-actions button{border:1px solid #a68a6e;background:#fff9f0;border-radius:8px;padding:10px 14px;font-weight:700}
 .fm-account-small{font-size:12px;color:#705a44}
 @media(max-width:650px){.fm-account-shell{padding:18px}.fm-account-shell h3{font-size:24px}}
+
+/* Fuori Mappa: iscrizione alle notifiche push, facoltativa e riservata al profilo. */
+.fm-push-panel{margin:19px 0 12px;padding:19px;border:1px solid #bac7b8;background:#f3f5ec;border-radius:13px}
+.fm-push-panel h4{font:normal 23px Georgia,serif;color:#345341;margin:0 0 8px}
+.fm-push-panel p{font-size:13px;margin:0 0 10px;color:#53604e}
+.fm-push-panel button,.fm-push-dialog button{font:700 13px Arial,sans-serif;border-radius:9px;padding:12px 15px;cursor:pointer}
+.fm-push-panel button{border:1px solid #46674f;color:#fff;background:#476c52}
+.fm-push-panel button:disabled,.fm-push-dialog button:disabled{opacity:.58;cursor:default}
+#fm-push-status{min-height:20px;line-height:1.5;margin:10px 0 0}
+.fm-push-overlay[hidden]{display:none!important}
+.fm-push-overlay{position:fixed;z-index:10000;inset:0;background:#251e16a8;display:flex;align-items:center;justify-content:center;padding:20px}
+.fm-push-dialog{background:#fffaf0;border:1px solid #d5c3a8;border-radius:20px;padding:28px 23px;max-width:430px;width:100%;box-shadow:0 18px 55px #16110d59;text-align:center}
+.fm-push-symbol{display:block;font-size:37px;margin-bottom:8px}
+.fm-push-dialog h3{font:normal 31px Georgia,serif;color:#355744;margin:0 0 8px}
+.fm-push-dialog p{font-size:14px;line-height:1.6;color:#584938;margin:0 0 18px}
+.fm-push-controls{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+.fm-push-controls button:first-child{background:#466b52;color:#fff;border:1px solid #466b52}
+.fm-push-controls button:last-child{background:#fffaf0;color:#594637;border:1px solid #cdbda7}
+.fm-push-message{font-size:12px!important;color:#66513c!important;margin-top:12px!important;min-height:0}
+@media(max-width:390px){.fm-push-dialog{padding:22px 16px}.fm-push-controls button{flex:1}}
 </style>
 </head><body><main class="fm-browser-personal-info" id="fm-browser-info">
  <span>✦ FUORI MAPPA</span>
@@ -179,6 +199,12 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
    <p class="fm-account-email" id="fm-account-email"></p>
    <p id="fm-cloud-status" class="fm-account-small">Caricamento del tuo passaporto e dei preferiti…</p>
    <div class="fm-account-actions"><button type="button" id="fm-logout">Esci dall'account</button></div>
+   <section class="fm-push-panel" id="fm-push-panel" aria-labelledby="fm-push-heading">
+    <h4 id="fm-push-heading">🔔 Novità di viaggio</h4>
+    <p>Vuoi sapere quando esce un nuovo itinerario? Scegli tu: le notifiche sono gratuite e facoltative.</p>
+    <button type="button" id="fm-push-toggle">Attiva notifiche</button>
+    <p id="fm-push-status" role="status" aria-live="polite">Controllo delle notifiche…</p>
+   </section>
    <div class="fm-account-danger" aria-labelledby="fm-delete-title">
     <h4 id="fm-delete-title">Gestisci i tuoi dati</h4>
     <p>Puoi scaricare una copia dei tuoi preferiti e del passaporto con il pulsante più in basso. Puoi anche eliminare definitivamente il tuo account.</p>
@@ -191,6 +217,18 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
 </section>
 <div class="fm-note fm-protected" hidden><strong>Come vengono salvati i tuoi dati.</strong> Preferiti e passaporto sono disponibili soltanto con un account Fuori Mappa e vengono sincronizzati con Supabase. Finché sei connesso, alcune modifiche possono essere tenute temporaneamente sul dispositivo per sincronizzarle quando torna internet. Puoi esportare un backup dei tuoi dati.</div>
  <div class="fm-backup fm-protected" hidden><button type="button" id="fm-export">Scarica una copia dei miei dati ↓</button><label for="fm-import">Importa un backup ↑<input id="fm-import" type="file" accept="application/json,.json"></label></div><p id="fm-personal-status" class="fm-status fm-protected" hidden role="status" aria-live="polite"></p>
+ <div class="fm-push-overlay fm-personal-only" id="fm-push-welcome" hidden>
+  <div class="fm-push-dialog" role="dialog" aria-modal="true" aria-labelledby="fm-push-dialog-title" aria-describedby="fm-push-dialog-info">
+   <span class="fm-push-symbol" aria-hidden="true">🌍 🔔</span>
+   <h3 id="fm-push-dialog-title">Non perderti i nuovi viaggi!</h3>
+   <p id="fm-push-dialog-info">Ti avvisiamo soltanto quando pubblichiamo un nuovo itinerario su Fuori Mappa. Vuoi attivare le notifiche?</p>
+   <div class="fm-push-controls">
+    <button type="button" id="fm-push-allow">Attiva notifiche</button>
+    <button type="button" id="fm-push-later">Non ora</button>
+   </div>
+   <p class="fm-push-message" id="fm-push-welcome-status" role="status" aria-live="polite"></p>
+  </div>
+ </div>
 </main>
 <footer class="fm-foot">FUORI MAPPA ✦ · viaggi, idee e qualche deviazione<br><a href="privacy.html">Privacy e preferenze</a> · <a href="termini-app.html">Termini di utilizzo</a></footer></div>
 <script id="fm-browser-email-confirmation">
@@ -224,4 +262,4 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
 })();
 </script>
 <script>window.FM_COUNTRIES=[["AF","Afghanistan"],["AL","Albania"],["DZ","Algeria"],["AD","Andorra"],["AO","Angola"],["AI","Anguilla"],["AQ","Antartide"],["AG","Antigua e Barbuda"],["SA","Arabia Saudita"],["AR","Argentina"],["AM","Armenia"],["AW","Aruba"],["AU","Australia"],["AT","Austria"],["AZ","Azerbaigian"],["BS","Bahamas"],["BH","Bahrein"],["BD","Bangladesh"],["BB","Barbados"],["BE","Belgio"],["BZ","Belize"],["BJ","Benin"],["BM","Bermuda"],["BT","Bhutan"],["BY","Bielorussia"],["BO","Bolivia"],["BA","Bosnia ed Erzegovina"],["BW","Botswana"],["BR","Brasile"],["BN","Brunei"],["BG","Bulgaria"],["BF","Burkina Faso"],["BI","Burundi"],["KH","Cambogia"],["CM","Camerun"],["CA","Canada"],["CV","Capo Verde"],["BQ","Caraibi Olandesi"],["TD","Ciad"],["CL","Cile"],["CN","Cina"],["CY","Cipro"],["VA","Città del Vaticano"],["CO","Colombia"],["KM","Comore"],["KP","Corea del Nord"],["KR","Corea del Sud"],["CI","Costa d’Avorio"],["CR","Costa Rica"],["HR","Croazia"],["CU","Cuba"],["CW","Curaçao"],["DK","Danimarca"],["DM","Dominica"],["EC","Ecuador"],["EG","Egitto"],["SV","El Salvador"],["AE","Emirati Arabi Uniti"],["ER","Eritrea"],["EE","Estonia"],["SZ","Eswatini"],["ET","Etiopia"],["FJ","Figi"],["PH","Filippine"],["FI","Finlandia"],["FR","Francia"],["GA","Gabon"],["GM","Gambia"],["GE","Georgia"],["GS","Georgia del Sud e Sandwich Australi"],["DE","Germania"],["GH","Ghana"],["JM","Giamaica"],["JP","Giappone"],["GI","Gibilterra"],["DJ","Gibuti"],["JO","Giordania"],["GR","Grecia"],["GD","Grenada"],["GL","Groenlandia"],["GP","Guadalupa"],["GU","Guam"],["GT","Guatemala"],["GG","Guernsey"],["GN","Guinea"],["GQ","Guinea Equatoriale"],["GW","Guinea-Bissau"],["GY","Guyana"],["GF","Guyana Francese"],["HT","Haiti"],["HN","Honduras"],["IN","India"],["ID","Indonesia"],["IR","Iran"],["IQ","Iraq"],["IE","Irlanda"],["IS","Islanda"],["BV","Isola Bouvet"],["CX","Isola Christmas"],["IM","Isola di Man"],["NF","Isola Norfolk"],["KY","Isole Cayman"],["CC","Isole Cocos (Keeling)"],["CK","Isole Cook"],["FK","Isole Falkland"],["FO","Isole Fær Øer"],["HM","Isole Heard e McDonald"],["MP","Isole Marianne Settentrionali"],["MH","Isole Marshall"],["UM","Isole Minori Esterne degli Stati Uniti"],["PN","Isole Pitcairn"],["SB","Isole Salomone"],["TC","Isole Turks e Caicos"],["VI","Isole Vergini Americane"],["VG","Isole Vergini Britanniche"],["AX","Isole Åland"],["IL","Israele"],["IT","Italia"],["JE","Jersey"],["KZ","Kazakistan"],["KE","Kenya"],["KG","Kirghizistan"],["KI","Kiribati"],["XK","Kosovo"],["KW","Kuwait"],["LA","Laos"],["LS","Lesotho"],["LV","Lettonia"],["LB","Libano"],["LR","Liberia"],["LY","Libia"],["LI","Liechtenstein"],["LT","Lituania"],["LU","Lussemburgo"],["MK","Macedonia del Nord"],["MG","Madagascar"],["MW","Malawi"],["MY","Malaysia"],["MV","Maldive"],["ML","Mali"],["MT","Malta"],["MA","Marocco"],["MQ","Martinica"],["MR","Mauritania"],["MU","Mauritius"],["YT","Mayotte"],["MX","Messico"],["FM","Micronesia"],["MD","Moldavia"],["MC","Monaco"],["MN","Mongolia"],["ME","Montenegro"],["MS","Montserrat"],["MZ","Mozambico"],["MM","Myanmar (Birmania)"],["NA","Namibia"],["NR","Nauru"],["NP","Nepal"],["NI","Nicaragua"],["NE","Niger"],["NG","Nigeria"],["NU","Niue"],["NO","Norvegia"],["NC","Nuova Caledonia"],["NZ","Nuova Zelanda"],["OM","Oman"],["NL","Paesi Bassi"],["PK","Pakistan"],["PW","Palau"],["PS","Palestina"],["PA","Panama"],["PG","Papua Nuova Guinea"],["PY","Paraguay"],["PE","Perù"],["PF","Polinesia Francese"],["PL","Polonia"],["PT","Portogallo"],["PR","Portorico"],["QA","Qatar"],["HK","RAS di Hong Kong"],["MO","RAS di Macao"],["GB","Regno Unito"],["CZ","Repubblica Ceca"],["CF","Repubblica Centrafricana"],["CG","Repubblica del Congo"],["CD","Repubblica Democratica del Congo"],["DO","Repubblica Dominicana"],["RE","Riunione"],["RO","Romania"],["RW","Ruanda"],["RU","Russia"],["EH","Sahara Occidentale"],["KN","Saint Kitts e Nevis"],["LC","Saint Lucia"],["MF","Saint Martin"],["VC","Saint Vincent e Grenadine"],["BL","Saint-Barthélemy"],["PM","Saint-Pierre e Miquelon"],["WS","Samoa"],["AS","Samoa Americane"],["SM","San Marino"],["SH","Sant’Elena"],["SN","Senegal"],["RS","Serbia"],["SC","Seychelles"],["SL","Sierra Leone"],["SG","Singapore"],["SX","Sint Maarten"],["SY","Siria"],["SK","Slovacchia"],["SI","Slovenia"],["SO","Somalia"],["ES","Spagna"],["LK","Sri Lanka"],["US","Stati Uniti"],["SS","Sud Sudan"],["ZA","Sudafrica"],["SD","Sudan"],["SR","Suriname"],["SJ","Svalbard e Jan Mayen"],["SE","Svezia"],["CH","Svizzera"],["ST","São Tomé e Príncipe"],["TJ","Tagikistan"],["TW","Taiwan"],["TZ","Tanzania"],["TF","Terre Australi Francesi"],["IO","Territorio Britannico dell’Oceano Indiano"],["TH","Thailandia"],["TL","Timor Est"],["TG","Togo"],["TK","Tokelau"],["TO","Tonga"],["TT","Trinidad e Tobago"],["TN","Tunisia"],["TR","Turchia"],["TM","Turkmenistan"],["TV","Tuvalu"],["UA","Ucraina"],["UG","Uganda"],["HU","Ungheria"],["UY","Uruguay"],["UZ","Uzbekistan"],["VU","Vanuatu"],["VE","Venezuela"],["VN","Vietnam"],["WF","Wallis e Futuna"],["YE","Yemen"],["ZM","Zambia"],["ZW","Zimbabwe"]];</script><script defer src="/fm-world-map-data.js?v=20261026"></script><script defer src="/fm-auth.js"></script>
-<script defer src="/fm-personale.js?v=20261026-mappa"></script></body></html>
+<script defer src="/fm-personale.js?v=20261026-mappa"></script><script defer src="/fm-notifiche.js?v=20261026-1"></script></body></html>
