@@ -154,6 +154,32 @@ async function onAuth(next){
  }
  update();
 }
+
+// Assicura che la sottoscrizione su questo dispositivo sia disattivata PRIMA di uscire.
+// Il cancellamento dell'utente su TUTTI i dispositivi avviene nella Edge Function protetta.
+async function disconnectForExit(options={}){
+ const uid=user?.id||window.FMAuth?.getUser?.()?.id||null;
+ if(!uid)return;
+ const wasEnabled=choice(uid)==='yes';
+ if(wasEnabled && !apiReady){
+   // Il consenso era gia' stato dato: e' lecito caricare il servizio per revocarlo.
+   await loadSDK();
+ }
+ if(apiReady&&api){
+   if(wasEnabled||api.User?.PushSubscription?.optedIn){
+     await api.User.PushSubscription.optOut();
+   }
+   await api.logout();
+   api.setConsentGiven(false);
+ }
+ linkedUserId=null;
+ consentInSession.delete(uid);
+ if(options.forgetChoice){
+   try{localStorage.removeItem(PREFIX+uid);}catch(_){/* memoria disabilitata */}
+ }
+}
+window.FMNotifications={disconnectForExit};
+
 function attach(){
  const toggle=$('fm-push-toggle'),yes=$('fm-push-allow'),later=$('fm-push-later');
  if(!toggle||!yes||!later)return;

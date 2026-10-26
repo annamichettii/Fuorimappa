@@ -150,7 +150,11 @@ function setupForms(){
    if(!client)return;status('Uscita in corso…');
    const dirty=window.FMPersonal?.hasUnsynced?.();
    if(dirty&&!confirm('Ci sono modifiche non ancora sincronizzate. Vuoi uscire comunque?')){status('Uscita annullata.');return;}
-   const {error}=await client.auth.signOut();status(error?errorMessage(error):'Hai effettuato la disconnessione.');
+   let warning='';
+   try{await window.FMNotifications?.disconnectForExit?.();}
+   catch(err){warning=' Attenzione: verifica nel Profilo o in OneSignal che le notifiche siano disattivate sul dispositivo.';console.warn('Notifiche: pulizia prima della disconnessione non riuscita',err);}
+   const {error}=await client.auth.signOut();
+   status(error?errorMessage(error):'Hai effettuato la disconnessione.'+warning);
  });
  const deleteButton=$('fm-delete-account');
  if(deleteButton)deleteButton.addEventListener('click',async()=>{
@@ -167,6 +171,10 @@ function setupForms(){
      const {data,error}=await client.functions.invoke('fm-delete-account',{body:{confirm:'ELIMINA'}});
      if(error)throw error;
      if(!data?.ok)throw Error('La richiesta non è stata confermata dal server.');
+     // OneSignal ha gia' cancellato sul server il profilo associato all'account.
+     // Disattiviamo anche la sottoscrizione locale e dimentichiamo la scelta.
+     try{await window.FMNotifications?.disconnectForExit?.({forgetChoice:true});}
+     catch(err){console.warn('Pulizia OneSignal sul dispositivo non riuscita',err);}
      window.FMPersonal?.clearDeletedUserData?.(oldId);
      const {error:exitError}=await client.auth.signOut({scope:'local'});
      if(exitError){console.warn('Logout locale dopo eliminazione:',exitError);}
