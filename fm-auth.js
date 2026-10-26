@@ -18,6 +18,7 @@ function updateUI(){
  if(guest)guest.hidden=user;
  if(account)account.hidden=!user;
  if(user&&$('fm-account-email'))$('fm-account-email').textContent=currentUser.email||'Account collegato';
+ if(user&&$('fm-profile-name'))$('fm-profile-name').textContent='Ciao, '+(currentUser.user_metadata?.full_name||currentUser.user_metadata?.name||currentUser.email?.split('@')[0]||'viaggiatore')+' ✦';
  if(!user&&$('fm-cloud-status'))$('fm-cloud-status').textContent='';
 }
 function announce(){updateUI();window.dispatchEvent(new CustomEvent('fm-auth-changed',{detail:{user:currentUser}}));}
@@ -82,7 +83,30 @@ function setupForms(){
    if(dirty&&!confirm('Ci sono modifiche non ancora sincronizzate. Vuoi uscire comunque?')){status('Uscita annullata.');return;}
    const {error}=await client.auth.signOut();status(error?errorMessage(error):'Hai effettuato la disconnessione.');
  });
- $('fm-import-guest').addEventListener('click',()=>{
+ const deleteButton=$('fm-delete-account');
+ if(deleteButton)deleteButton.addEventListener('click',async()=>{
+   if(!client||!currentUser){status('Accedi prima di eliminare il tuo account.');return;}
+   if(window.FMPersonal?.hasUnsynced?.()){
+     status('Ci sono modifiche non sincronizzate: attendi o esporta prima i tuoi dati.');return;
+   }
+   if(!confirm('Vuoi eliminare il tuo account Fuori Mappa e tutti i suoi dati online? Non potrai recuperarli.'))return;
+   const input=prompt('Per confermare, scrivi ELIMINA in maiuscolo.');
+   if(input!=='ELIMINA'){status('Eliminazione annullata.');return;}
+   deleteButton.disabled=true;status('Eliminazione protetta in corso…');
+   const oldId=currentUser.id;
+   try{
+     const {data,error}=await client.functions.invoke('fm-delete-account',{body:{confirm:'ELIMINA'}});
+     if(error)throw error;
+     if(!data?.ok)throw Error('La richiesta non è stata confermata dal server.');
+     window.FMPersonal?.clearDeletedUserData?.(oldId);
+     const {error:exitError}=await client.auth.signOut({scope:'local'});
+     if(exitError){console.warn('Logout locale dopo eliminazione:',exitError);}
+     setUser(null);
+     status('Account eliminato. I dati locali di Fuori Mappa sono stati cancellati da questo dispositivo.');
+   }catch(err){status('Eliminazione non riuscita. Controlla che la funzione protetta sia stata attivata su Supabase. '+errorMessage(err));}
+   finally{deleteButton.disabled=false;}
+ });
+  $('fm-import-guest').addEventListener('click',()=>{
   if(!currentUser)return;
   if(!window.FMPersonal?.mergeGuest){status('La sincronizzazione si sta ancora preparando.');return;}
   window.FMPersonal.mergeGuest();

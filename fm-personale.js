@@ -166,7 +166,16 @@ async function mergeGuest(){
  all.wish=[...new Set([...all.wish,...guest.wish])].slice(0,300);
  writeCached(all);refresh();scheduleSync();notify('Dati aggiunti. Sincronizzazione avviata.');
 }
-window.FMPersonal={hasUnsynced:()=>!!(currentUid&&localStorage.getItem(dirtyKey(currentUid))),mergeGuest};
+function clearDeletedUserData(uid){
+ if(!uid||uid!==currentUid)return;
+ clearTimeout(saveTimeout);requestVersion++;
+ for(const k of [FAV,VISITED,WISH]){
+  try{localStorage.removeItem(k+'::'+uid);localStorage.removeItem(k);}catch(_){}
+ }
+ try{localStorage.removeItem(dirtyKey(uid));}catch(_){}
+ currentUid=null;markLoading(false);refresh();uiSync('');
+}
+window.FMPersonal={hasUnsynced:()=>!!(currentUid&&localStorage.getItem(dirtyKey(currentUid))),mergeGuest,clearDeletedUserData};
 function setupAuthSync(){
  window.addEventListener('fm-auth-changed',event=>switchAccount(event.detail?.user||null));
  if(window.FMAuth?.ready)window.FMAuth.ready.then(user=>switchAccount(user));

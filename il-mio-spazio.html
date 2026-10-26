@@ -49,6 +49,12 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
 .fm-auth-status{font-size:13px;line-height:1.5;min-height:1.4em;margin:12px 0 0;color:#65402a}
 .fm-account-tag{font-size:10px;font-weight:700;letter-spacing:2px;color:#805537}
 .fm-account-email{overflow-wrap:anywhere;font-weight:bold}
+.fm-profile-name{font:normal 24px/1.3 Georgia,serif;margin:10px 0 4px;color:#30281f}
+.fm-account-danger{margin-top:23px;padding-top:18px;border-top:1px solid #ded1bf}
+.fm-account-danger h4{font:normal 20px Georgia,serif;margin:0 0 8px}
+.fm-account-danger button{font:700 13px Arial,sans-serif;border:1px solid #9d594f;color:#87392f;padding:12px;background:#fff8f4;border-radius:9px}
+.fm-account-danger button:disabled{opacity:.6}
+.fm-account-danger small{display:block;margin:9px 0 0;color:#6a5544;line-height:1.5}
 .fm-account-actions{display:flex;gap:8px;flex-wrap:wrap}.fm-account-actions button{border:1px solid #a68a6e;background:#fff9f0;border-radius:8px;padding:10px 14px;font-weight:700}
 .fm-account-small{font-size:12px;color:#705a44}
 @media(max-width:650px){.fm-account-shell{padding:18px}.fm-account-shell h3{font-size:24px}}
@@ -84,13 +90,20 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
      <button class="fm-auth-button" type="submit">Crea il mio account</button>
    </form>
    <button class="fm-auth-text-button" type="button" id="fm-password-forgot">Hai dimenticato la password?</button>
-   <p class="fm-account-small">Registrandoti accetti di utilizzare il servizio secondo l'<a href="privacy.html">informativa privacy</a>. L'iscrizione alla newsletter rimane separata e facoltativa.</p>
+   <p class="fm-account-small">Per creare un account consulta l'<a href="privacy.html">informativa privacy</a>, che aggiorneremo prima dell’apertura al pubblico. L'iscrizione alla newsletter rimane separata e facoltativa.</p>
   </div>
   <div class="fm-account-user" id="fm-account-user" hidden>
    <span class="fm-account-tag">✦ ACCESSO EFFETTUATO</span><h3>Il tuo account Fuori Mappa</h3>
+   <p class="fm-profile-name" id="fm-profile-name"></p>
    <p class="fm-account-email" id="fm-account-email"></p>
    <p id="fm-cloud-status" class="fm-account-small">Caricamento del tuo passaporto e dei preferiti…</p>
    <div class="fm-account-actions"><button type="button" id="fm-import-guest">Aggiungi i vecchi dati salvati sul telefono</button><button type="button" id="fm-logout">Esci dall'account</button></div>
+   <div class="fm-account-danger" aria-labelledby="fm-delete-title">
+    <h4 id="fm-delete-title">Gestisci i tuoi dati</h4>
+    <p>Puoi scaricare una copia dei tuoi preferiti e del passaporto con il pulsante più in basso. Puoi anche eliminare definitivamente il tuo account.</p>
+    <button type="button" id="fm-delete-account">Elimina definitivamente account e dati</button>
+    <small>L'eliminazione riguarda il profilo e i dati personali dell'app Fuori Mappa. L'iscrizione alla newsletter è separata e va annullata tramite il link presente nelle email.</small>
+   </div>
   </div>
   <p id="fm-auth-status" class="fm-auth-status" role="status" aria-live="polite"></p>
  </div>
