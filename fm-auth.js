@@ -12,9 +12,22 @@ const ready=new Promise(resolve=>{readyResolve=resolve;});
 window.FMAuth={ready,getUser:()=>currentUser,getClient:()=>client};
 const $=id=>document.getElementById(id);
 function status(message){const n=$('fm-auth-status');if(n)n.textContent=message||'';}
+const resetNoticeKey='fm-reset-request-v1';
+function showResetNotice(scroll=false){
+ const el=$('fm-reset-confirmation');if(!el)return;
+ el.hidden=false;
+ if(scroll){el.scrollIntoView({behavior:'smooth',block:'center'});el.focus({preventScroll:true});}
+}
+function hideResetNotice(clearStored=false){
+ const el=$('fm-reset-confirmation');if(el)el.hidden=true;
+ if(clearStored){try{localStorage.removeItem(resetNoticeKey);}catch(_){}}
+}
 function updateUI(){
  const user=!!currentUser;
- if(user){try{localStorage.removeItem('fm-pending-email-v1');}catch(_){}}
+ if(user){
+  try{localStorage.removeItem('fm-pending-email-v1');}catch(_){}
+  hideResetNotice(true);
+ }
  const guest=$('fm-account-guest'), account=$('fm-account-user');
  if(guest)guest.hidden=user;
  if(account)account.hidden=!user;
@@ -40,7 +53,7 @@ function errorMessage(err){
  return m.length>190?m.slice(0,190):m;
 }
 function busy(form,on){if(!form)return;form.querySelectorAll('button[type=submit]').forEach(b=>{b.disabled=on;});}
-function mode(signup){$('fm-login-form').hidden=signup;$('fm-signup-form').hidden=!signup;$('fm-show-login').setAttribute('aria-pressed',String(!signup));$('fm-show-signup').setAttribute('aria-pressed',String(signup));if(signup&&$('fm-signup-confirmation'))$('fm-signup-confirmation').hidden=true;status('');}
+function mode(signup){$('fm-login-form').hidden=signup;$('fm-signup-form').hidden=!signup;$('fm-show-login').setAttribute('aria-pressed',String(!signup));$('fm-show-signup').setAttribute('aria-pressed',String(signup));if(signup&&$('fm-signup-confirmation'))$('fm-signup-confirmation').hidden=true;if(signup)hideResetNotice(true);status('');}
 function guardPersonalLinks(){
  document.querySelectorAll('.fm-app-tabs a[href*="#preferiti"], .fm-app-tabs a[href*="#passaporto"]').forEach(a=>{
   a.addEventListener('click',e=>{
@@ -58,6 +71,11 @@ function moveGuestToProfile(){
 }
 function setupForms(){
  if(!$('fm-account-guest'))return;
+ try{
+   const resetAt=Number(localStorage.getItem(resetNoticeKey));
+   if(resetAt&&Date.now()-resetAt<30*60*1000){showResetNotice();}
+   else localStorage.removeItem(resetNoticeKey);
+ }catch(_){}
  try{
    const time=Number(localStorage.getItem('fm-pending-email-v1'));
    if(time&&Date.now()-time<48*60*60*1000){
@@ -111,12 +129,22 @@ function setupForms(){
   }catch(err){status(errorMessage(err));}finally{busy(form,false);}
  });
  $('fm-password-forgot').addEventListener('click',async()=>{
-   if(!client)return;
+   if(!client){status('Connessione in corso, riprova tra poco.');return;}
    const input=$('fm-login-form').querySelector('input[type=email]');
    const email=(input.value||'').trim();
    if(!email){status('Inserisci prima la tua email nel campo di accesso.');input.focus();return;}
-   try{const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:'https://www.fuorimappa.it/recupera-password.html'});if(error)throw error;status('Se l’indirizzo è registrato, riceverai un’email con le istruzioni. Controlla anche Spam / Indesiderata.');}
-   catch(err){status(errorMessage(err));}
+   const button=$('fm-password-forgot');
+   button.disabled=true;
+   hideResetNotice(true);
+   status('Richiesta di recupero in corso…');
+   try{
+     const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:'https://www.fuorimappa.it/recupera-password.html'});
+     if(error)throw error;
+     try{localStorage.setItem(resetNoticeKey,String(Date.now()));}catch(_){}
+     showResetNotice(true);
+     status('Controlla la tua posta, anche Spam / Posta indesiderata.');
+   }catch(err){status(errorMessage(err));}
+   finally{button.disabled=false;}
  });
  $('fm-logout').addEventListener('click',async()=>{
    if(!client)return;status('Uscita in corso…');
