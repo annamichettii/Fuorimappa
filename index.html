@@ -862,7 +862,29 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #a66
 .fm-app-install-icon { flex:0 0 auto; width:64px; height:64px; border-radius:16px; object-fit:cover; box-shadow:0 3px 14px rgba(30,42,28,.12); }
 .fm-app-install h2 { font-family:Georgia,serif; font-size:clamp(23px,2.6vw,30px); margin:0 0 6px; color:#1c3d2f; line-height:1.12; }
 .fm-app-install p { margin:0; color:#4c4a40; font-size:14px; line-height:1.5; }
-.fm-app-install-button { border:0; background:#1c3d2f; color:#fffaf2; padding:13px 20px; min-width:172px; border-radius:7px; cursor:pointer; font:700 14px Arial,sans-serif; }
+ /* Invito installazione in prima schermata del SITO (non nell'app installata). */
+ .fm-hero-install-button {
+   display:block; width:100%; border:1px solid #1c3d2f; border-radius:6px;
+   background:#1c3d2f; color:#fffaf2; padding:16px 20px;
+   font:700 15px Arial,sans-serif; cursor:pointer; letter-spacing:.2px;
+   box-shadow:0 5px 13px rgba(28,61,47,.14);
+ }
+ .fm-hero-install-button[hidden]{display:none!important;}
+ .fm-hero-install-button:hover,.fm-hero-install-button:focus-visible{background:#2a543f;color:#fff;border-color:#2a543f;}
+ .fm-hero-install-button:focus-visible{outline:3px solid #bd855e;outline-offset:3px;}
+ .fm-hero-install-wrap{margin:25px auto 0;max-width:510px;}
+ .fm-hero-install-caption{display:block;margin:8px 0 0;font:12px/1.45 Arial,sans-serif;color:#655845;}
+ .fm-hero-install-help{display:none;margin:12px auto 0;max-width:510px;background:#edf1e9;border:1px solid #b8c9b7;
+   border-left:4px solid #1c3d2f;color:#1c3d2f;padding:12px 14px;text-align:left;font:14px/1.55 Arial,sans-serif;}
+ .fm-hero-install-help.fm-app-install-help-visible{display:block;}
+ html.fm-is-app .fm-hero-install-wrap,html.fm-is-app .fm-hero-install-help{display:none!important;}
+ @media(max-width:700px){
+   html:not(.fm-is-app) .fm-hero-install-wrap{margin-top:19px;}
+   html:not(.fm-is-app) .fm-hero-install-button{padding:14px 14px;font-size:14px;}
+   html:not(.fm-is-app) .hero .fm-hero-actions{margin-top:6px;gap:8px;}
+   html:not(.fm-is-app) .hero .fm-hero-actions .cta-button{margin-top:8px;}
+ }
+ .fm-app-install-button { border:0; background:#1c3d2f; color:#fffaf2; padding:13px 20px; min-width:172px; border-radius:7px; cursor:pointer; font:700 14px Arial,sans-serif; }
 .fm-app-install-button:hover, .fm-app-install-button:focus-visible { background:#2a543f; }
 .fm-app-install-help { display:none; max-width:1040px; margin:15px auto 0; background:#fffaf2; padding:12px 16px; color:#1c3d2f; font-size:14px; line-height:1.6; border-left:3px solid #c36f39; }
 .fm-app-install-help.fm-app-install-help-visible { display:block; }
@@ -1022,6 +1044,11 @@ html:not(.fm-is-app) .fm-app-bottom,html:not(.fm-is-app) .fm-only-app{display:no
 <div class="small">UN DIARIO DI LUOGHI, IDEE E DEVIAZIONI ✦</div>
 <h1>Fuori<br/>Mappa</h1>
 <p class="subtitle">Ogni viaggio nasce da un’idea. Sfoglia le nostre ispirazioni, scegli la tua rotta e rendila davvero tua.</p>
+<div class="fm-hero-install-wrap">
+  <button type="button" class="fm-hero-install-button" id="fm-hero-install-button" aria-controls="fm-hero-install-help" aria-expanded="false">↓ Installa Fuori Mappa gratis</button>
+  <span class="fm-hero-install-caption">Gratis · iPhone e Android · Senza App Store o Play Store</span>
+  <p class="fm-hero-install-help" id="fm-hero-install-help" role="status" aria-live="polite"></p>
+</div>
 <div class="fm-hero-actions"><a class="cta-button hero-button" href="itinerari.html">Esplora gli itinerari ↗</a><a class="cta-button cta-button-primary" href="costruiamo-il-tuo-viaggio.html">Crea il tuo viaggio ✦</a></div>
 </div>
 </section>
@@ -1213,15 +1240,23 @@ setTimeout(function(){
   var area = document.getElementById('fm-app-install');
   var button = document.getElementById('fm-app-install-button');
   var help = document.getElementById('fm-app-install-help');
+  var heroButton = document.getElementById('fm-hero-install-button');
+  var heroHelp = document.getElementById('fm-hero-install-help');
   if (!area || !button || !help) return;
 
-  var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-  if (isStandalone) { area.hidden = true; area.style.display = 'none'; return; }
+  var isStandalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+  if (isStandalone) {
+    area.hidden = true;
+    area.style.display = 'none';
+    if (heroButton) heroButton.hidden = true;
+    return;
+  }
   var installPrompt = null;
-  function showHelp(message) {
-    help.textContent = message;
-    help.classList.add('fm-app-install-help-visible');
-    button.setAttribute('aria-expanded', 'true');
+  function showHelp(message, sourceButton) {
+    var targetHelp = (sourceButton === heroButton && heroHelp) ? heroHelp : help;
+    targetHelp.textContent = message;
+    targetHelp.classList.add('fm-app-install-help-visible');
+    sourceButton.setAttribute('aria-expanded', 'true');
   }
 
   window.addEventListener('beforeinstallprompt', function (event) {
@@ -1229,7 +1264,7 @@ setTimeout(function(){
     installPrompt = event;
   });
 
-  button.addEventListener('click', async function () {
+  async function installFrom(sourceButton) {
     if (installPrompt) {
       var prompt = installPrompt;
       installPrompt = null;
@@ -1237,30 +1272,36 @@ setTimeout(function(){
         await prompt.prompt();
         var choice = await prompt.userChoice;
         if (choice && choice.outcome === 'accepted') {
-          showHelp('Installazione avviata! Troverai Fuori Mappa tra le app del telefono.');
+          showHelp('Installazione avviata! Troverai Fuori Mappa tra le app del telefono.', sourceButton);
         } else {
-          showHelp('Puoi installare Fuori Mappa quando vuoi, dal menu del browser.');
+          showHelp('Puoi installare Fuori Mappa quando vuoi, dal menu del browser.', sourceButton);
         }
-      } catch (error) { showManualInstructions(); }
+      } catch (error) { showManualInstructions(sourceButton); }
       return;
     }
-    showManualInstructions();
-  });
+    showManualInstructions(sourceButton);
+  }
 
-  function showManualInstructions() {
+  button.addEventListener('click', function () { installFrom(button); });
+  if (heroButton && heroHelp) {
+    heroButton.addEventListener('click', function () { installFrom(heroButton); });
+  }
+
+  function showManualInstructions(sourceButton) {
     var ua = navigator.userAgent || '';
     if (/iPad|iPhone|iPod/.test(ua)) {
-      showHelp('Su iPhone: apri www.fuorimappa.it in Safari, tocca Condividi (oppure il menu del browser), poi scegli “Aggiungi alla schermata Home”.');
+      showHelp('Su iPhone: apri www.fuorimappa.it in Safari, tocca Condividi (oppure il menu del browser), poi scegli “Aggiungi alla schermata Home”.', sourceButton);
     } else if (/Android/i.test(ua)) {
-      showHelp('Su Android: apri www.fuorimappa.it in Chrome, tocca il menu ⋮ e seleziona “Installa app” o “Aggiungi a schermata Home”.');
+      showHelp('Su Android: apri www.fuorimappa.it in Chrome, tocca il menu ⋮ e seleziona “Installa app” o “Aggiungi a schermata Home”.', sourceButton);
     } else {
-      showHelp('Apri www.fuorimappa.it dal telefono. Su iPhone usa il menu Condividi di Safari; su Android apri il menu ⋮ di Chrome e scegli Installa app.');
+      showHelp('Apri www.fuorimappa.it dal telefono. Su iPhone usa il menu Condividi di Safari; su Android apri il menu ⋮ di Chrome e scegli Installa app.', sourceButton);
     }
   }
 
   window.addEventListener('appinstalled', function () {
     area.hidden = true;
     area.style.display = 'none';
+    if (heroButton) heroButton.hidden = true;
   });
 })();
 </script>
