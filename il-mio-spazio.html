@@ -62,6 +62,12 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
  .fm-browser-personal-info h1{font:normal clamp(32px,6vw,48px) Georgia,serif}
  .fm-browser-personal-info p{line-height:1.6}
  .fm-browser-personal-info a{display:inline-block;padding:13px 21px;margin-top:10px;border-radius:8px;background:#342b22;color:white;text-decoration:none}
+ .fm-browser-personal-info [hidden]{display:none!important}
+ .fm-confirm-steps{margin:19px 0 4px;padding:17px 18px;text-align:left;border-radius:13px;background:#edf4ed;border:1px solid #c8d8c9;color:#304837}
+ .fm-confirm-steps-title{font-weight:700;font-size:16px;margin:0 0 9px;color:#2d4b37}
+ .fm-confirm-steps ol{padding-left:21px;margin:0;line-height:1.65}
+ .fm-confirm-steps li{padding:4px 0}
+ .fm-confirm-steps-note{font-size:13px;margin:12px 0 0;color:#44624c}
  html.fm-is-app .fm-browser-personal-info{display:none}
  .fm-app-tabs{display:none}
  @media(max-width:700px){
@@ -139,6 +145,15 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
  <h1 id="fm-browser-title">Il tuo spazio è nell'app.</h1>
  <p id="fm-browser-explanation">Hai aperto questa pagina nel browser. Se arrivi dal link di conferma dell'email, torna nell'app Fuori Mappa dalla schermata Home e vai su <strong>Profilo → Accedi</strong>, usando l'email e la password scelte durante la registrazione.</p>
  <p id="fm-browser-advice">Preferiti, passaporto e profilo sono disponibili nell'app installata.</p>
+ <div id="fm-browser-next-steps" class="fm-confirm-steps" hidden aria-label="Come entrare nell'app dopo la conferma">
+  <p class="fm-confirm-steps-title">Adesso entra nell'app in 3 passi:</p>
+  <ol>
+   <li><strong>Chiudi questa pagina</strong> di Chrome, Safari o dell'email.</li>
+   <li>Apri <strong>Fuori Mappa dalla sua icona</strong> sulla schermata iniziale del telefono (non dal sito web).</li>
+   <li>Vai su <strong>Profilo → Accedi</strong> e inserisci email e password usate per registrarti.</li>
+  </ol>
+  <p class="fm-confirm-steps-note">Non devi registrarti di nuovo e non devi reinstallare l'app. ✦</p>
+ </div>
  <a id="fm-browser-link" href="index.html#fm-app-install">Scopri come installarla ↗</a>
 </main><div class="fm-personal-only"><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#passaporto"><span>✈</span>Passaporto</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
 <header class="fm-head"><a href="index.html" class="brand">FUORI MAPPA ✦</a><nav aria-label="Navigazione"><a href="index.html">Home</a><a href="itinerari.html">Itinerari</a><a href="il-mio-spazio.html" aria-current="page">Il mio spazio ♡</a></nav></header>
@@ -252,19 +267,26 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
  const explanation=document.getElementById('fm-browser-explanation');
  const advice=document.getElementById('fm-browser-advice');
  const link=document.getElementById('fm-browser-link');
+ const steps=document.getElementById('fm-browser-next-steps');
+ const showAppInstructions=()=>{
+   steps.hidden=false;
+   link.hidden=true; // Non inviare l'utente alla home del sito dopo la conferma.
+ };
  if(error){
    title.textContent='Il link non è più valido.';
-   explanation.textContent='La conferma potrebbe essere scaduta o essere stata già utilizzata. Torna nell’app, prova ad accedere e, se necessario, richiedi un nuovo link.';
+   explanation.textContent='Il collegamento potrebbe essere scaduto o essere stato già usato. Apri l’app Fuori Mappa dalla sua icona sul telefono e prova ad accedere. Se necessario, richiedi una nuova email.';
+   advice.textContent='Non occorre tornare al sito web: il tuo accesso è nell’app installata.';
+   showAppInstructions();
  }else if(verified){
    title.textContent='Email confermata! ✦';
-   explanation.textContent='La verifica è riuscita. Chiudi Safari, apri Fuori Mappa dalla sua icona sul telefono e vai su Profilo → Accedi. Inserisci l’email e la password scelte in registrazione.';
-   advice.textContent='Non devi installare di nuovo l’app. L’accesso avviene dall’app già presente sul telefono.';
-   link.textContent='Vai alla homepage Fuori Mappa ↗';
-   link.href='index.html';
+   explanation.textContent='Perfetto! Hai verificato l’indirizzo email. Ora completa l’accesso direttamente dall’app Fuori Mappa installata sul tuo telefono.';
+   advice.textContent='Questa pagina è stata aperta dal link nell’email, ma la tua area personale è nell’app.';
+   showAppInstructions();
  }else if(query.has('code')||hash.has('access_token')){
-   title.textContent='Ora torna nell’app Fuori Mappa ✦';
-   explanation.textContent='Hai seguito il link ricevuto via email. Chiudi Safari, apri l’app dalla sua icona e vai su Profilo → Accedi con email e password. Se l’accesso non riesce, verifica che l’indirizzo sia stato confermato.';
-   advice.textContent='Non serve reinstallare l’app e non devi creare un secondo account.';
+   title.textContent='Torna nell’app Fuori Mappa ✦';
+   explanation.textContent='Hai aperto un collegamento di accesso dall’email. Per continuare, usa l’app Fuori Mappa già installata sul telefono.';
+   advice.textContent='Se non riesci ad accedere, controlla che l’indirizzo email sia stato confermato.';
+   showAppInstructions();
  }
  // I token OAuth di Supabase sono nel frammento URL: non visualizzarli o conservarli.
  if(hash.has('access_token')||hash.has('refresh_token')||query.has('code'))history.replaceState(null,'',location.pathname);
