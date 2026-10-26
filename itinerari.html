@@ -49,12 +49,12 @@
  .fm-app-tabs{display:none}
  @media(max-width:700px){
   html.fm-is-app body{padding-bottom:80px}
-  html.fm-is-app .fm-app-tabs{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);bottom:0;left:0;right:0;z-index:90;background:#fffaf2f5;border-top:1px solid #d6c5ab;padding:8px 8px calc(9px + env(safe-area-inset-bottom));box-shadow:0 -4px 17px #30281f14}
-  html.fm-is-app .fm-app-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;color:#67533f;text-decoration:none;font-weight:bold;font-size:10px}
+  html.fm-is-app .fm-app-tabs{position:fixed;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));bottom:0;left:0;right:0;z-index:90;background:#fffaf2f5;border-top:1px solid #d6c5ab;padding:8px 8px calc(9px + env(safe-area-inset-bottom));box-shadow:0 -4px 17px #30281f14}
+  html.fm-is-app .fm-app-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;color:#67533f;text-decoration:none;font-weight:bold;font-size:9px}
   html.fm-is-app .fm-app-tabs a span{font-size:23px;line-height:1.1}
  }
 </style></head>
-<body><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html" aria-current="page"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
+<body><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html" aria-current="page"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#passaporto"><span>✈</span>Passaporto</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
 <header class="site-header"><nav class="nav-inner" aria-label="Navigazione principale">
 <a class="brand" href="index.html">FUORI MAPPA <span>✦</span></a>
 <button class="mobile-toggle" type="button" aria-controls="site-menu" aria-expanded="false">☰ Menu</button>
@@ -247,5 +247,6 @@
 <script>
 (()=>{const toggle=document.querySelector('.mobile-toggle'),menu=document.getElementById('site-menu');toggle.addEventListener('click',()=>{const open=menu.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open))});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false')}));const continent=document.getElementById('filter-continent'),type=document.getElementById('filter-type'),search=document.getElementById('filter-search'),count=document.getElementById('filter-count'),empty=document.getElementById('journey-empty'),cards=[...document.querySelectorAll('#journey-catalogue .journey-card')];function apply(){let n=0;const q=search.value.toLocaleLowerCase('it').trim();for(const card of cards){const show=(continent.value==='all'||card.dataset.continent===continent.value)&&(type.value==='all'||card.dataset.type===type.value)&&(!q||card.textContent.toLocaleLowerCase('it').includes(q));card.hidden=!show; const frame=card.closest('.fm-save-frame'); if(frame) frame.hidden=!show;if(show)n++}count.textContent=n===1?'1 itinerario trovato':n+' itinerari trovati';empty.style.display=n?'none':'block'}[continent,type].forEach(el=>el.addEventListener('change',apply));search.addEventListener('input',apply);document.getElementById('reset-filters').addEventListener('click',()=>{continent.value='all';type.value='all';search.value='';apply()});apply()})();
 </script>
+<script defer src="/fm-auth.js"></script>
 <script defer src="/fm-personale.js"></script>
 </body></html>

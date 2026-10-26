@@ -1,6 +1,6 @@
 /* Fuori Mappa · Service Worker minimale: rete prioritaria, cache solo come fallback. */
-const CACHE_NAME = 'fuorimappa-pwa-v3';
-const APP_SHELL = ['/', '/index.html', '/offline.html', '/il-mio-spazio.html', '/fm-personale.js', '/app-icon-192.png', '/app-icon-512.png'];
+const CACHE_NAME = 'fuorimappa-pwa-auth-v1';
+const APP_SHELL = ['/', '/index.html', '/offline.html', '/il-mio-spazio.html', '/fm-personale.js', '/fm-auth.js', '/app-icon-192.png', '/app-icon-512.png'];
 
 self.addEventListener('install', event => {
   event.waitUntil(
