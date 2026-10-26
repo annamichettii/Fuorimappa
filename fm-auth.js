@@ -14,11 +14,14 @@ const $=id=>document.getElementById(id);
 function status(message){const n=$('fm-auth-status');if(n)n.textContent=message||'';}
 function updateUI(){
  const user=!!currentUser;
+ if(user){try{localStorage.removeItem('fm-pending-email-v1');}catch(_){}}
  const guest=$('fm-account-guest'), account=$('fm-account-user');
  if(guest)guest.hidden=user;
  if(account)account.hidden=!user;
  if(user&&$('fm-account-email'))$('fm-account-email').textContent=currentUser.email||'Account collegato';
  if(user&&$('fm-profile-name'))$('fm-profile-name').textContent='Ciao, '+(currentUser.user_metadata?.full_name||currentUser.user_metadata?.name||currentUser.email?.split('@')[0]||'viaggiatore')+' ✦';
+ document.querySelectorAll('.fm-protected').forEach(node=>{node.hidden=!user;});
+ const guestGate=$('fm-guest-gate');if(guestGate)guestGate.hidden=user;
  if(!user&&$('fm-cloud-status'))$('fm-cloud-status').textContent='';
 }
 function announce(){updateUI();window.dispatchEvent(new CustomEvent('fm-auth-changed',{detail:{user:currentUser}}));}
@@ -37,9 +40,31 @@ function errorMessage(err){
  return m.length>190?m.slice(0,190):m;
 }
 function busy(form,on){if(!form)return;form.querySelectorAll('button[type=submit]').forEach(b=>{b.disabled=on;});}
-function mode(signup){$('fm-login-form').hidden=signup;$('fm-signup-form').hidden=!signup;$('fm-show-login').setAttribute('aria-pressed',String(!signup));$('fm-show-signup').setAttribute('aria-pressed',String(signup));status('');}
+function mode(signup){$('fm-login-form').hidden=signup;$('fm-signup-form').hidden=!signup;$('fm-show-login').setAttribute('aria-pressed',String(!signup));$('fm-show-signup').setAttribute('aria-pressed',String(signup));if(signup&&$('fm-signup-confirmation'))$('fm-signup-confirmation').hidden=true;status('');}
+function guardPersonalLinks(){
+ document.querySelectorAll('.fm-app-tabs a[href*="#preferiti"], .fm-app-tabs a[href*="#passaporto"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+   if(currentUser)return;
+   e.preventDefault();location.hash='#profilo';
+   $('fm-account-shell')?.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+ });
+}
+function moveGuestToProfile(){
+ if(!currentUser&&['#preferiti','#passaporto'].includes(location.hash)){
+   history.replaceState(null,'',location.pathname+'#profilo');
+   $('fm-account-shell')?.scrollIntoView({behavior:'auto',block:'start'});
+ }
+}
 function setupForms(){
  if(!$('fm-account-guest'))return;
+ try{
+   const time=Number(localStorage.getItem('fm-pending-email-v1'));
+   if(time&&Date.now()-time<48*60*60*1000){
+     const box=$('fm-signup-confirmation');if(box){box.hidden=false;}
+     const email=$('fm-signup-email');if(email)email.textContent='che hai indicato';
+   }else localStorage.removeItem('fm-pending-email-v1');
+ }catch(_){}
  $('fm-show-login').addEventListener('click',()=>mode(false));
  $('fm-show-signup').addEventListener('click',()=>mode(true));
  $('fm-login-google').addEventListener('click',async()=>{
@@ -63,10 +88,26 @@ function setupForms(){
   if(password!==String(data.get('confirm'))){status('Le due password non coincidono.');return;}
   busy(form,true);status('Registrazione in corso…');
   try{
-    const {data:out,error}=await client.auth.signUp({email:String(data.get('email')).trim(),password,options:{emailRedirectTo:'https://www.fuorimappa.it/il-mio-spazio.html'}});
+    const email=String(data.get('email')).trim();
+    const {data:out,error}=await client.auth.signUp({email,password,options:{emailRedirectTo:'https://www.fuorimappa.it/il-mio-spazio.html'}});
     if(error)throw error;
     form.reset();
-    status(out.session?'Account creato e accesso effettuato.':'Controlla la posta e conferma l’indirizzo. Poi torna nell’app e accedi con email e password.');
+    if(out.session){
+      status('Account creato e accesso effettuato!');
+    }else{
+      // Conferma ben visibile, anche dopo il ritorno alla scheda "Accedi".
+      // Non svelare se un'email è già registrata: Supabase può offuscare questa informazione.
+      mode(false);
+      try{localStorage.setItem('fm-pending-email-v1',String(Date.now()));}catch(_){}
+      const notice=$('fm-signup-confirmation');
+      if(notice){
+        $('fm-signup-email').textContent=email;
+        notice.hidden=false;
+        notice.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+      $('fm-login-form').querySelector('input[type=email]').value=email;
+      status('Controlla la posta (anche Spam/Indesiderata). Dopo aver cliccato sul link, torna nell’app e accedi con la password.');
+    }
   }catch(err){status(errorMessage(err));}finally{busy(form,false);}
  });
  $('fm-password-forgot').addEventListener('click',async()=>{
@@ -74,7 +115,7 @@ function setupForms(){
    const input=$('fm-login-form').querySelector('input[type=email]');
    const email=(input.value||'').trim();
    if(!email){status('Inserisci prima la tua email nel campo di accesso.');input.focus();return;}
-   try{const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:'https://www.fuorimappa.it/recupera-password.html'});if(error)throw error;status('Se l’indirizzo è registrato, riceverai un’email con le istruzioni per cambiare password.');}
+   try{const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:'https://www.fuorimappa.it/recupera-password.html'});if(error)throw error;status('Se l’indirizzo è registrato, riceverai un’email con le istruzioni. Controlla anche Spam / Indesiderata.');}
    catch(err){status(errorMessage(err));}
  });
  $('fm-logout').addEventListener('click',async()=>{
@@ -106,11 +147,6 @@ function setupForms(){
    }catch(err){status('Eliminazione non riuscita. Controlla che la funzione protetta sia stata attivata su Supabase. '+errorMessage(err));}
    finally{deleteButton.disabled=false;}
  });
-  $('fm-import-guest').addEventListener('click',()=>{
-  if(!currentUser)return;
-  if(!window.FMPersonal?.mergeGuest){status('La sincronizzazione si sta ancora preparando.');return;}
-  window.FMPersonal.mergeGuest();
- });
 }
 function injectSDK(){return new Promise((resolve,reject)=>{
  if(window.supabase?.createClient){resolve();return;}
@@ -119,7 +155,7 @@ function injectSDK(){return new Promise((resolve,reject)=>{
  script.onerror=()=>reject(Error('Connessione alla libreria Supabase non riuscita'));document.head.append(script);
 });}
 async function init(){
- setupForms();status('Collegamento sicuro in corso…');
+ setupForms();guardPersonalLinks();status('Collegamento sicuro in corso…');
  try{
   await injectSDK();
   client=window.supabase.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'implicit',storageKey:'fuorimappa.auth.v1'}});
@@ -127,7 +163,7 @@ async function init(){
    queueMicrotask(()=>{setUser(session?.user||null);if(event==='PASSWORD_RECOVERY')status('Per cambiare password usa il link ricevuto via email.');});
   });
   const {data,error}=await client.auth.getSession();if(error)throw error;
-  setUser(data?.session?.user||null);readyResolve(currentUser);status('');
+  setUser(data?.session?.user||null);moveGuestToProfile();readyResolve(currentUser);status('');
  }catch(err){readyResolve(null);status('Accesso non disponibile al momento: '+errorMessage(err));}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();

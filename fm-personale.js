@@ -1,4 +1,4 @@
-/* Fuori Mappa · dati locali · niente account o tracciamento (v1) */
+/* Fuori Mappa · preferiti/passaporto solo account; Supabase con cache per utente autenticato */
 (()=>{
 'use strict';
 if (!document.documentElement.classList.contains('fm-is-app')) return;
@@ -6,24 +6,25 @@ const PREFIX='fm-personal-v1';
 const FAV=PREFIX+'-saved',VISITED=PREFIX+'-visited',WISH=PREFIX+'-wish';
 let currentUid=null, cloudLoading=false, syncing=false;
 let saveTimeout=null, queue=Promise.resolve(), requestVersion=0;
-const fullKey=key=>currentUid?key+'::'+currentUid:key;
+const fullKey=key=>currentUid?key+'::'+currentUid:null;
 const uiSync=(message)=>{const n=document.getElementById('fm-cloud-status');if(n)n.textContent=message;};
 const markLoading=on=>{cloudLoading=on;document.documentElement.classList.toggle('fm-cloud-loading',on);};
 
 const storageOk=(()=>{try{localStorage.setItem(PREFIX+'-test','1');localStorage.removeItem(PREFIX+'-test');return true}catch(e){return false}})();
 const notify=(msg)=>{const el=document.getElementById('fm-personal-status');if(el)el.textContent=msg;};
-const get=(key)=>{if(!storageOk)return [];try{let v=JSON.parse(localStorage.getItem(fullKey(key))||'[]');return Array.isArray(v)?v:[]}catch(e){return []}};
-const put=(key,list)=>{if(!storageOk){notify('Il salvataggio locale non è disponibile su questo dispositivo.');return false}try{localStorage.setItem(fullKey(key),JSON.stringify(list));if(currentUid&&!cloudLoading)scheduleSync();return true}catch(e){notify('Non è stato possibile salvare sul dispositivo.');return false}};
+const get=(key)=>{if(!storageOk||!currentUid)return [];try{let v=JSON.parse(localStorage.getItem(fullKey(key))||'[]');return Array.isArray(v)?v:[]}catch(e){return []}};
+const put=(key,list)=>{if(!currentUid){notify('Per salvare i tuoi viaggi devi prima accedere o registrarti.');return false;}if(cloudLoading){notify('Caricamento del tuo account in corso.');return false;}if(!storageOk){notify('Il salvataggio locale non è disponibile su questo dispositivo.');return false;}try{localStorage.setItem(fullKey(key),JSON.stringify(list));if(currentUid&&!cloudLoading)scheduleSync();return true}catch(e){notify('Non è stato possibile salvare sul dispositivo.');return false}};
 const safePath=(s)=>{try{const u=new URL(s,location.href);if(u.origin!==location.origin)return null;return u.pathname+u.search}catch(e){return null}};
 const norm=(s)=>{const p=safePath(s);return p?p.split('?')[0]:null};
 const mySaved=()=>get(FAV);
 function refreshButtons(){
  const items=mySaved();for(const btn of document.querySelectorAll('.fm-save-toggle')){
- const yes=items.some(item=>item.href===btn.dataset.href);btn.setAttribute('aria-pressed',String(yes));btn.textContent=yes?'♥':'♡';btn.title=yes?'Rimuovi dai preferiti':'Aggiungi ai preferiti';
+ const yes=items.some(item=>item.href===btn.dataset.href);btn.setAttribute('aria-pressed',String(yes));btn.textContent=yes?'♥':'♡';btn.title=!currentUid?'Accedi per salvare negli itinerari':(yes?'Rimuovi dai preferiti':'Aggiungi ai preferiti');
  const card=btn.parentElement?.querySelector('.journey-card h3');btn.setAttribute('aria-label',(yes?'Rimuovi dai preferiti: ':'Salva nei preferiti: ')+(card?.textContent||'itinerario'));
  }
 }
 function toggleFavorite(item){
+ if(!currentUid){location.href='/il-mio-spazio.html#profilo';return;}
  if(cloudLoading){notify('Attendi il caricamento dei tuoi dati.');return;}
  let rows=mySaved(),i=rows.findIndex(row=>row.href===item.href);
  if(i>=0)rows.splice(i,1);else rows.unshift(item);
@@ -45,7 +46,7 @@ function enhanceCards(){
 const mk=(t,cls,text)=>{const e=document.createElement(t);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
 function renderSaved(){
  const root=document.getElementById('fm-my-saved');if(!root)return;root.replaceChildren();const rows=mySaved();
- if(!rows.length){const p=mk('p','fm-empty','Non hai ancora salvato itinerari. Tocca ♡ sulle cartoline che ti incuriosiscono.');root.append(p);return}
+ if(!rows.length){const p=mk('p','fm-empty',currentUid?'Non hai ancora salvato itinerari. Tocca ♡ sulle cartoline che ti incuriosiscono.':'Accedi o registrati per salvare gli itinerari preferiti.');root.append(p);return}
  for(const item of rows){
   const href=norm(item.href);if(!href)continue;
   const article=mk('article','fm-personal-trip');const link=mk('a','fm-trip-link');link.href=href;
@@ -61,7 +62,7 @@ function updateCounts(){
  const node=document.getElementById(id);if(node)node.textContent=String(val)
  }
 }
-function toggleCountry(key,code){if(cloudLoading){notify('Attendi il caricamento dei dati.');return;}let list=get(key);list=list.includes(code)?list.filter(x=>x!==code):[...list,code];if(put(key,list)){renderCountries();updateCounts()}}
+function toggleCountry(key,code){if(!currentUid){location.href='/il-mio-spazio.html#profilo';return;}if(cloudLoading){notify('Attendi il caricamento dei dati.');return;}let list=get(key);list=list.includes(code)?list.filter(x=>x!==code):[...list,code];if(put(key,list)){renderCountries();updateCounts()}}
 function renderCountries(){
  const root=document.getElementById('fm-country-list');if(!root)return;
  const visited=new Set(get(VISITED)),wish=new Set(get(WISH));let q=(document.getElementById('fm-country-search')?.value||'').toLocaleLowerCase('it').trim();
@@ -80,13 +81,13 @@ function renderCountries(){
  const total=document.getElementById('fm-country-count');if(total)total.textContent=matched+' Paesi e territori';
 }
 function setupBackup(){
- const exportButton=document.getElementById('fm-export');if(exportButton)exportButton.addEventListener('click',()=>{
+ const exportButton=document.getElementById('fm-export');if(exportButton)exportButton.addEventListener('click',()=>{if(!currentUid){notify('Accedi prima di esportare i dati.');return;}
   const data={app:'Fuori Mappa',version:1,saved:get(FAV),visited:get(VISITED),wish:get(WISH)};
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='fuori-mappa-i-miei-viaggi.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),2000);
  });
  const inp=document.getElementById('fm-import');if(inp)inp.addEventListener('change',async()=>{
-  try{if(cloudLoading)throw Error('Caricamento in corso');const file=inp.files?.[0];if(!file)return;if(file.size>1500000)throw Error('File troppo grande');const obj=JSON.parse(await file.text());if(obj.app!=='Fuori Mappa'||obj.version!==1||!Array.isArray(obj.saved)||!Array.isArray(obj.visited)||!Array.isArray(obj.wish))throw Error('Formato non valido');
+  try{if(!currentUid)throw Error('Account necessario');if(cloudLoading)throw Error('Caricamento in corso');const file=inp.files?.[0];if(!file)return;if(file.size>1500000)throw Error('File troppo grande');const obj=JSON.parse(await file.text());if(obj.app!=='Fuori Mappa'||obj.version!==1||!Array.isArray(obj.saved)||!Array.isArray(obj.visited)||!Array.isArray(obj.wish))throw Error('Formato non valido');
   const validCodes=new Set(countries.map(x=>x[0]));const favs=obj.saved.filter(x=>x&&typeof x.title==='string'&&typeof x.href==='string'&&norm(x.href)).slice(0,500).map(x=>({title:x.title.slice(0,150),href:norm(x.href),subtitle:String(x.subtitle||'').slice(0,350),img:safePath(x.img)||''}));
   const vis=[...new Set(obj.visited.filter(x=>validCodes.has(x)))],wish=[...new Set(obj.wish.filter(x=>validCodes.has(x)))];
   if(!window.confirm('Importare il backup? Sostituirà preferiti e passaporto salvati su questo dispositivo.'))return;
@@ -143,28 +144,14 @@ async function switchAccount(user){
    if(ver!==requestVersion||currentUid!==uid)return;
    if(data){writeCached(data);markLoading(false);refresh();uiSync('Il tuo passaporto e i preferiti sono sincronizzati ✓');}
    else{
-      // First login: automatically copy guest data, but only if this account has no data yet.
-      const guest={saved:getGuest(FAV),visited:getGuest(VISITED),wish:getGuest(WISH)};
-      writeCached(guest);markLoading(false);refresh();scheduleSync();
-      uiSync('Primo accesso: stiamo salvando i tuoi preferiti e passaporto già presenti sul telefono.');
+      // Nuovo account: il passaporto parte vuoto. Nessun dato anonimo viene importato.
+      writeCached({saved:[],visited:[],wish:[]});markLoading(false);refresh();scheduleSync();
+      uiSync('Account pronto. Ora puoi salvare itinerari e iniziare il passaporto.');
    }
  }catch(e){
    if(ver!==requestVersion)return;
    markLoading(false);refresh();uiSync('Database non ancora pronto: '+String(e.message||e)+'. I dati restano su questo dispositivo.');
  }
-}
-function getGuest(key){try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch(_){return []}}
-async function mergeGuest(){
- if(!currentUid||cloudLoading){notify('Attendi il caricamento dell’account.');return;}
- const guest={saved:getGuest(FAV),visited:getGuest(VISITED),wish:getGuest(WISH)};
- if(!guest.saved.length&&!guest.visited.length&&!guest.wish.length){notify('Non ci sono vecchi dati da importare.');return;}
- if(!confirm('Aggiungere ai tuoi dati dell’account i preferiti e i Paesi che avevi salvato su questo telefono?'))return;
- const all=snapshot();const seen=new Set(all.saved.map(x=>x.href));
- for(const f of guest.saved){if(f&&typeof f.href==='string'&&!seen.has(f.href)){all.saved.push(f);seen.add(f.href)}}
- all.saved=all.saved.slice(0,500);
- all.visited=[...new Set([...all.visited,...guest.visited])].slice(0,300);
- all.wish=[...new Set([...all.wish,...guest.wish])].slice(0,300);
- writeCached(all);refresh();scheduleSync();notify('Dati aggiunti. Sincronizzazione avviata.');
 }
 function clearDeletedUserData(uid){
  if(!uid||uid!==currentUid)return;
@@ -175,13 +162,30 @@ function clearDeletedUserData(uid){
  try{localStorage.removeItem(dirtyKey(uid));}catch(_){}
  currentUid=null;markLoading(false);refresh();uiSync('');
 }
-window.FMPersonal={hasUnsynced:()=>!!(currentUid&&localStorage.getItem(dirtyKey(currentUid))),mergeGuest,clearDeletedUserData};
+window.FMPersonal={hasUnsynced:()=>!!(currentUid&&localStorage.getItem(dirtyKey(currentUid))),clearDeletedUserData};
 function setupAuthSync(){
  window.addEventListener('fm-auth-changed',event=>switchAccount(event.detail?.user||null));
- if(window.FMAuth?.ready)window.FMAuth.ready.then(user=>switchAccount(user));
+ const readAuth=()=>{
+   if(window.FMAuth?.ready){
+     window.FMAuth.ready.then(user=>switchAccount(user));
+   }else{
+     notify('Non è stato possibile verificare il tuo account. Ricarica la pagina.');
+   }
+ };
+ // La homepage carica solo fm-personale.js; carichiamo la sessione anche lì.
+ if(window.FMAuth?.ready){readAuth();return;}
+ const script=document.createElement('script');
+ script.src='/fm-auth.js';
+ script.async=true;
+ script.onload=readAuth;
+ script.onerror=()=>notify('Connessione al profilo non disponibile: riprova online.');
+ document.head.appendChild(script);
 }
 
-function init(){enhanceCards();renderSaved();renderCountries();updateCounts();setupBackup();setupAuthSync();
+function init(){
+ // Le preferenze anonime della vecchia versione non devono essere utilizzate nella nuova app.
+ try{for(const key of [FAV,VISITED,WISH])localStorage.removeItem(key);}catch(_){}
+ enhanceCards();renderSaved();renderCountries();updateCounts();setupBackup();setupAuthSync();
  const search=document.getElementById('fm-country-search');if(search)search.addEventListener('input',renderCountries);
  const filter=document.getElementById('fm-country-view');if(filter)filter.addEventListener('change',renderCountries);
  if(!storageOk)notify('Attenzione: il salvataggio locale non è disponibile in questa modalità.');

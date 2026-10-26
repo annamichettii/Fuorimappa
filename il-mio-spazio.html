@@ -33,6 +33,11 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
  </style>
 <style id="fm-account-styles">
 .fm-account-shell{padding:25px;background:#fffaf1;border:1px solid #d6c3aa;border-radius:16px;box-shadow:0 7px 21px #30281f12}
+.fm-protected[hidden],.fm-guest-gate[hidden]{display:none!important}
+.fm-guest-gate{background:#fffaf1;padding:29px 23px;border:1px solid #d6c3aa;border-radius:16px;box-shadow:0 8px 22px #30281f14;margin:0 0 28px;text-align:center}
+.fm-guest-gate h2{font:normal clamp(27px,6vw,36px)/1.18 Georgia,serif;margin:11px 0 12px}
+.fm-guest-gate p{font-size:14px;line-height:1.65;max-width:640px;margin:auto;color:#62503e}
+.fm-guest-gate .fm-primary{margin-top:18px}
 .fm-account-guest[hidden],.fm-account-user[hidden],.fm-signup-form[hidden],.fm-login-form[hidden]{display:none!important}
 .fm-account-shell h3{font:normal 28px Georgia,serif;margin:0 0 7px}.fm-account-shell p{font-size:13px;line-height:1.6;color:#65533f}
 .fm-google-login{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;padding:14px;background:white;border:1px solid #cbb99f;border-radius:9px;color:#342b22;font-weight:700}
@@ -47,6 +52,12 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
 .fm-auth-button{background:#342b22;color:white;border:0;border-radius:9px;padding:13px 18px;font-weight:700;margin-top:4px;width:100%}
 .fm-auth-button:disabled{opacity:.6;cursor:wait}.fm-auth-text-button{border:0;background:transparent;color:#674b35;text-decoration:underline;padding:8px 0;font-size:12px}
 .fm-auth-status{font-size:13px;line-height:1.5;min-height:1.4em;margin:12px 0 0;color:#65402a}
+.fm-signup-help{margin:0!important;padding:11px 13px;border-left:3px solid #9a6445;background:#f3eadb;border-radius:5px;font-size:12px!important;line-height:1.55!important}
+.fm-signup-confirmation{margin:0 0 18px;padding:17px 18px;border:1px solid #9cb6a2;border-left:5px solid #3f634b;background:#f0f7ee;border-radius:10px;color:#274b32}
+.fm-signup-confirmation[hidden]{display:none!important}
+.fm-signup-confirmation>strong{display:block;font-size:16px}
+.fm-signup-confirmation p{margin:10px 0 0;color:#35533e!important;font-size:13px!important;line-height:1.6}
+.fm-signup-confirmation strong{overflow-wrap:anywhere}
 .fm-account-tag{font-size:10px;font-weight:700;letter-spacing:2px;color:#805537}
 .fm-account-email{overflow-wrap:anywhere;font-weight:bold}
 .fm-profile-name{font:normal 24px/1.3 Georgia,serif;margin:10px 0 4px;color:#30281f}
@@ -59,24 +70,41 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
 .fm-account-small{font-size:12px;color:#705a44}
 @media(max-width:650px){.fm-account-shell{padding:18px}.fm-account-shell h3{font-size:24px}}
 </style>
-</head><body><main class="fm-browser-personal-info"><span>✦ FUORI MAPPA</span><h1>Il tuo spazio è nell'app.</h1><p>Preferiti, passaporto e profilo sono pensati per chi installa Fuori Mappa. Apri l'app dalla schermata Home del telefono oppure installala gratuitamente dal sito.</p><a href="index.html#fm-app-install">Scopri come installarla ↗</a></main><div class="fm-personal-only"><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#passaporto"><span>✈</span>Passaporto</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
+</head><body><main class="fm-browser-personal-info" id="fm-browser-info">
+ <span>✦ FUORI MAPPA</span>
+ <h1 id="fm-browser-title">Il tuo spazio è nell'app.</h1>
+ <p id="fm-browser-explanation">Hai aperto questa pagina nel browser. Se arrivi dal link di conferma dell'email, torna nell'app Fuori Mappa dalla schermata Home e vai su <strong>Profilo → Accedi</strong>, usando l'email e la password scelte durante la registrazione.</p>
+ <p id="fm-browser-advice">Preferiti, passaporto e profilo sono disponibili nell'app installata.</p>
+ <a id="fm-browser-link" href="index.html#fm-app-install">Scopri come installarla ↗</a>
+</main><div class="fm-personal-only"><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#passaporto"><span>✈</span>Passaporto</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
 <header class="fm-head"><a href="index.html" class="brand">FUORI MAPPA ✦</a><nav aria-label="Navigazione"><a href="index.html">Home</a><a href="itinerari.html">Itinerari</a><a href="il-mio-spazio.html" aria-current="page">Il mio spazio ♡</a></nav></header>
 <div class="fm-hero"><span class="fm-eyebrow">✦ IL TUO DIARIO DI VIAGGIO</span><h1>Il mio Fuori Mappa</h1><p>Conserva le idee che ti fanno sognare, ricorda i Paesi in cui sei stata e segna quelli che vuoi ancora scoprire.</p></div>
 <main class="fm-content">
- <div class="fm-counts" aria-label="Il tuo passaporto in numeri"><div class="fm-count"><strong id="fm-total-fav">0</strong><span>Itinerari salvati</span></div><div class="fm-count"><strong id="fm-total-visited">0</strong><span>Visitati</span></div><div class="fm-count"><strong id="fm-total-wish">0</strong><span>Da scoprire</span></div></div>
- <section class="fm-section" id="preferiti" aria-labelledby="fav-title"><span class="fm-eyebrow">♡ LE TUE ISPIRAZIONI</span><h2 id="fav-title">Itinerari del cuore</h2><p class="lead">Tocca il cuoricino sulle cartoline di Fuori Mappa per salvare i viaggi che ti interessano. Li ritroverai qui.</p><div class="fm-saved-list" id="fm-my-saved"></div><a href="itinerari.html" class="fm-primary">Scopri tutti gli itinerari ↗</a></section>
- <section class="fm-section" id="passaporto" aria-labelledby="passport-title"><span class="fm-eyebrow">✈ IL TUO PASSAPORTO</span><h2 id="passport-title">Il mondo, un viaggio alla volta.</h2><p class="lead">Cerca un Paese o un territorio, segna dove sei già stata e le tue prossime mete da sogno. Questo è il tuo passaporto personale, diverso da quello di Anna!</p><div class="fm-passport"><h3 class="fm-passport-title">La tua mappa dei ricordi</h3><p style="margin-top:0;color:#705d4b;font-size:13px">Una prima versione con Paesi da spuntare. La mappa interattiva arriverà con un prossimo aggiornamento.</p><div class="fm-country-controls"><input type="search" id="fm-country-search" placeholder="Cerca un Paese…" aria-label="Cerca un Paese"><select id="fm-country-view" aria-label="Filtra Paesi"><option value="all">Tutti i Paesi</option><option value="visited">Già visitati</option><option value="wish">Da visitare</option></select></div><p id="fm-country-count" style="font-size:12px;color:#715e49" aria-live="polite"></p><div class="fm-country-list" id="fm-country-list"></div></div></section>
+ <div class="fm-guest-gate" id="fm-guest-gate" hidden>
+  <span class="fm-eyebrow">✦ IL TUO SPAZIO PERSONALE</span>
+  <h2>Per salvare i tuoi viaggi, entra in Fuori Mappa.</h2>
+  <p>Puoi esplorare tutti gli itinerari senza account. Per creare il tuo passaporto, segnare i Paesi e salvare i preferiti, registrati gratuitamente oppure accedi con Google o email.</p>
+  <a class="fm-primary" href="#profilo">Accedi o registrati ✦</a>
+ </div>
+ <div class="fm-counts fm-protected" hidden aria-label="Il tuo passaporto in numeri"><div class="fm-count"><strong id="fm-total-fav">0</strong><span>Itinerari salvati</span></div><div class="fm-count"><strong id="fm-total-visited">0</strong><span>Visitati</span></div><div class="fm-count"><strong id="fm-total-wish">0</strong><span>Da scoprire</span></div></div>
+ <section class="fm-section fm-protected" hidden id="preferiti" aria-labelledby="fav-title"><span class="fm-eyebrow">♡ LE TUE ISPIRAZIONI</span><h2 id="fav-title">Itinerari del cuore</h2><p class="lead">Tocca il cuoricino sulle cartoline di Fuori Mappa per salvare i viaggi che ti interessano. Li ritroverai qui.</p><div class="fm-saved-list" id="fm-my-saved"></div><a href="itinerari.html" class="fm-primary">Scopri tutti gli itinerari ↗</a></section>
+ <section class="fm-section fm-protected" hidden id="passaporto" aria-labelledby="passport-title"><span class="fm-eyebrow">✈ IL TUO PASSAPORTO</span><h2 id="passport-title">Il mondo, un viaggio alla volta.</h2><p class="lead">Cerca un Paese o un territorio, segna dove sei già stata e le tue prossime mete da sogno. Questo è il tuo passaporto personale, diverso da quello di Anna!</p><div class="fm-passport"><h3 class="fm-passport-title">La tua mappa dei ricordi</h3><p style="margin-top:0;color:#705d4b;font-size:13px">Una prima versione con Paesi da spuntare. La mappa interattiva arriverà con un prossimo aggiornamento.</p><div class="fm-country-controls"><input type="search" id="fm-country-search" placeholder="Cerca un Paese…" aria-label="Cerca un Paese"><select id="fm-country-view" aria-label="Filtra Paesi"><option value="all">Tutti i Paesi</option><option value="visited">Già visitati</option><option value="wish">Da visitare</option></select></div><p id="fm-country-count" style="font-size:12px;color:#715e49" aria-live="polite"></p><div class="fm-country-list" id="fm-country-list"></div></div></section>
  <section class="fm-section" id="profilo" aria-labelledby="fm-profile-title">
  <span class="fm-eyebrow">♙ IL TUO ACCOUNT</span><h2 id="fm-profile-title">Il tuo profilo</h2>
  <div class="fm-account-shell" id="fm-account-shell">
   <div class="fm-account-guest" id="fm-account-guest">
    <h3>Entra nel tuo diario ✦</h3>
-   <p>Crea un account per ritrovare preferiti e passaporto anche su un altro dispositivo. Se preferisci, puoi continuare a usarli senza registrarti: in quel caso restano solo su questo telefono.</p>
+   <p>Registrati gratuitamente per salvare itinerari preferiti e passaporto personale. Senza account puoi esplorare i viaggi, ma non puoi salvare preferiti o Paesi visitati.</p>
    <button class="fm-google-login" type="button" id="fm-login-google"><span class="fm-google-mark" aria-hidden="true">G</span>Continua con Google</button>
    <div class="fm-account-divider">oppure con la tua email</div>
    <div class="fm-auth-switch" role="group" aria-label="Accesso e registrazione">
      <button type="button" id="fm-show-login" aria-pressed="true">Accedi</button>
      <button type="button" id="fm-show-signup" aria-pressed="false">Registrati</button>
+   </div>
+   <div id="fm-signup-confirmation" class="fm-signup-confirmation" role="status" aria-live="polite" hidden>
+     <strong>✉ Registrazione inviata! Controlla la tua email.</strong>
+     <p>Abbiamo richiesto l’invio dell’email di verifica all’indirizzo <strong id="fm-signup-email"></strong>. Apri il messaggio di Fuori Mappa e conferma l’indirizzo, poi torna qui per accedere.</p>
+     <p><strong>Non trovi il messaggio? Controlla anche Spam / Posta indesiderata.</strong> Su iCloud Mail puoi trovarlo nella cartella Indesiderata. La consegna può richiedere qualche minuto.</p>
    </div>
    <form class="fm-login-form fm-auth-fields" id="fm-login-form">
      <label>Email<input name="email" type="email" autocomplete="email" required></label>
@@ -88,16 +116,17 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
      <label>Password (almeno 10 caratteri)<input name="password" type="password" autocomplete="new-password" minlength="10" required></label>
      <label>Ripeti la password<input name="confirm" type="password" autocomplete="new-password" minlength="10" required></label>
      <button class="fm-auth-button" type="submit">Crea il mio account</button>
+     <p class="fm-signup-help">✉ Dopo la registrazione ti invieremo un’email per verificare il tuo indirizzo. <strong>Controlla anche Spam / Posta indesiderata</strong> se non la trovi nella Posta in arrivo. Dovrai confermare l’email prima di accedere.</p>
    </form>
    <button class="fm-auth-text-button" type="button" id="fm-password-forgot">Hai dimenticato la password?</button>
-   <p class="fm-account-small">Per creare un account consulta l'<a href="privacy.html">informativa privacy</a>, che aggiorneremo prima dell’apertura al pubblico. L'iscrizione alla newsletter rimane separata e facoltativa.</p>
+   <p class="fm-account-small">Per creare un account consulta l'<a href="privacy.html">informativa privacy</a>. L'iscrizione alla newsletter rimane separata e facoltativa.</p>
   </div>
   <div class="fm-account-user" id="fm-account-user" hidden>
    <span class="fm-account-tag">✦ ACCESSO EFFETTUATO</span><h3>Il tuo account Fuori Mappa</h3>
    <p class="fm-profile-name" id="fm-profile-name"></p>
    <p class="fm-account-email" id="fm-account-email"></p>
    <p id="fm-cloud-status" class="fm-account-small">Caricamento del tuo passaporto e dei preferiti…</p>
-   <div class="fm-account-actions"><button type="button" id="fm-import-guest">Aggiungi i vecchi dati salvati sul telefono</button><button type="button" id="fm-logout">Esci dall'account</button></div>
+   <div class="fm-account-actions"><button type="button" id="fm-logout">Esci dall'account</button></div>
    <div class="fm-account-danger" aria-labelledby="fm-delete-title">
     <h4 id="fm-delete-title">Gestisci i tuoi dati</h4>
     <p>Puoi scaricare una copia dei tuoi preferiti e del passaporto con il pulsante più in basso. Puoi anche eliminare definitivamente il tuo account.</p>
@@ -108,9 +137,39 @@ section.fm-section{margin:45px 0 58px}.fm-section h2{font:normal clamp(32px,5vw,
   <p id="fm-auth-status" class="fm-auth-status" role="status" aria-live="polite"></p>
  </div>
 </section>
-<div class="fm-note"><strong>Come vengono salvati i tuoi dati.</strong> Senza account, preferiti e passaporto restano sul telefono. Quando accedi, l’app può sincronizzarli con Supabase. Conserva comunque un backup: la sincronizzazione richiede internet e può non riuscire. Se usi Google su iPhone, potresti essere indirizzata a Safari; in quel caso torna nell’app e prova l’accesso con email.</div>
- <div class="fm-backup"><button type="button" id="fm-export">Scarica una copia dei miei dati ↓</button><label for="fm-import">Importa un backup ↑<input id="fm-import" type="file" accept="application/json,.json"></label></div><p id="fm-personal-status" class="fm-status" role="status" aria-live="polite"></p>
+<div class="fm-note fm-protected" hidden><strong>Come vengono salvati i tuoi dati.</strong> Preferiti e passaporto sono disponibili soltanto con un account Fuori Mappa e vengono sincronizzati con Supabase. Finché sei connesso, alcune modifiche possono essere tenute temporaneamente sul dispositivo per sincronizzarle quando torna internet. Puoi esportare un backup dei tuoi dati.</div>
+ <div class="fm-backup fm-protected" hidden><button type="button" id="fm-export">Scarica una copia dei miei dati ↓</button><label for="fm-import">Importa un backup ↑<input id="fm-import" type="file" accept="application/json,.json"></label></div><p id="fm-personal-status" class="fm-status fm-protected" hidden role="status" aria-live="polite"></p>
 </main>
 <footer class="fm-foot">FUORI MAPPA ✦ · viaggi, idee e qualche deviazione<br><a href="privacy.html">Privacy e preferenze del sito</a></footer></div>
+<script id="fm-browser-email-confirmation">
+(()=>{
+ if(document.documentElement.classList.contains('fm-is-app'))return;
+ const query=new URLSearchParams(location.search);
+ const hash=new URLSearchParams(location.hash.slice(1));
+ const error=hash.get('error')||query.get('error');
+ const kind=hash.get('type')||query.get('type')||'';
+ const verified=!error && (hash.has('access_token') || query.has('code')) && (kind==='signup'||kind==='email'||kind==='');
+ const title=document.getElementById('fm-browser-title');
+ const explanation=document.getElementById('fm-browser-explanation');
+ const advice=document.getElementById('fm-browser-advice');
+ const link=document.getElementById('fm-browser-link');
+ if(error){
+   title.textContent='Il link non è più valido.';
+   explanation.textContent='La conferma potrebbe essere scaduta o essere stata già utilizzata. Torna nell’app, prova ad accedere e, se necessario, richiedi un nuovo link.';
+ }else if(verified){
+   title.textContent='Email confermata! ✦';
+   explanation.textContent='La verifica è riuscita. Chiudi Safari, apri Fuori Mappa dalla sua icona sul telefono e vai su Profilo → Accedi. Inserisci l’email e la password scelte in registrazione.';
+   advice.textContent='Non devi installare di nuovo l’app. L’accesso avviene dall’app già presente sul telefono.';
+   link.textContent='Vai alla homepage Fuori Mappa ↗';
+   link.href='index.html';
+ }else if(query.has('code')||hash.has('access_token')){
+   title.textContent='Ora torna nell’app Fuori Mappa ✦';
+   explanation.textContent='Hai seguito il link ricevuto via email. Chiudi Safari, apri l’app dalla sua icona e vai su Profilo → Accedi con email e password. Se l’accesso non riesce, verifica che l’indirizzo sia stato confermato.';
+   advice.textContent='Non serve reinstallare l’app e non devi creare un secondo account.';
+ }
+ // I token OAuth di Supabase sono nel frammento URL: non visualizzarli o conservarli.
+ if(hash.has('access_token')||hash.has('refresh_token')||query.has('code'))history.replaceState(null,'',location.pathname);
+})();
+</script>
 <script>window.FM_COUNTRIES=[["AF","Afghanistan"],["AL","Albania"],["DZ","Algeria"],["AD","Andorra"],["AO","Angola"],["AI","Anguilla"],["AQ","Antartide"],["AG","Antigua e Barbuda"],["SA","Arabia Saudita"],["AR","Argentina"],["AM","Armenia"],["AW","Aruba"],["AU","Australia"],["AT","Austria"],["AZ","Azerbaigian"],["BS","Bahamas"],["BH","Bahrein"],["BD","Bangladesh"],["BB","Barbados"],["BE","Belgio"],["BZ","Belize"],["BJ","Benin"],["BM","Bermuda"],["BT","Bhutan"],["BY","Bielorussia"],["BO","Bolivia"],["BA","Bosnia ed Erzegovina"],["BW","Botswana"],["BR","Brasile"],["BN","Brunei"],["BG","Bulgaria"],["BF","Burkina Faso"],["BI","Burundi"],["KH","Cambogia"],["CM","Camerun"],["CA","Canada"],["CV","Capo Verde"],["BQ","Caraibi Olandesi"],["TD","Ciad"],["CL","Cile"],["CN","Cina"],["CY","Cipro"],["VA","Città del Vaticano"],["CO","Colombia"],["KM","Comore"],["KP","Corea del Nord"],["KR","Corea del Sud"],["CI","Costa d’Avorio"],["CR","Costa Rica"],["HR","Croazia"],["CU","Cuba"],["CW","Curaçao"],["DK","Danimarca"],["DM","Dominica"],["EC","Ecuador"],["EG","Egitto"],["SV","El Salvador"],["AE","Emirati Arabi Uniti"],["ER","Eritrea"],["EE","Estonia"],["SZ","Eswatini"],["ET","Etiopia"],["FJ","Figi"],["PH","Filippine"],["FI","Finlandia"],["FR","Francia"],["GA","Gabon"],["GM","Gambia"],["GE","Georgia"],["GS","Georgia del Sud e Sandwich Australi"],["DE","Germania"],["GH","Ghana"],["JM","Giamaica"],["JP","Giappone"],["GI","Gibilterra"],["DJ","Gibuti"],["JO","Giordania"],["GR","Grecia"],["GD","Grenada"],["GL","Groenlandia"],["GP","Guadalupa"],["GU","Guam"],["GT","Guatemala"],["GG","Guernsey"],["GN","Guinea"],["GQ","Guinea Equatoriale"],["GW","Guinea-Bissau"],["GY","Guyana"],["GF","Guyana Francese"],["HT","Haiti"],["HN","Honduras"],["IN","India"],["ID","Indonesia"],["IR","Iran"],["IQ","Iraq"],["IE","Irlanda"],["IS","Islanda"],["BV","Isola Bouvet"],["CX","Isola Christmas"],["IM","Isola di Man"],["NF","Isola Norfolk"],["KY","Isole Cayman"],["CC","Isole Cocos (Keeling)"],["CK","Isole Cook"],["FK","Isole Falkland"],["FO","Isole Fær Øer"],["HM","Isole Heard e McDonald"],["MP","Isole Marianne Settentrionali"],["MH","Isole Marshall"],["UM","Isole Minori Esterne degli Stati Uniti"],["PN","Isole Pitcairn"],["SB","Isole Salomone"],["TC","Isole Turks e Caicos"],["VI","Isole Vergini Americane"],["VG","Isole Vergini Britanniche"],["AX","Isole Åland"],["IL","Israele"],["IT","Italia"],["JE","Jersey"],["KZ","Kazakistan"],["KE","Kenya"],["KG","Kirghizistan"],["KI","Kiribati"],["XK","Kosovo"],["KW","Kuwait"],["LA","Laos"],["LS","Lesotho"],["LV","Lettonia"],["LB","Libano"],["LR","Liberia"],["LY","Libia"],["LI","Liechtenstein"],["LT","Lituania"],["LU","Lussemburgo"],["MK","Macedonia del Nord"],["MG","Madagascar"],["MW","Malawi"],["MY","Malaysia"],["MV","Maldive"],["ML","Mali"],["MT","Malta"],["MA","Marocco"],["MQ","Martinica"],["MR","Mauritania"],["MU","Mauritius"],["YT","Mayotte"],["MX","Messico"],["FM","Micronesia"],["MD","Moldavia"],["MC","Monaco"],["MN","Mongolia"],["ME","Montenegro"],["MS","Montserrat"],["MZ","Mozambico"],["MM","Myanmar (Birmania)"],["NA","Namibia"],["NR","Nauru"],["NP","Nepal"],["NI","Nicaragua"],["NE","Niger"],["NG","Nigeria"],["NU","Niue"],["NO","Norvegia"],["NC","Nuova Caledonia"],["NZ","Nuova Zelanda"],["OM","Oman"],["NL","Paesi Bassi"],["PK","Pakistan"],["PW","Palau"],["PS","Palestina"],["PA","Panama"],["PG","Papua Nuova Guinea"],["PY","Paraguay"],["PE","Perù"],["PF","Polinesia Francese"],["PL","Polonia"],["PT","Portogallo"],["PR","Portorico"],["QA","Qatar"],["HK","RAS di Hong Kong"],["MO","RAS di Macao"],["GB","Regno Unito"],["CZ","Repubblica Ceca"],["CF","Repubblica Centrafricana"],["CG","Repubblica del Congo"],["CD","Repubblica Democratica del Congo"],["DO","Repubblica Dominicana"],["RE","Riunione"],["RO","Romania"],["RW","Ruanda"],["RU","Russia"],["EH","Sahara Occidentale"],["KN","Saint Kitts e Nevis"],["LC","Saint Lucia"],["MF","Saint Martin"],["VC","Saint Vincent e Grenadine"],["BL","Saint-Barthélemy"],["PM","Saint-Pierre e Miquelon"],["WS","Samoa"],["AS","Samoa Americane"],["SM","San Marino"],["SH","Sant’Elena"],["SN","Senegal"],["RS","Serbia"],["SC","Seychelles"],["SL","Sierra Leone"],["SG","Singapore"],["SX","Sint Maarten"],["SY","Siria"],["SK","Slovacchia"],["SI","Slovenia"],["SO","Somalia"],["ES","Spagna"],["LK","Sri Lanka"],["US","Stati Uniti"],["SS","Sud Sudan"],["ZA","Sudafrica"],["SD","Sudan"],["SR","Suriname"],["SJ","Svalbard e Jan Mayen"],["SE","Svezia"],["CH","Svizzera"],["ST","São Tomé e Príncipe"],["TJ","Tagikistan"],["TW","Taiwan"],["TZ","Tanzania"],["TF","Terre Australi Francesi"],["IO","Territorio Britannico dell’Oceano Indiano"],["TH","Thailandia"],["TL","Timor Est"],["TG","Togo"],["TK","Tokelau"],["TO","Tonga"],["TT","Trinidad e Tobago"],["TN","Tunisia"],["TR","Turchia"],["TM","Turkmenistan"],["TV","Tuvalu"],["UA","Ucraina"],["UG","Uganda"],["HU","Ungheria"],["UY","Uruguay"],["UZ","Uzbekistan"],["VU","Vanuatu"],["VE","Venezuela"],["VN","Vietnam"],["WF","Wallis e Futuna"],["YE","Yemen"],["ZM","Zambia"],["ZW","Zimbabwe"]];</script><script defer src="/fm-auth.js"></script>
 <script defer src="/fm-personale.js"></script></body></html>
