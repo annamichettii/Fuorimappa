@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<script id="fm-mode-detection">(function(){
+  var installed=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||
+                (window.navigator.standalone===true);
+  if(installed)document.documentElement.classList.add('fm-is-app');
+})();</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marocco in 11-12 giorni: città e Sahara | Fuori Mappa</title>
 <meta name="description" content="Idee per un viaggio in Marocco di 11-12 giorni tra Marrakech, deserto del Sahara, città storiche e costa: sei volti di un Paese.">
@@ -16,8 +21,81 @@
 .activities-link:focus-visible{outline:3px solid #252321;outline-offset:4px}
 .activities .activities-disclosure{font-size:13px;line-height:1.6}
 @media(max-width:700px){.activities{padding:24px 18px}.activities-link{display:block;width:100%}}
-</style></head><body>
-<nav><a class="logo" href="index.html">FUORI MAPPA ✦</a><div class="nav-links"><a href="index.html#viaggi-vissuti">Viaggi vissuti</a><a href="index.html#itinerari-progettati">Viaggi da vivere</a><a href="chi-sono.html">Chi sono</a></div></nav>
+</style><link rel="manifest" href="/manifest.webmanifest">
+<style id="fm-unified-route-layout">
+/* Navigation shared across Fuori Mappa public travel pages; scoped to avoid altering each itinerary's own design. */
+.fm-route-header,.fm-route-header *,.fm-route-app-tabs,.fm-route-app-tabs *{box-sizing:border-box}
+.fm-route-header{position:sticky;top:0;z-index:990;background:#fbf5e9f7;color:#30281f;border-bottom:1px solid #d6c5ab;box-shadow:0 3px 16px #30281f15;font-family:Arial,Helvetica,sans-serif}
+.fm-route-header-inner{max-width:1350px;margin:0 auto;min-height:75px;padding:12px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.fm-route-brand{font:bold clamp(20px,2.3vw,28px)/1.1 Georgia,serif;letter-spacing:-.6px;color:#30281f!important;text-decoration:none!important;white-space:nowrap}
+.fm-route-brand span{color:#977245}
+.fm-route-links{display:flex;align-items:center;justify-content:flex-end;gap:clamp(11px,1.5vw,22px);flex-wrap:wrap}
+.fm-route-links a{font:600 13px/1.35 Arial,Helvetica,sans-serif;color:#30281f!important;text-decoration:none!important;white-space:nowrap}
+.fm-route-links a:hover,.fm-route-links a:focus-visible{color:#956544!important;text-decoration:underline!important;text-underline-offset:4px}
+.fm-route-links .fm-route-cta{color:#fffaf2!important;background:#354d3e;border:1px solid #354d3e;border-radius:24px;padding:11px 14px}
+.fm-route-links .fm-route-cta:hover{background:#243a2d;color:white!important;text-decoration:none!important}
+.fm-route-toggle{display:none;color:#30281f;background:#fffaf0;border:1px solid #cbbda6;border-radius:7px;padding:10px 12px;font:bold 13px Arial,Helvetica,sans-serif;cursor:pointer}
+.fm-route-app-only,.fm-route-app-tabs{display:none!important}
+.fm-route-footer-links{padding:20px 6%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;background:#fbf5e9;border-top:1px solid #d6c5ab;color:#30281f;font:13px/1.5 Arial,Helvetica,sans-serif;text-align:center}
+.fm-route-footer-links a{color:#3e543f!important;text-decoration:underline;text-underline-offset:3px}
+.fm-route-footer-links .fm-cookie-pref-link{font:inherit;color:#3e543f!important;padding:8px 12px;border:1px solid #bda988;border-radius:5px;text-decoration:underline;background:transparent;cursor:pointer}
+.fm-route-header :focus-visible,.fm-route-app-tabs :focus-visible{outline:3px solid #a66d44;outline-offset:4px}
+@media(max-width:850px){
+ .fm-route-header-inner{min-height:65px;padding:11px 5%;flex-wrap:wrap}
+ .fm-route-toggle{display:inline-block}
+ .fm-route-links{display:none;flex-direction:column;align-items:stretch;gap:0;flex:0 0 100%;width:100%;padding:6px 0 12px}
+ .fm-route-links.fm-route-open{display:flex}
+ .fm-route-links a{font-size:14px;white-space:normal;padding:12px 8px;border-top:1px solid #e2d4bf}
+ .fm-route-links .fm-route-cta{text-align:center;margin-top:9px}
+}
+@media(max-width:700px){
+ html.fm-is-app body{padding-bottom:76px}
+ html.fm-is-app .fm-route-app-only{display:block!important}
+ html.fm-is-app .fm-route-app-tabs{position:fixed;bottom:0;left:0;right:0;z-index:1500;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:#fffaf2f8;color:#67533f;border-top:1px solid #d6c5ab;padding:8px 6px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px #30281f23;font-family:Arial,Helvetica,sans-serif}
+ html.fm-is-app .fm-route-app-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;font:700 10px/1.2 Arial,Helvetica,sans-serif;color:#67533f!important;text-decoration:none!important}
+ html.fm-is-app .fm-route-app-tabs a span{font:23px/1 Arial,Helvetica,sans-serif}
+ html.fm-is-app .fm-cookie-banner{bottom:88px}
+}
+@media(prefers-reduced-motion:reduce){.fm-route-links{scroll-behavior:auto}}
+</style>
+<style id="fm-analytics-consent-styles">
+.fm-cookie-banner[hidden]{display:none!important}
+.fm-cookie-banner{
+  position:fixed;z-index:9998;bottom:18px;left:18px;right:18px;
+  max-width:760px;margin:auto;padding:22px 24px;
+  background:#fffaf2;color:#30281f;border:1px solid #bda988;
+  box-shadow:0 15px 55px #20170e55;border-radius:10px;
+  font:14px/1.6 Arial,sans-serif;
+}
+.fm-cookie-banner h2{font:normal 25px/1.2 Georgia,serif;margin:0 0 9px}
+.fm-cookie-banner p{margin:0 0 13px}
+.fm-cookie-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.fm-cookie-actions button{
+  flex:1 1 180px;min-height:44px;padding:11px 16px;border:1px solid #342b22;
+  border-radius:6px;background:#fffaf2;color:#342b22;font:700 13px Arial,sans-serif;cursor:pointer;
+}
+.fm-cookie-actions button:hover{background:#eee0ca}
+.fm-cookie-actions button:focus-visible,.fm-cookie-pref-link:focus-visible{outline:3px solid #a66d44;outline-offset:3px}
+.fm-cookie-banner a{color:#503b2b;text-underline-offset:3px}
+.fm-cookie-pref-link{background:none;border:none;padding:8px;font:inherit;color:#fff8e9;text-decoration:underline;cursor:pointer}
+@media(max-width:700px){.fm-cookie-banner{left:10px;right:10px;bottom:10px;padding:18px 16px}.fm-cookie-banner h2{font-size:22px}.fm-cookie-actions button{flex-basis:130px}}
+</style>
+</head><body>
+<div class="fm-route-header" role="navigation" aria-label="Navigazione principale">
+  <div class="fm-route-header-inner">
+    <a class="fm-route-brand" href="index.html">FUORI MAPPA <span>✦</span></a>
+    <button class="fm-route-toggle" id="fm-route-toggle" type="button" aria-expanded="false" aria-controls="fm-route-links">☰ Menu</button>
+    <div class="fm-route-links" id="fm-route-links">
+      <a href="index.html">Home</a>
+      <a href="itinerari.html">Itinerari</a>
+      <a href="index.html#servizi">Servizi</a>
+      <a href="dove-dormire.html">Dove dormire</a>
+      <a href="chi-sono.html">Chi sono &amp; Passaporto</a>
+      <a class="fm-route-app-only" href="il-mio-spazio.html">Il mio spazio ♡</a>
+      <a class="fm-route-cta" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
+    </div>
+  </div>
+</div>
 <header class="hero"><div class="hero-content"><div class="eyebrow">Fuori Mappa · Viaggi da vivere</div><h1>Marocco</h1><p>Un viaggio, sei volti del Marocco: dall'energia di Marrakech al silenzio del Sahara, fino al punto in cui Mediterraneo e Atlantico si incontrano.</p></div></header>
 <section class="intro"><div class="small">L'idea del viaggio</div><h2>Dal cuore del Marocco<br>fino al suo estremo nord.</h2><p>Un itinerario pensato per scoprire anime molto diverse dello stesso Paese: città intense, deserto, tradizioni artigiane, luoghi più tranquilli e una deviazione fuori dalla rotta principale. Per gli spostamenti tra le grandi città l'idea è privilegiare il treno e i mezzi condivisi, lasciando il trasporto organizzato alle zone in cui la ferrovia non arriva.</p></section>
 <!-- TOUR E ATTIVITÀ -->
@@ -40,4 +118,97 @@
 <section class="philosophy"><div class="small">Un modo diverso di muoversi</div><h2>Il viaggio non ha bisogno<br>di un'auto a noleggio.</h2><p>L'idea è privilegiare la ferrovia tra le città servite dalla rete e utilizzare mezzi condivisi o trasporti organizzati quando necessario. Una scelta che riduce gli spostamenti individuali in auto e permette di vivere il percorso con un ritmo diverso, senza affrontare la guida in un Paese che non si conosce.</p></section>
 <section class="cta"><div class="small">Questo è solo il punto di partenza</div><h2>Ti piacerebbe vivere<br>questo Marocco?</h2><p>Quello che hai visto è l'idea del viaggio, non il programma completo. Durata, ordine delle tappe, alloggi, spostamenti ed esperienze possono cambiare in base al periodo, ai tuoi interessi e al tuo modo di viaggiare. Se questa idea ti ispira, possiamo costruirne una su misura per te.</p><a class="button" href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio →</a></section>
 <footer>FUORI MAPPA · viaggi, idee e qualche deviazione ✦</footer>
+<script id="fm-unified-route-script">
+(function(){
+ var toggle=document.getElementById('fm-route-toggle'),links=document.getElementById('fm-route-links');
+ if(!toggle||!links)return;
+ function closeMenu(){links.classList.remove('fm-route-open');toggle.setAttribute('aria-expanded','false');}
+ toggle.addEventListener('click',function(){var isOpen=links.classList.toggle('fm-route-open');toggle.setAttribute('aria-expanded',String(isOpen));});
+ links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+ document.addEventListener('click',function(e){if(!e.target.closest('.fm-route-header'))closeMenu();});
+})();
+</script>
+<div class="fm-route-app-tabs" aria-label="Navigazione rapida nell'app">
+  <a href="index.html"><span aria-hidden="true">⌂</span>Home</a>
+  <a href="itinerari.html"><span aria-hidden="true">◇</span>Esplora</a>
+  <a href="il-mio-spazio.html#preferiti"><span aria-hidden="true">♡</span>Preferiti</a>
+  <a href="il-mio-spazio.html#profilo"><span aria-hidden="true">♙</span>Profilo</a>
+</div>
+<section aria-labelledby="fm-cookie-title" aria-modal="false" class="fm-cookie-banner" hidden="" id="fm-cookie-banner" role="dialog">
+<h2 id="fm-cookie-title">Le tue preferenze, la tua rotta ✦</h2>
+<p>Vorremmo usare Google Analytics per capire quali pagine vengono visitate e migliorare Fuori Mappa. I cookie statistici sono facoltativi: non attiveremo Analytics senza il tuo consenso.</p>
+<a href="privacy.html">Leggi l'informativa privacy</a>
+<div class="fm-cookie-actions">
+<button id="fm-cookie-decline" type="button">Rifiuta statistiche</button>
+<button id="fm-cookie-accept" type="button">Accetta statistiche</button>
+</div>
+</section>
+<div class="fm-route-footer-links">
+  <a href="index.html">Home</a><a href="itinerari.html">Tutti gli itinerari</a>
+  <a href="privacy.html">Privacy e cookie</a>
+  <button class="fm-cookie-pref-link" type="button" id="fm-cookie-manage">Preferenze cookie</button>
+</div>
+<script id="fm-analytics-consent-script">
+(function(){
+  'use strict';
+  var GA_ID='G-Y8EQGCQFHQ';
+  var KEY='fuorimappa-analytics-consent-v1';
+  var MAX_AGE=180*24*60*60*1000;
+  var banner=document.getElementById('fm-cookie-banner');
+  var accept=document.getElementById('fm-cookie-accept');
+  var decline=document.getElementById('fm-cookie-decline');
+  var manage=document.getElementById('fm-cookie-manage');
+  var started=false;
+  if(!banner || !accept || !decline || !manage)return;
+  function getChoice(){
+    try{
+      var item=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(item && (item.value==='accept'||item.value==='decline') &&
+         typeof item.at==='number' && Date.now()-item.at<MAX_AGE && Date.now()>=item.at){return item.value;}
+    }catch(e){}
+    return null;
+  }
+  function saveChoice(choice){
+    try{localStorage.setItem(KEY,JSON.stringify({value:choice,at:Date.now()}));}catch(e){}
+  }
+  function startAnalytics(){
+    if(started)return;
+    started=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+    window.gtag('js',new Date());
+    window.gtag('config',GA_ID);
+    var script=document.createElement('script');
+    script.async=true;
+    script.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+  }
+  function clearAnalyticsCookies(){
+    document.cookie.split(';').forEach(function(entry){
+      var name=entry.trim().split('=')[0];
+      if(!/^_ga(?:_|$)/.test(name))return;
+      var endings=['; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+                   '; path=/; domain=.fuorimappa.it; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+                   '; path=/; domain=www.fuorimappa.it; expires=Thu, 01 Jan 1970 00:00:00 GMT'];
+      endings.forEach(function(end){document.cookie=name+'='+end+'; SameSite=Lax';});
+    });
+  }
+  function choose(value){
+    saveChoice(value);
+    banner.hidden=true;
+    if(value==='accept')startAnalytics();
+    else if(started){
+      /* Reload stops the previously loaded script after consent withdrawal. */
+      clearAnalyticsCookies();window.location.reload();
+    }
+  }
+  accept.addEventListener('click',function(){choose('accept');});
+  decline.addEventListener('click',function(){choose('decline');});
+  manage.addEventListener('click',function(){banner.hidden=false;accept.focus();});
+  var saved=getChoice();
+  if(saved==='accept')startAnalytics();
+  else if(saved===null)banner.hidden=false;
+})();
+</script>
 </body></html>

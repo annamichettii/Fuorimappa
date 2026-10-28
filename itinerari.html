@@ -53,7 +53,31 @@
   html.fm-is-app .fm-app-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;color:#67533f;text-decoration:none;font-weight:bold;font-size:9px}
   html.fm-is-app .fm-app-tabs a span{font-size:23px;line-height:1.1}
  }
-</style></head>
+</style><link rel="manifest" href="/manifest.webmanifest">
+<style id="fm-analytics-consent-styles">
+.fm-cookie-banner[hidden]{display:none!important}
+.fm-cookie-banner{
+  position:fixed;z-index:9998;bottom:18px;left:18px;right:18px;
+  max-width:760px;margin:auto;padding:22px 24px;
+  background:#fffaf2;color:#30281f;border:1px solid #bda988;
+  box-shadow:0 15px 55px #20170e55;border-radius:10px;
+  font:14px/1.6 Arial,sans-serif;
+}
+.fm-cookie-banner h2{font:normal 25px/1.2 Georgia,serif;margin:0 0 9px}
+.fm-cookie-banner p{margin:0 0 13px}
+.fm-cookie-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.fm-cookie-actions button{
+  flex:1 1 180px;min-height:44px;padding:11px 16px;border:1px solid #342b22;
+  border-radius:6px;background:#fffaf2;color:#342b22;font:700 13px Arial,sans-serif;cursor:pointer;
+}
+.fm-cookie-actions button:hover{background:#eee0ca}
+.fm-cookie-actions button:focus-visible,.fm-cookie-pref-link:focus-visible{outline:3px solid #a66d44;outline-offset:3px}
+.fm-cookie-banner a{color:#503b2b;text-underline-offset:3px}
+.fm-cookie-pref-link{background:none;border:none;padding:8px;font:inherit;color:#fff8e9;text-decoration:underline;cursor:pointer}
+@media(max-width:700px){.fm-cookie-banner{left:10px;right:10px;bottom:10px;padding:18px 16px}.fm-cookie-banner h2{font-size:22px}.fm-cookie-actions button{flex-basis:130px}}
+</style>
+<style>.fm-route-footer-links{padding:18px 6%;display:flex;gap:15px;flex-wrap:wrap;justify-content:center;align-items:center;background:#fbf5e9;border-top:1px solid #d6c5ab;font:13px Arial,sans-serif}.fm-route-footer-links a,.fm-route-footer-links button{color:#354d3e}.fm-route-footer-links button{border:1px solid #bda988;background:transparent;border-radius:5px;padding:9px;cursor:pointer}</style>
+</head>
 <body><nav aria-label="Navigazione app" class="fm-app-tabs"><a href="index.html"><span>⌂</span>Home</a><a href="itinerari.html" aria-current="page"><span>◇</span>Esplora</a><a href="il-mio-spazio.html#preferiti"><span>♡</span>Preferiti</a><a href="il-mio-spazio.html#passaporto"><span>✈</span>Passaporto</a><a href="il-mio-spazio.html#profilo"><span>♙</span>Profilo</a></nav>
 <header class="site-header"><nav class="nav-inner" aria-label="Navigazione principale">
 <a class="brand" href="index.html">FUORI MAPPA <span>✦</span></a>
@@ -249,4 +273,80 @@
 </script>
 <script defer src="/fm-auth.js"></script>
 <script defer src="/fm-personale.js"></script>
+<section aria-labelledby="fm-cookie-title" aria-modal="false" class="fm-cookie-banner" hidden="" id="fm-cookie-banner" role="dialog">
+<h2 id="fm-cookie-title">Le tue preferenze, la tua rotta ✦</h2>
+<p>Vorremmo usare Google Analytics per capire quali pagine vengono visitate e migliorare Fuori Mappa. I cookie statistici sono facoltativi: non attiveremo Analytics senza il tuo consenso.</p>
+<a href="privacy.html">Leggi l'informativa privacy</a>
+<div class="fm-cookie-actions">
+<button id="fm-cookie-decline" type="button">Rifiuta statistiche</button>
+<button id="fm-cookie-accept" type="button">Accetta statistiche</button>
+</div>
+</section>
+<div class="fm-route-footer-links">
+  <a href="index.html">Home</a><a href="itinerari.html">Tutti gli itinerari</a>
+  <a href="privacy.html">Privacy e cookie</a>
+  <button class="fm-cookie-pref-link" type="button" id="fm-cookie-manage">Preferenze cookie</button>
+</div>
+<script id="fm-analytics-consent-script">
+(function(){
+  'use strict';
+  var GA_ID='G-Y8EQGCQFHQ';
+  var KEY='fuorimappa-analytics-consent-v1';
+  var MAX_AGE=180*24*60*60*1000;
+  var banner=document.getElementById('fm-cookie-banner');
+  var accept=document.getElementById('fm-cookie-accept');
+  var decline=document.getElementById('fm-cookie-decline');
+  var manage=document.getElementById('fm-cookie-manage');
+  var started=false;
+  if(!banner || !accept || !decline || !manage)return;
+  function getChoice(){
+    try{
+      var item=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(item && (item.value==='accept'||item.value==='decline') &&
+         typeof item.at==='number' && Date.now()-item.at<MAX_AGE && Date.now()>=item.at){return item.value;}
+    }catch(e){}
+    return null;
+  }
+  function saveChoice(choice){
+    try{localStorage.setItem(KEY,JSON.stringify({value:choice,at:Date.now()}));}catch(e){}
+  }
+  function startAnalytics(){
+    if(started)return;
+    started=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+    window.gtag('js',new Date());
+    window.gtag('config',GA_ID);
+    var script=document.createElement('script');
+    script.async=true;
+    script.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+  }
+  function clearAnalyticsCookies(){
+    document.cookie.split(';').forEach(function(entry){
+      var name=entry.trim().split('=')[0];
+      if(!/^_ga(?:_|$)/.test(name))return;
+      var endings=['; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+                   '; path=/; domain=.fuorimappa.it; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+                   '; path=/; domain=www.fuorimappa.it; expires=Thu, 01 Jan 1970 00:00:00 GMT'];
+      endings.forEach(function(end){document.cookie=name+'='+end+'; SameSite=Lax';});
+    });
+  }
+  function choose(value){
+    saveChoice(value);
+    banner.hidden=true;
+    if(value==='accept')startAnalytics();
+    else if(started){
+      /* Reload stops the previously loaded script after consent withdrawal. */
+      clearAnalyticsCookies();window.location.reload();
+    }
+  }
+  accept.addEventListener('click',function(){choose('accept');});
+  decline.addEventListener('click',function(){choose('decline');});
+  manage.addEventListener('click',function(){banner.hidden=false;accept.focus();});
+  var saved=getChoice();
+  if(saved==='accept')startAnalytics();
+  else if(saved===null)banner.hidden=false;
+})();
+</script>
 </body></html>
