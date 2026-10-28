@@ -991,8 +991,64 @@ html:not(.fm-is-app) .fm-app-bottom,html:not(.fm-is-app) .fm-only-app{display:no
  html:not(.fm-is-app) .fm-web-bio-toggle[aria-expanded="true"]{background:#ebdcc5}
 }
 </style>
+
+<style id="fm-desktop-choice-fixes">
+/* Il mio spazio rimane raggiungibile nel menu dell'app installata. */
+html:not(.fm-is-app) #main-menu .fm-nav-private { display:none !important; }
+@media (min-width:701px) {
+  .fm-choices .fm-choice { cursor:pointer;position:relative; }
+  /* Details renders its summary first: place the numbered label above it. */
+  .fm-choices .fm-choice > .fm-choice-number { position:absolute;top:34px;left:30px; }
+  .fm-choices .fm-choice > summary {
+    display:block;list-style:none;cursor:pointer;
+    font:normal clamp(26px,2.7vw,36px)/1.15 Georgia,serif;
+    margin:23px 0 14px;
+  }
+  .fm-choices .fm-choice > summary::-webkit-details-marker { display:none; }
+  .fm-choices .fm-choice > summary::marker { content:""; }
+  .fm-choices .fm-choice > summary:focus-visible { outline:3px solid #a66d44;outline-offset:4px; }
+  .fm-choices .fm-choice p { line-height:1.7; }
+  .fm-choices .fm-choice a {
+    display:inline-block;align-self:flex-start;margin-top:auto;padding-top:10px;
+    font-weight:700;text-underline-offset:5px;
+  }
+}
+</style>
+
+<style id="fm-analytics-consent-styles">
+.fm-cookie-banner[hidden]{display:none!important}
+.fm-cookie-banner{
+  position:fixed;z-index:9998;bottom:18px;left:18px;right:18px;
+  max-width:760px;margin:auto;padding:22px 24px;
+  background:#fffaf2;color:#30281f;border:1px solid #bda988;
+  box-shadow:0 15px 55px #20170e55;border-radius:10px;
+  font:14px/1.6 Arial,sans-serif;
+}
+.fm-cookie-banner h2{font:normal 25px/1.2 Georgia,serif;margin:0 0 9px}
+.fm-cookie-banner p{margin:0 0 13px}
+.fm-cookie-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.fm-cookie-actions button{
+  flex:1 1 180px;min-height:44px;padding:11px 16px;border:1px solid #342b22;
+  border-radius:6px;background:#fffaf2;color:#342b22;font:700 13px Arial,sans-serif;cursor:pointer;
+}
+.fm-cookie-actions button:hover{background:#eee0ca}
+.fm-cookie-actions button:focus-visible,.fm-cookie-pref-link:focus-visible{outline:3px solid #a66d44;outline-offset:3px}
+.fm-cookie-banner a{color:#503b2b;text-underline-offset:3px}
+.fm-cookie-pref-link{background:none;border:none;padding:8px;font:inherit;color:#fff8e9;text-decoration:underline;cursor:pointer}
+@media(max-width:700px){.fm-cookie-banner{left:10px;right:10px;bottom:10px;padding:18px 16px}.fm-cookie-banner h2{font-size:22px}.fm-cookie-actions button{flex-basis:130px}}
+</style>
 </head>
 <body>
+<section class="fm-cookie-banner" id="fm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="fm-cookie-title" hidden>
+  <h2 id="fm-cookie-title">Le tue preferenze, la tua rotta ✦</h2>
+  <p>Vorremmo usare Google Analytics per capire quali pagine vengono visitate e migliorare Fuori Mappa. I cookie statistici sono facoltativi: non attiveremo Analytics senza il tuo consenso.</p>
+  <a href="privacy.html">Leggi l'informativa privacy</a>
+  <div class="fm-cookie-actions">
+    <button id="fm-cookie-decline" type="button">Rifiuta statistiche</button>
+    <button id="fm-cookie-accept" type="button">Accetta statistiche</button>
+  </div>
+</section>
+
 <dialog aria-labelledby="newsletter-title" id="newsletter-dialog">
 <button aria-label="Chiudi la newsletter" class="newsletter-close" type="button">×</button>
 <div class="sib-form"><div class="sib-form-container" id="sib-form-container">
@@ -1020,7 +1076,7 @@ html:not(.fm-is-app) .fm-app-bottom,html:not(.fm-is-app) .fm-only-app{display:no
 <a href="itinerari.html">Itinerari</a>
 <a href="#servizi">Servizi</a>
 <a href="dove-dormire.html">Dove dormire</a>
-<a href="chi-sono.html">Chi sono &amp; Passaporto</a><a href="il-mio-spazio.html">Il mio spazio ♡</a>
+<a href="chi-sono.html">Chi sono &amp; Passaporto</a><a class="fm-nav-private" href="il-mio-spazio.html">Il mio spazio ♡</a>
 <a href="costruiamo-il-tuo-viaggio.html">Costruiamo il tuo viaggio ✦</a>
 </div>
 </nav>
@@ -1154,7 +1210,7 @@ html:not(.fm-is-app) .fm-app-bottom,html:not(.fm-is-app) .fm-only-app{display:no
   Instagram · @fuorimappa.travel<br/>
   Email · fuorimappa.travel@gmail.com
   <br/><br/>
-  FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br/><a href="privacy.html">Privacy e preferenze del sito</a>
+  FUORI MAPPA · viaggi, idee e qualche deviazione ✦<br/><a href="privacy.html">Privacy del sito</a> · <button class="fm-cookie-pref-link" id="fm-cookie-manage" type="button">Preferenze cookie</button>
 </footer>
 <script>
 (function(){
@@ -1319,6 +1375,100 @@ setTimeout(function(){
     details.classList.toggle('fm-bio-open',!expanded);
     button.querySelector('span').textContent=expanded?'＋':'−';
   });
+})();
+</script>
+
+<script id="fm-desktop-choices-script">
+(function(){
+  var desktop=window.matchMedia('(min-width:701px)');
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.fm-choices-grid > details.fm-choice'));
+  function sync(){
+    cards.forEach(function(card){ card.open=desktop.matches; });
+  }
+  cards.forEach(function(card){
+    var link=card.querySelector('a[href]');
+    var summary=card.querySelector('summary');
+    if(!link||!summary)return;
+    /* Desktop: clicking a card/title opens its destination, never collapses it. */
+    card.addEventListener('click',function(event){
+      if(!desktop.matches)return;
+      if(event.target.closest('a'))return;
+      event.preventDefault();
+      if(window.getSelection && String(window.getSelection()).length)return;
+      window.location.href=link.href;
+    });
+    summary.addEventListener('keydown',function(event){
+      if(desktop.matches && event.key===' '){
+        event.preventDefault();window.location.href=link.href;
+      }
+    });
+  });
+  sync();
+  if(desktop.addEventListener)desktop.addEventListener('change',sync);
+  else if(desktop.addListener)desktop.addListener(sync);
+})();
+</script>
+
+<script id="fm-analytics-consent-script">
+(function(){
+  'use strict';
+  var GA_ID='G-Y8EQGCQFHQ';
+  var KEY='fuorimappa-analytics-consent-v1';
+  var MAX_AGE=180*24*60*60*1000;
+  var banner=document.getElementById('fm-cookie-banner');
+  var accept=document.getElementById('fm-cookie-accept');
+  var decline=document.getElementById('fm-cookie-decline');
+  var manage=document.getElementById('fm-cookie-manage');
+  var started=false;
+  if(!banner || !accept || !decline || !manage)return;
+  function getChoice(){
+    try{
+      var item=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(item && (item.value==='accept'||item.value==='decline') &&
+         typeof item.at==='number' && Date.now()-item.at<MAX_AGE && Date.now()>=item.at){return item.value;}
+    }catch(e){}
+    return null;
+  }
+  function saveChoice(choice){
+    try{localStorage.setItem(KEY,JSON.stringify({value:choice,at:Date.now()}));}catch(e){}
+  }
+  function startAnalytics(){
+    if(started)return;
+    started=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+    window.gtag('js',new Date());
+    window.gtag('config',GA_ID);
+    var script=document.createElement('script');
+    script.async=true;
+    script.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+  }
+  function clearAnalyticsCookies(){
+    document.cookie.split(';').forEach(function(entry){
+      var name=entry.trim().split('=')[0];
+      if(!/^_ga(?:_|$)/.test(name))return;
+      var endings=['; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+                   '; path=/; domain=.fuorimappa.it; expires=Thu, 01 Jan 1970 00:00:00 GMT',
+                   '; path=/; domain=www.fuorimappa.it; expires=Thu, 01 Jan 1970 00:00:00 GMT'];
+      endings.forEach(function(end){document.cookie=name+'='+end+'; SameSite=Lax';});
+    });
+  }
+  function choose(value){
+    saveChoice(value);
+    banner.hidden=true;
+    if(value==='accept')startAnalytics();
+    else if(started){
+      /* Reload stops the previously loaded script after consent withdrawal. */
+      clearAnalyticsCookies();window.location.reload();
+    }
+  }
+  accept.addEventListener('click',function(){choose('accept');});
+  decline.addEventListener('click',function(){choose('decline');});
+  manage.addEventListener('click',function(){banner.hidden=false;accept.focus();});
+  var saved=getChoice();
+  if(saved==='accept')startAnalytics();
+  else if(saved===null)banner.hidden=false;
 })();
 </script>
 </body>
